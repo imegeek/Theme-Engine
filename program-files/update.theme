@@ -1,0 +1,78 @@
+#!/usr/bin/bash
+
+HIDCRSR(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+command -v git > /dev/null 2>&1 || { pkg install git -y ; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]]
+then clear
+echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
+   exit
+fi; }
+
+HIDCRSR
+connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]]
+then echo -e "\033[0;1;48;2;200;0;0m            [-] No Internet \033[0;1;30;48;2;0;255;50m connection!            \e[0m"
+NORM;exit
+fi
+
+if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
+cd $HOME; rm -rf theme-engine
+cd /data/data/com.termux/files/usr/share
+
+spin () {
+local pid=$!
+local delay=0.05
+local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
+while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+for i in "${spinner[@]}"
+do
+        HIDCRSR
+        echo -ne "\e[0;1;48;2;41;121;255m\r [!] Updating theme-engine...\e[0;1;90;48;2;0;230;118m    [ $i ]     [ $i ]    \033[3m\033[0m   ";
+        sleep $delay
+        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+done
+done
+printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
+printf "\e[0;1;48;2;41;121;255m\e[0;1;90;48;2;0;230;118m [!] Successfully Updated [THEME-ENGINE]            \e[0m\n"
+echo"";
+NORM
+}
+
+HIDCRSR
+trap '' 2
+( git clone https://github.com/abhackerofficial/theme-engine; sleep 2 ) &> /dev/null & spin
+HIDCRSR
+sleep 1 ;mv theme-engine $HOME ; cd ;cd theme-engine;chmod +x theme.engine ;NORM; bash theme.engine;printf "\e[0m"
+trap 5
+echo -ne "\033]12;#b4e1fd\007"
+
+else
+spin () {
+
+local pid=$!
+local delay=0.05
+local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
+
+while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+
+for i in "${spinner[@]}"
+do
+	HIDCRSR
+	echo -ne "\e[0;1;90;38;2;0;230;118m\r [!] \e[0;1;38;2;41;121;255mInstalling theme-engine Please wait...\e[0;1;90;38;2;0;230;118m[$i]\033[0m   ";
+	sleep $delay
+        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+done
+done
+NORM
+printf "\e[0;1;90;38;2;0;230;118m [√] \e[0;1;38;2;41;121;255m[THEME-ENGINE] Installing [Complete]\e\e[0m           ";
+echo "";
+
+}
+trap '' 2
+( git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine"; sleep 2 ) &> /dev/null & spin
+HIDCRSR
+sleep 1 ;cd theme-engine;chmod +x theme.engine ;NORM; bash theme.engine;printf "\e[0m"
+trap 5
+echo -ne "\033]12;#b4e1fd\007" ;fi

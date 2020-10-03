@@ -1,0 +1,136 @@
+#!/usr/bin/bash
+
+command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]]
+then clear
+echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
+   exit
+fi; }
+
+command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing."; apt install unrar -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]]
+then clear
+echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
+   exit
+fi; }
+
+command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing."; apt install zsh -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]]
+then clear
+echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
+   exit
+fi; }
+
+exit_on_signal_SIGINT () {
+   { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
+    echo -ne "\033]12;#b4e1fd\007"
+    exit 0
+}
+
+exit_on_signal_SIGTERM () {
+    { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
+    echo -ne "\033]12;#b4e1fd\007"
+    exit 0
+}
+
+trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
+
+if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDCRSR(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
+banner() {
+printf "\e[0m"
+echo -ne "\033]12;#363636\007";clear
+echo -e "
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█                                                  █
+\e[0;1m█\e[0;1;38;2;200;0;0m ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀\e[1;38;2;0;230;118m ▄▄\e[0;1;38;2;40;90;255m █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀ \e[0;1m█
+\e[0;1m█\e[0;1;38;2;200;0;0m  █  █▀█ ██▄ █ ▀ █ ██▄\e[1;38;2;0;230;118m   \e[0;1;38;2;40;90;255m ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄ \e[0;1m█
+\e[0;1m█ -coding by "'$abhackerofficial'"             \e[1;38;2;0;230;118m-v 2.4\e[0;1m  █
+\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+" ; }
+if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+banner
+echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
+echo -e "\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
+bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme
+else
+banner
+echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
+echo -e "\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
+bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme ;fi
+
+if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+banner
+echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
+echo -e "\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
+printf "\e[0;1;7m [*] Execute an Option :                            \e[0m"
+PUT 11 26
+printf "\e[0;1;7m"
+read option
+echo -ne "\e[0m";
+
+if [[ $option = "1" ]] || [[ $option = "01" ]];then
+echo
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash fonts.theme
+
+elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+echo
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash colors.theme
+
+elif [[ $option = "update" ]] || [[ $option = "Update" ]] || [[ $option = "UPDATE" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash update.theme
+
+elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash zsh.theme
+
+elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash disable.zsh.theme
+else echo -e "\e[1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
+banner
+echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
+echo -e "\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
+printf "\e[0;1;7m [*] Execute an Option :                            \e[0m"
+PUT 11 26
+printf "\e[0;1;7m"
+read option
+echo -ne "\e[0m";
+
+if [[ $option = "1" ]] || [[ $option = "01" ]];then
+echo
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash fonts.theme
+
+elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+echo
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash colors.theme
+
+elif [[ $option = "update" ]] || [[ $option = "Update" ]] || [[ $option = "UPDATE" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash update.theme
+
+elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash zsh.setup.theme
+
+elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash disable.zsh.theme
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
+else echo -e "\e[0;1;38;2;200;0;0m [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
+bash program-files/update.theme ;fi
