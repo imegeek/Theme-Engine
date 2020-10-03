@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDCRSR(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+if [[ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ]];then
+PUT 11 1
+trap '' 2 ;HIDCRSR
+printf "\e[0m"
+echo -ne "\e[0;1;7m [!] Extracting necessary files             [0/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files.            [0/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files..           [0/3]   \r"
+sleep 0.1
+#fonts
+if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
+cd /data/data/com.termux/files/home/theme-engine/fonts
+unrar x fonts.rar > /dev/null 2>&1
+rm -rf fonts.rar ;fi
+echo -ne "\e[0;1;7m [!] Extracting necessary files...          [1/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files             [1/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files.            [1/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files..           [2/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files...          [2/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files             [2/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files.            [2/3]   \r"
+sleep 0.1
+echo -ne "\e[0;1;7m [!] Extracting necessary files..           [3/3]   \r"
+sleep 0.4
+echo -ne "\e[0;1;7m [!] Extracting necessary files...          [DONE]  \r"
+sleep 0.5
+echo -e "\e[0m"
+trap 5 ;NORM ;fi
+#>>>>>>>>>>>!

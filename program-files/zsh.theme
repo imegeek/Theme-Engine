@@ -1,0 +1,997 @@
+#!/usr/bin/bash
+
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDCRSR(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+
+Applied() { printf "\e[0m"
+echo -ne "\e[0;1;7m [!] Zsh-Theme Applying                             \e[0m\r" ;sleep 0.1
+echo -ne "\e[0;1;7m [!] Zsh-Theme Applying.                            \e[0m\r" ;sleep 0.1
+echo -ne "\e[0;1;7m [!] Zsh-Theme Applying..                           \e[0m\r" ;sleep 0.1
+echo -ne "\e[0;1;7m [!] Zsh-Theme Applying...                          \e[0m\r" ;sleep 0.2
+echo -ne "\e[0;1;7m [√] Zsh-Theme Applied Successfully, Restart Termux \e[0m\r" ;echo -e "\n" ; }
+
+exit_on_signal_SIGINT () {
+   { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
+    echo -ne "\033]12;#b4e1fd\007"
+    exit 0
+}
+
+exit_on_signal_SIGTERM () {
+    { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
+    echo -ne "\033]12;#b4e1fd\007"
+    exit 0
+}
+
+trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
+
+
+zshrc() {
+echo '# If you come from bash you might have to change your $PATH.' >> .zshrc
+echo '# export PATH=$HOME/bin:/usr/local/bin:$PATH' >> .zshrc
+echo"" >> .zshrc
+echo "# Path to your oh-my-zsh installation." >> .zshrc
+echo 'export ZSH=$HOME/.oh-my-zsh' >> .zshrc
+echo"" >> .zshrc
+echo '# Set name of the theme to load --- if set to "random", it will' >> .zshrc
+echo "# load a random theme each time oh-my-zsh is loaded, in which case," >> .zshrc
+echo '# to know which specific one was loaded, run: echo $RANDOM_THEME' >> .zshrc
+echo "# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" >> .zshrc
+echo"" >> .zshrc
+echo "# Set list of themes to pick from when loading at random" >> .zshrc
+echo "# Setting this variable when ZSH_THEME=random will cause zsh to load" >> .zshrc
+echo "# a theme from this variable instead of looking in $ZSH/themes/" >> .zshrc
+echo "# If set to an empty array, this variable will have no effect." >> .zshrc
+echo '# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to use case-sensitive completion." >> .zshrc
+echo '# CASE_SENSITIVE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to use hyphen-insensitive completion." >> .zshrc
+echo "# Case-sensitive completion must be off. _ and - will be interchangeable." >> .zshrc
+echo '# HYPHEN_INSENSITIVE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to disable bi-weekly auto-update checks." >> .zshrc
+echo '# DISABLE_AUTO_UPDATE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to automatically update without prompting." >> .zshrc
+echo '# DISABLE_UPDATE_PROMPT="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to change how often to auto-update (in days)." >> .zshrc
+echo "# export UPDATE_ZSH_DAYS=13" >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line if pasting URLs and other text is messed up." >> .zshrc
+echo '# DISABLE_MAGIC_FUNCTIONS="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to disable colors in ls." >> .zshrc
+echo '# DISABLE_LS_COLORS="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to disable auto-setting terminal title." >> .zshrc
+echo '# DISABLE_AUTO_TITLE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to enable command auto-correction." >> .zshrc
+echo '# ENABLE_CORRECTION="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to display red dots whilst waiting for completion." >> .zshrc
+echo '# COMPLETION_WAITING_DOTS="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line if you want to disable marking untracked files" >> .zshrc
+echo "# under VCS as dirty. This makes repository status check for large repositories" >> .zshrc
+echo "# much, much faster." >> .zshrc
+echo '# DISABLE_UNTRACKED_FILES_DIRTY="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line if you want to change the command execution time" >> .zshrc
+echo "# stamp shown in the history command output." >> .zshrc
+echo "# You can set one of the optional three formats:" >> .zshrc
+echo '# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"' >> .zshrc
+echo "# or set a custom format using the strftime function format specifications," >> .zshrc
+echo "# see 'man strftime' for details." >> .zshrc
+echo '# HIST_STAMPS="mm/dd/yyyy"' >> .zshrc
+echo"" >> .zshrc
+echo "# Would you like to use another custom folder than $ZSH/custom?" >> .zshrc
+echo "# ZSH_CUSTOM=/path/to/new-custom-folder" >> .zshrc
+echo"" >> .zshrc
+echo "# Which plugins would you like to load?" >> .zshrc
+echo "# Standard plugins can be found in $ZSH/plugins/" >> .zshrc
+echo "# Custom plugins may be added to $ZSH_CUSTOM/plugins/" >> .zshrc
+echo "# Example format: plugins=(rails git textmate ruby lighthouse)" >> .zshrc
+echo "# Add wisely, as too many plugins slow down shell startup." >> .zshrc
+echo "plugins=(git)" >> .zshrc
+echo"" >> .zshrc
+echo 'source $ZSH/oh-my-zsh.sh' >> .zshrc
+echo"" >> .zshrc
+echo "# User configuration" >> .zshrc
+echo"" >> .zshrc
+echo '# export MANPATH="/usr/local/man:$MANPATH"' >> .zshrc
+echo"" >> .zshrc
+echo "# You may need to manually set your language environment" >> .zshrc
+echo "# export LANG=en_US.UTF-8" >> .zshrc
+echo"" >> .zshrc
+echo "# Preferred editor for local and remote sessions" >> .zshrc
+echo "# if [[ -n $SSH_CONNECTION ]]; then" >> .zshrc
+echo "#   export EDITOR='vim'" >> .zshrc
+echo "# else" >> .zshrc
+echo "#   export EDITOR='mvim'" >> .zshrc
+echo "# fi" >> .zshrc
+echo"" >> .zshrc
+echo "# Compilation flags" >> .zshrc
+echo '# export ARCHFLAGS="-arch x86_64"' >> .zshrc
+echo"" >> .zshrc
+echo "# Set personal aliases, overriding those provided by oh-my-zsh libs," >> .zshrc
+echo "# plugins, and themes. Aliases can be placed here, though oh-my-zsh" >> .zshrc
+echo "# users are encouraged to define aliases within the ZSH_CUSTOM folder." >> .zshrc
+echo "# For a full list of active aliases, run `alias`." >> .zshrc
+echo"" >> .zshrc
+echo "# Example aliases" >> .zshrc
+echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
+echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
+echo "alias chcolor='/data/data/com.termux/files/home/.termux/colors.theme'" >> .zshrc
+echo "alias chfont='/data/data/com.termux/files/home/.termux/fonts.theme'" >> .zshrc
+echo "alias chtheme='/data/data/com.termux/files/home/.termux/zsh.theme'" >> .zshrc
+echo "alias update='/data/data/com.termux/files/home/.termux/zsh.update'" >> .zshrc
+echo "source /data/data/com.termux/files/home/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc
+echo "source /data/data/com.termux/files/home/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc ; }
+
+cd $HOME
+
+banner() {
+clear;echo -e "\e[0;1m
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█                                                  █
+\e[0;1m█\e[1;38;2;0;230;118m    ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ▄▄ █▀▄▀█ █▀▀ █▄░█ █░█\e[0;1m   █
+\e[0;1m█\e[1;38;2;0;230;118m     █  █▀█ ██▄ █ ▀ █ ██▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m   █
+\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ \e[0;1m[01] agnoster           \e[0;1m[22] crunch              ┃
+┃ \e[0;1m[02] Soliah             \e[0;1m[23] cypher              ┃
+┃ \e[0;1m[03] adben              \e[0;1m[24] dallas              ┃
+┃ \e[0;1m[04] af-magic           \e[0;1m[25] darkblood           ┃
+┃ \e[0;1m[05] afowler            \e[0;1m[26] daveverwer          ┃
+┃ \e[0;1m[06] 3den               \e[0;1m[27] dieter              ┃
+┃ \e[0;1m[07] alanpeabody        \e[0;1m[28] dogenpunk           ┃
+┃ \e[0;1m[08] amuse              \e[0;1m[29] dpoggi              ┃
+┃ \e[0;1m[09] apple              \e[0;1m[30] dst                 ┃
+┃ \e[0;1m[10] arrow              \e[0;1m[31] dstufft             ┃
+┃ \e[0;1m[11] aussiegeek         \e[0;1m[32] duellj              ┃
+┃ \e[0;1m[12] avit               \e[0;1m[33] eastwood            ┃
+┃ \e[0;1m[13] awesomepanda       \e[0;1m[34] edvardm             ┃
+┃ \e[0;1m[14] bira               \e[0;1m[35] emotty              ┃
+┃ \e[0;1m[15] blinks             \e[0;1m[36] essembeh            ┃
+┃ \e[0;1m[16] bureau             \e[0;1m[37] evan                ┃
+┃ \e[0;1m[17] candy-kingdom      \e[0;1m[38] fino-time           ┃
+┃ \e[0;1m[18] candy              \e[0;1m[39] fino                ┃
+┃ \e[0;1m[19] classyTouch        \e[0;1m[40] fishy               ┃
+┃ \e[0;1m[20] clean              \e[0;1m[41] flazz               ┃
+┃ \e[0;1m[21] crcandy            \e[0;1m[42] fletcherm           ┃
+┃                         \e[0;1m[2>] Next Page           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
+
+banner2() {
+clear;echo -e "\e[0;1m
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█                                                  █
+\e[0;1m█\e[1;38;2;0;230;118m    ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ▄▄ █▀▄▀█ █▀▀ █▄░█ █░█\e[0;1m   █
+\e[0;1m█\e[1;38;2;0;230;118m     █  █▀█ ██▄ █ ▀ █ ██▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m   █
+\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ \e[0;1m[43] fox                \e[0;1m[64] jnrowe              ┃
+┃ \e[0;1m[44] frisk              \e[0;1m[65] jonathan            ┃
+┃ \e[0;1m[45] frontcube          \e[0;1m[66] josh                ┃
+┃ \e[0;1m[46] funky              \e[0;1m[67] jreese              ┃
+┃ \e[0;1m[47] fwalch             \e[0;1m[68] jtriley             ┃
+┃ \e[0;1m[48] gallifrey          \e[0;1m[69] juanghurtado        ┃
+┃ \e[0;1m[49] gallois            \e[0;1m[70] junkfood            ┃
+┃ \e[0;1m[50] garyblessington    \e[0;1m[71] kafeitu             ┃
+┃ \e[0;1m[51] gentoo             \e[0;1m[72] kardan              ┃
+┃ \e[0;1m[52] geoffgarside       \e[0;1m[73] kennethreitz        ┃
+┃ \e[0;1m[53] gianu              \e[0;1m[74] kiwi                ┃
+┃ \e[0;1m[54] gnzsh              \e[0;1m[75] kolo                ┃
+┃ \e[0;1m[55] gozilla            \e[0;1m[76] kphoen              ┃
+┃ \e[0;1m[56] half-life          \e[0;1m[77] lambda              ┃
+┃ \e[0;1m[57] humza              \e[0;1m[78] linuxonly           ┃
+┃ \e[0;1m[58] imajes             \e[0;1m[79] lukerandall         ┃
+┃ \e[0;1m[59] intheloop          \e[0;1m[80] macovsky            ┃
+┃ \e[0;1m[60] itchy              \e[0;1m[81] maran               ┃
+┃ \e[0;1m[61] jaischeema         \e[0;1m[82] mgutz               ┃
+┃ \e[0;1m[62] jbergantine        \e[0;1m[83] mh                  ┃
+┃ \e[0;1m[63] jispwoso           \e[0;1m[84] michelebologna      ┃
+┃                         \e[0;1m[3>] Next Page           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
+
+banner3() {
+clear;echo -e "\e[0;1m
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█                                                  █
+\e[0;1m█\e[1;38;2;0;230;118m    ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ▄▄ █▀▄▀█ █▀▀ █▄░█ █░█\e[0;1m   █
+\e[0;1m█\e[1;38;2;0;230;118m     █  █▀█ ██▄ █ ▀ █ ██▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m   █
+\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ \e[0;1m[85]  mikeh                \e[0;1m[106] refined         ┃
+┃ \e[0;1m[86]  miloshadzic          \e[0;1m[107] rgm             ┃
+┃ \e[0;1m[87]  minimal              \e[0;1m[108] risto           ┃
+┃ \e[0;1m[88]  mira                 \e[0;1m[109] rixius          ┃
+┃ \e[0;1m[89]  mlh                  \e[0;1m[110] rkj-repos       ┃
+┃ \e[0;1m[90]  mortalscumbag        \e[0;1m[111] rkj             ┃
+┃ \e[0;1m[91]  mrtazz               \e[0;1m[112] robbyrussell    ┃
+┃ \e[0;1m[92]  murilasso            \e[0;1m[113] sammy           ┃
+┃ \e[0;1m[93]  muse                 \e[0;1m[114] simonoff        ┃
+┃ \e[0;1m[94]  nanotech             \e[0;1m[115] simple          ┃
+┃ \e[0;1m[95]  nebirhos             \e[0;1m[116] skaro           ┃
+┃ \e[0;1m[96]  nicoulaj             \e[0;1m[117] smt             ┃
+┃ \e[0;1m[97]  norm                 \e[0;1m[118] sonicradish     ┃
+┃ \e[0;1m[98]  obraun               \e[0;1m[119] sorin           ┃
+┃ \e[0;1m[99]  peepcode             \e[0;1m[120] sporty_256      ┃
+┃ \e[0;1m[100] philips              \e[0;1m[121] steeef          ┃
+┃ \e[0;1m[101] pmcgee               \e[0;1m[122] strug           ┃
+┃ \e[0;1m[102] pygmalion-virtualenv \e[0;1m[123] sunaku          ┃
+┃ \e[0;1m[103] pygmalion            \e[0;1m[124] sunrise         ┃
+┃ \e[0;1m[104] random               \e[0;1m[125] superjarin      ┃
+┃ \e[0;1m[105] re5et                \e[0;1m[126] suvash          ┃
+┃                            \e[0;1m[4>] Next Page        ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
+
+banner4() {
+clear;echo -e "\e[0;1m
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█                                                  █
+\e[0;1m█\e[1;38;2;0;230;118m    ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ▄▄ █▀▄▀█ █▀▀ █▄░█ █░█\e[0;1m   █
+\e[0;1m█\e[1;38;2;0;230;118m     █  █▀█ ██▄ █ ▀ █ ██▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m   █
+\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                                  ┃
+┃ \e[0;1m[127] takashiyoshida   \e[0;1m[128] terminalparty       ┃
+┃ \e[0;1m[129] theunraveler     \e[0;1m[130] tjkirch             ┃
+┃ \e[0;1m[131] tjkirch_mod      \e[0;1m[132] tonotdo             ┃
+┃ \e[0;1m[133] trapd00r         \e[0;1m[134] wedisagree          ┃
+┃ \e[0;1m[135] wezm+            \e[0;1m[136] wezm                ┃
+┃ \e[0;1m[137] wuffers          \e[0;1m[138] xiong-chiamiov-plus ┃
+┃ \e[0;1m[139] xiong-chiamiov   \e[0;1m[140] ys                  ┃
+┃ \e[0;1m[141] zhann                                      ┃
+┃                                                  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
+
+banner
+printf "\e[0;1;30;48;2;0;230;118m [!] Choose an theme :                              \e[0m"
+PUT 32 24
+printf "\e[1;30;48;2;0;230;118m"
+read theme
+printf "\e[0m"
+if [[ $theme = "1" ]] || [[ $theme = "01" ]];then
+echo 'ZSH_THEME="agnoster"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "2" ]] || [[ $theme = "02" ]];then
+echo 'ZSH_THEME="Soliah"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "3" ]] || [[ $theme = "03" ]];then
+echo 'ZSH_THEME="adben"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "4" ]] || [[ $theme = "04" ]];then
+echo 'ZSH_THEME="af-magic"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "5" ]] || [[ $theme = "05" ]];then
+echo 'ZSH_THEME="afowler"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "6" ]] || [[ $theme = "06" ]];then
+echo 'ZSH_THEME="3den"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "7" ]] || [[ $theme = "06" ]];then
+echo 'ZSH_THEME="alanpeabody"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "8" ]] || [[ $theme = "06" ]];then
+echo 'ZSH_THEME="amuse"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "9" ]] || [[ $theme = "06" ]];then
+echo 'ZSH_THEME="apple"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "10" ]];then
+echo 'ZSH_THEME="arrow"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "11" ]];then
+echo 'ZSH_THEME="aussiegeek"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "12" ]];then
+echo 'ZSH_THEME="avit"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "13" ]];then
+echo 'ZSH_THEME="awesomepanda"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "14" ]];then
+echo 'ZSH_THEME="bira"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "15" ]];then
+echo 'ZSH_THEME="blinks"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "16" ]];then
+echo 'ZSH_THEME="bureau"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "17" ]];then
+echo 'ZSH_THEME="candy-kingdom"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "18" ]];then
+echo 'ZSH_THEME="candy"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "19" ]];then
+echo 'ZSH_THEME="classyTouch"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "20" ]];then
+echo 'ZSH_THEME="clean"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "21" ]];then
+echo 'ZSH_THEME="crcandy"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "22" ]];then
+echo 'ZSH_THEME="crunch"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "23" ]];then
+echo 'ZSH_THEME="cypher"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "24" ]];then
+echo 'ZSH_THEME="dallas"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "25" ]];then
+echo 'ZSH_THEME="darkblood"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "26" ]];then
+echo 'ZSH_THEME="daveverwer"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "27" ]];then
+echo 'ZSH_THEME="dieter"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "28" ]];then
+echo 'ZSH_THEME="dogenpunk"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "29" ]];then
+echo 'ZSH_THEME="dpoggi"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "30" ]];then
+echo 'ZSH_THEME="dst"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "31" ]];then
+echo 'ZSH_THEME="dstufft"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "32" ]];then
+echo 'ZSH_THEME="duellj"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "33" ]];then
+echo 'ZSH_THEME="eastwood"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "34" ]];then
+echo 'ZSH_THEME="edvardm"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "35" ]];then
+echo 'ZSH_THEME="emotty"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "36" ]];then
+echo 'ZSH_THEME="essembeh"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "37" ]];then
+echo 'ZSH_THEME="evan"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "38" ]];then
+echo 'ZSH_THEME="fino-time"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "39" ]];then
+echo 'ZSH_THEME="fino"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "40" ]];then
+echo 'ZSH_THEME="fishy"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "41" ]];then
+echo 'ZSH_THEME="flazz"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "42" ]];then
+echo 'ZSH_THEME="fletcherm"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "2>" ]];then
+printf "\e[0m"
+banner2
+printf "\e[0;1;30;48;2;0;230;118m [!] Choose an theme :                              \e[0m"
+PUT 32 24
+printf "\e[1;30;48;2;0;230;118m"
+read theme
+
+if [[ $theme = "43" ]];then
+echo 'ZSH_THEME="fox"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "44" ]];then
+echo 'ZSH_THEME="frisk"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "45" ]];then
+echo 'ZSH_THEME="frontcube"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "46" ]];then
+echo 'ZSH_THEME="funky"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "47" ]];then
+echo 'ZSH_THEME="fwalch"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "48" ]];then
+echo 'ZSH_THEME="gallifrey"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "49" ]];then
+echo 'ZSH_THEME="gallois"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "50" ]];then
+echo 'ZSH_THEME="garyblessington"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "51" ]];then
+echo 'ZSH_THEME="gentoo"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "52" ]];then
+echo 'ZSH_THEME="geoffgarside"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "53" ]];then
+echo 'ZSH_THEME="gianu"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "54" ]];then
+echo 'ZSH_THEME="gnzh"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "55" ]];then
+echo 'ZSH_THEME="gozilla"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "56" ]];then
+echo 'ZSH_THEME="half-life"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "57" ]];then
+echo 'ZSH_THEME="humza"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "58" ]];then
+echo 'ZSH_THEME="imajes"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "59" ]];then
+echo 'ZSH_THEME="intheloop"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "60" ]];then
+echo 'ZSH_THEME="itchy"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "61" ]];then
+echo 'ZSH_THEME="jaischeema"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "62" ]];then
+echo 'ZSH_THEME="jbergantine"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "63" ]];then
+echo 'ZSH_THEME="jispwoso"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "64" ]];then
+echo 'ZSH_THEME="jnrowe"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "65" ]];then
+echo 'ZSH_THEME="jonathan"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "66" ]];then
+echo 'ZSH_THEME="josh"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "67" ]];then
+echo 'ZSH_THEME="jreese"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "68" ]];then
+echo 'ZSH_THEME="jtriley"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "69" ]];then
+echo 'ZSH_THEME="juanghurtado"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "70" ]];then
+echo 'ZSH_THEME="junkfood"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "71" ]];then
+echo 'ZSH_THEME="kafeitu"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "72" ]];then
+echo 'ZSH_THEME="kardan"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "73" ]];then
+echo 'ZSH_THEME="kennethreitz"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "74" ]];then
+echo 'ZSH_THEME="kiwi"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "75" ]];then
+echo 'ZSH_THEME="kolo"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "76" ]];then
+echo 'ZSH_THEME="kphoen"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "77" ]];then
+echo 'ZSH_THEME="lambda"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "78" ]];then
+echo 'ZSH_THEME="linuxonly"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "79" ]];then
+echo 'ZSH_THEME="lukerandall"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "80" ]];then
+echo 'ZSH_THEME="macovsky"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "81" ]];then
+echo 'ZSH_THEME="maran"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "82" ]];then
+echo 'ZSH_THEME="mgutz"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "83" ]];then
+echo 'ZSH_THEME="mh"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "84" ]];then
+echo 'ZSH_THEME="michelebologna"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "3>" ]];then
+printf "\e[0m"
+banner3
+printf "\e[0;1;30;48;2;0;230;118m [!] Choose an theme :                              \e[0m"
+PUT 32 24
+printf "\e[1;30;48;2;0;230;118m"
+read theme
+
+if [[ $theme = "85" ]];then
+echo 'ZSH_THEME="mikeh"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "86" ]];then
+echo 'ZSH_THEME="miloshadzic"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "87" ]];then
+echo 'ZSH_THEME="minimal"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "88" ]];then
+echo 'ZSH_THEME="mira"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "89" ]];then
+echo 'ZSH_THEME="mlh"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "90" ]];then
+echo 'ZSH_THEME="mortalscumbag"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "91" ]];then
+echo 'ZSH_THEME="mrtazz"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "92" ]];then
+echo 'ZSH_THEME="murilasso"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "93" ]];then
+echo 'ZSH_THEME="muse"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "94" ]];then
+echo 'ZSH_THEME="nanotech"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "95" ]];then
+echo 'ZSH_THEME="nebirhos"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "96" ]];then
+echo 'ZSH_THEME="nicoulaj"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "97" ]];then
+echo 'ZSH_THEME="norm"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "98" ]];then
+echo 'ZSH_THEME="obraun"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "99" ]];then
+echo 'ZSH_THEME="peepcode"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "100" ]];then
+echo 'ZSH_THEME="philips"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "101" ]];then
+echo 'ZSH_THEME="pmcgee"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "102" ]];then
+echo 'ZSH_THEME="pygmalion-virtualenv"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "103" ]];then
+echo 'ZSH_THEME="pygmalion"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "104" ]];then
+echo 'ZSH_THEME="random"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "105" ]];then
+echo 'ZSH_THEME="re5et"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "106" ]];then
+echo 'ZSH_THEME="refined"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "107" ]];then
+echo 'ZSH_THEME="rgm"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "108" ]];then
+echo 'ZSH_THEME="risto"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "109" ]];then
+echo 'ZSH_THEME="rixius"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "110" ]];then
+echo 'ZSH_THEME="rkj-repos"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "111" ]];then
+echo 'ZSH_THEME="rkj"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "112" ]];then
+echo 'ZSH_THEME="robbyrussell"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "113" ]];then
+echo 'ZSH_THEME="sammy"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "114" ]];then
+echo 'ZSH_THEME="simonoff"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "115" ]];then
+echo 'ZSH_THEME="simple"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "116" ]];then
+echo 'ZSH_THEME="skaro"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "117" ]];then
+echo 'ZSH_THEME="smt"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "118" ]];then
+echo 'ZSH_THEME="sonicradish"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "119" ]];then
+echo 'ZSH_THEME="sorin"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "120" ]];then
+echo 'ZSH_THEME="sporty_256"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "121" ]];then
+echo 'ZSH_THEME="steeef"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "122" ]];then
+echo 'ZSH_THEME="strug"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "123" ]];then
+echo 'ZSH_THEME="sunaku"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "124" ]];then
+echo 'ZSH_THEME="sunrise"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "125" ]];then
+echo 'ZSH_THEME="superjarin"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "126" ]];then
+echo 'ZSH_THEME="suvash"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "4>" ]];then
+printf "\e[0m"
+banner4
+printf "\e[0;1;30;48;2;0;230;118m [!] Choose an theme :                              \e[0m"
+PUT 20 24
+printf "\e[1;30;48;2;0;230;118m"
+read theme
+
+if [[ $theme = "127" ]];then
+echo 'ZSH_THEME="takashiyoshida"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "128" ]];then
+echo 'ZSH_THEME="terminalparty"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "129" ]];then
+echo 'ZSH_THEME="theunraveler"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "130" ]];then
+echo 'ZSH_THEME="tjkirch"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "131" ]];then
+echo 'ZSH_THEME="tjkirch_mod"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "132" ]];then
+echo 'ZSH_THEME="tonotdo"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "133" ]];then
+echo 'ZSH_THEME="trapd00r"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "134" ]];then
+echo 'ZSH_THEME="wedisagree"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "135" ]];then
+echo 'ZSH_THEME="wezm+"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "136" ]];then
+echo 'ZSH_THEME="wezm"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "137" ]];then
+echo 'ZSH_THEME="wuffers"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "138" ]];then
+echo 'ZSH_THEME="xiong-chiamiov-plus"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "139" ]];then
+echo 'ZSH_THEME="xiong-chiamiov"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "140" ]];then
+echo 'ZSH_THEME="ys"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "141" ]];then
+echo 'ZSH_THEME="zhann"' > .zshrc
+zshrc
+Applied
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m" ;fi 
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m" ;fi 
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m" ;fi 
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m" ;fi
+else echo -e "\e[0;1m [!] You Can't use before Enable Zsh-Theme \e[0m" ;fi

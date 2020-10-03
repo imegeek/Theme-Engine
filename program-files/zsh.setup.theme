@@ -1,0 +1,185 @@
+#!/usr/bin/bash
+
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDCRSR(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+trap '' 2 ;HIDCRSR
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations           [0.0%]     \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations.          [0.3%]     \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations..         [0.9%]     \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations...        [1.0%]     \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh       [3.0%]     \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh.      [9.0%]     \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh..     [18%]      \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh...    [26%]      \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell.               [37%]      \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell..              [48%]      \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell...             [56%]      \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell                [72%]      \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell.               [86%]      \r"
+sleep 0.1
+
+if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
+if [ -d "/data/data/com.termux/files/home/.termux/colors.properties" ];then cd $HOME ; rm /data/data/com.termux/files/home/.termux/colors.properties ;fi
+if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm /data/data/com.termux/files/home/font.ttf ;fi
+
+chf@chc() {
+cd $HOME/theme-engine/colors
+cp aci.colors colors.properties
+mv colors.properties /data/data/com.termux/files/home/.termux
+cd $HOME/theme-engine/fonts
+cp  'Anonymice Powerline.ttf' font.ttf
+mv font.ttf /data/data/com.termux/files/home/.termux
+cd /data/data/com.termux/files/home/theme-engine
+cp -rf colors fonts /data/data/com.termux/files/home/.termux ; }
+
+if [ -f "/data/data/com.termux/files/home/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
+
+if [ -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
+if [ ! -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then
+cd /data/data/com.termux/files/home/theme-engine
+cp -rf .oh-my-zsh /data/data/com.termux/files/home ;fi
+
+cd /data/data/com.termux/files/home/theme-engine/program-files
+cp fonts.theme /data/data/com.termux/files/home/.termux
+cp colors.theme /data/data/com.termux/files/home/.termux
+cp zsh.theme /data/data/com.termux/files/home/.termux
+cp zsh.update /data/data/com.termux/files/home/.termux
+cd /data/data/com.termux/files/home/.termux ; chmod +x fonts.theme colors.theme zsh.theme zsh.update
+chsh -s zsh
+
+if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+cd /data/data/com.termux/files/home/.termux; touch main.theme.engine ;fi
+
+if [ -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
+if [ ! -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then
+cd /data/data/com.termux/files/home/theme-engine
+cp -rf .zsh-autosuggestions /data/data/com.termux/files/home
+cp -rf .zsh-syntax-highlighting /data/data/com.termux/files/home ;fi
+
+zshrc() {
+echo '# If you come from bash you might have to change your $PATH.' >> .zshrc
+echo '# export PATH=$HOME/bin:/usr/local/bin:$PATH' >> .zshrc
+echo"" >> .zshrc
+echo "# Path to your oh-my-zsh installation." >> .zshrc
+echo 'export ZSH=$HOME/.oh-my-zsh' >> .zshrc
+echo"" >> .zshrc
+echo '# Set name of the theme to load --- if set to "random", it will' >> .zshrc
+echo "# load a random theme each time oh-my-zsh is loaded, in which case," >> .zshrc
+echo '# to know which specific one was loaded, run: echo $RANDOM_THEME' >> .zshrc
+echo "# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" >> .zshrc
+echo"" >> .zshrc
+echo "# Set list of themes to pick from when loading at random" >> .zshrc
+echo "# Setting this variable when ZSH_THEME=random will cause zsh to load" >> .zshrc
+echo "# a theme from this variable instead of looking in $ZSH/themes/" >> .zshrc
+echo "# If set to an empty array, this variable will have no effect." >> .zshrc
+echo '# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to use case-sensitive completion." >> .zshrc
+echo '# CASE_SENSITIVE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to use hyphen-insensitive completion." >> .zshrc
+echo "# Case-sensitive completion must be off. _ and - will be interchangeable." >> .zshrc
+echo '# HYPHEN_INSENSITIVE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to disable bi-weekly auto-update checks." >> .zshrc
+echo '# DISABLE_AUTO_UPDATE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to automatically update without prompting." >> .zshrc
+echo '# DISABLE_UPDATE_PROMPT="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to change how often to auto-update (in days)." >> .zshrc
+echo "# export UPDATE_ZSH_DAYS=13" >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line if pasting URLs and other text is messed up." >> .zshrc
+echo '# DISABLE_MAGIC_FUNCTIONS="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to disable colors in ls." >> .zshrc
+echo '# DISABLE_LS_COLORS="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to disable auto-setting terminal title." >> .zshrc
+echo '# DISABLE_AUTO_TITLE="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to enable command auto-correction." >> .zshrc
+echo '# ENABLE_CORRECTION="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line to display red dots whilst waiting for completion." >> .zshrc
+echo '# COMPLETION_WAITING_DOTS="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line if you want to disable marking untracked files" >> .zshrc
+echo "# under VCS as dirty. This makes repository status check for large repositories" >> .zshrc
+echo "# much, much faster." >> .zshrc
+echo '# DISABLE_UNTRACKED_FILES_DIRTY="true"' >> .zshrc
+echo"" >> .zshrc
+echo "# Uncomment the following line if you want to change the command execution time" >> .zshrc
+echo "# stamp shown in the history command output." >> .zshrc
+echo "# You can set one of the optional three formats:" >> .zshrc
+echo '# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"' >> .zshrc
+echo "# or set a custom format using the strftime function format specifications," >> .zshrc
+echo "# see 'man strftime' for details." >> .zshrc
+echo '# HIST_STAMPS="mm/dd/yyyy"' >> .zshrc
+echo"" >> .zshrc
+echo "# Would you like to use another custom folder than $ZSH/custom?" >> .zshrc
+echo "# ZSH_CUSTOM=/path/to/new-custom-folder" >> .zshrc
+echo"" >> .zshrc
+echo "# Which plugins would you like to load?" >> .zshrc
+echo "# Standard plugins can be found in $ZSH/plugins/" >> .zshrc
+echo "# Custom plugins may be added to $ZSH_CUSTOM/plugins/" >> .zshrc
+echo "# Example format: plugins=(rails git textmate ruby lighthouse)" >> .zshrc
+echo "# Add wisely, as too many plugins slow down shell startup." >> .zshrc
+echo "plugins=(git)" >> .zshrc
+echo"" >> .zshrc
+echo 'source $ZSH/oh-my-zsh.sh' >> .zshrc
+echo"" >> .zshrc
+echo "# User configuration" >> .zshrc
+echo"" >> .zshrc
+echo '# export MANPATH="/usr/local/man:$MANPATH"' >> .zshrc
+echo"" >> .zshrc
+echo "# You may need to manually set your language environment" >> .zshrc
+echo "# export LANG=en_US.UTF-8" >> .zshrc
+echo"" >> .zshrc
+echo "# Preferred editor for local and remote sessions" >> .zshrc
+echo "# if [[ -n $SSH_CONNECTION ]]; then" >> .zshrc
+echo "#   export EDITOR='vim'" >> .zshrc
+echo "# else" >> .zshrc
+echo "#   export EDITOR='mvim'" >> .zshrc
+echo "# fi" >> .zshrc
+echo"" >> .zshrc
+echo "# Compilation flags" >> .zshrc
+echo '# export ARCHFLAGS="-arch x86_64"' >> .zshrc
+echo"" >> .zshrc
+echo "# Set personal aliases, overriding those provided by oh-my-zsh libs," >> .zshrc
+echo "# plugins, and themes. Aliases can be placed here, though oh-my-zsh" >> .zshrc
+echo "# users are encouraged to define aliases within the ZSH_CUSTOM folder." >> .zshrc
+echo "# For a full list of active aliases, run `alias`." >> .zshrc
+echo"" >> .zshrc
+echo "# Example aliases" >> .zshrc
+echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
+echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
+echo "alias chcolor='/data/data/com.termux/files/home/.termux/colors.theme'" >> .zshrc
+echo "alias chfont='/data/data/com.termux/files/home/.termux/fonts.theme'" >> .zshrc
+echo "alias chtheme='/data/data/com.termux/files/home/.termux/zsh.theme'" >> .zshrc
+echo "alias update='/data/data/com.termux/files/home/.termux/zsh.update'" >> .zshrc
+echo "source /data/data/com.termux/files/home/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc
+echo "source /data/data/com.termux/files/home/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc ; }
+
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell..              [99%]      \r"
+sleep 0.2
+if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;zshrc ;chf@chc ;fi
+echo -ne "\e[0;1;48;2;101;31;255m [!] Setup completed. Enjoy Oh-my-zsh    [100%]     \e[0m\r"
+sleep 0.4;termux-reload-settings ;sleep 0.4 ;trap 5 ;NORM
+bash /data/data/com.termux/files/home/theme-engine/theme.engine
