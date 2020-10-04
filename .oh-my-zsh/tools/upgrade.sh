@@ -63,17 +63,8 @@ chmod +x colors.theme fonts.theme zsh.theme zsh.update
 cd $HOME
 }
 
+if [ -d "/data/data/com.termux/files/home/theme-engine" ]; then
 cd /data/data/com.termux/files/home/theme-engine
-changed=0
-git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
-if [ $changed = 1 ]; then
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-     DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
-     check="git fetch origin"
-     update() { git pull ; }
-     update_banner; DIR; $check; update
-     update_files
-     show_banner
 else
      cd $HOME
      trap '' 2
@@ -83,6 +74,13 @@ else
      update_files
      show_banner
 fi
+changed=0
+git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
+     DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
+     update_banner; DIR; git pull
+     update_files
+     show_banner
 else
     echo "Oh-my-zsh Already ! Updated"
 fi
