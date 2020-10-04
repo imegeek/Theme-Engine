@@ -24,12 +24,14 @@ fi; }
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
+    NORM
     exit 0
 }
 
 exit_on_signal_SIGTERM () {
     { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
+    NORM
     exit 0
 }
 
@@ -67,7 +69,21 @@ if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
 echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
 echo -e "\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
+HIDCRSR
+printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
+changed=0
+git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
+printf "\e[0;1;7m [!] Theme-Engine Founded New Update :              \r\e[0m"
+printf "\e[0;1;7m [!] Updating... Theme-Engine                       \e[0m"
+     git pull &> /dev/null
+printf "\e[0;1;7m [√] Theme-Engine Updated Successfully              \r\e[0m"
+     NORM
+else
+printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m" ;fi
+PUT 11 1
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m"
+NORM
 PUT 11 26
 printf "\e[0;1;7m"
 read option
