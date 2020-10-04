@@ -78,8 +78,8 @@ changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
      echo "Update Available"
-     DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
-     update_banner; DIR; git pull
+     update_banner
+     git pull
      update_files
      show_banner
 else
