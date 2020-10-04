@@ -1,51 +1,48 @@
 #!/usr/bin/bash
 
-HIDCRSR(){ echo -en "\033[?25l";}
-NORM(){ echo -en "\033[?12l\033[?25h";}
+connected_to_internet() {
+  test_urls="\
+  https://www.google.com/ \
+  "
 
+  processes="0"
+  pids=""
+
+  for test_url in $test_urls; do
+    curl --silent --head "$test_url" > /dev/null &
+    pids="$pids $!"
+    processes=$(($processes + 1))
+  done
+
+  while [ $processes -gt 0 ]; do
+    for pid in $pids; do
+      if ! ps | grep "^[[:blank:]]*$pid[[:blank:]]" > /dev/null; then
+        # Process no longer running
+        processes=$(($processes - 1))
+        pids=$(echo "$pids" | sed --regexp-extended "s/(^| )$pid($| )/ /g")
+
+        if wait $pid; then
+          # Success! We have a connection to at least one public site, so the
+          # internet is up. Ignore other exit statuses.
+          kill -TERM $pids > /dev/null 2>&1 || true
+          wait $pids
+          return 0
+        fi
+      fi
+    done
+    # wait -n $pids # Better than sleep, but not supported on all systems
+  done
+
+  return 1
+}
+
+if connected_to_internet; then
 update_banner() {
 cd $HOME; wget https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
 show_banner() { cd $HOME ; bash zsh.info ; rm zsh.info ; }
 
-command -v git > /dev/null 2>&1 || { pkg install git -y ; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-if [[ "$connection" != 0 ]]
-then clear
-echo -e '\n\e[0;1;38;2;200;0;0mNo internet connection available ! 
-\e[0;1;38;2;40;90;255m
-•First, check that mobile data is turned on and you have a data connection.\e[0m
-\e[0;38;2;0;230;118m
-•Turn mobile data on. If already on, turn it off and on again.
-
-•Note that sometimes this will not display if you have an active Wi-Fi connection. If this is the case, turn Wi-Fi off and check back.\e[0m\n'
-   exit
-fi; }
-
-command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-if [[ "$connection" != 0 ]]
-then clear
-echo -e '\n\e[0;1;38;2;200;0;0mNo internet connection available ! 
-\e[0;1;38;2;40;90;255m
-•First, check that mobile data is turned on and you have a data connection.\e[0m
-\e[0;38;2;0;230;118m
-•Turn mobile data on. If already on, turn it off and on again.
-
-•Note that sometimes this will not display if you have an active Wi-Fi connection. If this is the case, turn Wi-Fi off and check back.\e[0m\n'
-   exit
-fi; }
-
-connection() {
-connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-if [[ "$connection" != 0 ]]
-then clear
-echo -e '\n\e[0;1;38;2;200;0;0mNo internet connection available !
-\e[0;1;38;2;40;90;255m
-•First, check that mobile data is turned on and you have a data connection.\e[0m
-\e[0;38;2;0;230;118m
-•Turn mobile data on. If already on, turn it off and on again.
-
-•Note that sometimes this will not display if you have an active Wi-Fi connection. If this is the case, turn Wi-Fi off and check back.\e[0m\n'
-   exit
-fi ; }
+command -v git > /dev/null 2>&1 || { pkg install git -y ; }
+command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y ; }
 
 update_files() {
 cd $HOME
@@ -66,54 +63,30 @@ chmod +x colors.theme fonts.theme zsh.theme zsh.update
 cd $HOME
 }
 
-spinner() {
-clear
-connection
-spin () {
-
-local pid=$!
-local delay=0.05
-local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
-
-while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
-
-for i in "${spinner[@]}"
-do
-	HIDCRSR
-	echo -ne "\e[0;1;38;2;0;230;118m\r [!] \e[0;1;38;2;41;121;255mUpdating Oh-my-zsh Please wait...\e[0;1;38;2;0;230;118m[$i]\033[0m   ";
-	sleep $delay
-        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
-done
-done
-printf "\e[0;1;38;2;0;230;118m [√] \e[0;1;38;2;41;121;255m[OH-MY-ZSH] Update \e[0;1;38;2;0;230;118m[Complete]\e\e[0m           ";
-echo "" ; } ; }
-
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-spinner
-DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
-check="git fetch origin"
-update() {
-git checkout master
-git pull origin master ; }
-( update_banner; DIR; check; update ) &> /dev/null & spin
-update_files
-HIDCRSR
-connection
-show_banner
-NORM
-
+if [ -d "/data/data/com.termux/files/home/theme-engine" ]; then
+fetch_dir() { cd /data/data/com.termux/files/home/theme-engine ;} ;fetch_dir
 else
-
-spinner
-cd $HOME
-trap '' 2
-( git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2 ) &> /dev/null & spin
-HIDCRSR
-sleep 1 ;cd theme-engine;chmod +x theme.engine ; printf "\e[0m"
-trap 5
-echo -ne "\033]12;#b4e1fd\007"
-update_files
-HIDCRSR
-connection
-show_banner
-NORM ;fi
+     cd $HOME
+     trap '' 2
+     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
+     sleep 1 ;cd theme-engine;chmod +x theme.engine ;
+     trap 5
+     update_files
+     show_banner
+fi
+changed=0
+git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
+     echo "Update Available"
+     update_banner
+     fetch_dir
+     git pull
+     update_files
+     show_banner
+else
+    echo "Oh-my-zsh Already ! Updated"
+fi
+else
+echo 'No internet connection available !'
+fi
+##
