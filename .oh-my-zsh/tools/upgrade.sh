@@ -1,6 +1,6 @@
- #!/usr/bin/bash
+#!/usr/bin/bash
 
-  connected_to_internet() {
+connected_to_internet() {
   test_urls="\
   https://www.google.com/ \
   "
@@ -63,33 +63,26 @@ chmod +x colors.theme fonts.theme zsh.theme zsh.update
 cd $HOME
 }
 
+changed=0
+git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
-check="git fetch origin"
-update() { git pull origin master ; }
-update_banner; DIR; $check; update
-update_files
-show_banner
-
+     DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
+     check="git fetch origin"
+     update() { git pull origin master ; }
+     update_banner; DIR; $check; update
+     update_files
+     show_banner
 else
-
-cd $HOME
-trap '' 2
-git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
-sleep 1 ;cd theme-engine;chmod +x theme.engine ;
-trap 5
-update_files
-show_banner
+     cd $HOME
+     trap '' 2
+     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
+     sleep 1 ;cd theme-engine;chmod +x theme.engine ;
+     trap 5
+     update_files
+     show_banner
 fi
 else
-clear
-echo "
-No internet connection available !
-
-•First, check that mobile data is turned on and you have a data connection.
-
-•Turn mobile data on. If already on, turn it off and on again.
-
-•Note that sometimes this will not display if you have an active Wi-Fi connection. If this is the case, turn Wi-Fi off and check back."
-exit
+    echo "Oh-my-zsh Already Up-to-date"
+fi
 fi
