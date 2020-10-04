@@ -79,7 +79,7 @@ else
 fi
 changed=0
 HIDE
-echo -ne "Checking for Update...\r"
+echo -ne "Checking for Update...          \r"
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
      echo "Update Available"
@@ -88,11 +88,13 @@ if [ $changed = 1 ]; then
      git pull
      update_files
      show_banner
+     NORM
 else
-    printf "Ohmyzsh Already up to date.\r"
+    printf "Ohmyzsh Already up to date.   \r"
     echo -e "\e"
     NORM
 fi
 else
 echo 'No internet connection available !'
 fi
+
