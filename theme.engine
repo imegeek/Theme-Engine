@@ -38,6 +38,10 @@ exit_on_signal_SIGTERM () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
+if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
+  if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/Terminus.ttf" ];then
+     rm /data/data/com.termux/files/home/theme-engine/fonts/fonts.rar ;fi ;fi
+
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
 PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
