@@ -76,6 +76,7 @@ git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behi
 if [ $changed = 1 ]; then
 printf "\e[0;1;7m [!] Theme-Engine Founded New Update :              \r\e[0m"
 printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
+git stash &> /dev/null
 git pull &> /dev/null
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m" ;NORM
 else
