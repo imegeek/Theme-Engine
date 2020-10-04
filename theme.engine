@@ -151,4 +151,3 @@ bash disable.zsh.theme
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "\e[0;1;38;2;200;0;0m [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
 bash program-files/update.theme ;fi
-###
