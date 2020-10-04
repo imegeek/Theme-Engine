@@ -44,6 +44,9 @@ show_banner() { cd $HOME ; bash zsh.info ; rm zsh.info ; }
 command -v git > /dev/null 2>&1 || { pkg install git -y ; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y ; }
 
+HIDE(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
 update_files() {
 cd $HOME
 rm -rf .oh-my-zsh
@@ -75,7 +78,8 @@ else
      show_banner
 fi
 changed=0
-echo "Checking for Update..."
+HIDE
+echo -ne "Checking for Update...\r"
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
      echo "Update Available"
@@ -85,7 +89,9 @@ if [ $changed = 1 ]; then
      update_files
      show_banner
 else
-    echo "Oh-my-zsh Already ! Updated"
+    printf "Ohmyzsh Already up to date.\r"
+    echo -e "\e"
+    NORM
 fi
 else
 echo 'No internet connection available !'
