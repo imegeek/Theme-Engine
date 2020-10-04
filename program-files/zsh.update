@@ -4,6 +4,7 @@ connected_to_internet() {
   test_urls="\
   https://www.google.com/ \
   "
+
   processes="0"
   pids=""
 
@@ -85,7 +86,6 @@ if [ $changed = 1 ]; then
      echo -e "\n"
      update_banner
      fetch_dir
-     git stash &> /dev/null
      git pull
      update_files
      show_banner
