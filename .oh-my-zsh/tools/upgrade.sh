@@ -83,6 +83,8 @@ else
      show_banner
 fi
 else
-    echo "Oh-my-zsh Already Up-to-date"
+    echo "Oh-my-zsh Already ! Updated"
 fi
+else
+echo 'No internet connection available !'
 fi
