@@ -74,11 +74,13 @@ printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
-printf "\e[0;1;7m [!] Theme-Engine Founded New Update                \r\e[0m"
+printf "\e[0;1;7m [!] Theme-Engine founded new Update                \r\e[0m"
 sleep 0.4
 printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
 git stash &> /dev/null
 git pull &> /dev/null
+if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine/fonts/fonts.rar" ];then
+rm /data/data/com.termux/files/home/.termux/main.theme.engine/fonts/fonts.rar ;fi
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m" ;NORM
 else
 printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m"
@@ -151,4 +153,4 @@ cd /data/data/com.termux/files/home/theme-engine/program-files
 bash disable.zsh.theme
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "\e[0;1;38;2;200;0;0m [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
-bash program-files/update.theme ;fi
+bash program-files/update.theme ;fi # Thanks for using Theme-Engine.
