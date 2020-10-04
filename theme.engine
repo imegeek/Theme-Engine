@@ -61,7 +61,7 @@ git pull &> /dev/null
 sleep 0.4
 printf "\e[0;1;7m [!] Update Successful                              \r\e[0m"
 else
-printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m";sleep 0.2 ;fi;NORM;}
+printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m";fi;NORM;}
 
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
