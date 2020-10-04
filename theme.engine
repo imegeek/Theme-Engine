@@ -21,6 +21,10 @@ echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
    exit
 fi; }
 
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDCRSR(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
 # interrupter
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
@@ -42,11 +46,24 @@ if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
   if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/Terminus.ttf" ];then
      rm /data/data/com.termux/files/home/theme-engine/fonts/fonts.rar ;fi ;fi
 
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-PUT(){ echo -en "\033[${1};${2}H";}
-HIDCRSR(){ echo -en "\033[?25l";}
-NORM(){ echo -en "\033[?12l\033[?25h";}
+auto_update() {
+# Theme-Engine auto-update
+HIDCRSR
+printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
+changed=0
+git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
+printf "\e[0;1;7m [!] Theme-Engine Update Available                  \r\e[0m"
+sleep 0.4
+printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
+git stash &> /dev/null
+git pull &> /dev/null
+sleep 0.4
+printf "\e[0;1;7m [!] Update Successful                              \r\e[0m"
+else
+printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m";sleep 0.2 ;fi;NORM;}
 
+if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
 banner() {
 printf "\e[0m"
@@ -74,30 +91,12 @@ if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
 echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
 echo -e "\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
-HIDCRSR
-# Theme-Engine auto-update
-printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
-changed=0
-git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
-if [ $changed = 1 ]; then
-printf "\e[0;1;7m [!] Theme-Engine Update Available                  \r\e[0m"
-sleep 0.4
-printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
-git stash &> /dev/null
-git pull &> /dev/null
-if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
-rm /data/data/com.termux/files/home/theme-engine/fonts/fonts.rar ;fi
-printf "\e[0;1;7m [*] Execute an Option :                            \e[0m" ;NORM
-else
-printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m"
-PUT 11 1
+auto_update
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m"
-NORM
-fi
 PUT 11 26
 printf "\e[0;1;7m"
 read option
-echo -ne "\e[0m";
+echo -ne "\e[0m"
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 echo
@@ -127,6 +126,7 @@ else echo -e "\e[1;100m             You entered Wrong Input !              \e[0m
 banner
 echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
 echo -e "\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
+auto_update
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m"
 PUT 11 26
 printf "\e[0;1;7m"
