@@ -68,7 +68,8 @@ git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behi
 if [ $changed = 1 ]; then
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
      DIR() { cd /data/data/com.termux/files/home/theme-engine ; }
-     update_banner; DIR; git pull master origin
+     update() { git pull origin master ; }
+     update_banner; DIR; update
      update_files
      show_banner
 else
