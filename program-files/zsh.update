@@ -72,10 +72,11 @@ else
      cd $HOME
      trap '' 2
      git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
-     sleep 1 ;cd theme-engine;chmod +x theme.engine ;
      trap 5
      update_files
      show_banner
+     NORM
+     exit
 fi
 changed=0
 HIDE
@@ -98,3 +99,4 @@ fi
 else
 echo 'No internet connection available !'
 fi
+# Thanks for using Theme-Engine
