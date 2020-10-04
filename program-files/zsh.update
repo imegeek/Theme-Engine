@@ -82,7 +82,7 @@ HIDE
 echo -ne "Checking for Update...        					\r"
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
-     echo -ne "Ohmyzsh Update Available 					\r"
+     echo -ne "Ohmyzsh Update Available :                			\r"
      echo -e "\n"
      update_banner
      fetch_dir
