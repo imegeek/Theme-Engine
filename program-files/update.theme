@@ -59,7 +59,7 @@ echo -ne "\033]12;#b4e1fd\007"
 else
 HIDCRSR
 sleep 0.8
-echo -e "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Update not found !       "
+echo -e "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Update not found !       \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 NORM
 fi
