@@ -79,8 +79,8 @@ sleep 0.4
 printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
 git stash &> /dev/null
 git pull &> /dev/null
-if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine/fonts/fonts.rar" ];then
-rm /data/data/com.termux/files/home/.termux/main.theme.engine/fonts/fonts.rar ;fi
+if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
+rm /data/data/com.termux/files/home/theme-engine/fonts/fonts.rar ;fi
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m" ;NORM
 else
 printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m"
