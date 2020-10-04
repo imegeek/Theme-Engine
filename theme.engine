@@ -74,7 +74,8 @@ printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
-printf "\e[0;1;7m [!] Theme-Engine Founded New Update :              \r\e[0m"
+printf "\e[0;1;7m [!] Theme-Engine Founded New Update                \r\e[0m"
+sleep 0.4
 printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
 git stash &> /dev/null
 git pull &> /dev/null
@@ -151,4 +152,3 @@ bash disable.zsh.theme
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "\e[0;1;38;2;200;0;0m [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
 bash program-files/update.theme ;fi
-
