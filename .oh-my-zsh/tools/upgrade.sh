@@ -64,7 +64,7 @@ cd $HOME
 }
 
 if [ -d "/data/data/com.termux/files/home/theme-engine" ]; then
-cd /data/data/com.termux/files/home/theme-engine
+fetch_dir() { cd /data/data/com.termux/files/home/theme-engine ;} ;fetch_dir
 else
      cd $HOME
      trap '' 2
@@ -79,6 +79,7 @@ git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behi
 if [ $changed = 1 ]; then
      echo "Update Available"
      update_banner
+     fetch_dir
      git pull
      update_files
      show_banner
