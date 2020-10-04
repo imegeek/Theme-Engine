@@ -21,6 +21,7 @@ echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
    exit
 fi; }
 
+# interrupter
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
@@ -70,6 +71,7 @@ banner
 echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
 echo -e "\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
 HIDCRSR
+# Theme-Engine auto-update
 printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
