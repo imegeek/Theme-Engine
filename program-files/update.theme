@@ -43,6 +43,9 @@ NORM
 }
 
 HIDCRSR
+echo -ne "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Checking for Update...   \r\e[0m"
+sleep 0.8
+echo -ne "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Update founded !         \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
@@ -54,6 +57,9 @@ sleep 1 ;mv theme-engine $HOME ; cd ;cd theme-engine;chmod +x theme.engine ;NORM
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
 else
+HIDCRSR
+echo -ne "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Checking for Update...   \r\e[0m"
+sleep 0.8
 echo -e "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Update not found !       "
 echo -ne "\033]12;#b4e1fd\007"
 NORM
