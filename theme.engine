@@ -75,15 +75,15 @@ changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
 printf "\e[0;1;7m [!] Theme-Engine Founded New Update :              \r\e[0m"
-printf "\e[0;1;7m [!] Updating... Theme-Engine                       \e[0m"
-     git pull &> /dev/null
-printf "\e[0;1;7m [√] Theme-Engine Updated Successfully              \r\e[0m"
-     NORM
+printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
+git pull &> /dev/null
+printf "\e[0;1;7m [*] Execute an Option :                            \e[0m" ;NORM
 else
-printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m" ;fi
+printf "\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m"
 PUT 11 1
 printf "\e[0;1;7m [*] Execute an Option :                            \e[0m"
 NORM
+fi
 PUT 11 26
 printf "\e[0;1;7m"
 read option
