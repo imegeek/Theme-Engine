@@ -63,6 +63,7 @@ chmod +x colors.theme fonts.theme zsh.theme zsh.update
 cd $HOME
 }
 
+cd /data/data/com.termux/files/home/theme-engine
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
