@@ -18,8 +18,10 @@ NORM;exit
 fi
 
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
+
+remove_previous_file() {
 cd $HOME; rm -rf theme-engine
-cd /data/data/com.termux/files/usr/share
+cd /data/data/com.termux/files/usr/share ;}
 
 spin () {
 local pid=$!
@@ -41,12 +43,21 @@ NORM
 }
 
 HIDCRSR
+changed=0
+git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
+remove_previous_file
 trap '' 2
 ( git clone https://github.com/abhackerofficial/theme-engine; sleep 2 ) &> /dev/null & spin
 HIDCRSR
 sleep 1 ;mv theme-engine $HOME ; cd ;cd theme-engine;chmod +x theme.engine ;NORM; bash theme.engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
+else
+echo -e "\e[0;1;30;48;2;0;230;118m [!]        [Theme-Engine] Update not found !       "
+echo -ne "\033]12;#b4e1fd\007"
+NORM
+fi
 
 else
 spin () {
