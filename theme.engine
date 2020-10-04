@@ -80,7 +80,7 @@ printf "\e[0;1;7m [+] Checking for Update...                         \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
-printf "\e[0;1;7m [!] Theme-Engine founded new Update                \r\e[0m"
+printf "\e[0;1;7m [!] Theme-Engine Update Available                  \r\e[0m"
 sleep 0.4
 printf "\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m"
 git stash &> /dev/null
