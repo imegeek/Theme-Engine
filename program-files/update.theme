@@ -92,3 +92,4 @@ HIDCRSR
 sleep 1 ;cd theme-engine;chmod +x theme.engine ;NORM; bash theme.engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007" ;fi
+# Thanks for using Theme-Engine
