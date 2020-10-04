@@ -75,6 +75,7 @@ else
      show_banner
 fi
 changed=0
+echo "Checking for Update..."
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
      echo "Update Available"
@@ -89,4 +90,3 @@ fi
 else
 echo 'No internet connection available !'
 fi
-##
