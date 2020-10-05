@@ -122,7 +122,8 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 cd /data/data/com.termux/files/home/theme-engine/program-files
 bash disable.zsh.theme
-else echo -e "\e[1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
+else PUT 12 1
+echo -e "\e[1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
 banner
 echo -e "\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m"
 echo -e "\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m"
@@ -157,6 +158,7 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 cd /data/data/com.termux/files/home/theme-engine/program-files
 bash disable.zsh.theme
-else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
+else PUT 12 1
+echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "\e[0;1;38;2;200;0;0m [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
 bash program-files/update.theme ;fi # Thanks for using Theme-Engine.
