@@ -1,14 +1,19 @@
 echo -e "
 ┌──────────────────────────────────────────────────┐
-│ ┏━┓┏┓ ┏━┓╻ ╻╺┳╸ ╺┳╸╻ ╻┏━╸┏┳┓┏━╸  ┏━╸┏┓╻┏━╸╻┏┓╻┏━ │
-│ ┣━┫┣┻┓┃ ┃┃ ┃ ┃   ┃ ┣━┫┣╸ ┃┃┃┣╸╺━╸┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸ │
-│ ╹ ╹┗━┛┗━┛┗━┛ ╹   ╹ ╹ ╹┗━╸╹ ╹┗━╸  ┗━╸╹ ╹┗━┛╹╹ ╹┗━ │
+│                 ┏━┓┏┓ ┏━┓╻ ╻╺┳╸                  │
+│                 ┣━┫┣┻┓┃ ┃┃ ┃ ┃                   │
+│                 ╹ ╹┗━┛┗━┛┗━┛ ╹                   │
 │                                                  │
-│ Theme-Engine is usually made for modification    │
-│ and customization, So you can make trunks even   │
-│ more colourful and better your Termux.           │
+│\e[0;1;38;2;200;0;0m        ╺┳╸╻ ╻┏━╸┏┳┓┏━╸\e[0;1;38;2;0;240;118m  \e[0;1;38;2;40;90;255m  ┏━╸┏┓╻┏━╸╻┏┓╻┏━        \e[0m│
+│\e[0;1;38;2;200;0;0m         ┃ ┣━┫┣╸ ┃┃┃┣╸ \e[0;1;38;2;0;240;118m╺━╸\e[0;1;38;2;40;90;255m ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸        \e[0m│
+│\e[0;1;38;2;200;0;0m         ╹ ╹ ╹┗━╸╹ ╹┗━╸\e[0;1;38;2;0;240;118m  \e[0;1;38;2;40;90;255m  ┗━╸╹ ╹┗━┛╹╹ ╹┗━        \e[0m│
 │                                                  │
-│ Github - https://github.com/abhackerofficial     │
-│ Youtube - https://youtube.com/abhackerofficial   │
+│                                                  │
+│  Theme-Engine is usually made for modification   │
+│  and customization, So you can make trunks even  │
+│  more colourful and better your Termux.          │
+│                                                  │
+│  Github  - https://github.com/abhackerofficial   │
+│  Youtube - https://youtube.com/abhackerofficial  │
 └──────────────────────────────────────────────────┘
-\e[0m";echo -ne "\033]12;#b4e1fd\007"
+";echo -ne "\033]12;#b4e1fd\007"
