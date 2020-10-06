@@ -230,7 +230,7 @@ clear;echo -e "\e[0;1m
 ┃ \e[0;1m[101] pmcgee               \e[0;1m[122] strug           ┃
 ┃ \e[0;1m[102] pygmalion-virtualenv \e[0;1m[123] sunaku          ┃
 ┃ \e[0;1m[103] pygmalion            \e[0;1m[124] sunrise         ┃
-┃ \e[0;1m[104] random               \e[0;1m[125] superjarin      ┃
+┃ \e[0;1m[104] \e[1;38;2;0;230;118mrandom-theme         \e[0;1m[125] superjarin      ┃
 ┃ \e[0;1m[105] re5et                \e[0;1m[126] suvash          ┃
 ┃                            \e[0;1m[4>] Next Page        ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
