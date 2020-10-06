@@ -26,6 +26,11 @@ mv colors.properties /data/data/com.termux/files/home/.termux
 termux-reload-settings
 printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo ;fi ;fi ; }
 
+random_colors() {
+random_scheme=$(ls /data/data/com.termux/files/home/theme-engine/colors | shuf -n 1)
+{ cp /data/data/com.termux/files/home/theme-engine/colors/$random_scheme $HOME/.termux/colors.properties;}
+{ termux-reload-settings; printf "\e[0;1;7m [√] Random-Color-Scheme Applied Successfully       \e[0m";echo; exit;};}
+
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
@@ -48,31 +53,30 @@ clear;echo -e "\e[0;1m
 \e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ \e[0;1m[01] aci.colors    \e[0;1m[23] monokai.dark.colors      ┃
-┃ \e[0;1m[02] aco.colors    \e[0;1m[24] nep.colors               ┃
-┃ \e[0;1m[03] azu.colors    \e[0;1m[25] ocean.dark.colors        ┃
-┃ \e[0;1m[04] bim.colors    \e[0;1m[26] one.dark.colors          ┃
-┃ \e[0;1m[05] cai.colors    \e[0;1m[27] one.light.colors         ┃
-┃ \e[0;1m[06] chalk.colors  \e[0;1m[28] pali.colors              ┃
-┃ \e[0;1m[07] default       \e[0;1m[29] peppermint.colors        ┃
-┃ \e[0;1m[08] dracula       \e[0;1m[30] sat.colors               ┃
-┃ \e[0;1m[09] elementary    \e[0;1m[31] shel.colors              ┃
-┃ \e[0;1m[10] elic.colors   \e[0;1m[32] smyck.colors             ┃
-┃ \e[0;1m[11] elio.colors   \e[0;1m[33] solarized.dark.colors    ┃
-┃ \e[0;1m[12] flat.colors   \e[0;1m[34] solarized.light.colors   ┃
-┃ \e[0;1m[13] freya.colors  \e[0;1m[35] tango.colors             ┃
-┃ \e[0;1m[14] gruvbox.dark  \e[0;1m[36] tin.colors               ┃
-┃ \e[0;1m[15] hemisu.dark   \e[0;1m[37] tomorrow.colors          ┃
-┃ \e[0;1m[16] hemisu.light  \e[0;1m[38] tomorrow.night.blue      ┃
-┃ \e[0;1m[17] hybrid.colors \e[0;1m[39] tomorrow.night.bright    ┃
-┃ \e[0;1m[18] jup.colors    \e[0;1m[40] tomorrow.night           ┃
-┃ \e[0;1m[19] mar.colors    \e[0;1m[41] tomorrow.night.eighties  ┃
-┃ \e[0;1m[20] material      \e[0;1m[42] ura.colors               ┃
-┃ \e[0;1m[21] miu.colors    \e[0;1m[43] vag.colors               ┃
-┃ \e[0;1m[22] materialOcean \e[0;1m[44] weathered.dark.colors    ┃
-┃                                                  ┃
+┃ \e[0;1m[01] aci.colors    \e[0;1m[24] nep.colors               ┃
+┃ \e[0;1m[02] aco.colors    \e[0;1m[25] ocean.dark.colors        ┃
+┃ \e[0;1m[03] azu.colors    \e[0;1m[26] one.dark.colors          ┃
+┃ \e[0;1m[04] bim.colors    \e[0;1m[27] one.light.colors         ┃
+┃ \e[0;1m[05] cai.colors    \e[0;1m[28] pali.colors              ┃
+┃ \e[0;1m[06] chalk.colors  \e[0;1m[29] \e[1;30;38;2;0;230;118mrandom.colors            \e[0;1m┃
+┃ \e[0;1m[07] default       \e[0;1m[30] peppermint.colors        ┃
+┃ \e[0;1m[08] dracula       \e[0;1m[31] sat.colors               ┃
+┃ \e[0;1m[09] elementary    \e[0;1m[32] shel.colors              ┃
+┃ \e[0;1m[10] elic.colors   \e[0;1m[33] smyck.colors             ┃
+┃ \e[0;1m[11] elio.colors   \e[0;1m[34] solarized.dark.colors    ┃
+┃ \e[0;1m[12] flat.colors   \e[0;1m[35] solarized.light.colors   ┃
+┃ \e[0;1m[13] freya.colors  \e[0;1m[36] tango.colors             ┃
+┃ \e[0;1m[14] gruvbox.dark  \e[0;1m[37] tin.colors               ┃
+┃ \e[0;1m[15] hemisu.dark   \e[0;1m[38] tomorrow.colors          ┃
+┃ \e[0;1m[16] hemisu.light  \e[0;1m[39] tomorrow.night.blue      ┃
+┃ \e[0;1m[17] hybrid.colors \e[0;1m[40] tomorrow.night.bright    ┃
+┃ \e[0;1m[18] jup.colors    \e[0;1m[41] tomorrow.night           ┃
+┃ \e[0;1m[19] mar.colors    \e[0;1m[42] tomorrow.night.eighties  ┃
+┃ \e[0;1m[20] material      \e[0;1m[43] ura.colors               ┃
+┃ \e[0;1m[21] miu.colors    \e[0;1m[44] vag.colors               ┃
+┃ \e[0;1m[22] materialOcean \e[0;1m[45] weathered.dark.colors    ┃
+┃ \e[0;1m[23] monokai.dark.colors                         ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-
 printf "\e[1;30;48;2;0;230;118m [!] Choose an Color Scheme :                       \e[0m"
 PUT 33 31
 printf "\e[1;30;48;2;0;230;118m"
@@ -275,114 +279,122 @@ chcolor1
 chcolor
 
 elif [[ $color = "29" ]];then
+#cd $HOME/theme-engine/colors &> /dev/null
+#termux
+#cp "random_colors" colors.properties
+#chcolor1
+#chcolor
+random_colors
+elif [[ $color = "30" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp peppermint.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "30" ]];then
+elif [[ $color = "31" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp sat.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "31" ]];then
+elif [[ $color = "32" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp shel.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "32" ]];then
+elif [[ $color = "33" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp smyck.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "33" ]];then
+elif [[ $color = "34" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp solarized.dark.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "34" ]];then
+elif [[ $color = "35" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp solarized.light.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "35" ]];then
+elif [[ $color = "36" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tango.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "36" ]];then
+elif [[ $color = "37" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tin.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "37" ]];then
+elif [[ $color = "38" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tomorrow.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "38" ]];then
+elif [[ $color = "39" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tomorrow.night.blue.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "39" ]];then
+elif [[ $color = "40" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tomorrow.night.bright.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "40" ]];then
+elif [[ $color = "41" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tomorrow.night.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "41" ]];then
+elif [[ $color = "42" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp tomorrow.night.eighties.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "42" ]];then
+elif [[ $color = "43" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp ura.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "43" ]];then
+elif [[ $color = "44" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp vag.colors colors.properties
 chcolor1
 chcolor
 
-elif [[ $color = "44" ]];then
+elif [[ $color = "45" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
 cp weathered.light.colors colors.properties
 chcolor1
 chcolor
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
+# Thanks for uaing Theme-Engine.
