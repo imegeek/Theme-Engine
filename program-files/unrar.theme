@@ -5,7 +5,7 @@ HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
 if [[ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ]];then
-PUT 11 1
+PUT 12 1
 trap '' 2 ;HIDCRSR
 printf "\e[0m"
 echo -ne "\e[0;1;7m [!] Extracting necessary files             [0/3]   \r"
