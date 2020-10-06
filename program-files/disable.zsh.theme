@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+PUT(){ echo -en "\033[${1};${2}H";}
+
+disable.zsh() {
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 if [ -f "/data/data/com.termux/files/home/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
@@ -9,4 +12,7 @@ cd /data/data/com.termux/files/home/.termux; rm main.theme.engine ;fi
 if [ -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
 echo -e "\e[0;1;30;48;2;200;255;0m [√] Zsh-Theme Disabled Successfully                \e[0m"
 else
-echo -e "\e[0;1;100m [!] You won't disable (Zsh) before Enable Zsh-Theme\e[0m" ;fi
+echo -e "\e[0;1;100m [!] You won't disable (Zsh) before Enable Zsh-Theme\e[0m" ;fi ;}
+
+PUT 13 1
+disable.zsh
