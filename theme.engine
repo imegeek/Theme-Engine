@@ -68,22 +68,22 @@ if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .te
 
 extra_options () {
 if [ -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
-echo -e "\e[0;1;48;2;255;100;100m [5] Reset Extra Keys ⌥  \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0m"
+echo -e "\e[0;1;30;48;2;0;255;255m [5] Reset Extra Keys ⌥  \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0m"
 else
-echo -e "\e[0;1;48;2;255;100;100m [5] Enable Extra Keys ⌥ \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0m" ;fi;}
+echo -e "\e[0;1;30;48;2;0;255;255m [5] Enable Extra Keys ⌥ \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0m" ;fi;}
 
 extra_keys () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
 cd /data/data/com.termux/files/home/theme-engine/program-files
 cp extra.keys.theme /data/data/com.termux/files/home/.termux/termux.properties
 termux-reload-settings
-echo -e "\e[0;1;48;2;255;100;100m          Extra Keys Enabled Successfully           \e[0m"
+echo -e "\e[0;1;30;48;2;0;255;255m          Extra Keys Enabled Successfully           \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 else
 cd /data/data/com.termux/files/home/.termux
 rm termux.properties
 termux-reload-settings
-echo -e "\e[0;1;48;2;255;100;100m          Extra Keys Reset Successfully             \e[0m"
+echo -e "\e[0;1;30;48;2;0;255;255m          Extra Keys Reset Successfully             \e[0m"
 echo -ne "\033]12;#b4e1fd\007";fi;}
 
 banner() {
