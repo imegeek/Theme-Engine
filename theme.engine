@@ -27,14 +27,14 @@ NORM(){ echo -en "\033[?12l\033[?25h";}
 
 # interrupter
 exit_on_signal_SIGINT () {
-   { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
+   { printf "\n\n\e[0;1;48;2;200;0;0m                 Program interrupted.                 \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
     NORM
     exit 0
 }
 
 exit_on_signal_SIGTERM () {
-    { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
+    { printf "\n\n\e[0;1;48;2;200;0;0m                 Program terminated.                  \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
     NORM
     exit 0
@@ -112,7 +112,7 @@ echo -e "
 \e[0;1m█                                                    █
 \e[0;1m█\e[0;1;38;2;200;0;0m  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀\e[1;38;2;0;230;118m ▄▄\e[0;1;38;2;40;90;255m █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀ \e[0;1m █
 \e[0;1m█\e[0;1;38;2;200;0;0m   █  █▀█ ██▄ █ ▀ █ ██▄\e[1;38;2;0;230;118m   \e[0;1;38;2;40;90;255m ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄ \e[0;1m █
-\e[0;1m█   coding - (abhackerofficial)            \e[1;38;2;0;230;118m  -v 2.6\e[0;1m  █
+\e[0;1m█   coding - (abhackerofficial)            \e[1;38;2;0;230;118m  -v 2.8\e[0;1m  █
 \e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 " ; }
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
