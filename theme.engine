@@ -69,6 +69,8 @@ git pull &> /dev/null
 sleep 0.4
 PUT 13 1
 printf "┃\e[0;1;7m [!] Update Successful                              \r\e[0m┃"
+PUT 13 1
+printf "┃\e[0;1;7m [*] Execute an Option :                            \r\e[0m┃"
 PUT 14 1
 printf "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 else
