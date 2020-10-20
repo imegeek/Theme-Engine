@@ -47,7 +47,7 @@ if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
      rm /data/data/com.termux/files/home/theme-engine/fonts/fonts.rar ;fi ;fi
 
 auto_update() {
-# Theme-Engine auto-update
+## Theme-Engine auto-update
 HIDCRSR
 printf "┃\e[0;1;7m [+] Checking for Update...                         \e[0m┃\r"
 PUT 14 1
