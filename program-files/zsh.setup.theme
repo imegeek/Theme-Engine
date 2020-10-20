@@ -6,31 +6,31 @@ NORM(){ echo -en "\033[?12l\033[?25h";}
 
 zsh.setup() {
 trap '' 2 ;HIDCRSR
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations           [0.0%]     \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations           [0.0%]      \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations.          [0.3%]     \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations.          [0.3%]      \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations..         [0.9%]     \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations..         [0.9%]      \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up configurations...        [1.0%]     \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations...        [1.0%]      \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh       [3.0%]     \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh       [3.0%]      \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh.      [9.0%]     \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh.      [9.0%]      \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh..     [18%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh..     [18%]       \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m [!] Changing default Shell to Zsh...    [26%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh...    [26%]       \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell.               [37%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [37%]       \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell..              [48%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [48%]       \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell...             [56%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell...             [56%]       \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell                [72%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell                [72%]       \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell.               [86%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [86%]       \r"
 sleep 0.1
 
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
@@ -177,11 +177,11 @@ echo "alias update='/data/data/com.termux/files/home/.termux/zsh.update'" >> .zs
 echo "source /data/data/com.termux/files/home/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc
 echo "source /data/data/com.termux/files/home/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc ; }
 
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setting-up Zsh-Shell..              [99%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [99%]       \r"
 sleep 0.2
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;zshrc ;chf@chc ;fi
-echo -ne "\e[0;1;48;2;101;31;255m [!] Setup completed. Enjoy Oh-my-zsh    [100%]     \e[0m\r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]      \e[0m\r"
 sleep 0.4;termux-reload-settings ;sleep 0.4 ;trap 5 ;NORM
 bash /data/data/com.termux/files/home/theme-engine/theme.engine ;}
 PUT 15 1
