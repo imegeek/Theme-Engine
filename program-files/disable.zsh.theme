@@ -14,5 +14,5 @@ echo -e "\e[0;1;30;48;2;200;255;0m [√] Zsh-Theme Disabled Successfully        
 else
 echo -e "\e[0;1;100m [!] You won't disable (Zsh) before Enable Zsh-Theme\e[0m" ;fi ;}
 
-PUT 13 1
+PUT 15 1
 disable.zsh
