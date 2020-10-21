@@ -87,6 +87,7 @@ if [ $changed = 1 ]; then
      echo -e "\n"
      update_banner
      fetch_dir
+     git stash &> /dev/null
      git pull
      update_files
      show_banner
