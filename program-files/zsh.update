@@ -1,45 +1,12 @@
 #!/usr/bin/bash
 
-connected_to_internet() {
-  test_urls="\
-  https://www.google.com/ \
-  "
+connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]];then
+echo 'No internet connection available !'
+exit 0
+fi
 
-  processes="0"
-  pids=""
-
-  for test_url in $test_urls; do
-    curl --silent --head "$test_url" > /dev/null &
-    pids="$pids $!"
-    processes=$(($processes + 1))
-  done
-
-  while [ $processes -gt 0 ]; do
-    for pid in $pids; do
-      if ! ps | grep "^[[:blank:]]*$pid[[:blank:]]" > /dev/null; then
-        # Process no longer running
-        processes=$(($processes - 1))
-        pids=$(echo "$pids" | sed --regexp-extended "s/(^| )$pid($| )/ /g")
-
-        if wait $pid; then
-          # Success! We have a connection to at least one public site, so the
-          # internet is up. Ignore other exit statuses.
-          kill -TERM $pids > /dev/null 2>&1 || true
-          wait $pids
-          return 0
-        fi
-      fi
-    done
-    # wait -n $pids # Better than sleep, but not supported on all systems
-  done
-
-  return 1
-}
-
-if connected_to_internet; then
-update_banner() {
-cd $HOME; wget https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
-show_banner() { cd $HOME ; bash zsh.info ; rm zsh.info ; }
+show_banner() { bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/zsh.info)" ; }
 
 command -v git > /dev/null 2>&1 || { pkg install git -y ; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y ; }
@@ -49,14 +16,14 @@ NORM(){ echo -en "\033[?12l\033[?25h";}
 
 update_files() {
 cd $HOME
-rm -rf .oh-my-zsh
-rm -rf .zsh-syntax-highlighting
+rm -rf .oh-my-zsh &> /dev/null
+rm -rf .zsh-syntax-highlighting &> /dev/null
 if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
 cd /data/data/com.termux/files/home/theme-engine/fonts
 unrar x fonts.rar > /dev/null 2>&1
 rm -rf fonts.rar ;fi
 cd /data/data/com.termux/files/home/theme-engine
-cp -rf .oh-my-zsh .zsh-syntax-highlighting /data/data/com.termux/files/home ;cd
+cp -rf .oh-my-zsh .zsh-syntax-highlighting .zsh-autosuggestions /data/data/com.termux/files/home ;cd
 cd /data/data/com.termux/files/home/theme-engine
 cp -rf colors fonts /data/data/com.termux/files/home/.termux ;cd
 cd /data/data/com.termux/files/home/theme-engine/program-files
@@ -85,7 +52,6 @@ git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behi
 if [ $changed = 1 ]; then
      echo -ne "Ohmyzsh Update Available. Updating...            		\r"
      echo -e "\n"
-     update_banner
      fetch_dir
      git stash &> /dev/null
      git pull
@@ -96,8 +62,5 @@ else
     printf "Ohmyzsh Already up to date. 					\r"
     echo -e "\e"
     NORM
-fi
-else
-echo 'No internet connection available !'
 fi
 # Thanks for using Theme-Engine
