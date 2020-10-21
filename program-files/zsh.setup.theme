@@ -184,5 +184,5 @@ cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;zshrc ;chf@chc ;fi
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]      \e[0m\r"
 sleep 0.4;termux-reload-settings ;sleep 0.4 ;trap 5 ;NORM
 bash /data/data/com.termux/files/home/theme-engine/theme.engine ;}
-PUT 15 1
+PUT 16 1
 zsh.setup # Thanks for using Theme-Engine.
