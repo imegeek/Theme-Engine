@@ -53,7 +53,7 @@ if [ $changed = 1 ]; then
      echo -ne "Ohmyzsh Update Available. Updating...            		\r"
      echo -e "\n"
      fetch_dir
-     git stash &> /dev/null
+    #git stash &> /dev/null
      git pull
      update_files
      show_banner
