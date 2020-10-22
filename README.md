@@ -44,5 +44,4 @@ Theme-Engine is usually made for modification & customization, so you can make t
 
 #### Installation Commands :
 ```
-bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/
-program-files/update.theme)"
+bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"
