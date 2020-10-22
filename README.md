@@ -16,7 +16,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/96826345-cdf11480-1450-11eb-9afd-41080c99972b.jpg)
 
 ###### Introducing Auto Updater, It will always keep Theme-Engine updated.
-![Theme-Engine-Auto-Updater](https://user-images.githubusercontent.com/63346676/96667146-1be51a00-1376-11eb-8563-e172495d3055.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826617-4bb52000-1451-11eb-8f8b-599223f56268.jpg)
 
 ###### Enable Extra Keys to get More Functions Keys in Termux.
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826494-1dcfdb80-1451-11eb-823f-811bc4d143bf.jpg)
