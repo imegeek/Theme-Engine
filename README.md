@@ -13,7 +13,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ###### Installation Guide & Screenshot of Theme-Engine :
 ![Theme-Engine-Installation-Preview](https://user-images.githubusercontent.com/63346676/93869698-c7546d80-fce9-11ea-9f1d-f76acb6312bf.jpg)
 
-![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/96665958-b98b1a00-1373-11eb-8d20-50271612e09a.jpg)
+![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/96826345-cdf11480-1450-11eb-9afd-41080c99972b.jpg)
 
 ###### Introducing Auto Updater, It will always keep Theme-Engine updated.
 ![Theme-Engine-Auto-Updater](https://user-images.githubusercontent.com/63346676/96667146-1be51a00-1376-11eb-8563-e172495d3055.jpg)
