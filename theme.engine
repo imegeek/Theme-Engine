@@ -49,34 +49,34 @@ if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
 auto_update() {
 ## Theme-Engine auto-update
 HIDCRSR
-printf "┃\e[0;1;7m [+] Checking for Update...                         \e[0m┃\r"
+printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                         \e[0;1m┃\e[0m\r"
 PUT 15 1
-printf "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
 PUT 14 1
-printf "┃\e[0;1;7m [!] Theme-Engine Update Available                  \r\e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                  \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 sleep 0.4
 PUT 14 1
-printf "┃\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 git stash &> /dev/null
 git pull &> /dev/null
 sleep 0.4
 PUT 14 1
-printf "┃\e[0;1;7m [!] Update Successful                              \r\e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [!] Update Successful                              \r\e[0;1m┃\e[0m"
 PUT 14 1
-printf "┃\e[0;1;7m [*] Execute an Option :                            \r\e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 else
-printf "┃\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 PUT 14 1 ;fi;NORM;}
 
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
@@ -84,9 +84,9 @@ if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .te
 
 extra_options () {
 if [ -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
-echo -e "┃\e[0;1;30;48;2;0;255;255m [5] Reset Extra Keys ⌥  \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0m┃"
+echo -e "\e[0;1m┃\e[0;1;30;48;2;0;255;255m [5] Reset Extra Keys ⌥  \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0;1m┃\e[0m"
 else
-echo -e "┃\e[0;1;30;48;2;0;255;255m [5] Enable Extra Keys ⌥ \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0m┃" ;fi;}
+echo -e "\e[0;1m┃\e[0;1;30;48;2;0;255;255m [5] Enable Extra Keys ⌥ \e[0;1;30;48;5;49m  [6] About Theme-Engine   \e[0;1m┃\e[0m" ;fi;}
 
 extra_keys () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
@@ -118,33 +118,33 @@ echo -e "
 " ; }
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m┃"
-echo -e "┃\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m┃"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
 extra_options
 PUT 15 1
-echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme
 else
 banner
-echo -e "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m┃"
-echo -e "┃\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m┃"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
 extra_options
 PUT 15 1
-echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme ;fi
 
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m┃"
-echo -e "┃\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m┃"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃\e[0;1;48;2;101;31;255m [3] Change Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
 extra_options
 auto_update
-printf "┃\e[0;1;7m [*] Execute an Option :                            \e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \e[0;1m┃\e[0m"
 PUT 15 1
-echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 PUT 14 27
 printf "\e[0;1;7m"
 read option
@@ -185,12 +185,12 @@ bash about.theme
 else PUT 16 1
 echo -e "\e[1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
 banner
-echo -e "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0m┃"
-echo -e "┃\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0m┃"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┃\e[0;1;48;2;200;0;0m [1] Change Font Style   \e[0;1;48;2;40;90;255m  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃\e[0;1;48;2;101;31;255m [3] Enable Zsh-Theme    \e[0;1;30;48;2;200;255;0m  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
 extra_options
 auto_update
-printf "┃\e[0;1;7m [*] Execute an Option :                            \e[0m┃"
+printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \e[0;1m┃\e[0m"
 PUT 15 1
 echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 PUT 14 27
