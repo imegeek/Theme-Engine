@@ -133,7 +133,7 @@ echo -e "
 \e[0;1m█${Fred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Fgreen}▄▄${Fblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀ \e[0;1m █
 \e[0;1m█${Fred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Fgreen}  ${Fblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄ \e[0;1m █
 \e[0;1m█                                                    █
-\e[0;1m█ \e[0;1;7m Coding - (abhackerofficial)             ${Fgreen}  -v 3.0 \e[0;1m █
+\e[0;1m█ \e[0;1;7m Coding - (abhackerofficial)             \e[1;38;2;0;230;118m  -v 3.0 \e[0;1m █
 \e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 " ; }
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
