@@ -434,6 +434,7 @@ trap '' 2
 trap 5
 else
 echo -e "\n\e[0;1;7m             You entered Invalid Url !              "
+echo -ne "\033]12;#b4e1fd\007"
 exit
 fi
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
