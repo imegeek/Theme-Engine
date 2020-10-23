@@ -7,12 +7,13 @@ echo -e "
 \e[1m│\e[0;1;38;2;200;0;0m         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸\e[0;1;38;2;0;240;118m  \e[0;1;38;2;40;90;255m  ┏━╸┏┓╻┏━╸╻┏┓╻┏━         \e[0;1m│
 \e[1m│\e[0;1;38;2;200;0;0m          ┃ ┣━┫┣╸ ┃┃┃┣╸ \e[0;1;38;2;0;240;118m╺━╸\e[0;1;38;2;40;90;255m ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸         \e[0;1m│
 \e[1m│\e[0;1;38;2;200;0;0m          ╹ ╹ ╹┗━╸╹ ╹┗━╸\e[0;1;38;2;0;240;118m  \e[0;1;38;2;40;90;255m  ┗━╸╹ ╹┗━┛╹╹ ╹┗━         \e[0;1m│
-\e[1m│                                                    │
+\e[1m│────────────────────────────────────────────────────│
 \e[1m│                                                    │
 \e[1m│  \e[0;1;38;2;0;240;118mTheme-Engine is usually made for modification     \e[0;1m│
 \e[1m│  \e[0;1;38;2;0;240;118mand customization, So you can make trunks even    \e[0;1m│
 \e[1m│  \e[0;1;38;2;0;240;118mmore colourful and better your Termux.            \e[0;1m│
 \e[1m│                                                    │
+\e[1m│  \e[0;1;38;2;0;240;118mAuthor  - ABHacker Official                       \e[0;1m│
 \e[1m│  \e[0;1;38;2;0;240;118mGithub  - https://github.com/abhackerofficial     \e[0;1m│
 \e[1m│  \e[0;1;38;2;0;240;118mYoutube - https://youtube.com/abhackerofficial    \e[0;1m│
 \e[1m└────────────────────────────────────────────────────┘
