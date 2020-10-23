@@ -1,5 +1,17 @@
 #!/usr/bin/bash
 
+#############################################
+# Project : Theme-Engine                    #
+# Author  : ABHacker Official               #
+# Version : 2.8 (Latest)                    #
+# Github  : abhackerofficial                #
+#############################################
+
+if [ "${1}" = "-u" ]; then
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash update.theme
+exit ;fi
+
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 if [[ "$connection" != 0 ]]
 then clear
@@ -160,11 +172,6 @@ echo
 cd /data/data/com.termux/files/home/theme-engine/program-files
 bash colors.theme
 
-elif [[ $option = "update" ]] || [[ $option = "Update" ]] || [[ $option = "UPDATE" ]];then
-echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/theme-engine/program-files
-bash update.theme
-
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 cd /data/data/com.termux/files/home/theme-engine/program-files
@@ -207,11 +214,6 @@ elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 echo
 cd /data/data/com.termux/files/home/theme-engine/program-files
 bash colors.theme
-
-elif [[ $option = "update" ]] || [[ $option = "Update" ]] || [[ $option = "UPDATE" ]];then
-echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/theme-engine/program-files
-bash update.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 echo -ne "\033]12;#b4e1fd\007"
