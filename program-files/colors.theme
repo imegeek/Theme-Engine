@@ -75,7 +75,7 @@ clear;echo -e "\e[0;1m
 ┃ \e[0;1m[20] material      \e[0;1m[43] ura.colors               ┃
 ┃ \e[0;1m[21] miu.colors    \e[0;1m[44] vag.colors               ┃
 ┃ \e[0;1m[22] materialOcean \e[0;1m[45] weathered.dark.colors    ┃
-┃ \e[0;1m[23] monokai.dark.colors                         ┃
+┃ \e[0;1m[23] monokai.dark  \e[0;1m[46] \e[1;30;38;2;0;255;255mimport online.colors\e[0;1m     ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 printf "\e[1;30;48;2;0;230;118m [!] Choose an Color Scheme :                       \e[0m"
 PUT 33 31
@@ -396,5 +396,50 @@ termux
 cp weathered.light.colors colors.properties
 chcolor1
 chcolor
+
+elif [[ $color = "46" ]];then
+spin () {
+
+local pid=$!
+local delay=0.25
+local spinner=( '' '.' '..' '...' )
+
+while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+
+for i in "${spinner[@]}"
+do
+	HIDCRSR
+        PUT 34 1
+        printf "\e[0;1;30;48;2;0;255;255m                                                    "
+	echo -ne "\e[1m\r [⬇] Color Scheme Downloading$i";
+	sleep $delay
+        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+done
+done
+NORM
+printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
+
+}
+
+printf "\e[0;1;30;48;2;0;255;255m [+] Enter Url of ColorSheme :                      \e[0m"
+PUT 34 32
+read -s color_url
+if [[ $color_url = https* ]];then
+PUT 34 32
+HIDCRSR;printf "\e[0;1;30;48;2;0;255;255mhttps://************\e[0m\n"
+sleep 0.6
+else
+echo -e "\n\e[0;1;7m              You entered Invalid Url.              "
+exit
+fi
+trap '' 2
+( wget -O colors.properties $color_url -q &> /dev/null ) &> /dev/null & spin
+trap 5
+if [ -f "/data/data/com.termux/files/home/theme-engine/program-files/colors.properties" ];then
+mv colors.properties /data/data/com.termux/files/home/.termux
+termux-reload-settings
+else
+exit
+fi
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
 # Thanks for uaing Theme-Engine.
