@@ -416,7 +416,8 @@ do
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 done
 done
-NORM
+mv colors.properties /data/data/com.termux/files/home/.termux
+termux-reload-settings;NORM
 printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
 
 }
@@ -428,17 +429,11 @@ if [[ $color_url = https* ]];then
 PUT 34 32
 HIDCRSR;printf "\e[0;1;30;48;2;0;255;255mhttps://************\e[0m\n"
 sleep 0.6
-else
-echo -e "\n\e[0;1;7m              You entered Invalid Url.              "
-exit
-fi
 trap '' 2
 ( wget -O colors.properties $color_url -q &> /dev/null ) &> /dev/null & spin
 trap 5
-if [ -f "/data/data/com.termux/files/home/theme-engine/program-files/colors.properties" ];then
-mv colors.properties /data/data/com.termux/files/home/.termux
-termux-reload-settings
 else
+echo -e "\n\e[0;1;7m             You entered Invalid Url !              "
 exit
 fi
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
