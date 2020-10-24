@@ -1,21 +1,19 @@
-# material.colors
-# Color scheme from https://github.com/Mayccoll/Gogh
-color0=#073641
-color1=#EB606B
-color2=#C3E88D
-color3=#F7EB95
-color4=#80CBC3
-color5=#FF2490
-color6=#AEDDFF
-color7=#FFFFFF
-color8=#002B36
-color9=#EB606B
-color10=#C3E88D
-color11=#F7EB95
-color12=#7DC6BF
-color13=#6C71C3
-color14=#34434D
-color15=#FFFFFF
-background=#1E282C
-foreground=#C3C7D1
-cursor=#657B83
+background 		: #263238
+foreground 		: #eceff1
+
+color0  			: #263238
+color8  			: #37474f
+color1  			: #ff9800
+color9  			: #ffa74d
+color2  			: #8bc34a
+color10 			: #9ccc65
+color3  			: #ffc107
+color11 			: #ffa000
+color4  			: #03a9f4
+color12 			: #81d4fa
+color5  			: #e91e63
+color13 			: #ad1457
+color6  			: #009688
+color14 			: #26a69a
+color7  			: #cfd8dc
+color15 			: #eceff1

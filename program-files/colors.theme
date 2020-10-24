@@ -4,6 +4,14 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
+## colors
+# foreground
+Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
+Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
+# background
+Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+
 chcolor() {
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
@@ -32,372 +40,175 @@ random_scheme=$(ls /data/data/com.termux/files/home/theme-engine/colors | shuf -
 { termux-reload-settings; printf "\e[0;1;7m [√] Random-Color-Scheme Applied Successfully       \e[0m";echo; exit;};}
 
 exit_on_signal_SIGINT () {
-   { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
+   { printf "\n${Bred}                Program interrupted.                \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
     exit 0
 }
 
 exit_on_signal_SIGTERM () {
-    { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
-    echo -ne "\033]12;#b4e1fd\007"
-    exit 0
+   { printf "\n${Bred}                Program terminated.                 \e[0m" 2>&1; echo; }
+   echo -ne "\033]12;#b4e1fd\007"
+   exit 0
 }
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
+banner() {
 clear;echo -e "\e[0;1m
 \e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 \e[0;1m█                                                  █
-\e[0;1m█\e[1;38;2;0;230;118m     █▀▀ █▀█ █   █▀█ █▀█ ▄▄ █▀▄▀█ █▀▀ █▄ █ █ █\e[0;1m    █
-\e[0;1m█\e[1;38;2;0;230;118m     █▄▄ █▄█ █▄▄ █▄█ █▀▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m    █
+\e[0;1m█${Fgreen}     █▀▀ █▀█ █   █▀█ █▀█ ▄▄ █▀▄▀█ █▀▀ █▄ █ █ █\e[0;1m    █
+\e[0;1m█${Fgreen}     █▄▄ █▄█ █▄▄ █▄█ █▀▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m    █
 \e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ \e[0;1m[01] aci.colors    \e[0;1m[24] nep.colors               ┃
-┃ \e[0;1m[02] aco.colors    \e[0;1m[25] ocean.dark.colors        ┃
-┃ \e[0;1m[03] azu.colors    \e[0;1m[26] one.dark.colors          ┃
-┃ \e[0;1m[04] bim.colors    \e[0;1m[27] one.light.colors         ┃
-┃ \e[0;1m[05] cai.colors    \e[0;1m[28] pali.colors              ┃
-┃ \e[0;1m[06] chalk.colors  \e[0;1m[29] \e[1;30;38;2;0;230;118mrandom.colors            \e[0;1m┃
-┃ \e[0;1m[07] default       \e[0;1m[30] peppermint.colors        ┃
-┃ \e[0;1m[08] dracula       \e[0;1m[31] sat.colors               ┃
-┃ \e[0;1m[09] elementary    \e[0;1m[32] shel.colors              ┃
-┃ \e[0;1m[10] elic.colors   \e[0;1m[33] smyck.colors             ┃
-┃ \e[0;1m[11] elio.colors   \e[0;1m[34] solarized.dark.colors    ┃
-┃ \e[0;1m[12] flat.colors   \e[0;1m[35] solarized.light.colors   ┃
-┃ \e[0;1m[13] freya.colors  \e[0;1m[36] tango.colors             ┃
-┃ \e[0;1m[14] gruvbox.dark  \e[0;1m[37] tin.colors               ┃
-┃ \e[0;1m[15] hemisu.dark   \e[0;1m[38] tomorrow.colors          ┃
-┃ \e[0;1m[16] hemisu.light  \e[0;1m[39] tomorrow.night.blue      ┃
-┃ \e[0;1m[17] hybrid.colors \e[0;1m[40] tomorrow.night.bright    ┃
-┃ \e[0;1m[18] jup.colors    \e[0;1m[41] tomorrow.night           ┃
-┃ \e[0;1m[19] mar.colors    \e[0;1m[42] tomorrow.night.eighties  ┃
-┃ \e[0;1m[20] material      \e[0;1m[43] ura.colors               ┃
-┃ \e[0;1m[21] miu.colors    \e[0;1m[44] vag.colors               ┃
-┃ \e[0;1m[22] materialOcean \e[0;1m[45] weathered.dark.colors    ┃
-┃ \e[0;1m[23] monokai.dark  \e[0;1m[46] \e[1;30;38;2;0;255;255mimport online.colors\e[0;1m     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-printf "\e[1;30;48;2;0;230;118m [!] Choose an Color Scheme :                       \e[0m"
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃ [01] accent.material [23] default-dark.colors    ┃
+\e[0;1m┃ [02] apathy.dark     [24] default-light.colors   ┃
+\e[0;1m┃ [03] apathy.light    [25] e-ink.colors           ┃
+\e[0;1m┃ [04] argonaut.colors [26] eighties-dark.colors   ┃
+\e[0;1m┃ [05] ashes.dark      [27] eighties-light.colors  ┃
+\e[0;1m┃ [06] ashes.light     [28] embers-dark.colors     ┃
+\e[0;1m┃ [07] forest.dark     [29] embers-light.colors    ┃
+\e[0;1m┃ [08] forest.light    [30] flat-dark.colors       ┃
+\e[0;1m┃ [09] heath.dark      [31] flat-light.color       ┃
+\e[0;1m┃ [10] heath.light     [32] gnometerm.colors       ┃
+\e[0;1m┃ [11] ${Fyellow}import.local    \e[0;1m[33] google-dark.colors     ┃
+\e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[34] google-light.colors    ┃
+\e[0;1m┃ [13] lakeside.dark   [35] gotham.colors          ┃
+\e[0;1m┃ [14] lakeside-light  [36] greenscreen.dark       ┃
+\e[0;1m┃ [15] seaside-dark    [37] greenscreen.light      ┃
+\e[0;1m┃ [16] seaside.light   [38] gruvbox-dark.colors    ┃
+\e[0;1m┃ [17] black-on-white  [39] gruvbox-light.colors   ┃
+\e[0;1m┃ [18] codeschool.dark [40] harmonic16.dark        ┃
+\e[0;1m┃ [19] codeschool.light[41] harmonic16.light       ┃
+\e[0;1m┃ [20] colors.dark     [42] isotope-dark.colors    ┃
+\e[0;1m┃ [21] colors.light    [43] isotope-light.colors   ┃
+\e[0;1m┃ [22] dracula.colors  [44] white-on-black.colors  ┃
+\e[0;1m┃ [RC] ${Fgreen}random.colors   \e[0;1m[2>] Next Page              ┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
+banner2() {
+clear;echo -e "\e[0;1m
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█                                                  █
+\e[0;1m█${Fgreen}     █▀▀ █▀█ █   █▀█ █▀█ ▄▄ █▀▄▀█ █▀▀ █▄ █ █ █\e[0;1m    █
+\e[0;1m█${Fgreen}     █▄▄ █▄█ █▄▄ █▄█ █▀▄    █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m    █
+\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃ [45] accent.material [63] e-ink.colors           ┃
+\e[0;1m┃ [46] apathy.dark     [64] eighties-dark.colors   ┃
+\e[0;1m┃ [47] apathy.light    [65] eighties-light.colors  ┃
+\e[0;1m┃ [48] argonaut.colors [66] embers-dark.colors     ┃
+\e[0;1m┃ [49] ashes.dark      [67] embers-light.colors    ┃
+\e[0;1m┃ [50] ashes.light     [68] flat-dark.colors       ┃
+\e[0;1m┃ [51] forest.dark     [69] flat-light.colors      ┃
+\e[0;1m┃ [52] forest.light    [70] gnometerm.colors       ┃
+\e[0;1m┃ [53] heath.dark      [71] google-dark.colors     ┃
+\e[0;1m┃ [54] heath.light     [72] google-light.colors    ┃
+\e[0;1m┃ [55] import.local    [73] gotham.colors          ┃
+\e[0;1m┃ [56] import.online   [74] greenscreen.dark       ┃
+\e[0;1m┃ [57] lakeside.dark   [75] greenscreen.light      ┃
+\e[0;1m┃ [58] lakeside-light  [76] gruvbox-dark.colors    ┃
+\e[0;1m┃ [59] seaside-dark    [77] gruvbox-light.colors   ┃
+\e[0;1m┃ [60] seaside.light   [78] harmonic16.dark        ┃
+\e[0;1m┃ [61] black-on-white  [79] harmonic16.light       ┃
+\e[0;1m┃ [62] codeschool.dark [80] isotope-dark.colors    ┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
+
+banner
+printf "${Bgreen} [!] Choose an Color Scheme :                       \e[0m"
 PUT 33 31
-printf "\e[1;30;48;2;0;230;118m"
+printf "${Bgreen}"
 read color
 printf "\e[0m"
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp aci.colors colors.properties
+cp accent.material.colors colors.properties
 chcolor
 chcolor1
 
 elif [[ $color = "2" ]] || [[ $color = "02" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp aco.colors colors.properties
+cp apathy-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "3" ]] || [[ $color = "03" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp azu.colors colors.properties
+cp apathy-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "4" ]] || [[ $color = "04" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp bim.colors colors.properties
+cp argonaut.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "5" ]] || [[ $color = "05" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp cai.colors colors.properties
+cp ashes-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "6" ]] || [[ $color = "06" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp chalk.colors colors.properties
+cp ashes-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "7" ]] || [[ $color = "07" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp default.colors colors.properties
+cp atelierforest-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "8" ]] || [[ $color = "08" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp dracula.colors colors.properties
+cp atelierforest-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "9" ]] || [[ $color = "09" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp elementary.colors colors.properties
+cp atelierheath-dark.colors colors.properties
 chcolor1
 chcolor
 termux
 elif [[ $color = "10" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp elic.colors colors.properties
+cp atelierheath-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "11" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp elio.colors colors.properties
-chcolor1
-chcolor
+printf "${Byellow} [*] Enter Color Path :                             \e[0m"
+PUT 34 25
+printf "${Byellow}"
+read -s path
+cp $path /data/data/com.termux/files/home/.termux/colors.properties &> /dev/null
+if [ -f "$path" ];then
+PUT 34 25
+HIDCRSR
+printf "/data/data/com.termux/files"
+termux-reload-settings
+printf "\n\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
+NORM
+else
+echo -e "\e[0;1;7m                Invalid file format !               \e[0m"
+fi
 
 elif [[ $color = "12" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp flat.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "13" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp freya.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "14" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp gruvbox.dark.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "15" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp hemisu.dark.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "16" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp hemisu.light.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "17" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp hybrid.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "18" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp jup.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "19" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp mar.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "20" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp material.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "21" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp miu.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "22" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp material.ocean.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "23" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp monokai.dark.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "24" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp nep.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "25" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp ocean.dark.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "26" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp one.dark.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "27" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp one.light.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "28" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp pali.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "29" ]];then
-#cd $HOME/theme-engine/colors &> /dev/null
-#termux
-#cp "random_colors" colors.properties
-#chcolor1
-#chcolor
-random_colors
-elif [[ $color = "30" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp peppermint.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "31" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp sat.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "32" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp shel.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "33" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp smyck.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "34" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp solarized.dark.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "35" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp solarized.light.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "36" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tango.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "37" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tin.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "38" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tomorrow.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "39" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tomorrow.night.blue.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "40" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tomorrow.night.bright.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "41" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tomorrow.night.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "42" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp tomorrow.night.eighties.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "43" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp ura.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "44" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp vag.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "45" ]];then
-cd $HOME/theme-engine/colors &> /dev/null
-termux
-cp weathered.light.colors colors.properties
-chcolor1
-chcolor
-
-elif [[ $color = "46" ]];then
 spin () {
 
 local pid=$!
@@ -410,7 +221,7 @@ for i in "${spinner[@]}"
 do
 	HIDCRSR
         PUT 34 1
-        printf "\e[0;1;30;48;2;0;255;255m                                                    "
+        printf "${Bsky}                                                    "
 	echo -ne "\e[1m\r [⬇] Color Scheme Downloading$i";
 	sleep $delay
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
@@ -422,12 +233,12 @@ printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";ec
 
 }
 
-printf "\e[0;1;30;48;2;0;255;255m [+] Enter Url of ColorSheme :                      \e[0m"
+printf "${Bsky} [*] Enter Url of ColorSheme :                      \e[0m"
 PUT 34 32
 read -s color_url
 if [[ $color_url = https* ]];then
 PUT 34 32
-HIDCRSR;printf "\e[0;1;30;48;2;0;255;255mhttps://************\e[0m\n"
+HIDCRSR;printf "${Bsky}https://************\e[0m\n"
 sleep 0.6
 trap '' 2
 ( wget -O colors.properties $color_url -q &> /dev/null ) &> /dev/null & spin
@@ -437,5 +248,501 @@ echo -e "\n\e[0;1;7m             You entered Invalid Url !              "
 echo -ne "\033]12;#b4e1fd\007"
 exit
 fi
+
+elif [[ $color = "rc" ]] || [[ $color = "RC" ]];then
+#cd $HOME/theme-engine/colors &> /dev/null
+#term
+#cp "random_colors" colors.properties
+#chcolor1
+#chcolor
+random_colors
+elif [[ $color = "13" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp atelierlakeside-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "14" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp atelierlakeside-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "15" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp atelierseaside-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "16" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp atelierseaside-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "17" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp black-on-white.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "18" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp codeschool-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "19" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp codeschool-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "20" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp colors-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "21" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp colors-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "22" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp dracula.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "23" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp default-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "24" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp default-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "25" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp e-ink.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "26" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp eighties-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "27" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp eighties-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "28" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp embers-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "29" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp embers-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "30" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp flat-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "31" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp flat-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "32" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp gnometerm.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "33" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp google-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "34" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp google-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "35" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp gotham.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "36" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp greenscreen-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "37" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp greenscreen-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "38" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp gruvbox-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "39" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp gruvbox-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "40" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp harmonic16-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "41" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp harmonic16-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "42" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp isotope-dark.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "43" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp isotope-light.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "44" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp white-on-black.colors colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "2>" ]];then
+echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo
+exit
+banner2
+printf "${Bgreen} [!] Choose an Color Scheme :                       \e[0m"
+PUT 28 31
+printf "${Bgreen}"
+read color
+printf "\e[0m"
+
+if [[ $color = "45" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "46" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "47" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "48" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "49" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "50" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "51" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "52" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "53" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "54" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "55" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "56" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "57" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "58" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "59" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "60" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "61" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "62" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "63" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "64" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "65" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "66" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "67" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "68" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "69" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "70" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "71" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "72" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+
+elif [[ $color = "73" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "74" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "75" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "76" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "77" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "78" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "79" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+elif [[ $color = "80" ]];then
+cd $HOME/theme-engine/colors &> /dev/null
+termux
+cp  colors.properties
+chcolor1
+chcolor
+
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
 # Thanks for uaing Theme-Engine.
