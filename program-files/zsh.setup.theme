@@ -39,7 +39,7 @@ if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm
 
 chf@chc() {
 cd $HOME/theme-engine/colors
-cp aci.colors colors.properties
+cp accent.material.colors colors.properties
 mv colors.properties /data/data/com.termux/files/home/.termux
 cd $HOME/theme-engine/fonts
 cp  'Anonymice Powerline.ttf' font.ttf
