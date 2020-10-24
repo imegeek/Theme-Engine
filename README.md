@@ -10,7 +10,7 @@
 
 Theme-Engine is usually made for modification & customization, so you can make trunks even more Colourful and better your Termux.
 
-###### Installation Guide & Screenshot of Theme-Engine :
+> Installation Guide & Screenshot of Theme-Engine :
 ![Theme-Engine-Installation-Preview](https://user-images.githubusercontent.com/63346676/93869698-c7546d80-fce9-11ea-9f1d-f76acb6312bf.jpg)
 
 ![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/96826345-cdf11480-1450-11eb-9afd-41080c99972b.jpg)
