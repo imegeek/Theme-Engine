@@ -48,7 +48,7 @@ clear;echo -e "\e[0;1m
 \e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ \e[0;1m[01] Anonymice         \e[0;1m[16] Inconsolata-dz       ┃
+┃ \e[0;1m[01] Anonymous-Pro     \e[0;1m[16] Inconsolata-dz       ┃
 ┃ \e[0;1m[02] Courier-Prime     \e[0;1m[17] Iosevka-Regular      ┃
 ┃ \e[0;1m[03] Cousine           \e[0;1m[18] Iosevka              ┃
 ┃ \e[0;1m[04] D2-Coding         \e[0;1m[19] Iosevka-NerdComplete ┃
