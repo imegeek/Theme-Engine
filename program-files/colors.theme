@@ -205,7 +205,8 @@ termux-reload-settings
 printf "\n\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
 NORM
 else
-echo -e "\e[0;1;7m                Invalid file format !               \e[0m"
+echo -e "\n\e[0;1;7m                Invalid file format !               \e[0m"
+echo -ne "\033]12;#b4e1fd\007"
 fi
 
 elif [[ $color = "12" ]];then
@@ -482,7 +483,7 @@ chcolor
 
 elif [[ $color = "2>" ]];then
 echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo
-exit
+echo -ne "\033]12;#b4e1fd\007";exit
 banner2
 printf "${Bgreen} [!] Choose an Color Scheme :                       \e[0m"
 PUT 28 31
