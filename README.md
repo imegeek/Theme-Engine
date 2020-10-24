@@ -15,18 +15,18 @@ Theme-Engine is usually made for modification & customization, so you can make t
 
 ![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/96826345-cdf11480-1450-11eb-9afd-41080c99972b.jpg)
 
-###### Introducing Auto Updater, It will always keep Theme-Engine updated.
+> Introducing Auto Updater, It will always keep Theme-Engine updated.
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826617-4bb52000-1451-11eb-8f8b-599223f56268.jpg)
 
-###### Enable Extra Keys to get More Functions Keys in Termux.
+> Enable Extra Keys to get More Functions Keys in Termux.
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826494-1dcfdb80-1451-11eb-823f-811bc4d143bf.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869423-66c53080-fce9-11ea-8928-0ea1fd4cbb35.jpg)
 
-###### zsh-syntax-highlighting | zsh-autosuggestions (Plugins)
+> zsh-syntax-highlighting | zsh-autosuggestions (Plugins)
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93866675-9a9e5700-fce5-11ea-83b6-cea06074d32d.jpg)
 
-###### update | chfont | chcolor | chtheme (alias) #only for zsh-users
+> update | chfont | chcolor | chtheme (alias) #only for zsh-users
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869474-76447980-fce9-11ea-8d3d-33f4680692a5.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93866769-bdc90680-fce5-11ea-9c3f-896dff968ee8.jpg)
@@ -51,6 +51,6 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 | <p align="center"> [ABHacker Official](https://github.com/abhackerofficial)                                                   |</p>
 
 
-#### Installation Commands :
+> Installation Commands :
 ```
 bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"
