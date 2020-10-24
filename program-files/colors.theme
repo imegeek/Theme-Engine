@@ -11,6 +11,11 @@ Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0
 # background
 Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+# google
+G=$'\e[0;1;38;2;60;186;84m' Y=$'\e[0;1;38;2;244;194;13m'
+R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
+## Reset Colors
+C=$'\e[0;1m'
 
 chcolor() {
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
@@ -72,8 +77,8 @@ clear;echo -e "\e[0;1m
 \e[0;1m┃ [08] forest.light    [30] flat-dark.colors       ┃
 \e[0;1m┃ [09] heath.dark      [31] flat-light.color       ┃
 \e[0;1m┃ [10] heath.light     [32] gnometerm.colors       ┃
-\e[0;1m┃ [11] ${Fyellow}import.local    \e[0;1m[33] google-dark.colors     ┃
-\e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[34] google-light.colors    ┃
+\e[0;1m┃ [11] ${Fyellow}import.local    \e[0;1m[33] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.dark.colors     \e[0;1m┃
+\e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[34] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.light.colors    \e[0;1m┃
 \e[0;1m┃ [13] lakeside.dark   [35] gotham.colors          ┃
 \e[0;1m┃ [14] lakeside-light  [36] greenscreen.dark       ┃
 \e[0;1m┃ [15] seaside-dark    [37] greenscreen.light      ┃
