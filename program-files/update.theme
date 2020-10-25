@@ -90,7 +90,7 @@ echo "";
 }
 trap '' 2
 echo
-( command -v git > /dev/null 2>&1 || { pkg install git -y ;};git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine"; sleep 2 ) &> /dev/null & spin
+( command -v git > /dev/null 2>&1 || pkg install git -y ;git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine"; sleep 2 ) &> /dev/null & spin
 HIDCRSR
 sleep 1 ;cd theme-engine;chmod +x theme.engine ;NORM; bash theme.engine;printf "\e[0m"
 trap 5
