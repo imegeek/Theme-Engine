@@ -19,6 +19,7 @@ set_font() {
 cd $HOME/theme-engine/fonts
 cp  'Anonymice Powerline.ttf' font.ttf
 mv font.ttf /data/data/com.termux/files/home/.termux ; }
+
 copying_files() {
 cd /data/data/com.termux/files/home/theme-engine
 cp -rf colors fonts /data/data/com.termux/files/home/.termux ; }
