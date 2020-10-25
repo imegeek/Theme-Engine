@@ -4,72 +4,52 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
-zsh.setup() {
-trap '' 2 ;HIDCRSR
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations           [0.0%]      \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations.          [0.3%]      \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations..         [0.9%]      \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations...        [1.0%]      \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh       [3.0%]      \r"
-sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh.      [9.0%]      \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh..     [18%]       \r"
-sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh...    [26%]       \r"
-sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [37%]       \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [48%]       \r"
-sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell...             [56%]       \r"
-sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell                [72%]       \r"
-sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [86%]       \r"
-sleep 0.1
-
+setting_up() {
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
+if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+cd /data/data/com.termux/files/home/.termux; touch main.theme.engine ;fi
 if [ -d "/data/data/com.termux/files/home/.termux/colors.properties" ];then cd $HOME ; rm /data/data/com.termux/files/home/.termux/colors.properties ;fi
-if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm /data/data/com.termux/files/home/font.ttf ;fi
+if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm /data/data/com.termux/files/home/font.ttf ;fi ;}
 
-chf@chc() {
+set_color() {
 cd $HOME/theme-engine/colors
 cp accent.material.colors colors.properties
-mv colors.properties /data/data/com.termux/files/home/.termux
+mv colors.properties /data/data/com.termux/files/home/.termux ; }
+set_font() {
 cd $HOME/theme-engine/fonts
 cp  'Anonymice Powerline.ttf' font.ttf
-mv font.ttf /data/data/com.termux/files/home/.termux
+mv font.ttf /data/data/com.termux/files/home/.termux ; }
+copying_files() {
 cd /data/data/com.termux/files/home/theme-engine
 cp -rf colors fonts /data/data/com.termux/files/home/.termux ; }
 
+files() {
 if [ -f "/data/data/com.termux/files/home/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
-
 if [ -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
 if [ ! -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then
 cd /data/data/com.termux/files/home/theme-engine
-cp -rf .oh-my-zsh /data/data/com.termux/files/home ;fi
+cp -rf .oh-my-zsh /data/data/com.termux/files/home ;fi ;}
 
+copying_tools() {
 cd /data/data/com.termux/files/home/theme-engine/program-files
 cp fonts.theme /data/data/com.termux/files/home/.termux
 cp colors.theme /data/data/com.termux/files/home/.termux
 cp zsh.theme /data/data/com.termux/files/home/.termux
 cp zsh.update /data/data/com.termux/files/home/.termux
-cd /data/data/com.termux/files/home/.termux ; chmod +x fonts.theme colors.theme zsh.theme zsh.update
-chsh -s zsh
+cd /data/data/com.termux/files/home/.termux ; chmod +x fonts.theme colors.theme zsh.theme zsh.update ;}
 
-if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-cd /data/data/com.termux/files/home/.termux; touch main.theme.engine ;fi
+change_shell() {
+chsh -s zsh ;}
 
+copying_plugins() {
 if [ -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
 if [ ! -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then
 cd /data/data/com.termux/files/home/theme-engine
 cp -rf .zsh-autosuggestions /data/data/com.termux/files/home
-cp -rf .zsh-syntax-highlighting /data/data/com.termux/files/home ;fi
+cp -rf .zsh-syntax-highlighting /data/data/com.termux/files/home ;fi ;}
+
+reload() {
+termux-reload-settings ;}
 
 zshrc() {
 echo '# If you come from bash you might have to change your $PATH.' >> .zshrc
@@ -177,12 +157,74 @@ echo "alias update='/data/data/com.termux/files/home/.termux/zsh.update'" >> .zs
 echo "source /data/data/com.termux/files/home/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc
 echo "source /data/data/com.termux/files/home/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc ; }
 
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [99%]       \r"
-sleep 0.2
+set_zsh() {
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;zshrc ;chf@chc ;fi
+cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
+
+zsh.setup() {
+trap '' 2 ;HIDCRSR
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations           [0.0%]      \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations.          [0.3%]      \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations..         [0.9%]      \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations...        [1.0%]      \r"
+sleep 0.2
+setting_up
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh       [3.0%]      \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh.      [9.0%]      \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh..     [18%]       \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh...    [26%]       \r"
+sleep 0.1
+change_shell
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme.            [30%]       \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme..           [34%]       \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme...          [38%]       \r"
+sleep 0.1
+set_color
+reload
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style.              [42%]       \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style..             [50%]       \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style...            [56%]       \r"
+sleep 0.1
+set_font
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying necessary files.            [62%]       \r"
+sleep 0.1
+copying_files
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying necessary files..           [68%]       \r"
+sleep 0.2
+files
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying necessary files...          [74%]       \r"
+sleep 0.2
+copying_tools
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Zsh-Plugins...              [78%]       \r"
+sleep 0.2
+copying_plugins
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell                [86%]       \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [92%]       \r"
+sleep 0.1
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [94%]       \r"
+sleep 0.2
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Theme...             [96%]       \r"
+sleep 0.2
+set_zsh
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell...             [98%]       \r"
+sleep 0.2
+zshrc
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Reloading Configuration Settings... [99%]       \r"
+sleep 0.8
+reload
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]      \e[0m\r"
-sleep 0.4;termux-reload-settings ;sleep 0.4 ;trap 5 ;NORM
+trap 5; sleep 0.6; NORM
 bash /data/data/com.termux/files/home/theme-engine/theme.engine ;}
 PUT 16 1
 zsh.setup # Thanks for using Theme-Engine.
