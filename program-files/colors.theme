@@ -100,24 +100,24 @@ clear;echo -e "\e[0;1m
 \e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-\e[0;1m┃ [45] accent.material [63] e-ink.colors           ┃
-\e[0;1m┃ [46] apathy.dark     [64] eighties-dark.colors   ┃
-\e[0;1m┃ [47] apathy.light    [65] eighties-light.colors  ┃
-\e[0;1m┃ [48] argonaut.colors [66] embers-dark.colors     ┃
-\e[0;1m┃ [49] ashes.dark      [67] embers-light.colors    ┃
-\e[0;1m┃ [50] ashes.light     [68] flat-dark.colors       ┃
-\e[0;1m┃ [51] forest.dark     [69] flat-light.colors      ┃
-\e[0;1m┃ [52] forest.light    [70] gnometerm.colors       ┃
-\e[0;1m┃ [53] heath.dark      [71] google-dark.colors     ┃
-\e[0;1m┃ [54] heath.light     [72] google-light.colors    ┃
-\e[0;1m┃ [55] import.local    [73] gotham.colors          ┃
-\e[0;1m┃ [56] import.online   [74] greenscreen.dark       ┃
-\e[0;1m┃ [57] lakeside.dark   [75] greenscreen.light      ┃
-\e[0;1m┃ [58] lakeside-light  [76] gruvbox-dark.colors    ┃
-\e[0;1m┃ [59] seaside-dark    [77] gruvbox-light.colors   ┃
-\e[0;1m┃ [60] seaside.light   [78] harmonic16.dark        ┃
-\e[0;1m┃ [61] black-on-white  [79] harmonic16.light       ┃
-\e[0;1m┃ [62] codeschool.dark [80] isotope-dark.colors    ┃
+\e[0;1m┃ [45] londontube.dark [63] paraiso-dark.colors    ┃
+\e[0;1m┃ [46] londontube.light[64] paraiso-light.colors   ┃
+\e[0;1m┃ [47] marrakesh.dark  [65] rydgel.colors          ┃
+\e[0;1m┃ [48] marrakesh.light [66] shapeshifter.dark      ┃
+\e[0;1m┃ [49] materia.colors  [67] shapeshifter.light     ┃
+\e[0;1m┃ [50] material.colors [68] smyck.colors           ┃
+\e[0;1m┃ [51] material.dark   [69] solarized-dark.colors  ┃
+\e[0;1m┃ [52] material.light  [70] solarized-loght.colors ┃
+\e[0;1m┃ [53] mocha.dark      [71] spacemacs.colors       ┃
+\e[0;1m┃ [54] mocha.light     [72] summerfruit.dark       ┃
+\e[0;1m┃ [55] monokai.dark    [73] summerfruit.light      ┃
+\e[0;1m┃ [56] monokai.light   [74] tomorrow-dark.colors   ┃
+\e[0;1m┃ [57] neon.colors     [75] tomorrow-light.colors  ┃
+\e[0;1m┃ [58] nord.colors     [76] tomorrow-night.colors  ┃
+\e[0;1m┃ [59] ocean.dark      [77] twilight-dark.colors   ┃
+\e[0;1m┃ [60] ocean.light     [78] twilight-light.colors  ┃
+\e[0;1m┃ [61] one-dark.colors [79] wild-cherry.colors     ┃
+\e[0;1m┃ [62] one-light.colors[80] zenburn.colors         ┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner
@@ -487,8 +487,6 @@ chcolor1
 chcolor
 
 elif [[ $color = "2>" ]];then
-echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo
-echo -ne "\033]12;#b4e1fd\007";exit
 banner2
 printf "${Bgreen} [!] Choose an Color Scheme :                       \e[0m"
 PUT 28 31
@@ -499,196 +497,196 @@ printf "\e[0m"
 if [[ $color = "45" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp londontube-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "46" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp londontube-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "47" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp marrakesh-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "48" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp marrakesh-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "49" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp materia.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "50" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp material.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "51" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp material.dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "52" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp material.light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "53" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp mocha-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "54" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp mocha-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "55" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp monokai-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "56" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp monokai-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "57" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp neon.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "58" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp nord.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "59" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp ocean-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "60" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp ocean-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "61" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp one-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "62" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp one-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "63" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp paraiso-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "64" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp paraiso-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "65" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp rydgel.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "66" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp shapeshifter-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "67" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp shapeshifter-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "68" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp smyck.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "69" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp solarized-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "70" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp solarized-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "71" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp spacemacs.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "72" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp summerfruit-dark.colors colors.properties
 chcolor1
 chcolor
 
@@ -696,56 +694,56 @@ chcolor
 elif [[ $color = "73" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp summerfruit-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "74" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp tomorrow-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "75" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp tomorrow-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "76" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp tomorrow-night.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "77" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp twilight-dark.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "78" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp twilight-light.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "79" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp wild-cherry.colors colors.properties
 chcolor1
 chcolor
 
 elif [[ $color = "80" ]];then
 cd $HOME/theme-engine/colors &> /dev/null
 termux
-cp  colors.properties
+cp zenburn.colors colors.properties
 chcolor1
 chcolor
 
