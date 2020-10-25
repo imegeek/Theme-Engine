@@ -20,7 +20,7 @@ echo -ne "\e[0;1;7m [!] Zsh-Theme Applying                             \e[0m\r" 
 echo -ne "\e[0;1;7m [!] Zsh-Theme Applying.                            \e[0m\r" ;sleep 0.1
 echo -ne "\e[0;1;7m [!] Zsh-Theme Applying..                           \e[0m\r" ;sleep 0.1
 echo -ne "\e[0;1;7m [!] Zsh-Theme Applying...                          \e[0m\r" ;sleep 0.2
-echo -ne "\e[0;1;7m [√] Zsh-Theme Applied Successfully, Restart Termux \e[0m\r" ;echo -e "\n" ; }
+echo -ne "\e[0;1;7m [√] Zsh-Theme Applied Successfully. Restart Termux \e[0m\r" ;echo"" ; }
 
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
