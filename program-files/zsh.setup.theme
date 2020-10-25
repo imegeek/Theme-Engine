@@ -188,7 +188,6 @@ sleep 0.1
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme...          [38%]       \r"
 sleep 0.1
 set_color
-reload
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style.              [42%]       \r"
 sleep 0.2
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style..             [50%]       \r"
@@ -196,13 +195,13 @@ sleep 0.1
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style...            [56%]       \r"
 sleep 0.1
 set_font
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying necessary files.            [62%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files.            [62%]       \r"
 sleep 0.1
 copying_files
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying necessary files..           [68%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files..           [68%]       \r"
 sleep 0.2
 files
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying necessary files...          [74%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files...          [74%]       \r"
 sleep 0.2
 copying_tools
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Zsh-Plugins...              [78%]       \r"
