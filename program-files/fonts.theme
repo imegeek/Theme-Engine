@@ -4,6 +4,14 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
+## colors
+# foreground
+Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
+Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
+# background
+Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+
 chfont() {
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
@@ -40,12 +48,12 @@ exit_on_signal_SIGTERM () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
-clear;echo -e "\e[0;1m
-\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-\e[0;1m█                                                  █
-\e[0;1m█\e[1;38;2;0;230;118m       █▀▀ █▀█ █▄ █ ▀█▀ ▄▄ █▀▄▀█ █▀▀ █▄ █ █ █\e[0;1m     █
-\e[0;1m█\e[1;38;2;0;230;118m       █▀  █▄█ █ ▀█  █     █ ▀ █ ██▄ █ ▀█ █▄█\e[0;1m     █
-\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+clear;echo -e "
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃${Fgreen}           ┏━╸┏━┓┏┓╻╺┳╸   ┏┳┓┏━╸┏┓╻╻ ╻            \e[0;1m┃
+\e[0;1m┃${Fgreen}           ┣╸ ┃ ┃┃┗┫ ┃ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃   	   \e[0;1m┃
+\e[0;1m┃${Fgreen}           ╹  ┗━┛╹ ╹ ╹    ╹ ╹┗━╸╹ ╹┗━┛            \e[0;1m┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ \e[0;1m[01] Anonymous-Pro     \e[0;1m[16] Inconsolata-dz       ┃
