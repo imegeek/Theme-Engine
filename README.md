@@ -28,11 +28,11 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93866675-9a9e5700-fce5-11ea-83b6-cea06074d32d.jpg)
 
 > **update | chfont | chcolor | chtheme (alias) #only for zsh-users**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869474-76447980-fce9-11ea-8d3d-33f4680692a5.jpg)
-
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134537-94334d00-1773-11eb-9b3b-e639b6c0d783.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134859-9e098000-1774-11eb-970f-970a5e97e48b.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134543-97c6d400-1773-11eb-80ad-8a749c00f9a8.jpg)
+
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134537-94334d00-1773-11eb-9b3b-e639b6c0d783.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134552-9b5a5b00-1773-11eb-9a7e-298b29548608.jpg)
 
