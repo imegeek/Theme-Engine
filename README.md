@@ -16,11 +16,11 @@ Theme-Engine is usually made for modification & customization, so you can make t
 > **Theme-Engine Setup Preview...**
 ![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/97133890-66e59f80-1771-11eb-8249-22e5bd1ed3c3.gif)
 
+> **Enable Extra Keys to get More Functions Keys in Termux.**
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134197-8f21ce00-1772-11eb-9c91-bfabfd08ada1.gif)
+
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826617-4bb52000-1451-11eb-8f8b-599223f56268.jpg)
-
-> **Enable Extra Keys to get More Functions Keys in Termux.**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826494-1dcfdb80-1451-11eb-823f-811bc4d143bf.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869423-66c53080-fce9-11ea-8928-0ea1fd4cbb35.jpg)
 
