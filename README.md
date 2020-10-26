@@ -20,7 +20,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134197-8f21ce00-1772-11eb-9c91-bfabfd08ada1.gif)
 
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826617-4bb52000-1451-11eb-8f8b-599223f56268.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134264-c98b6b00-1772-11eb-9655-80f2709dde47.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869423-66c53080-fce9-11ea-8928-0ea1fd4cbb35.jpg)
 
