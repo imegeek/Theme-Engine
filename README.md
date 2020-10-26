@@ -14,7 +14,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Installation-Preview](https://user-images.githubusercontent.com/63346676/93869698-c7546d80-fce9-11ea-9f1d-f76acb6312bf.jpg)
 
 > **Theme-Engine Setup Preview...**
-![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/97131981-8ed20480-176b-11eb-90f4-32f402b46209.gif)
+![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/97133890-66e59f80-1771-11eb-8249-22e5bd1ed3c3.gif)
 
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/96826617-4bb52000-1451-11eb-8f8b-599223f56268.jpg)
