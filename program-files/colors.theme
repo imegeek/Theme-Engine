@@ -201,8 +201,8 @@ printf "${Byellow} [*] Enter Color Path :                             \e[0m"
 PUT 34 25
 printf "${Byellow}"
 read -s path
-cp $path /data/data/com.termux/files/home/.termux/colors.properties &> /dev/null
 if [ -f "$path" ];then
+cp $path /data/data/com.termux/files/home/.termux/colors.properties &> /dev/null
 PUT 34 25
 HIDCRSR
 printf "/data/data/com.termux/files"
