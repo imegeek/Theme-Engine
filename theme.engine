@@ -7,6 +7,14 @@
 # Github  : abhackerofficial                #
 #############################################
 
+## colors
+# foreground
+Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
+Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
+# background
+Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+
 if [ "${1}" = "-u" ]; then
 cd /data/data/com.termux/files/home/theme-engine/program-files
 bash update.theme
@@ -23,19 +31,11 @@ bash fonts.theme
 exit
 
 elif [ "${1}" = "-log" ]; then
-echo "$Fgreen"
+echo -e "${Fgreen}"
 cat CHANGELOG.md
-printf "\e[0m"
+echo -e "\e[0m"
 exit
 fi
-
-## colors
-# foreground
-Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
-Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
-# background
-Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
-Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
 
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 if [[ "$connection" != 0 ]]
@@ -260,4 +260,11 @@ bash about.theme
 else PUT 16 1
 echo -e "\e[0;1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
-bash program-files/update.theme ;fi # Thanks for using Theme-Engine.
+echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
+sleep 2
+cd ..
+cp -rf theme-engine $HOME
+if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
+bash theme-engine/theme.engine
+else echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Update...\e[0m";fi ;fi
+# Thanks for using Theme-Engine.
