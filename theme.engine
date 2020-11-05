@@ -10,7 +10,23 @@
 if [ "${1}" = "-u" ]; then
 cd /data/data/com.termux/files/home/theme-engine/program-files
 bash update.theme
-exit ;fi
+exit
+
+elif [ "${1}" = "-c" ]; then
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash colors.theme
+exit
+
+elif [ "${1}" = "-f" ]; then
+cd /data/data/com.termux/files/home/theme-engine/program-files
+bash fonts.theme
+exit
+
+elif [ "${1}" = "-log" ]; then
+echo""
+cat CHANGELOG.md
+exit
+fi
 
 ## colors
 # foreground
@@ -86,9 +102,11 @@ PUT 15 1
 printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 git stash &> /dev/null
 git pull &> /dev/null
-sleep 0.4
+sleep 0.8
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [!] Update Successful                              \r\e[0;1m┃\e[0m"
+sleep 1
+printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log           \r\e[0;1m┃\e[0m"
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \r\e[0;1m┃\e[0m"
 PUT 15 1
