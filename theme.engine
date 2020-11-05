@@ -23,8 +23,9 @@ bash fonts.theme
 exit
 
 elif [ "${1}" = "-log" ]; then
-echo""
+echo "$Fgreen"
 cat CHANGELOG.md
+printf "\e[0m"
 exit
 fi
 
