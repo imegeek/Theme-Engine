@@ -266,5 +266,6 @@ cd ..
 cp -rf theme-engine $HOME
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
 bash theme-engine/theme.engine
-else echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Update...\e[0m";fi ;fi
+else echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Re-Install...\e[0m"
+bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)" ;fi ;fi
 # Thanks for using Theme-Engine.
