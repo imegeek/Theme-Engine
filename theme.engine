@@ -104,7 +104,7 @@ git stash &> /dev/null
 git pull &> /dev/null
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log           \r\e[0;1m┃\e[0m"
-sleep 1
+sleep 2
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \r\e[0;1m┃\e[0m"
 PUT 15 1
