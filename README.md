@@ -1,7 +1,7 @@
 [![github](https://forthebadge.com/images/badges/built-for-android.svg)](https://github.com/abhackerofficial)
 [![github](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/abhackerofficial)
 [![github](https://forthebadge.com/images/badges/check-it-out.svg)](https://github.com/abhackerofficial)
-[![github](https://img.shields.io/badge/Theme–Engine-v.3.2-green?style=for-the-badge)](https://github.com/abhackerofficial)
+[![github](https://img.shields.io/badge/Theme–Engine-v.3.5-green?style=for-the-badge)](https://github.com/abhackerofficial)
 [![github](https://img.shields.io/github/license/abhackerofficial/theme-engine?color=blue&style=for-the-badge)](https://github.com/abhackerofficial)
 
 ![GitHub stars](https://img.shields.io/github/stars/abhackerofficial/theme-engine.svg?style=social)
