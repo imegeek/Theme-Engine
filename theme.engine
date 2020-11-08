@@ -263,7 +263,7 @@ bash about.theme
 else PUT 16 1
 echo -e "\e[0;1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
-echo -e "${Fgreen} [!] Fixing-uo directory location...\e[0m"
+echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
 sleep 2
 cd ..
 cp -rf theme-engine $HOME
