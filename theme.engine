@@ -3,11 +3,11 @@
 #############################################
 # Project : Theme-Engine                    #
 # Author  : ABHacker Official               #
-# Version : 3.2 (Latest)                    #
+# Version : 3.5 (Latest)                    #
 # Github  : abhackerofficial                #
 #############################################
 
-## colors
+## Colors
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
 Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
@@ -122,7 +122,14 @@ PUT 14 1 ;fi;NORM;}
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
-extra_options () {
+## Theme-Engine Main Options
+function main_options () {
+if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
+else
+echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m" ;fi
 if [ -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
 echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m"
 else
@@ -144,33 +151,30 @@ PUT 16 1
 echo -e "${Bsky}           Extra Keys Reset Successfully              \e[0m"
 echo -ne "\033]12;#b4e1fd\007";fi;}
 
+## Theme-Engine Main Banner
 banner() {
 printf "\e[0m"
 echo -ne "\033]12;#363636\007";clear
 echo -e "
 \e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-\e[0;1m█                                                    █
-\e[0;1m█${Fred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Fgreen}▄▄${Fblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀ \e[0;1m █
-\e[0;1m█${Fred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Fgreen}  ${Fblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄ \e[0;1m █
-\e[0;1m█                                                    █
-\e[0;1m█ \e[0;1;7m Coding - (abhackerofficial)             \e[1;38;2;0;230;118m  -v 3.2 \e[0;1m █
-\e[0;1m█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                          █
+\e[0;1m█${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▄▄${Bblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m█
+\e[0;1m█${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m█
+\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                          █
+\e[0;1m█\e[0;1;7m   Maintain by - abhackerofficial         \e[1;38;2;0;230;118m  -v 3.5  \e[0;1m█
+$Bgreen█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 " ; }
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
 echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
-extra_options
+main_options
 PUT 15 1
 echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme
 else
 banner
 echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
-extra_options
+main_options
 PUT 15 1
 echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme ;fi
@@ -178,9 +182,7 @@ bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme ;fi
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
 echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
-extra_options
+main_options
 auto_update
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \e[0;1m┃\e[0m"
 PUT 15 1
@@ -221,9 +223,7 @@ else PUT 16 1
 echo -e "\e[1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
 banner
 echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
-extra_options
+main_options
 auto_update
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \e[0;1m┃\e[0m"
 PUT 15 1
@@ -263,7 +263,7 @@ bash about.theme
 else PUT 16 1
 echo -e "\e[0;1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
-echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
+echo -e "${Fgreen} [!] Fixing-uo directory location...\e[0m"
 sleep 2
 cd ..
 cp -rf theme-engine $HOME
