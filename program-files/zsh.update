@@ -34,14 +34,15 @@ NORM
 echo "";
 }
 
+set_files() {
+cd /data/data/com.termux/files/home/theme-engine
+rm -rf fonts
+mkdir fonts ;}
+
 update_files() {
 cd $HOME
 rm -rf .oh-my-zsh &> /dev/null
 rm -rf .zsh-syntax-highlighting &> /dev/null
-cd /data/data/com.termux/files/home/theme-engine
-rm -rf fonts
-mkdir fonts
-git stash &> /dev/null
 cd /data/data/com.termux/files/home/theme-engine/program-files
 unrar x fonts.rar > /dev/null 2>&1
 rm -rf fonts.rar
@@ -61,7 +62,7 @@ fetch_dir() { cd /data/data/com.termux/files/home/theme-engine ;} ;fetch_dir
 else
      cd $HOME
      trap '' 2
-     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";sleep 2
+     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
      trap 5
      update_files
      show_banner
@@ -76,6 +77,7 @@ if [ $changed = 1 ]; then
      echo -ne "Ohmyzsh Update Available. Updating...            		\r"
      echo -e "\n"
      fetch_dir
+     set_files
      git stash &> /dev/null
      git pull
      echo""
