@@ -73,7 +73,7 @@ cd /data/data/com.termux/files/home/theme-engine/program-files
 cp colors.theme fonts.theme zsh.theme zsh.update /data/data/com.termux/files/home/.termux
 cd /data/data/com.termux/files/home/.termux
 chmod +x colors.theme fonts.theme zsh.theme zsh.update
-cd $HOME
+cd $HOME ;sleep 1.6
 }
 
 if [ -d "/data/data/com.termux/files/home/theme-engine" ]; then
@@ -100,7 +100,7 @@ if [ $changed = 1 ]; then
      git stash &> /dev/null
      git pull
      echo -e "\e"
-     ( update_files; sleep 2 ) &> /dev/null & spin1
+     ( update_files ) &> /dev/null & spin1
      ( show_version ) &> /dev/null & spin
      cd $PREFIX/tmp &> /dev/null
      bash show_version
