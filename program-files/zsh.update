@@ -3,16 +3,37 @@
 connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 if [[ "$connection" != 0 ]];then
 echo 'No internet connection available !'
-exit 0
+exit
 fi
 
-show_banner() { bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/zsh.info)" ; }
+temp_directory=$'$PREFIX/tmp'
+show_version() { $temp_directory ; wget -O show_version https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
 
 command -v git > /dev/null 2>&1 || { pkg install git -y ; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y ; }
 
 HIDE(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
+
+spin () {
+
+local pid=$!
+local delay=0.25
+local spinner=( '' '.' '..' '...' )
+
+while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+
+for i in "${spinner[@]}"
+do
+	HIDE
+	echo -ne "\rRetrieving update info${i}\033[0m   ";
+	sleep $delay
+        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+done
+done
+NORM
+echo "";
+}
 
 update_files() {
 cd $HOME
@@ -56,7 +77,9 @@ if [ $changed = 1 ]; then
     #git stash &> /dev/null
      git pull
      update_files
-     show_banner
+     ( echo""; show_version ) &> /dev/null & spin
+     $temp_directory
+     bash show_version
      NORM
 else
     printf "Ohmyzsh Already up to date. 					\r"
