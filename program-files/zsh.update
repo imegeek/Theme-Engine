@@ -7,7 +7,7 @@ exit
 fi
 
 temp_directory=$'$PREFIX/tmp'
-show_version() { $temp_directory ; wget -O show_version https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
+show_version() { cd $temp_directory ; wget -O show_version https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
 
 command -v git > /dev/null 2>&1 || { pkg install git -y ; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y ; }
@@ -74,11 +74,11 @@ if [ $changed = 1 ]; then
      echo -ne "Ohmyzsh Update Available. Updating...            		\r"
      echo -e "\n"
      fetch_dir
-    #git stash &> /dev/null
+     git stash &> /dev/null
      git pull
      update_files
      ( echo""; show_version ) &> /dev/null & spin
-     $temp_directory
+     cd $temp_directory
      bash show_version
      NORM
 else
