@@ -164,66 +164,66 @@ cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 
 zsh.setup() {
 trap '' 2 ;HIDCRSR
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations           [0.0%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations           [0.0%]       \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations.          [0.3%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations.          [0.3%]       \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations..         [0.9%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations..         [0.9%]       \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations...        [1.0%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up configurations...        [1.0%]       \r"
 sleep 0.2
 setting_up
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh       [3.0%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh       [3.0%]       \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh.      [9.0%]      \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh.      [9.0%]       \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh..     [18%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh..     [18%]        \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh...    [26%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Changing default Shell to Zsh...    [26%]        \r"
 sleep 0.1
 change_shell
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme.            [30%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme.            [30%]        \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme..           [34%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme..           [34%]        \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme...          [38%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Color-Scheme...          [38%]        \r"
 sleep 0.1
 set_color
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style.              [42%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style.              [42%]        \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style..             [50%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style..             [50%]        \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style...            [56%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Font-Style...            [56%]        \r"
 sleep 0.1
 set_font
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files.            [62%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files.            [62%]        \r"
 sleep 0.1
 copying_files
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files..           [68%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files..           [68%]        \r"
 sleep 0.2
 files
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files...          [74%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Necessary files...          [74%]        \r"
 sleep 0.2
 copying_tools
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Zsh-Plugins...              [78%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Copying Zsh-Plugins...              [78%]        \r"
 sleep 0.2
 copying_plugins
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell                [86%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell                [86%]        \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [92%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell.               [92%]        \r"
 sleep 0.1
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [94%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell..              [94%]        \r"
 sleep 0.2
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Theme...             [96%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Theme...             [96%]        \r"
 sleep 0.2
 set_zsh
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell...             [98%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setting-up Zsh-Shell...             [98%]        \r"
 sleep 0.2
 zshrc
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Reloading Configuration Settings... [99%]       \r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Reloading Configuration Settings... [99%]        \r"
 sleep 0.8
 reload
-echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]      \e[0m\r"
+echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]       \e[0m\r"
 trap 5; sleep 0.6; NORM
 bash /data/data/com.termux/files/home/theme-engine/theme.engine ;}
 PUT 16 1
