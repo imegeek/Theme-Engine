@@ -62,7 +62,7 @@ update_files() {
 cd $HOME
 rm -rf .oh-my-zsh &> /dev/null
 rm -rf .zsh-syntax-highlighting &> /dev/null
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/theme-engine/fonts
 unrar x fonts.rar > /dev/null 2>&1
 rm -rf fonts.rar
 cd /data/data/com.termux/files/home/theme-engine
