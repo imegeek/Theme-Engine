@@ -87,36 +87,36 @@ if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
 auto_update() {
 ## Theme-Engine auto-update
 HIDCRSR
-printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                         \e[0;1m┃\e[0m\r"
+printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃\e[0m\r"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                  \r\e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 sleep 0.4
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                       \r\e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 git stash &> /dev/null
 git pull &> /dev/null
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log           \r\e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log            \r\e[0;1m┃\e[0m"
 sleep 1.8
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \r\e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 else
-printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                  \r\e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 PUT 14 1 ;fi;NORM;}
 
 if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
@@ -125,15 +125,15 @@ if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .te
 ## Theme-Engine Main Options
 function main_options () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
 else
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style   ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme    ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m" ;fi
+echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m" ;fi
 if [ -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
-echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m"
+echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥   ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m"
 else
-echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥ ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m" ;fi;}
+echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m" ;fi;}
 
 extra_keys () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
@@ -141,14 +141,14 @@ cd /data/data/com.termux/files/home/theme-engine/program-files
 cp extra.keys.theme /data/data/com.termux/files/home/.termux/termux.properties
 termux-reload-settings
 PUT 16 1
-echo -e "${Bsky}           Extra Keys Enabled Successfully            \e[0m"
+echo -e "${Bsky}           Extra Keys Enabled Successfully             \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 else
 cd /data/data/com.termux/files/home/.termux
 rm termux.properties
 termux-reload-settings
 PUT 16 1
-echo -e "${Bsky}           Extra Keys Reset Successfully              \e[0m"
+echo -e "${Bsky}           Extra Keys Reset Successfully               \e[0m"
 echo -ne "\033]12;#b4e1fd\007";fi;}
 
 ## Theme-Engine Main Banner
@@ -156,37 +156,37 @@ banner() {
 printf "\e[0m"
 echo -ne "\033]12;#363636\007";clear
 echo -e "
-\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                          █
-\e[0;1m█${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▄▄${Bblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m█
-\e[0;1m█${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m█
-\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                          █
-\e[0;1m█\e[0;1;7m   Maintain by - abhackerofficial         \e[1;38;2;0;230;118m  -v 3.5  \e[0;1m█
-$Bgreen█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                           █
+\e[0;1m█${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m█
+\e[0;1m█${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m█
+\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                           █
+\e[0;1m█\e[0;1;7m   Maintain by - abhackerofficial          \e[1;38;2;0;230;118m  -v 3.5  \e[0;1m█
+$Bgreen█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 " ; }
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 main_options
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme
 else
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 main_options
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme ;fi
 
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 main_options
 auto_update
-printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \e[0;1m┃\e[0m"
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 PUT 14 27
 printf "\e[0;1;7m"
 read option
@@ -220,14 +220,14 @@ cd /data/data/com.termux/files/home/theme-engine/program-files
 bash about.theme
 
 else PUT 16 1
-echo -e "\e[1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
+echo -e "\e[1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;else
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 main_options
 auto_update
-printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                            \e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \e[0;1m┃\e[0m"
 PUT 15 1
-echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 PUT 14 27
 printf "\e[0;1;7m"
 read option
@@ -261,7 +261,7 @@ cd /data/data/com.termux/files/home/theme-engine/program-files
 bash about.theme
 
 else PUT 16 1
-echo -e "\e[0;1;100m              You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
+echo -e "\e[0;1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi ;fi
 else echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
 echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
 sleep 2
