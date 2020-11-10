@@ -9,22 +9,22 @@ Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 
 echo -e "
-\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-\e[0;1m┃${Bwhite}                   ┏━┓┏┓ ┏━┓╻ ╻╺┳╸                  \e[0;1m┃
-\e[0;1m┃${Bwhite}                   ┣━┫┣┻┓┃ ┃┃ ┃ ┃                   \e[0;1m┃
-\e[0;1m┃${Bwhite}                   ╹ ╹┗━┛┗━┛┗━┛ ╹                   \e[0;1m┃
-\e[0;1m┃${Bred}        ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Bblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
-\e[0;1m┃${Bred}         ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸${Bblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
-\e[0;1m┃${Bred}         ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Bblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
-\e[0;1m┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
-\e[0;1m┃${Bwhite}                                                    \e[0;1m┃
-\e[0;1m┃${Bwhite}  Theme-Engine is usually made for modification     \e[0;1m┃
-\e[0;1m┃${Bwhite}  and customization, So you can make trunks even    \e[0;1m┃
-\e[0;1m┃${Bwhite}  more colourful and better your Termux.            \e[0;1m┃
-\e[0;1m┃${Bwhite}                                                    \e[0;1m┃
-\e[0;1m┃${Bwhite}  Author  - ABHacker Official                       \e[0;1m┃
-\e[0;1m┃${Bwhite}  Github  - https://github.com/abhackerofficial     \e[0;1m┃
-\e[0;1m┃${Bwhite}  Youtube - https://youtube.com/abhackerofficial    \e[0;1m┃
-\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃${Bwhite}                    ┏━┓┏┓ ┏━┓╻ ╻╺┳╸                  \e[0;1m┃
+\e[0;1m┃${Bwhite}                    ┣━┫┣┻┓┃ ┃┃ ┃ ┃                   \e[0;1m┃
+\e[0;1m┃${Bwhite}                    ╹ ╹┗━┛┗━┛┗━┛ ╹                   \e[0;1m┃
+\e[0;1m┃${Bred}         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Bblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
+\e[0;1m┃${Bred}          ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸${Bblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
+\e[0;1m┃${Bred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Bblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
+\e[0;1m┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
+\e[0;1m┃${Bwhite}                                                     \e[0;1m┃
+\e[0;1m┃${Bwhite}  Theme-Engine is usually made for modification      \e[0;1m┃
+\e[0;1m┃${Bwhite}  and customization, So you can make trunks even     \e[0;1m┃
+\e[0;1m┃${Bwhite}  more colourful and better your Termux.             \e[0;1m┃
+\e[0;1m┃${Bwhite}                                                     \e[0;1m┃
+\e[0;1m┃${Bwhite}  Author  - ABHacker Official                        \e[0;1m┃
+\e[0;1m┃${Bwhite}  Github  - https://github.com/abhackerofficial      \e[0;1m┃
+\e[0;1m┃${Bwhite}  Youtube - https://youtube.com/abhackerofficial     \e[0;1m┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 \e[0m";echo -ne "\033]12;#b4e1fd\007"
 # Thanks for using Theme-Engine.
