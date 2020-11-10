@@ -61,7 +61,7 @@ fetch_dir() { cd /data/data/com.termux/files/home/theme-engine ;} ;fetch_dir
 else
      cd $HOME
      trap '' 2
-     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
+     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";sleep 2
      trap 5
      update_files
      show_banner
@@ -84,6 +84,7 @@ if [ $changed = 1 ]; then
      bash show_version
      update_files
      NORM
+     exit
 else
     printf "Ohmyzsh Already up to date. 					\r"
     echo -e "\e"
