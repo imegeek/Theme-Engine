@@ -38,10 +38,13 @@ update_files() {
 cd $HOME
 rm -rf .oh-my-zsh &> /dev/null
 rm -rf .zsh-syntax-highlighting &> /dev/null
-if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
-cd /data/data/com.termux/files/home/theme-engine/fonts
+cd /data/data/com.termux/files/home/theme-engine
+rm -rf fonts
+mkdir fonts
+git stash &> /dev/null
+cd /data/data/com.termux/files/home/theme-engine/program-files
 unrar x fonts.rar > /dev/null 2>&1
-rm -rf fonts.rar ;fi
+rm -rf fonts.rar
 cd /data/data/com.termux/files/home/theme-engine
 cp -rf .oh-my-zsh .zsh-syntax-highlighting .zsh-autosuggestions /data/data/com.termux/files/home ;cd
 cd /data/data/com.termux/files/home/theme-engine
