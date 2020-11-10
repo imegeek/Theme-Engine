@@ -76,7 +76,8 @@ if [ $changed = 1 ]; then
      fetch_dir
      git stash &> /dev/null
      git pull
-     ( echo -e "\n"; show_version ) &> /dev/null & spin
+     echo""
+     ( show_version ) &> /dev/null & spin
      cd $temp_directory
      bash show_version
      update_files
