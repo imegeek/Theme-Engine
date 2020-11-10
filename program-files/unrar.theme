@@ -39,4 +39,4 @@ echo -ne "\e[0m┃\e[0;1;7m [!] Extracting necessary files...          [DONE]   
 sleep 0.5
 echo -e "\e[0m"
 trap 5 ;NORM ;fi
-#>>>>>>>>>>>!
+# Thanks for using Theme-Engine.
