@@ -45,12 +45,11 @@ while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
 for i in "${spinner[@]}"
 do
 	HIDE
-	echo -ne "\rUpdating New files${i}\033[0m   ";
+	echo -ne "\rUpdating files${i}\033[0m   ";
 	sleep $delay
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 done
 done
-NORM
 printf "                                          \r";
 }
 
