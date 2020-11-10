@@ -76,10 +76,10 @@ if [ $changed = 1 ]; then
      fetch_dir
      git stash &> /dev/null
      git pull
-     update_files
-     ( echo""; show_version ) &> /dev/null & spin
+     ( echo -e "\n"; show_version ) &> /dev/null & spin
      cd $temp_directory
      bash show_version
+     update_files
      NORM
 else
     printf "Ohmyzsh Already up to date. 					\r"
