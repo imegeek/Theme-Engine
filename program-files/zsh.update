@@ -25,13 +25,33 @@ while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
 for i in "${spinner[@]}"
 do
 	HIDE
-	echo -ne "\rRetrieving update info${i}\033[0m   ";
+	echo -ne "\rRetrieving Update info${i}\033[0m   ";
 	sleep $delay
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 done
 done
 NORM
-echo "";
+echo"";
+}
+
+spin1 () {
+
+local pid=$!
+local delay=0.25
+local spinner=( '' '.' '..' '...' )
+
+while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+
+for i in "${spinner[@]}"
+do
+	HIDE
+	echo -ne "\rUpdating New files${i}\033[0m   ";
+	sleep $delay
+        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+done
+done
+NORM
+printf "                                          \r";
 }
 
 set_files() {
@@ -80,11 +100,11 @@ if [ $changed = 1 ]; then
      set_files
      git stash &> /dev/null
      git pull
-     echo""
+     echo -e "\e"
+     ( update_files; sleep 3 ) &> /dev/null & spin1
      ( show_version ) &> /dev/null & spin
      cd $PREFIX/tmp &> /dev/null
      bash show_version
-     update_files
      NORM
      exit
 else
