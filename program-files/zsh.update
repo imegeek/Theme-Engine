@@ -6,8 +6,7 @@ echo 'No internet connection available !'
 exit
 fi
 
-temp_directory=$'$PREFIX/tmp'
-show_version() { cd $temp_directory ; wget -O show_version https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
+show_version() { cd $PREFIX/tmp &> /dev/null ; wget -O show_version https://raw.githubusercontent.com/abhackerofficial/theme-engine/master/program-files/zsh.info -q; }
 
 command -v git > /dev/null 2>&1 || { pkg install git -y ; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y ; }
@@ -78,7 +77,7 @@ if [ $changed = 1 ]; then
      git pull
      echo""
      ( show_version ) &> /dev/null & spin
-     cd $temp_directory
+     cd $PREFIX/tmp &> /dev/null
      bash show_version
      update_files
      NORM
