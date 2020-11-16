@@ -19,29 +19,29 @@ C=$'\e[0;1m'
 
 chcolor() {
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-mv colors.properties $HOME/theme-engine/temp
+if [ -d "/data/data/com.termux/files/home/Theme-engine" ];then
+mv colors.properties $HOME/Theme-engine/temp
 if [ -d "/data/data/com.termux/files/home/.termux/colors.properties" ];then cd $HOME ; rm /data/data/com.termux/files/home/.termux/colors.properties ;fi
-cd $HOME/theme-engine/temp
+cd $HOME/Theme-engine/temp
 mv colors.properties /data/data/com.termux/files/home/.termux
 termux-reload-settings
 printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo ;fi ; }
 
 termux() {
-if [ ! -d "/data/data/com.termux/files/home/theme-engine" ];then
+if [ ! -d "/data/data/com.termux/files/home/Theme-engine" ];then
 if [ -d "/data/data/com.termux/files/home/.termux/colors" ];then
 cd /data/data/com.termux/files/home/.termux/colors ;fi ;fi ; }
 
 chcolor1() {
-if [ ! -d "/data/data/com.termux/files/home/theme-engine" ];then
+if [ ! -d "/data/data/com.termux/files/home/Theme-engine" ];then
 if [ -d "/data/data/com.termux/files/home/.termux/colors" ];then
 mv colors.properties /data/data/com.termux/files/home/.termux
 termux-reload-settings
 printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo ;fi ;fi ; }
 
 random_colors() {
-random_scheme=$(ls /data/data/com.termux/files/home/theme-engine/colors | shuf -n 1)
-{ cp /data/data/com.termux/files/home/theme-engine/colors/$random_scheme $HOME/.termux/colors.properties;}
+random_scheme=$(ls /data/data/com.termux/files/home/Theme-engine/colors | shuf -n 1)
+{ cp /data/data/com.termux/files/home/Theme-engine/colors/$random_scheme $HOME/.termux/colors.properties;}
 { termux-reload-settings; printf "\e[0;1;7m [√] Random-Color-Scheme Applied Successfully       \e[0m";echo; exit;};}
 
 exit_on_signal_SIGINT () {
