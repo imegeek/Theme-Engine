@@ -54,7 +54,7 @@ printf "                                          \r";
 }
 
 set_files() {
-cd /data/data/com.termux/files/home/theme-engine
+cd /data/data/com.termux/files/home/Theme-engine
 rm -rf fonts
 mkdir fonts ;}
 
@@ -62,26 +62,26 @@ update_files() {
 cd $HOME
 rm -rf .oh-my-zsh &> /dev/null
 rm -rf .zsh-syntax-highlighting &> /dev/null
-cd /data/data/com.termux/files/home/theme-engine/fonts
+cd /data/data/com.termux/files/home/Theme-engine/fonts
 unrar x fonts.rar > /dev/null 2>&1
 rm -rf fonts.rar
-cd /data/data/com.termux/files/home/theme-engine
+cd /data/data/com.termux/files/home/Theme-engine
 cp -rf .oh-my-zsh .zsh-syntax-highlighting .zsh-autosuggestions /data/data/com.termux/files/home ;cd
-cd /data/data/com.termux/files/home/theme-engine
+cd /data/data/com.termux/files/home/Theme-engine
 cp -rf colors fonts /data/data/com.termux/files/home/.termux ;cd
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 cp colors.theme fonts.theme zsh.theme zsh.update /data/data/com.termux/files/home/.termux
 cd /data/data/com.termux/files/home/.termux
 chmod +x colors.theme fonts.theme zsh.theme zsh.update
 cd $HOME ;sleep 1.6
 }
 
-if [ -d "/data/data/com.termux/files/home/theme-engine" ]; then
-fetch_dir() { cd /data/data/com.termux/files/home/theme-engine ;} ;fetch_dir
+if [ -d "/data/data/com.termux/files/home/Theme-engine" ]; then
+fetch_dir() { cd /data/data/com.termux/files/home/Theme-engine ;} ;fetch_dir
 else
      cd $HOME
      trap '' 2
-     git clone https://github.com/abhackerofficial/theme-engine "/data/data/com.termux/files/home/theme-engine";update_banner ;sleep 2
+     git clone https://github.com/abhackerofficial/Theme-engine "/data/data/com.termux/files/home/Theme-engine";update_banner ;sleep 2
      trap 5
      update_files
      show_banner
