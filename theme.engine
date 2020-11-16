@@ -16,17 +16,17 @@ Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
 
 if [ "${1}" = "-u" ]; then
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash update.theme
 exit
 
 elif [ "${1}" = "-c" ]; then
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash colors.theme
 exit
 
 elif [ "${1}" = "-f" ]; then
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash fonts.theme
 exit
 
@@ -80,9 +80,9 @@ exit_on_signal_SIGTERM () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
-if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/fonts.rar" ];then
-  if [ -f "/data/data/com.termux/files/home/theme-engine/fonts/Terminus.ttf" ];then
-     rm /data/data/com.termux/files/home/theme-engine/fonts/fonts.rar ;fi ;fi
+if [ -f "/data/data/com.termux/files/home/Theme-engine/fonts/fonts.rar" ];then
+  if [ -f "/data/data/com.termux/files/home/Theme-engine/fonts/Terminus.ttf" ];then
+     rm /data/data/com.termux/files/home/Theme-engine/fonts/fonts.rar ;fi ;fi
 
 auto_update() {
 ## Theme-Engine auto-update
@@ -119,7 +119,7 @@ PUT 15 1
 printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
 PUT 14 1 ;fi;NORM;}
 
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
+if [ -d "/data/data/com.termux/files/home/Theme-engine" ];then
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
 ## Theme-Engine Main Options
@@ -137,7 +137,7 @@ echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-
 
 extra_keys () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 cp extra.keys.theme /data/data/com.termux/files/home/.termux/termux.properties
 termux-reload-settings
 PUT 16 1
@@ -170,14 +170,14 @@ echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━�
 main_options
 PUT 15 1
 echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme
+bash /data/data/com.termux/files/home/Theme-engine/program-files/unrar.theme
 else
 banner
 echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 main_options
 PUT 15 1
 echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-bash /data/data/com.termux/files/home/theme-engine/program-files/unrar.theme ;fi
+bash /data/data/com.termux/files/home/Theme-engine/program-files/unrar.theme ;fi
 
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
@@ -194,29 +194,29 @@ echo -ne "\e[0m"
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 echo
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash fonts.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 echo
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash colors.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash disable.zsh.theme
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
 extra_keys
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash about.theme
 
 else PUT 16 1
@@ -235,29 +235,29 @@ echo -ne "\e[0m";
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 echo
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash fonts.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 echo
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash colors.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash disable.zsh.theme
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
 extra_keys
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-cd /data/data/com.termux/files/home/theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-engine/program-files
 bash about.theme
 
 else PUT 16 1
@@ -266,9 +266,9 @@ else echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionari
 echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
 sleep 2
 cd ..
-cp -rf theme-engine $HOME
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-bash theme-engine/theme.engine
+cp -rf Theme-engine $HOME
+if [ -d "/data/data/com.termux/files/home/Theme-engine" ];then
+bash Theme-engine/theme.engine
 else echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Re-Install...\e[0m" ;sleep 0.5 ;cd $HOME
 bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)" ;fi ;fi
 # Thanks for using Theme-Engine.
