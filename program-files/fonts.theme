@@ -14,21 +14,21 @@ Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\
 
 chfont() {
 if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
-if [ -d "/data/data/com.termux/files/home/theme-engine" ];then
-mv font.ttf $HOME/theme-engine/temp
+if [ -d "/data/data/com.termux/files/home/Theme-engine" ];then
+mv font.ttf $HOME/Theme-engine/temp
 if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm /data/data/com.termux/files/home/font.ttf ;fi
-cd $HOME/theme-engine/temp
+cd $HOME/Theme-engine/temp
 mv font.ttf /data/data/com.termux/files/home/.termux
 termux-reload-settings
 printf "\e[0;1;7m [√] Font-Style Applied Successfully                \e[0m" ;echo ;fi ; }
 
 termux() {
-if [ ! -d "/data/data/com.termux/files/home/theme-engine" ];then
+if [ ! -d "/data/data/com.termux/files/home/Theme-engine" ];then
 if [ -d "/data/data/com.termux/files/home/.termux/fonts" ];then
 cd /data/data/com.termux/files/home/.termux/fonts ;fi ;fi ; }
 
 chfont1() {
-if [ ! -d "/data/data/com.termux/files/home/theme-engine" ];then
+if [ ! -d "/data/data/com.termux/files/home/Theme-engine" ];then
 if [ -d "/data/data/com.termux/files/home/.termux/fonts" ];then
 mv font.ttf /data/data/com.termux/files/home/.termux
 termux-reload-settings
