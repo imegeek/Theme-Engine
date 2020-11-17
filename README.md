@@ -2,11 +2,11 @@
 [![github](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/abhackerofficial)
 [![github](https://forthebadge.com/images/badges/check-it-out.svg)](https://github.com/abhackerofficial)
 [![github](https://img.shields.io/badge/Theme–Engine-v.3.5-green?style=for-the-badge)](https://github.com/abhackerofficial)
-[![github](https://img.shields.io/github/license/abhackerofficial/theme-engine?color=blue&style=for-the-badge)](https://github.com/abhackerofficial)
+[![github](https://img.shields.io/github/license/abhackerofficial/Theme-engine?color=blue&style=for-the-badge)](https://github.com/abhackerofficial)
 
-![GitHub stars](https://img.shields.io/github/stars/abhackerofficial/theme-engine.svg?style=social)
-![GitHub forks](https://img.shields.io/github/forks/abhackerofficial/theme-engine.svg?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/abhackerofficial/theme-engine.svg?style=social)
+![GitHub stars](https://img.shields.io/github/stars/abhackerofficial/Theme-engine.svg?style=social)
+![GitHub forks](https://img.shields.io/github/forks/abhackerofficial/Theme-engine.svg?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/abhackerofficial/Theme-engine.svg?style=social)
 
 Theme-Engine is usually made for modification & customization, so you can make trunks even more Colourful and better your Termux.
 
