@@ -154,20 +154,20 @@ clear;echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ \e[0;1m[01] agnoster           \e[0;1m[22] crunch              ┃
-┃ \e[0;1m[02] Soliah             \e[0;1m[23] cypher              ┃
-┃ \e[0;1m[03] adben              \e[0;1m[24] dallas              ┃
-┃ \e[0;1m[04] af-magic           \e[0;1m[25] darkblood           ┃
-┃ \e[0;1m[05] afowler            \e[0;1m[26] daveverwer          ┃
-┃ \e[0;1m[06] 3den               \e[0;1m[27] dieter              ┃
-┃ \e[0;1m[07] alanpeabody        \e[0;1m[28] dogenpunk           ┃
-┃ \e[0;1m[08] amuse              \e[0;1m[29] dpoggi              ┃
-┃ \e[0;1m[09] apple              \e[0;1m[30] dst                 ┃
-┃ \e[0;1m[10] arrow              \e[0;1m[31] dstufft             ┃
-┃ \e[0;1m[11] aussiegeek         \e[0;1m[32] duellj              ┃
-┃ \e[0;1m[12] avit               \e[0;1m[33] eastwood            ┃
-┃ \e[0;1m[13] awesomepanda       \e[0;1m[34] edvardm             ┃
-┃ \e[0;1m[14] bira               \e[0;1m[35] emotty              ┃
+┃ \e[0;1m[01] zsh-orignal        \e[0;1m[22] crunch              ┃
+┃ \e[0;1m[02] agnoster           \e[0;1m[23] cypher              ┃
+┃ \e[0;1m[03] Soliah             \e[0;1m[24] dallas              ┃
+┃ \e[0;1m[04] adben              \e[0;1m[25] darkblood           ┃
+┃ \e[0;1m[05] af-magic           \e[0;1m[26] daveverwer          ┃
+┃ \e[0;1m[06] afowler            \e[0;1m[27] dieter              ┃
+┃ \e[0;1m[07] 3den               \e[0;1m[28] dogenpunk           ┃
+┃ \e[0;1m[08] alanpeabody        \e[0;1m[29] dpoggi              ┃
+┃ \e[0;1m[09] amuse              \e[0;1m[30] dst                 ┃
+┃ \e[0;1m[10] apple              \e[0;1m[31] dstufft             ┃
+┃ \e[0;1m[11] arrow              \e[0;1m[32] duellj              ┃
+┃ \e[0;1m[12] aussiegeek         \e[0;1m[33] eastwood            ┃
+┃ \e[0;1m[13] avit               \e[0;1m[34] edvardm             ┃
+┃ \e[0;1m[14] awesomepanda       \e[0;1m[35] emotty              ┃
 ┃ \e[0;1m[15] blinks             \e[0;1m[36] essembeh            ┃
 ┃ \e[0;1m[16] bureau             \e[0;1m[37] evan                ┃
 ┃ \e[0;1m[17] candy-kingdom      \e[0;1m[38] fino-time           ┃
@@ -272,72 +272,72 @@ printf "\e[1;30;48;2;0;230;118m"
 read theme
 printf "\e[0m"
 if [[ $theme = "1" ]] || [[ $theme = "01" ]];then
-echo 'ZSH_THEME="agnoster"' > .zshrc
+echo 'ZSH_THEME="zsh-orignal"' > .zshrc
 zshrc
 Applied
 
 elif [[ $theme = "2" ]] || [[ $theme = "02" ]];then
-echo 'ZSH_THEME="Soliah"' > .zshrc
+echo 'ZSH_THEME="agnoster"' > .zshrc
 zshrc
 Applied
 
 elif [[ $theme = "3" ]] || [[ $theme = "03" ]];then
-echo 'ZSH_THEME="adben"' > .zshrc
+echo 'ZSH_THEME="Soliah"' > .zshrc
 zshrc
 Applied
 
 elif [[ $theme = "4" ]] || [[ $theme = "04" ]];then
-echo 'ZSH_THEME="af-magic"' > .zshrc
+echo 'ZSH_THEME="adben"' > .zshrc
 zshrc
 Applied
 
 elif [[ $theme = "5" ]] || [[ $theme = "05" ]];then
-echo 'ZSH_THEME="afowler"' > .zshrc
+echo 'ZSH_THEME="af-magic"' > .zshrc
 zshrc
 Applied
 
 elif [[ $theme = "6" ]] || [[ $theme = "06" ]];then
+echo 'ZSH_THEME="afowler"' > .zshrc
+zshrc
+Applied
+
+elif [[ $theme = "7" ]] || [[ $theme = "07" ]];then
 echo 'ZSH_THEME="3den"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "7" ]] || [[ $theme = "06" ]];then
+elif [[ $theme = "8" ]] || [[ $theme = "08" ]];then
 echo 'ZSH_THEME="alanpeabody"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "8" ]] || [[ $theme = "06" ]];then
+elif [[ $theme = "9" ]] || [[ $theme = "09" ]];then
 echo 'ZSH_THEME="amuse"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "9" ]] || [[ $theme = "06" ]];then
+elif [[ $theme = "10" ]];then
 echo 'ZSH_THEME="apple"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "10" ]];then
+elif [[ $theme = "11" ]];then
 echo 'ZSH_THEME="arrow"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "11" ]];then
+elif [[ $theme = "12" ]];then
 echo 'ZSH_THEME="aussiegeek"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "12" ]];then
+elif [[ $theme = "13" ]];then
 echo 'ZSH_THEME="avit"' > .zshrc
 zshrc
 Applied
 
-elif [[ $theme = "13" ]];then
-echo 'ZSH_THEME="awesomepanda"' > .zshrc
-zshrc
-Applied
-
 elif [[ $theme = "14" ]];then
-echo 'ZSH_THEME="bira"' > .zshrc
+echo 'ZSH_THEME="awesomepanda"' > .zshrc
 zshrc
 Applied
 
