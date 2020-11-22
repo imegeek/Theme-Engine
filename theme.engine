@@ -230,7 +230,7 @@ PUT 15 1
 echo -e "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 PUT 14 27
 printf "\e[0;1;7m"
-read -n 27 option
+read option
 echo -ne "\e[0m";
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
