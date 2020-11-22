@@ -12,27 +12,27 @@ if [ -d "/data/data/com.termux/files/home/.termux/colors.properties" ];then cd $
 if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm /data/data/com.termux/files/home/font.ttf ;fi ;}
 
 set_color() {
-cd $HOME/Theme-engine/colors
+cd $HOME/Theme-Engine/colors
 cp accent.material.colors colors.properties
 mv colors.properties /data/data/com.termux/files/home/.termux ; }
 set_font() {
-cd $HOME/Theme-engine/fonts
+cd $HOME/Theme-Engine/fonts
 cp  'Anonymice Powerline.ttf' font.ttf
 mv font.ttf /data/data/com.termux/files/home/.termux ; }
 
 copying_files() {
-cd /data/data/com.termux/files/home/Theme-engine
+cd /data/data/com.termux/files/home/Theme-Engine
 cp -rf colors fonts /data/data/com.termux/files/home/.termux ; }
 
 files() {
 if [ -f "/data/data/com.termux/files/home/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
 if [ ! -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then
-cd /data/data/com.termux/files/home/Theme-engine
+cd /data/data/com.termux/files/home/Theme-Engine
 cp -rf .oh-my-zsh /data/data/com.termux/files/home ;fi ;}
 
 copying_tools() {
-cd /data/data/com.termux/files/home/Theme-engine/program-files
+cd /data/data/com.termux/files/home/Theme-Engine/program-files
 cp fonts.theme /data/data/com.termux/files/home/.termux
 cp colors.theme /data/data/com.termux/files/home/.termux
 cp zsh.theme /data/data/com.termux/files/home/.termux
@@ -45,7 +45,7 @@ chsh -s zsh ;}
 copying_plugins() {
 if [ -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
 if [ ! -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then
-cd /data/data/com.termux/files/home/Theme-engine
+cd /data/data/com.termux/files/home/Theme-Engine
 cp -rf .zsh-autosuggestions /data/data/com.termux/files/home
 cp -rf .zsh-syntax-highlighting /data/data/com.termux/files/home ;fi ;}
 
@@ -225,6 +225,6 @@ sleep 0.8
 reload
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]       \e[0m\r"
 trap 5; sleep 0.6; NORM
-bash /data/data/com.termux/files/home/Theme-engine/theme.engine ;}
+bash /data/data/com.termux/files/home/Theme-Engine/theme.engine ;}
 PUT 16 1
 zsh.setup # Thanks for using Theme-Engine.
