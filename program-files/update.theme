@@ -19,10 +19,10 @@ then echo -e "\n\033[0;1;48;2;200;0;0m    [-] No Internet \033[0;1;30;48;2;0;255
 NORM;exit
 fi
 
-if [ -d "/data/data/com.termux/files/home/Theme-engine" ];then
+if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
 
 remove_previous_file() {
-cd $HOME; rm -rf Theme-engine
+cd $HOME; rm -rf Theme-Engine
 cd /data/data/com.termux/files/usr/share ;}
 
 spin () {
@@ -53,9 +53,9 @@ echo -ne "\e[0;1;30;48;2;0;230;118m [!] Theme-Engine Update founded !  \r\e[0m"
 sleep 0.8
 remove_previous_file
 trap '' 2
-( git clone https://github.com/abhackerofficial/Theme-engine; sleep 2 ) &> /dev/null & spin
+( git clone https://github.com/abhackerofficial/Theme-Engine; sleep 2 ) &> /dev/null & spin
 HIDCRSR
-sleep 1 ;mv Theme-engine $HOME ; cd ;cd Theme-engine; NORM; bash theme.engine;printf "\e[0m"
+sleep 1 ;mv Theme-Engine $HOME ; cd ;cd Theme-Engine; NORM; bash theme.engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
 else
@@ -90,8 +90,8 @@ echo "";
 }
 trap '' 2
 echo
-( command -v git > /dev/null 2>&1 || pkg install git -y ;git clone https://github.com/abhackerofficial/Theme-engine "/data/data/com.termux/files/home/Theme-engine"; sleep 2 ) &> /dev/null & spin
+( command -v git > /dev/null 2>&1 || pkg install git -y ;git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home/Theme-Engine"; sleep 2 ) &> /dev/null & spin
 HIDCRSR
-sleep 1 ;cd Theme-engine; NORM; bash theme.engine;printf "\e[0m"
+sleep 1 ;cd Theme-Engine; NORM; bash theme.engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007" ;fi # Thanks for using Theme-Engine
