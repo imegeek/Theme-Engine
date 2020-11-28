@@ -63,8 +63,10 @@ cd Theme-Engine ;./theme.engine
 
 > **Installation Methods :**
 
+```bash
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | `git clone https://github.com/abhackerofficial/Theme-Engine "$HOME";cd Theme-Engine ;./theme.engine`        |       
+| **git**   | `git clone https://github.com/abhackerofficial/Theme-Engine ; cd Theme-Engine ; ./theme.engine`                  |       
 | **curl**  | `bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"`   |
+```
