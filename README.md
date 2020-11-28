@@ -41,7 +41,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 
 ![Theme-Engine-About](https://user-images.githubusercontent.com/63346676/100494714-43e04e00-316a-11eb-9f48-e1fc4e9a11c4.jpg)
 
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134383-196a3200-1773-11eb-9fe1-159aad0821ea.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/100494726-6a9e8480-316a-11eb-92a6-4362846187ff.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93867238-61b2b200-fce6-11ea-9e84-788839bb1cb7.jpg)
 
