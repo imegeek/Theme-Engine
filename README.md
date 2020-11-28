@@ -55,15 +55,8 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 | <p align="center"> [ABHacker Official](https://github.com/abhackerofficial)                                                   |</p>
 
 
-> **Basic Installation :**
-```bash
-git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home"
-cd Theme-Engine ;./theme.engine
-```
-
 > **Installation Methods :**
 
-bash
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
 | **git**   | `git clone https://github.com/abhackerofficial/Theme-Engine ; cd Theme-Engine ; ./theme.engine`                  |       
