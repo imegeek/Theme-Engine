@@ -23,7 +23,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/100494668-d3393180-3169-11eb-9981-6421fdcb5e4a.jpg)
 
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134264-c98b6b00-1772-11eb-9655-80f2709dde47.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/100494707-2ad79d00-316a-11eb-95e0-c1da5cee77b2.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869423-66c53080-fce9-11ea-8928-0ea1fd4cbb35.jpg)
 
@@ -39,7 +39,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134552-9b5a5b00-1773-11eb-9a7e-298b29548608.jpg)
 
-![Theme-Engine-About](https://user-images.githubusercontent.com/63346676/97134314-ed4eb100-1772-11eb-9029-1f9036570d11.jpg)
+![Theme-Engine-About](https://user-images.githubusercontent.com/63346676/100494714-43e04e00-316a-11eb-9f48-e1fc4e9a11c4.jpg)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134383-196a3200-1773-11eb-9fe1-159aad0821ea.jpg)
 
