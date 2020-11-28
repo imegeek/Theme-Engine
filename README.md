@@ -65,6 +65,6 @@ cd Theme-Engine ;./theme.engine
 
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | `bash git clone https://github.com/ankushbhagats/Theme-Engine "$HOME";cd Theme-Engine ;./theme.engine`        |       
+| **git**   | `git clone https://github.com/ankushbhagats/Theme-Engine "$HOME";cd Theme-Engine ;./theme.engine`        |       
 | **curl**  | `bash -c "$(curl -fsSL https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"`   |
