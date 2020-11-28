@@ -58,6 +58,7 @@ This [Theme-Engine](https://github.com/ankushbhagats/theme-engine) is maintained
 > **Installation Commands :**
 ```bash
 bash -c "$(curl -fsSL https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"
+```
 
 > **Installation Methods :**
 
