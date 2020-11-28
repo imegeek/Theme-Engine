@@ -64,6 +64,6 @@ bash -c "$(curl -fsSL https://github.com/ankushbhagats/theme-engine/raw/master/p
 
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | `git clone https://github.com/ankushbhagats/Theme-Engine                                                      |
+| **git**   | git clone https://github.com/ankushbhagats/Theme-Engine                                                      |
 | **curl**  | `bash -c "$(curl -fsSL https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"`   |
