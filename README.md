@@ -1,4 +1,7 @@
-[![github](https://forthebadge.com/images/badges/built-for-android.svg)](https://github.com/ankushbhagats)
+<p align="center">
+<a href="https://github.com/ankushbhagats">
+<img src="https://forthebadge.com/images/badges/built-for-android.svg"></a>
+
 [![github](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/ankushbhagats)
 [![github](https://forthebadge.com/images/badges/check-it-out.svg)](https://github.com/ankushbhagats)
 [![github](https://img.shields.io/badge/Theme–Engine-v.3.5-gold?style=for-the-badge)](https://github.com/ankushbhagats)
