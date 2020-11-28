@@ -1,7 +1,12 @@
 #!/usr/bin/bash
 
-HIDCRSR(){ echo -en "\033[?25l";}
+HIDE(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
+
+c1="\e[1;38;2;0;200;118m"
+c2=$'\e[0;38;2;220;255;255m'
+slp=$"sleep 0.03"
+
 clear
 echo -e "
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -12,14 +17,12 @@ echo -e "
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█"
 
 
-HIDCRSR
+HIDE
 connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 if [[ "$connection" != 0 ]]
 then echo -e "\n\033[0;1;48;2;200;0;0m    [-] No Internet \033[0;1;30;48;2;0;255;50m connection !    \e[0m"
 NORM;exit
 fi
-
-if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
 
 remove_previous_file() {
 cd $HOME; rm -rf Theme-Engine
@@ -32,7 +35,7 @@ local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
 while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
 for i in "${spinner[@]}"
 do
-        HIDCRSR
+        HIDE
         echo -ne "\e[0;1;48;2;41;121;255m\r [!] Updating Theme-Engine... \e[0;1;90;48;2;0;230;118m [ $i ] \033[3m\033[0m   ";
         sleep $delay
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
@@ -44,7 +47,83 @@ echo"";
 NORM
 }
 
-HIDCRSR
+exit_on_signal_SIGINT () {
+    echo -ne "\r"
+    echo -e "\e[1;38;2;240;0;0mTheme-Engine :  Installation Cancel !    "
+    NORM
+    exit
+}
+
+trap exit_on_signal_SIGINT SIGINT
+
+function progress_bar() {
+echo""
+while true ;do
+if [ -f "/data/data/com.termux/files/home/Theme-Engine/.installed" ];then
+echo -ne "                                                \r"
+NORM
+break
+fi
+$slp
+echo -ne "${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing             \r"
+$slp
+echo -ne "${c1}▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing.        \r"
+$slp
+echo -ne "${c1}▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing..        \r"
+$slp
+echo -ne "${c1}▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing...        \r"
+$slp
+echo -ne "${c1}▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing        \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing.        \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing..         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing...         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing.         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing..         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing...         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬${c3} Installing         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬${c3} Installing.         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬${c3} Installing..         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬${c3} Installing...         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬${c3} Installing         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬${c3} Installing.         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬${c3} Installing...         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬${c3} Installing         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬${c3} Installing.         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬${c3} Installing..         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬${c3} Installing...         \r"
+$slp
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬${c3} Installing...         \r"
+$slp
+if [ -f "/data/data/com.termux/files/home/Theme-Engine/.installed" ];then
+echo -ne "                                                \r"
+NORM
+break
+fi
+done
+}
+
+if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
+
+HIDE
 echo -ne "\n\e[0;1;30;48;2;0;230;118m [!] Checking for Update...          \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
@@ -54,12 +133,12 @@ sleep 0.8
 remove_previous_file
 trap '' 2
 ( git clone https://github.com/abhackerofficial/Theme-Engine; sleep 2 ) &> /dev/null & spin
-HIDCRSR
+HIDE
 sleep 1 ;mv Theme-Engine $HOME ; cd ;cd Theme-Engine; NORM; bash theme.engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
 else
-HIDCRSR
+HIDE
 sleep 0.8
 echo -e "\e[0;1;30;48;2;0;230;118m [!] Theme-Engine Update not found ! \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
@@ -67,31 +146,11 @@ NORM
 fi
 
 else
-spin () {
+installing() {
+command -v git > /dev/null 2>&1 || pkg install git -y &> /dev/null
+git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home/Theme-Engine" &> /dev/null
+cd Theme-Engine;touch .installed ;sleep 1; bash theme.engine;printf "\e[0m" ;}
 
-local pid=$!
-local delay=0.05
-local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
-
-while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
-
-for i in "${spinner[@]}"
-do
-	HIDCRSR
-	echo -ne "\e[0;1;48;2;41;121;255m\r [!] Theme-Engine Installing... \e[0;1;90;48;2;0;230;118m [$i] \033[0m   ";
-	sleep $delay
-        printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
-done
-done
-NORM
-printf "\e[0;1;90;48;2;0;230;118m [√] Theme-Engine Installing Complete\e\e[0m";
-echo "";
-
-}
-trap '' 2
-echo
-( command -v git > /dev/null 2>&1 || pkg install git -y ;git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home/Theme-Engine"; sleep 2 ) &> /dev/null & spin
-HIDCRSR
-sleep 1 ;cd Theme-Engine; NORM; bash theme.engine;printf "\e[0m"
-trap 5
+trap '' SIGTSTP
+progress_bar & installing
 echo -ne "\033]12;#b4e1fd\007" ;fi # Thanks for using Theme-Engine
