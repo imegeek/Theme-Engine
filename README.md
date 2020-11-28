@@ -20,7 +20,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/100494655-9836fe00-3169-11eb-97d2-091c143c97c7.jpg)
 
 > **Enable Extra Keys to get More Functions Keys in Termux.**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134197-8f21ce00-1772-11eb-9c91-bfabfd08ada1.gif)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/100494668-d3393180-3169-11eb-9981-6421fdcb5e4a.jpg)
 
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134264-c98b6b00-1772-11eb-9655-80f2709dde47.jpg)
