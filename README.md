@@ -55,15 +55,15 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 | <p align="center"> [ABHacker Official](https://github.com/abhackerofficial)                                                   |</p>
 
 
-> **Installation Commands :**
+> **Basic Installation :**
 ```bash
-bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"
+git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home"
+cd Theme-Engine ;./theme.engine
 ```
 
 > **Installation Methods :**
 
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | git clone https://github.com/abhackerofficial/Theme-Engine                                                      |
 | **curl**  | `bash -c "$(curl -fsSL https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://github.com/abhackerofficial/theme-engine/raw/master/program-files/update.theme)"`   |
