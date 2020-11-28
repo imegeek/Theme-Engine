@@ -55,15 +55,8 @@ This [Theme-Engine](https://github.com/ankushbhagats/theme-engine) is maintained
 | <p align="center"> [Ankush Bhagat](https://github.com/ankushbhagats)                                                   |</p>
 
 
-> **Basic Installation :**
-```bash
-git clone https://github.com/ankushbhagats/Theme-Engine "/data/data/com.termux/files/home"
-cd Theme-Engine ;./theme.engine
-```
-
 > **Installation Methods :**
 
-bash
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
 | **git**   | `git clone https://github.com/ankushbhagats/Theme-Engine ; cd Theme-Engine ; ./theme.engine`                  |       
