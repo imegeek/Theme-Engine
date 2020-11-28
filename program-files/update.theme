@@ -48,10 +48,17 @@ NORM
 }
 
 exit_on_signal_SIGINT () {
+if [ ! -d "/data/data/com.termux/files/home/Theme-Engine" ];then
     echo -ne "\r"
     echo -e "\e[1;38;2;240;0;0mTheme-Engine :  Installation Cancel !    "
     NORM
     exit
+else
+    echo -ne "\r"
+    echo -e "\e[1;48;2;240;0;0m Theme-Engine :  Upadating Cancel !  "
+    NORM
+    exit
+fi
 }
 
 trap exit_on_signal_SIGINT SIGINT
@@ -122,7 +129,7 @@ done
 }
 
 if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
-
+cd "/data/data/com.termux/files/home/Theme-Engine"
 HIDE
 echo -ne "\n\e[0;1;30;48;2;0;230;118m [!] Checking for Update...          \r\e[0m"
 changed=0
