@@ -55,15 +55,15 @@ This [Theme-Engine](https://github.com/ankushbhagats/theme-engine) is maintained
 | <p align="center"> [Ankush Bhagat](https://github.com/ankushbhagats)                                                   |</p>
 
 
-> **Installation Commands :**
+> **Basic Installation :**
 ```bash
-bash -c "$(curl -fsSL https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"
+git clone https://github.com/ankushbhagats/Theme-Engine "/data/data/com.termux/files/home"
+cd Theme-Engine ;./theme.engine
 ```
 
 > **Installation Methods :**
 
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | git clone https://github.com/ankushbhagats/Theme-Engine                                                      |
 | **curl**  | `bash -c "$(curl -fsSL https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://github.com/ankushbhagats/theme-engine/raw/master/program-files/update.theme)"`   |
