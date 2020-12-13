@@ -11,6 +11,7 @@ if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 cd /data/data/com.termux/files/home/.termux; rm main.theme.engine ;fi
 if [ -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
 echo -e "\e[0;1;30;48;2;200;255;0m  [√] Zsh-Theme Disabled Successfully                  \e[0m"
+exit
 else
 echo -e "\e[0;1;100m  [!] You won't disable (Zsh) before Enable Zsh-Theme  \e[0m" ;fi ;}
 
