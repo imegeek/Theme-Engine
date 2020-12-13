@@ -66,6 +66,11 @@ HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 WAIT() { sleep 0.03 ;}
 
+line1() { printf "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r" ;}
+line2() { printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r" ;}
+line3() { echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" ;}
+line4() { echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ;}
+
 # interrupter
 exit_on_signal_SIGINT () {
     echo -e "\n"
@@ -92,34 +97,34 @@ auto_update() {
 HIDCRSR
 printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃\e[0m\r"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+line2
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+line2
 sleep 0.4
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+line2
 git stash &> /dev/null
 git pull &> /dev/null
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log            \r\e[0;1m┃\e[0m"
 sleep 1.8
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+line2
 PUT 14 1
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+line2
 else
 printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃\e[0m"
 PUT 15 1
-printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r"
+line2
 PUT 14 1 ;fi;NORM;}
 
 if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
@@ -170,22 +175,22 @@ printf "\n$Bgreen█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 if [ -f "/data/data/com.termux/files/home/Theme-Engine/fonts/fonts.rar" ];then
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+line3
 main_options
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+line4
 bash /data/data/com.termux/files/home/Theme-Engine/program-files/unrar.theme
 fi
 fi
 
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+line3
 main_options
 auto_update
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \e[0;1m┃\e[0m"
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+line4
 PUT 14 27
 printf "\e[0;1;7m"
 read option
@@ -227,22 +232,22 @@ fi
 if [ -f "/data/data/com.termux/files/home/Theme-Engine/fonts/fonts.rar" ];then
 if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+line3
 main_options
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+line4
 bash /data/data/com.termux/files/home/Theme-Engine/program-files/unrar.theme
 fi
 fi
 
 if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
 banner
-echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+line3
 main_options
 auto_update
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \e[0;1m┃\e[0m"
 PUT 15 1
-echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+line4
 PUT 14 27
 printf "\e[0;1;7m"
 read option
