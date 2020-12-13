@@ -15,6 +15,8 @@ Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0
 Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
 
+version=" 3.6"
+
 if [ "${1}" = "-u" ]; then
 cd /data/data/com.termux/files/home/Theme-Engine/program-files
 bash update.theme
@@ -161,7 +163,7 @@ printf "\n\e[0;1m█${Bred}                        ${Bred}  ${Bblue}            
 printf "\n\e[0;1m█${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m█";WAIT
 printf "\n\e[0;1m█${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m█";WAIT
 printf "\n\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                           █";WAIT
-printf "\n\e[0;1m█\e[0;1;7m   Maintain by - abhackerofficial          \e[1;38;2;0;230;118m  -v 3.5  \e[0;1m█";WAIT
+printf "\n\e[0;1m█\e[0;1;7m Maintain by - abhackerofficial            \e[1;38;2;0;230;118m  -v${version}  \e[0;1m█";WAIT
 printf "\n$Bgreen█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n\n"; WAIT
 }
 
@@ -208,6 +210,7 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 cd /data/data/com.termux/files/home/Theme-Engine/program-files
 bash disable.zsh.theme
+exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
 extra_keys
@@ -264,6 +267,7 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 cd /data/data/com.termux/files/home/Theme-Engine/program-files
 bash disable.zsh.theme
+exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
 extra_keys
