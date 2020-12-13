@@ -9,57 +9,59 @@
 
 ## Colors
 # foreground
-Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
-Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
-# background
-Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
-Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'    Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 
+# background
+Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+
+## Theme-Engine Version
 version=" 3.6"
 
 if [ "${1}" = "-u" ]; then
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash update.theme
-exit
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash update.theme
+	exit
 
 elif [ "${1}" = "-c" ]; then
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash colors.theme
-exit
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash colors.theme
+	exit
 
 elif [ "${1}" = "-f" ]; then
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash fonts.theme
-exit
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash fonts.theme
+	exit
 
 elif [ "${1}" = "-log" ]; then
-echo -e "${Fgreen}"
-cat CHANGELOG.md
-echo -e "\e[0m"
-exit
+	echo -e "${Fgreen}"
+	cat CHANGELOG.md
+	echo -e "\e[0m"
+	exit
 fi
 
 ## Required Packeges Checking...
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-if [[ "$connection" != 0 ]]
-then clear
-echo -e "${red}[${green}-${red}] No Internet${green} connection!"
+	if [[ "$connection" != 0 ]]
+   then clear
+   echo -e "${red}[${green}-${red}] No Internet${green} connection!"
    exit
 fi; }
 
-command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing."; apt install unrar -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-if [[ "$connection" != 0 ]]
-then clear
-echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
+   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing."; apt install unrar -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+	if [[ "$connection" != 0 ]]
+   then clear
+   echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
    exit
-fi; }
+ fi
+}
 
-command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing."; apt install zsh -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-if [[ "$connection" != 0 ]]
-then clear
-echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
+   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing."; apt install zsh -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+	if [[ "$connection" != 0 ]]
+   then clear
+   echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
    exit
-fi; }
+ fi
+}
 
 PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
@@ -92,72 +94,75 @@ if [ -f "/data/data/com.termux/files/home/Theme-Engine/fonts/fonts.rar" ];then
   if [ -f "/data/data/com.termux/files/home/Theme-Engine/fonts/Terminus.ttf" ];then
      rm /data/data/com.termux/files/home/Theme-Engine/fonts/fonts.rar ;fi ;fi
 
-auto_update() {
 ## Theme-Engine auto-update
+auto_update() {
 HIDCRSR
-printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃\e[0m\r"
-PUT 15 1
-line2
+	printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃\e[0m\r"
+      PUT 15 1
+   line2
 changed=0
-git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
-if [ $changed = 1 ]; then
+	git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+	if [ $changed = 1 ]; then
+  PUT 14 1
+	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃\e[0m"
+     PUT 15 1
+   line2
+ sleep 0.4
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃\e[0m"
-PUT 15 1
-line2
-sleep 0.4
+	printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃\e[0m"
+      PUT 15 1
+    line2
+   git stash &> /dev/null
+ git pull &> /dev/null
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃\e[0m"
-PUT 15 1
-line2
-git stash &> /dev/null
-git pull &> /dev/null
+	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log            \r\e[0;1m┃\e[0m"
+     sleep 1.8
+   PUT 15 1
+  line2
 PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log            \r\e[0;1m┃\e[0m"
-sleep 1.8
-PUT 15 1
-line2
-PUT 14 1
-printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \r\e[0;1m┃\e[0m"
-PUT 15 1
-line2
+	printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \r\e[0;1m┃\e[0m"
+     PUT 15 1
+  line2
 else
-printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃\e[0m"
-PUT 15 1
-line2
-PUT 14 1 ;fi;NORM;}
+	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃\e[0m"
+      PUT 15 1
+    line2
+   PUT 14 1
+  fi
+NORM
+}
 
 if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
-if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
+ if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
 ## Theme-Engine Main Options
 function main_options () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
+   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+   echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
 else
-echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m" ;fi
+   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
+   echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m" ;fi
 if [ -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
-echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥   ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m"
+   echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥   ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m"
 else
-echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m" ;fi;}
+   echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m" ;fi;}
 
 extra_keys () {
 if [ ! -f "/data/data/com.termux/files/home/.termux/termux.properties" ];then
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-cp extra.keys.theme /data/data/com.termux/files/home/.termux/termux.properties
+   cd /data/data/com.termux/files/home/Theme-Engine/program-files
+   cp extra.keys.theme /data/data/com.termux/files/home/.termux/termux.properties
 termux-reload-settings
 PUT 16 1
-echo -e "${Bsky}           Extra Keys Enabled Successfully             \e[0m"
-echo -ne "\033]12;#b4e1fd\007"
+   echo -e "${Bsky}           Extra Keys Enabled Successfully             \e[0m"
+   echo -ne "\033]12;#b4e1fd\007"
 else
-cd /data/data/com.termux/files/home/.termux
-rm termux.properties
+   cd /data/data/com.termux/files/home/.termux
+   rm termux.properties
 termux-reload-settings
 PUT 16 1
-echo -e "${Bsky}           Extra Keys Reset Successfully               \e[0m"
-echo -ne "\033]12;#b4e1fd\007";fi;}
+   echo -e "${Bsky}           Extra Keys Reset Successfully               \e[0m"
+   echo -ne "\033]12;#b4e1fd\007";fi;}
 
 ## Theme-Engine Main Banner
 banner() {
@@ -173,127 +178,129 @@ printf "\n$Bgreen█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 }
 
 if [ -f "/data/data/com.termux/files/home/Theme-Engine/fonts/fonts.rar" ];then
-if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-banner
-line3
-main_options
-PUT 15 1
-line4
+  if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+          banner
+        line3
+      main_options
+    PUT 15 1
+ line4
 bash /data/data/com.termux/files/home/Theme-Engine/program-files/unrar.theme
 fi
 fi
 
 if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-banner
-line3
-main_options
+     banner
+    line3
+  main_options
 auto_update
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \e[0;1m┃\e[0m"
-PUT 15 1
-line4
-PUT 14 27
-printf "\e[0;1;7m"
-read option
+        PUT 15 1
+      line4
+     PUT 14 27
+    printf "\e[0;1;7m"
+  read option
 echo -ne "\e[0m"
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
-echo
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash fonts.theme
+	echo
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash fonts.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
-echo
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash colors.theme
+	echo
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash colors.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash zsh.theme
+	echo -ne "\033]12;#b4e1fd\007"
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash disable.zsh.theme
-exit
+	echo -ne "\033]12;#b4e1fd\007"
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash disable.zsh.theme
+	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-extra_keys
+	extra_keys
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash about.theme
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash about.theme
 
 else PUT 16 1
-echo -e "\e[1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007"
-fi
+       echo -e "\e[1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007"
+   fi
 fi
 
 if [ -f "/data/data/com.termux/files/home/Theme-Engine/fonts/fonts.rar" ];then
-if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-banner
-line3
-main_options
-PUT 15 1
-line4
+ if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+      banner
+    line3
+   main_options
+  PUT 15 1
+ line4
 bash /data/data/com.termux/files/home/Theme-Engine/program-files/unrar.theme
-fi
+   fi
 fi
 
 if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-banner
-line3
-main_options
+    banner
+   line3
+  main_options
 auto_update
 printf "\e[0;1m┃\e[0;1;7m [*] Execute an Option :                             \e[0;1m┃\e[0m"
-PUT 15 1
-line4
-PUT 14 27
-printf "\e[0;1;7m"
-read option
+         PUT 15 1
+       line4
+      PUT 14 27
+    printf "\e[0;1;7m"
+  read option
 echo -ne "\e[0m";
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
-echo
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash fonts.theme
+	echo
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash fonts.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
-echo
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash colors.theme
+	echo
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash colors.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash zsh.setup.theme
+	echo -ne "\033]12;#b4e1fd\007"
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-echo -ne "\033]12;#b4e1fd\007"
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash disable.zsh.theme
-exit
+	echo -ne "\033]12;#b4e1fd\007"
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash disable.zsh.theme
+	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-extra_keys
+	extra_keys
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-bash about.theme
+	cd /data/data/com.termux/files/home/Theme-Engine/program-files
+	bash about.theme
 
 else PUT 16 1
-echo -e "\e[0;1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007"
-fi
+       echo -e "\e[0;1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007"
+   fi
 fi
 
-else echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
-echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
-sleep 2
-cd ..
-cp -rf Theme-Engine $HOME
+else
+	echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
+	echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
+	sleep 2
+	cd ..
+	cp -rf Theme-Engine $HOME
 if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
-bash Theme-Engine/theme.engine
-else echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Re-Install...\e[0m" ;sleep 0.5 ;cd $HOME
-bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/program-files/update.theme)" ;fi ;fi
+	bash Theme-Engine/theme.engine
+else
+	echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Re-Install...\e[0m" ;sleep 0.5 ;cd $HOME
+	bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/program-files/update.theme)" ;fi ;fi
 
-# Thanks for using Theme-Engine.
+#       Thanks for using Theme-Engine.
