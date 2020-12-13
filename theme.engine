@@ -117,10 +117,11 @@ PUT 14 1
 PUT 14 1
 	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme.engine -log            \r\e[0;1m┃\e[0m"
       sleep 1.8
-    PUT 15 1
+     PUT 15 1
    line2
- PUT 14 1
-bash theme.engine
+  PUT 14 1
+ bash theme.engine
+exit
 else
 	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃\e[0m"
       PUT 15 1
