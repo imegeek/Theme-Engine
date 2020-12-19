@@ -13,7 +13,7 @@ Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
 
 
-if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+if [ -f "$HOME/.termux/config.theme-engine" ];then
 
 Applied() { printf "\e[0m"
 echo -ne "\e[0;1;7m [!] Zsh-Theme Applying                             \e[0m\r" ;sleep 0.1
@@ -136,12 +136,12 @@ echo"" >> .zshrc
 echo "# Example aliases" >> .zshrc
 echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
 echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
-echo "alias chcolor='/data/data/com.termux/files/home/.termux/colors.theme'" >> .zshrc
-echo "alias chfont='/data/data/com.termux/files/home/.termux/fonts.theme'" >> .zshrc
-echo "alias chtheme='/data/data/com.termux/files/home/.termux/zsh.theme'" >> .zshrc
-echo "alias update='/data/data/com.termux/files/home/.termux/zsh.update'" >> .zshrc
-echo "source /data/data/com.termux/files/home/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc
-echo "source /data/data/com.termux/files/home/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc ; }
+echo "alias chcolor='$HOME/.termux/colors.theme'" >> .zshrc
+echo "alias chfont='$HOME/.termux/fonts.theme'" >> .zshrc
+echo "alias chtheme='$HOME/.termux/zsh.theme'" >> .zshrc
+echo "alias update='$HOME/.termux/zsh.update'" >> .zshrc
+echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc
+echo "source $HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc ; }
 
 cd $HOME
 
