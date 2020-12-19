@@ -4,50 +4,80 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
+## distro
+distroA=$(uname -o | grep -o "Android")
+distroB=$(uname -o | grep -o "Linux")
+
+## directory
+distro1() {
+loc1="$PREFIX/share/Theme-Engine/colors"
+loc2="$PREFIX/share/Theme-Engine/fonts"
+loc3="$PREFIX/share/Theme-Engine/programs"
+loc4="$PREFIX/share/Theme-Engine/fonts/Terminus.ttf"
+loc5="$PREFIX/share/Theme-Engine/fonts/fonts.rar"
+loc6="$HOME/.termux/termux.properties"
+loc7="$HOME/.termux"
+loc8="$HOME/.termux/config.theme-engine"
+loc9="$PREFIX/share/Theme-Engine"
+loc10="$HOME/.zshrc"
+loc11="$HOME/.oh-my-zsh"
+loc12="$PREFIX/share/Theme-Engine/theme-engine"
+loc13="$HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh"
+loc14="$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+}
+
+if [[ $distroA == *'Android'* ]]; then
+distro1
+
+elif [[ $distroB == *'Linux'* ]]; then
+distro2
+else echo "Theme-Engine isn't supported you're system."
+fi
+
 setting_up() {
-if [ ! -d "/data/data/com.termux/files/home/.termux" ];then cd $HOME ; mkdir .termux ;fi
-if [ ! -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
-cd /data/data/com.termux/files/home/.termux; touch main.theme.engine ;fi
-if [ -d "/data/data/com.termux/files/home/.termux/colors.properties" ];then cd $HOME ; rm /data/data/com.termux/files/home/.termux/colors.properties ;fi
-if [ -d "/data/data/com.termux/files/home/.termux/font.ttf" ];then cd $HOME ; rm /data/data/com.termux/files/home/font.ttf ;fi ;}
+if [ ! -d "${loc7}" ];then cd $HOME ; mkdir .termux ;fi
+if [ ! -f "${loc8}" ];then
+cd ${loc7}; touch config.theme-engine ;fi
+if [ -d "${loc7}/colors.properties" ];then cd $HOME ; rm ${loc7}/colors.properties ;fi
+if [ -d "${loc7}/font.ttf" ];then cd $HOME ; rm $HOME/font.ttf ;fi ;}
 
 set_color() {
 cd $HOME/Theme-Engine/colors
 cp accent.material.colors colors.properties
-mv colors.properties /data/data/com.termux/files/home/.termux ; }
+mv colors.properties ${loc7} ; }
 set_font() {
 cd $HOME/Theme-Engine/fonts
 cp  'Anonymice Powerline.ttf' font.ttf
-mv font.ttf /data/data/com.termux/files/home/.termux ; }
+mv font.ttf ${loc7} ; }
 
 copying_files() {
-cd /data/data/com.termux/files/home/Theme-Engine
-cp -rf colors fonts /data/data/com.termux/files/home/.termux ; }
+cd $HOME/Theme-Engine
+cp -rf colors fonts ${loc7} ; }
 
 files() {
-if [ -f "/data/data/com.termux/files/home/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
-if [ -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
-if [ ! -d "/data/data/com.termux/files/home/.oh-my-zsh" ];then
-cd /data/data/com.termux/files/home/Theme-Engine
-cp -rf .oh-my-zsh /data/data/com.termux/files/home ;fi ;}
+if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
+if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
+if [ ! -d "$HOME/.oh-my-zsh" ];then
+cd $HOME/Theme-Engine
+cp -rf .oh-my-zsh $HOME ;fi ;}
 
 copying_tools() {
-cd /data/data/com.termux/files/home/Theme-Engine/program-files
-cp fonts.theme /data/data/com.termux/files/home/.termux
-cp colors.theme /data/data/com.termux/files/home/.termux
-cp zsh.theme /data/data/com.termux/files/home/.termux
-cp zsh.update /data/data/com.termux/files/home/.termux
-cd /data/data/com.termux/files/home/.termux ; chmod +x fonts.theme colors.theme zsh.theme zsh.update ;}
+cd $HOME/Theme-Engine/programs
+cp fonts.theme ${loc7}
+cp colors.theme ${loc7}
+cp zsh.theme ${loc7}
+cp zsh.update ${loc7}
+cd ${loc7} ; chmod +x fonts.theme colors.theme zsh.theme zsh.update ;}
 
 change_shell() {
 chsh -s zsh ;}
 
 copying_plugins() {
-if [ -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
-if [ ! -d "/data/data/com.termux/files/home/.zsh-syntax-highlighting" ];then
-cd /data/data/com.termux/files/home/Theme-Engine
-cp -rf .zsh-autosuggestions /data/data/com.termux/files/home
-cp -rf .zsh-syntax-highlighting /data/data/com.termux/files/home ;fi ;}
+if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
+if [ ! -d "$HOME/.zsh-syntax-highlighting" ];then
+cd $HOME/Theme-Engine
+cp -rf .zsh-autosuggestions $HOME
+cp -rf .zsh-syntax-highlighting $HOME ;fi ;}
 
 reload() {
 termux-reload-settings ;}
@@ -151,15 +181,15 @@ echo"" >> .zshrc
 echo "# Example aliases" >> .zshrc
 echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
 echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
-echo "alias chcolor='/data/data/com.termux/files/home/.termux/colors.theme'" >> .zshrc
-echo "alias chfont='/data/data/com.termux/files/home/.termux/fonts.theme'" >> .zshrc
-echo "alias chtheme='/data/data/com.termux/files/home/.termux/zsh.theme'" >> .zshrc
-echo "alias update='/data/data/com.termux/files/home/.termux/zsh.update'" >> .zshrc
-echo "source /data/data/com.termux/files/home/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc
-echo "source /data/data/com.termux/files/home/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc ; }
+echo "alias chcolor='${loc7}/colors.theme'" >> .zshrc
+echo "alias chfont='${loc7}/fonts.theme'" >> .zshrc
+echo "alias chtheme='${loc7}/zsh.theme'" >> .zshrc
+echo "alias update='${loc7}/zsh.update'" >> .zshrc
+echo "source ${loc13}" >> .zshrc
+echo "source ${loc14}" >> .zshrc ; }
 
 set_zsh() {
-if [ -f "/data/data/com.termux/files/home/.termux/main.theme.engine" ];then
+if [ -f "${loc7}/config.theme-engine" ];then
 cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 
 zsh.setup() {
@@ -225,6 +255,6 @@ sleep 0.8
 reload
 echo -ne "\e[0;1;48;2;101;31;255m  [!] Setup completed. Enjoy Oh-my-zsh    [100%]       \e[0m\r"
 trap 5; sleep 0.6; NORM
-bash /data/data/com.termux/files/home/Theme-Engine/theme.engine ;}
+bash "${loc12}" ;}
 PUT 16 1
 zsh.setup # Thanks for using Theme-Engine.
