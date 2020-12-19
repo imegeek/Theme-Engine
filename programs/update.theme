@@ -141,7 +141,7 @@ remove_previous_file
 trap '' 2
 ( git clone https://github.com/abhackerofficial/Theme-Engine; sleep 2 ) &> /dev/null & spin
 HIDE
-sleep 1 ;mv Theme-Engine $HOME ; cd ;cd Theme-Engine; NORM; bash theme.engine;printf "\e[0m"
+sleep 1 ;mv Theme-Engine $HOME ; cd ;cd Theme-Engine; NORM; bash theme-engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
 else
@@ -156,7 +156,7 @@ else
 installing() {
 command -v git > /dev/null 2>&1 || pkg install git -y &> /dev/null
 git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home/Theme-Engine" &> /dev/null
-cd Theme-Engine;touch .installed ;sleep 1; bash theme.engine;printf "\e[0m" ;}
+cd Theme-Engine;touch .installed ;sleep 1; bash theme-engine;printf "\e[0m" ;}
 
 trap '' SIGTSTP
 progress_bar & installing
