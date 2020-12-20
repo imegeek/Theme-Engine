@@ -77,6 +77,25 @@ else
 fi
 }
 
+remove() {
+if [ -d "${loc9}" ];then
+clear
+echo "
+	┌──────────────────────────────────────┐
+	│  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}│
+	│  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}│
+	│  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}│
+	│—————————————version 4.0——————————————│
+	└──────────────────────────────────────┘
+"
+	printf "Uninstalling Theme-Engine...\n\n"
+	printf "Remove files in /data/data/com.termux/files/usr/share directory...\n\n"
+	rm -rf ${loc9}
+	printf "Successfully Removed Theme-Engine.\n\n"
+	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	exit
+fi
+}
 
 ## arguments
 
@@ -115,12 +134,15 @@ elif [ "${1}" = "-log" ]; then
 	echo -e "${reset}"
 	exit
 
+elif [ "${1}" = "--uninstall" ]; then
+        remove
+
 elif [ "${1}" = "-updater" ]; then
-if [ ${#2} -lt 1 ]; then
-echo "theme-engine: try 'theme-engine --help' or 'theme-engine -h'
-for more information"
-exit
-fi
+	if [ ${#2} -lt 1 ]; then
+	echo "theme-engine: try 'theme-engine --help' or 'theme-engine -h'
+	for more information"
+	exit
+	fi
 
 if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
 	sed -i "/status='true'/d" ${loc10}
