@@ -91,6 +91,7 @@ echo "
 	printf "Uninstalling Theme-Engine...\n\n"
 	printf "Remove files in /data/data/com.termux/files/usr/share directory...\n\n"
 	rm -rf ${loc9}
+	rm $PREFIX/bin/theme-engine
 	printf "Successfully Removed Theme-Engine.\n\n"
 	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
 	exit
