@@ -10,7 +10,7 @@
 ## Colors
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'    Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
-
+reset=$'\e[0m'
 # background
 Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
 
@@ -49,9 +49,53 @@ distro2
 else echo "Theme-Engine isn't supported you're system."
 fi
 
-if [ "${1}" = "-u" ]; then
-cd ${loc3}
+setup() {
+clear
+echo "
+	┌──────────────────────────────────────┐
+	│  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}│
+	│  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}│
+	│  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}│
+	│—————————————version 4.0——————————————│
+	└──────────────────────────────────────┘
+"
+	printf "Setting-up Theme-Engine...\n\n"
+	printf "Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
+	cd ..
+	cp -rf Theme-Engine $PREFIX/share
+if [ -d "${loc9}" ];then
+	cd - &> /dev/null
+	cp theme-engine $PREFIX/bin
+	printf "Successfully Setup Theme-Engine.\n\n"
+	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
+	printf "Get Help: \e[92mtheme-engine${reset} --help\n\n"
+	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	exit
+else
+	echo -e "${Fred}Setup failed theme-engine trying to Re-Install...${reset}" ;sleep 0.5 ;cd $HOME
+	bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)"
+fi
+}
 
+
+## arguments
+
+if [ -d "${loc9}" ];then
+if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
+echo "Usage: theme-engine [options...]
+
+ -c Start color menu with this command.
+ -f Start font menu with this command.
+ -u Check available update with this command.
+
+ -log Check changelog with this command.
+
+ -updater -off Trun off auto-updater with this command.
+ -updater -on  Turn on auto-updater with this command."
+exit
+
+elif [ "${1}" = "-u" ]; then
+	cd ${loc3}
 	bash update.theme
 	exit
 
@@ -68,21 +112,30 @@ elif [ "${1}" = "-f" ]; then
 elif [ "${1}" = "-log" ]; then
 	echo -e "${Fgreen}"
 	cat CHANGELOG.md
-	echo -e "\e[0m"
+	echo -e "${reset}"
 	exit
 
 elif [ "${1}" = "-updater" ]; then
-if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
-sed -i "/status='true'/d" ${loc10}
-sed -i "20 a status='false'" ${loc10}
-printf "off"
-exit
-elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
-sed -i "/status='false'/d" ${loc10}
-sed -i "20 a status='true'" ${loc10}
-printf "on"
+if [ ${#2} -lt 1 ]; then
+echo "theme-engine: try 'theme-engine --help' or 'theme-engine -h'
+for more information"
 exit
 fi
+
+if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
+	sed -i "/status='true'/d" ${loc10}
+	sed -i "20 a status='false'" ${loc10}
+	printf "off"
+exit
+elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
+	sed -i "/status='false'/d" ${loc10}
+	sed -i "20 a status='true'" ${loc10}
+	printf "on"
+exit
+fi
+fi
+else
+setup
 fi
 
 ## Required Packeges Checking...
@@ -144,25 +197,25 @@ if [ -f "${loc5}" ];then
 auto_update() {
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
 HIDE
-	printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃\e[0m\r"
+	printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃${reset}\r"
       PUT 15 1
    line2
 changed=0
 	git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 	if [ $changed = 1 ]; then
   PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃\e[0m"
+	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
      PUT 15 1
    line2
  sleep 0.4
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃\e[0m"
+	printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃${reset}"
       PUT 15 1
     line2
    git stash &> /dev/null
  git pull &> /dev/null
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme-engine -log            \r\e[0;1m┃\e[0m"
+	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme-engine -log            \r\e[0;1m┃${reset}"
       sleep 1.8
      PUT 15 1
    line2
@@ -170,7 +223,7 @@ PUT 14 1
  bash theme-engine
 exit
 else
-	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃\e[0m"
+	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃${reset}"
       PUT 15 1
     line2
    PUT 14 1
@@ -185,15 +238,15 @@ if [ -d "${loc9}" ];then
 ## Theme-Engine Main Options
 function main_options () {
 if [ ! -f "${loc8}" ];then
-   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-   echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m"
+   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃${reset}"
 else
-   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃\e[0m"
-   echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃\e[0m" ;fi
+   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃${reset}" ;fi
 if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥   ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m"
+   echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥   ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃${reset}"
 else
-   echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃\e[0m" ;fi;}
+   echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃${reset}" ;fi;}
 
 extra_keys () {
 if [ ! -f "${loc6}" ];then
@@ -201,19 +254,19 @@ if [ ! -f "${loc6}" ];then
    cp extra.keys.theme ${loc6}
 termux-reload-settings
 PUT 16 1
-   echo -e "${Bsky}           Extra Keys Enabled Successfully             \e[0m"
+   echo -e "${Bsky}           Extra Keys Enabled Successfully             ${reset}"
    echo -ne "\033]12;#b4e1fd\007"
 else
    cd ${loc7}
    rm termux.properties
 termux-reload-settings
 PUT 16 1
-   echo -e "${Bsky}           Extra Keys Reset Successfully               \e[0m"
+   echo -e "${Bsky}           Extra Keys Reset Successfully               ${reset}"
    echo -ne "\033]12;#b4e1fd\007";fi;}
 
 ## Theme-Engine Main Banner
 banner() {
-printf "\e[0m"
+printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄";WAIT
 printf "\n\e[0;1m█${Bred}                        ${Bred}  ${Bblue}                           █";WAIT
@@ -244,13 +297,13 @@ if [ -f "${loc8}" ];then
     line3
   main_options
 auto_update
-printf "\e[0;1m┃\e[0;1;7m [Execute an Option]:                                \e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [Execute an Option]:                                \e[0;1m┃${reset}"
         PUT 15 1
       line4
      PUT 14 24
     printf "\e[0;1;7m"
   read option
-echo -ne "\e[0m"
+echo -ne "${reset}"
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
@@ -281,7 +334,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
 
@@ -301,13 +354,13 @@ if [ ! -f "${loc8}" ];then
    line3
   main_options
 auto_update
-printf "\e[0;1m┃\e[0;1;7m [Execute an Option]:                                \e[0;1m┃\e[0m"
+printf "\e[0;1m┃\e[0;1;7m [Execute an Option]:                                \e[0;1m┃${reset}"
          PUT 15 1
        line4
       PUT 14 24
     printf "\e[0;1;7m"
   read option
-echo -ne "\e[0m"
+echo -ne "${reset}"
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
@@ -338,68 +391,11 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[0;1;100m               You entered Wrong Input !               \e[0m";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[0;1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
 
-else HIDE
-clear
-echo -e "\e[1m
-┌──────────────────────────────────┐
-│╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸│
-│ ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸ │
-│ ╹ ╹ ╹┗━╸╹ ╹┗━╸   ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸│
-└──────────────────────────────────┘\e[0m\n"
-echo -e "Be patience theme-engine setting up directory..."
-cd ..
-cp -rf Theme-Engine $PREFIX/share
-sleep 1
-printf "starting theme-engine   \r"
-sleep 0.1
-printf "Starting theme-engine   \r"
-sleep 0.1
-printf "sTarting theme-engine   \r"
-sleep 0.1
-printf "stArting theme-engine   \r"
-sleep 0.1
-printf "staRting theme-engine   \r"
-sleep 0.1
-printf "starTing theme-engine   \r"
-sleep 0.1
-printf "startIng theme-engine   \r"
-sleep 0.1
-printf "startiNg theme-engine   \r"
-sleep 0.1
-printf "startinG theme-engine   \r"
-sleep 0.1
-printf "starting Theme-engine   \r"
-sleep 0.1
-printf "starting tHeme-engine   \r"
-sleep 0.1
-printf "starting thEme-engine   \r"
-sleep 0.1
-printf "starting theMe-engine   \r"
-sleep 0.1
-printf "starting themE-engine   \r"
-sleep 0.1
-printf "starting theme-Engine   \r"
-sleep 0.1
-printf "starting theme-eNgine   \r"
-sleep 0.1
-printf "starting theme-enGine   \r"
-sleep 0.1
-printf "starting theme-engIne   \r"
-sleep 0.1
-printf "starting theme-engiNe.  \r"
-sleep 0.1
-printf "starting theme-enginE.. \r"
-sleep 0.1
-printf "starting theme-engine...\r"
-sleep 1
-if [ -d "${loc9}" ];then
-	bash ${loc9}/theme-engine
 else
-	echo -e "${Fred}Setup failed theme-engine trying to Re-Install...\e[0m" ;sleep 0.5 ;cd $HOME
-	bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)" ;fi ;fi
-
+setup
+fi
 #       Thanks for using Theme-Engine.
