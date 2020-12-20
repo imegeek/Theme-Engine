@@ -48,7 +48,7 @@ NORM
 }
 
 exit_on_signal_SIGINT () {
-if [ ! -d "/data/data/com.termux/files/home/Theme-Engine" ];then
+if [ ! -d "$PREFIX/share/Theme-Engine" ];then
     echo -ne "\r"
     echo -e "\e[1;38;2;240;0;0mTheme-Engine :  Installation Cancel !    "
     NORM
@@ -66,7 +66,7 @@ trap exit_on_signal_SIGINT SIGINT
 function progress_bar() {
 echo""
 while true ;do
-if [ -f "/data/data/com.termux/files/home/Theme-Engine/.installed" ];then
+if [ -f "$PREFIX/share/Theme-Engine/.installed" ];then
 echo -ne "                                                \r"
 NORM
 break
@@ -120,7 +120,7 @@ echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬�
 $slp
 echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬${c3} Installing...         \r"
 $slp
-if [ -f "/data/data/com.termux/files/home/Theme-Engine/.installed" ];then
+if [ -f "$PREFIX/share/Theme-Engine/.installed" ];then
 echo -ne "                                                \r"
 NORM
 break
@@ -128,8 +128,8 @@ fi
 done
 }
 
-if [ -d "/data/data/com.termux/files/home/Theme-Engine" ];then
-cd "/data/data/com.termux/files/home/Theme-Engine"
+if [ -d "$PREFIX/share/Theme-Engine" ];then
+cd "$PREFIX/share/Theme-Engine"
 HIDE
 echo -ne "\n\e[0;1;30;48;2;0;230;118m [!] Checking for Update...          \r\e[0m"
 changed=0
@@ -155,7 +155,7 @@ fi
 else
 installing() {
 command -v git > /dev/null 2>&1 || pkg install git -y &> /dev/null
-git clone https://github.com/abhackerofficial/Theme-Engine "/data/data/com.termux/files/home/Theme-Engine" &> /dev/null
+git clone https://github.com/abhackerofficial/Theme-Engine "$PREFIX/share/Theme-Engine" &> /dev/null
 cd Theme-Engine;touch .installed ;sleep 1; bash theme-engine;printf "\e[0m" ;}
 
 trap '' SIGTSTP
