@@ -39,6 +39,7 @@ loc7="$HOME/.termux"
 loc8="$HOME/.termux/config.theme-engine"
 loc9="$PREFIX/share/Theme-Engine"
 loc10="$PREFIX/share/Theme-Engine/theme-engine"
+locM=$(which theme-engine)
 }
 
 if [[ $distroA == *'Android'* ]]; then
@@ -110,8 +111,8 @@ echo "Usage: theme-engine [options...]
 
  -log Check changelog with this command.
 
- -updater -off Trun off auto-updater with this command.
- -updater -on  Turn on auto-updater with this command."
+ --updater -off Trun off auto-updater with this command.
+ --updater -on  Turn on auto-updater with this command."
 exit
 
 elif [ "${1}" = "-u" ]; then
@@ -138,7 +139,7 @@ elif [ "${1}" = "-log" ]; then
 elif [ "${1}" = "--uninstall" ]; then
         remove
 
-elif [ "${1}" = "-updater" ]; then
+elif [ "${1}" = "--updater" ]; then
 	if [ ${#2} -lt 1 ]; then
 	echo "theme-engine: try 'theme-engine --help' or 'theme-engine -h'
 	for more information"
@@ -146,14 +147,14 @@ elif [ "${1}" = "-updater" ]; then
 	fi
 
 if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
-	sed -i "/status='true'/d" ${loc10}
-	sed -i "20 a status='false'" ${loc10}
-	printf "off"
+	sed -i "/status='true'/d" ${locM}
+	sed -i "20 a status='false'" ${locM}
+	printf "updater: off\n"
 exit
 elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
-	sed -i "/status='false'/d" ${loc10}
-	sed -i "20 a status='true'" ${loc10}
-	printf "on"
+	sed -i "/status='false'/d" ${locM}
+	sed -i "20 a status='true'" ${locM}
+	printf "updater: on\n"
 exit
 fi
 fi
@@ -219,6 +220,7 @@ if [ -f "${loc5}" ];then
 ## Theme-Engine auto-update
 auto_update() {
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
+cd ${loc9}
 HIDE
 	printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃${reset}\r"
       PUT 15 1
