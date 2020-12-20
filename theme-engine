@@ -17,6 +17,9 @@ Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0
 ## Theme-Engine Version
 version=" 4.0"
 
+## Auto Updater
+status='true'
+
 ## Shell
 Shell=$(ps | grep -o "zsh" | head -n1)
 
@@ -35,6 +38,7 @@ loc6="$HOME/.termux/termux.properties"
 loc7="$HOME/.termux"
 loc8="$HOME/.termux/config.theme-engine"
 loc9="$PREFIX/share/Theme-Engine"
+loc10="$PREFIX/share/Theme-Engine/theme-engine"
 }
 
 if [[ $distroA == *'Android'* ]]; then
@@ -66,6 +70,19 @@ elif [ "${1}" = "-log" ]; then
 	cat CHANGELOG.md
 	echo -e "\e[0m"
 	exit
+
+elif [ "${1}" = "-updater" ]; then
+if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
+sed -i "/status='true'/d" ${loc10}
+sed -i "20 a status='false'" ${loc10}
+printf "off"
+exit
+elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
+sed -i "/status='false'/d" ${loc10}
+sed -i "20 a status='true'" ${loc10}
+printf "on"
+exit
+fi
 fi
 
 ## Required Packeges Checking...
@@ -93,7 +110,7 @@ fi; }
 }
 
 PUT(){ echo -en "\033[${1};${2}H";}
-HIDCRSR(){ echo -en "\033[?25l";}
+HIDE(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 WAIT() { sleep 0.03 ;}
 
@@ -125,7 +142,8 @@ if [ -f "${loc5}" ];then
 
 ## Theme-Engine auto-update
 auto_update() {
-HIDCRSR
+if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
+HIDE
 	printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃\e[0m\r"
       PUT 15 1
    line2
@@ -158,6 +176,7 @@ else
    PUT 14 1
   fi
 NORM
+fi
 }
 
 if [ -d "${loc9}" ];then
@@ -323,16 +342,64 @@ else PUT 16 1
    fi
 fi
 
-else
-	echo -e "${Fred} [!] Theme-Engine - couldn't connect to separate dictionaries ! \e[0m"
-	echo -e "${Fgreen} [!] Fixing-up directory location...\e[0m"
-	sleep 2
-	cd ..
-	cp -rf Theme-Engine $PREFIX/share
+else HIDE
+clear
+echo -e "\e[1m
+┌──────────────────────────────────┐
+│╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸│
+│ ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸ │
+│ ╹ ╹ ╹┗━╸╹ ╹┗━╸   ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸│
+└──────────────────────────────────┘\e[0m\n"
+echo -e "Be patience theme-engine setting up directory..."
+cd ..
+cp -rf Theme-Engine $PREFIX/share
+sleep 1
+printf "starting theme-engine   \r"
+sleep 0.1
+printf "Starting theme-engine   \r"
+sleep 0.1
+printf "sTarting theme-engine   \r"
+sleep 0.1
+printf "stArting theme-engine   \r"
+sleep 0.1
+printf "staRting theme-engine   \r"
+sleep 0.1
+printf "starTing theme-engine   \r"
+sleep 0.1
+printf "startIng theme-engine   \r"
+sleep 0.1
+printf "startiNg theme-engine   \r"
+sleep 0.1
+printf "startinG theme-engine   \r"
+sleep 0.1
+printf "starting Theme-engine   \r"
+sleep 0.1
+printf "starting tHeme-engine   \r"
+sleep 0.1
+printf "starting thEme-engine   \r"
+sleep 0.1
+printf "starting theMe-engine   \r"
+sleep 0.1
+printf "starting themE-engine   \r"
+sleep 0.1
+printf "starting theme-Engine   \r"
+sleep 0.1
+printf "starting theme-eNgine   \r"
+sleep 0.1
+printf "starting theme-enGine   \r"
+sleep 0.1
+printf "starting theme-engIne   \r"
+sleep 0.1
+printf "starting theme-engiNe.  \r"
+sleep 0.1
+printf "starting theme-enginE.. \r"
+sleep 0.1
+printf "starting theme-engine...\r"
+sleep 1
 if [ -d "${loc9}" ];then
 	bash ${loc9}/theme-engine
 else
-	echo -e "${Fred} [!] Fixing failed Theme-Engine trying to Re-Install...\e[0m" ;sleep 0.5 ;cd $HOME
+	echo -e "${Fred}Setup failed theme-engine trying to Re-Install...\e[0m" ;sleep 0.5 ;cd $HOME
 	bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)" ;fi ;fi
 
 #       Thanks for using Theme-Engine.
