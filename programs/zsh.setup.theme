@@ -10,18 +10,18 @@ distroB=$(uname -o | grep -o "Linux")
 
 ## directory
 distro1() {
-loc1="$PREFIX/share/Theme-Engine/colors"
-loc2="$PREFIX/share/Theme-Engine/fonts"
-loc3="$PREFIX/share/Theme-Engine/programs"
-loc4="$PREFIX/share/Theme-Engine/fonts/Terminus.ttf"
-loc5="$PREFIX/share/Theme-Engine/fonts/fonts.rar"
+loc1="${loc9}/colors"
+loc2="${loc9}/fonts"
+loc3="${loc9}/programs"
+loc4="${loc9}/fonts/Terminus.ttf"
+loc5="${loc9}/fonts/fonts.rar"
 loc6="$HOME/.termux/termux.properties"
 loc7="$HOME/.termux"
 loc8="$HOME/.termux/config.theme-engine"
 loc9="$PREFIX/share/Theme-Engine"
 loc10="$HOME/.zshrc"
 loc11="$HOME/.oh-my-zsh"
-loc12="$PREFIX/share/Theme-Engine/theme-engine"
+loc12="${loc9}/theme-engine"
 loc13="$HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh"
 loc14="$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 }
@@ -42,27 +42,27 @@ if [ -d "${loc7}/colors.properties" ];then cd $HOME ; rm ${loc7}/colors.properti
 if [ -d "${loc7}/font.ttf" ];then cd $HOME ; rm $HOME/font.ttf ;fi ;}
 
 set_color() {
-cd $HOME/Theme-Engine/colors
+cd ${loc9}/colors
 cp accent.material.colors colors.properties
 mv colors.properties ${loc7} ; }
 set_font() {
-cd $HOME/Theme-Engine/fonts
+cd ${loc9}/fonts
 cp  'Anonymice Powerline.ttf' font.ttf
 mv font.ttf ${loc7} ; }
 
 copying_files() {
-cd $HOME/Theme-Engine
+cd ${loc9}
 cp -rf colors fonts ${loc7} ; }
 
 files() {
 if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
 if [ ! -d "$HOME/.oh-my-zsh" ];then
-cd $HOME/Theme-Engine
+cd ${loc9}
 cp -rf .oh-my-zsh $HOME ;fi ;}
 
 copying_tools() {
-cd $HOME/Theme-Engine/programs
+cd ${loc9}/programs
 cp fonts.theme ${loc7}
 cp colors.theme ${loc7}
 cp zsh.theme ${loc7}
@@ -75,7 +75,7 @@ chsh -s zsh ;}
 copying_plugins() {
 if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
 if [ ! -d "$HOME/.zsh-syntax-highlighting" ];then
-cd $HOME/Theme-Engine
+cd ${loc9}
 cp -rf .zsh-autosuggestions $HOME
 cp -rf .zsh-syntax-highlighting $HOME ;fi ;}
 
