@@ -68,7 +68,8 @@ rm -rf fonts.rar
 cd $PREFIX/share/Theme-Engine
 cp -rf .oh-my-zsh .zsh-syntax-highlighting .zsh-autosuggestions /data/data/com.termux/files/home ;cd
 cd $PREFIX/share/Theme-Engine
-cp -rf colors fonts /data/data/com.termux/files/home/.termux ;cd
+cp -rf colors fonts /data/data/com.termux/files/home/.termux
+cp $PREFIX/share/theme-engine $PREFIX/bin;cd
 cd $PREFIX/share/Theme-Engine/program-files
 cp colors.theme fonts.theme zsh.theme zsh.update /data/data/com.termux/files/home/.termux
 cd $HOME/.termux

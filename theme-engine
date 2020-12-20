@@ -235,10 +235,11 @@ changed=0
  sleep 0.4
 PUT 14 1
 	printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃${reset}"
-      PUT 15 1
-    line2
-   git stash &> /dev/null
- git pull &> /dev/null
+       PUT 15 1
+     line2
+    git stash &> /dev/null
+  git pull &> /dev/null
+ cp ${loc9}/theme-engine $PREFIX/bin
 PUT 14 1
 	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme-engine -log            \r\e[0;1m┃${reset}"
       sleep 1.8
