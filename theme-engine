@@ -132,7 +132,7 @@ elif [ "${1}" = "-f" ]; then
 
 elif [ "${1}" = "-log" ]; then
 	echo -e "${Fgreen}"
-	cat CHANGELOG.md
+	cat ${loc9}/CHANGELOG.md
 	echo -e "${reset}"
 	exit
 
