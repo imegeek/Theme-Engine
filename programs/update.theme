@@ -25,8 +25,8 @@ NORM;exit
 fi
 
 remove_previous_file() {
-cd $HOME; rm -rf Theme-Engine
-cd /data/data/com.termux/files/usr/share ;}
+cd $PREFIX/share; rm -rf Theme-Engine
+cd $PREFIX/share ;}
 
 spin () {
 local pid=$!
@@ -131,23 +131,23 @@ done
 if [ -d "$PREFIX/share/Theme-Engine" ];then
 cd "$PREFIX/share/Theme-Engine"
 HIDE
-echo -ne "\n\e[0;1;30;48;2;0;230;118m [!] Checking for Update...          \r\e[0m"
+echo -ne "\n\e[0;1;7m Checking for Update...              \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
-echo -ne "\e[0;1;30;48;2;0;230;118m [!] Theme-Engine Update founded !  \r\e[0m"
+echo -ne "\e[0;1;7m Theme-Engine Update founded !      \r\e[0m"
 sleep 0.8
 remove_previous_file
 trap '' 2
 ( git clone https://github.com/abhackerofficial/Theme-Engine; sleep 2 ) &> /dev/null & spin
 HIDE
-sleep 1 ;mv Theme-Engine $HOME ; cd ;cd Theme-Engine; NORM; bash theme-engine;printf "\e[0m"
+sleep 1 ;mv Theme-Engine $PREFIX/share ; cd $PREFIX/share/Theme-Engine; NORM; bash theme-engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
 else
 HIDE
 sleep 0.8
-echo -e "\e[0;1;30;48;2;0;230;118m [!] Theme-Engine Update not found ! \e[0m"
+echo -e "\e[0;1;7m Theme-Engine Update not found !     \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 NORM
 fi
