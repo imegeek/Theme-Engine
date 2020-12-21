@@ -27,7 +27,7 @@ NORM;exit
 fi
 
 remove_previous_file() {
-if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
+if [[ -d "$PREFIX/share/Theme-Engine" &&  -f "$PREFIX/bin/theme-engine" ]];then
 rm -rf $PREFIX/share/Theme-Engine
 cd $PREFIX/share ;fi ;}
 
