@@ -65,7 +65,7 @@ echo "
 	cd ..
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	cd - &> /dev/null
-        cp theme-engine $PREFIX/bin
+        cp theme-engine $PREFIX/bin &> /dev/null
 if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 	printf "Successfully Setup Theme-Engine.\n\n"
 	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
