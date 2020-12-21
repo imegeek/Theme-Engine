@@ -3,6 +3,8 @@
 HIDE(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
+Fblue=$'\e[0;1;38;2;40;90;255m' Fred=$'\e[0;1;38;2;200;0;0m' reset=$'\e[0m'
+
 c1="\e[1;38;2;0;200;118m"
 c2=$'\e[0;38;2;220;255;255m'
 slp=$"sleep 0.03"
@@ -129,7 +131,30 @@ fi
 done
 }
 
-if [ -d "$PREFIX/share/Theme-Engine" ];then
+installing() {
+command -v git > /dev/null 2>&1 || pkg install git -y &> /dev/null
+git clone https://github.com/abhackerofficial/Theme-Engine "$PREFIX/share/Theme-Engine" &> /dev/null
+cd $PREFIX/share/Theme-Engine;touch .installed ;sleep 1; bash theme-engine --install ;printf "\e[0m"
+}
+
+alert() {
+NORM
+clear
+echo "
+	┌──────────────────────────────────────┐
+	│  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}│
+	│  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}│
+	│  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}│
+	│—————————————version 4.0——————————————│
+	└──────────────────────────────────────┘
+"
+	printf "Theme-Engine Already Installed...\n\n"
+	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
+	printf "Get Help: \e[92mtheme-engine${reset} --help\n\n"
+	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
+}
+
+update() {
 cd "$PREFIX/share/Theme-Engine"
 HIDE
 echo -ne "\n\e[0;1;7m Checking for Update...              \r\e[0m"
@@ -145,20 +170,32 @@ HIDE
 sleep 1 ;mv Theme-Engine $PREFIX/share ; cd $PREFIX/share/Theme-Engine; NORM; bash theme-engine;printf "\e[0m"
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
+exit
 else
 HIDE
 sleep 0.8
 echo -e "\e[0;1;7m Theme-Engine Update not found !     \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 NORM
+exit
 fi
+}
 
+if [[ -d "$PREFIX/share/Theme-Engine" && -f "$PREFIX/bin/theme-engine" ]] ; then
+if [[ "${1}" = "--check" ]]; then
+update
+fi
 else
-installing() {
-command -v git > /dev/null 2>&1 || pkg install git -y &> /dev/null
-git clone https://github.com/abhackerofficial/Theme-Engine "$PREFIX/share/Theme-Engine" &> /dev/null
-cd $PREFIX/share/Theme-Engine;touch .installed ;sleep 1; bash theme-engine --install ;printf "\e[0m" ;}
-
 trap '' SIGTSTP
 progress_bar & installing
-echo -ne "\033]12;#b4e1fd\007" ;fi # Thanks for using Theme-Engine
+exit
+fi
+
+trap '' SIGTSTP
+if [[ ! -d "$PREFIX/share/Theme-Engine" && ! -f "$PREFIX/bin/theme-engine" ]];then
+progress_bar & installing
+else
+alert
+fi
+
+echo -ne "\033]12;#b4e1fd\007" # Thanks for using Theme-Engine

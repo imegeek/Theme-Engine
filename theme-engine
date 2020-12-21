@@ -63,7 +63,7 @@ echo "
 	printf "Setting-up Theme-Engine...\n\n"
 	printf "Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
 	cd ..
-	cp -rf Theme-Engine $PREFIX/share
+	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	cd - &> /dev/null
         cp theme-engine $PREFIX/bin
 if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
@@ -110,19 +110,19 @@ fi
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
 echo "Usage: theme-engine [options...]
 
- -c Start color menu with this command.
- -f Start font menu with this command.
- -u Check available update with this command.
+ -c  : Start color menu with this command.
+ -f  : Start font menu with this command.
+ -u  : Check available update with this command.
+ -l  : Check changelog with this command.
 
- -log Check changelog with this command.
-
- --updater -off Trun off auto-updater with this command.
- --updater -on  Turn on auto-updater with this command."
+ --updater -off :  Trun off auto-updater with this command.
+ --updater -on  :  Turn on auto-updater with this command.
+ --uninstall    :  This command to uninstall Theme-Engine."
 exit
 
 elif [ "${1}" = "-u" ]; then
 	cd ${loc3}
-	bash update.theme
+	bash update.theme --check
 	exit
 
 elif [ "${1}" = "-c" ]; then
@@ -135,7 +135,7 @@ elif [ "${1}" = "-f" ]; then
 	bash fonts.theme
 	exit
 
-elif [ "${1}" = "-log" ]; then
+elif [ "${1}" = "-l" ]; then
 	echo -e "${Fgreen}"
 	cat ${loc9}/CHANGELOG.md
 	echo -e "${reset}"
@@ -243,7 +243,7 @@ PUT 14 1
   git pull &> /dev/null
  cp ${loc9}/theme-engine $PREFIX/bin
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog :  ./theme-engine -log            \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog : theme-engine -l                 \r\e[0;1m┃${reset}"
       sleep 1.8
      PUT 15 1
    line2
