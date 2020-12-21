@@ -165,9 +165,7 @@ echo -ne "\e[0;1;7m Theme-Engine Update founded !      \r\e[0m"
 sleep 0.8
 remove_previous_file
 trap '' 2
-( git clone https://github.com/abhackerofficial/Theme-Engine; sleep 2 ) &> /dev/null & spin
-HIDE
-sleep 1 ;mv Theme-Engine $PREFIX/share ; cd $PREFIX/share/Theme-Engine; NORM; bash theme-engine;printf "\e[0m"
+( installing ) &> /dev/null & spin
 trap 5
 echo -ne "\033]12;#b4e1fd\007"
 exit
