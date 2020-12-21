@@ -64,9 +64,9 @@ echo "
 	printf "Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
 	cd ..
 	cp -rf Theme-Engine $PREFIX/share
-if [ -d "${loc9}" ];then
 	cd - &> /dev/null
-	cp theme-engine $PREFIX/bin
+        cp theme-engine $PREFIX/bin
+if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 	printf "Successfully Setup Theme-Engine.\n\n"
 	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
 	printf "Get Help: \e[92mtheme-engine${reset} --help\n\n"
@@ -79,7 +79,7 @@ fi
 }
 
 remove() {
-if [ -d "${loc9}" ];then
+if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 clear
 echo "
 	┌──────────────────────────────────────┐
@@ -101,7 +101,12 @@ fi
 
 ## arguments
 
-if [ -d "${loc9}" ];then
+if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
+   if [ "${1}" = "--uninstall" ]; then
+   remove
+  fi
+fi
+
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
 echo "Usage: theme-engine [options...]
 
@@ -136,8 +141,8 @@ elif [ "${1}" = "-log" ]; then
 	echo -e "${reset}"
 	exit
 
-elif [ "${1}" = "--uninstall" ]; then
-        remove
+elif [ "${1}" = "--install" ]; then
+	setup
 
 elif [ "${1}" = "--updater" ]; then
 	if [ ${#2} -lt 1 ]; then
@@ -157,9 +162,6 @@ elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
 	printf "updater: on\n"
 exit
 fi
-fi
-else
-setup
 fi
 
 ## Required Packeges Checking...
@@ -258,7 +260,7 @@ NORM
 fi
 }
 
-if [ -d "${loc9}" ];then
+if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
  if [ ! -d "${loc7}" ];then cd $HOME ; mkdir .termux ;fi
 
 ## Theme-Engine Main Options

@@ -25,8 +25,9 @@ NORM;exit
 fi
 
 remove_previous_file() {
-cd $PREFIX/share; rm -rf Theme-Engine
-cd $PREFIX/share ;}
+if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
+rm -rf $PREFIX/share/Theme-Engine
+cd $PREFIX/share ;fi ;}
 
 spin () {
 local pid=$!
@@ -156,7 +157,7 @@ else
 installing() {
 command -v git > /dev/null 2>&1 || pkg install git -y &> /dev/null
 git clone https://github.com/abhackerofficial/Theme-Engine "$PREFIX/share/Theme-Engine" &> /dev/null
-cd Theme-Engine;touch .installed ;sleep 1; bash theme-engine;printf "\e[0m" ;}
+cd $PREFIX/share/Theme-Engine;touch .installed ;sleep 1; bash theme-engine --install ;printf "\e[0m" ;}
 
 trap '' SIGTSTP
 progress_bar & installing
