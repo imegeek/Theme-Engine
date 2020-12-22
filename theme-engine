@@ -153,13 +153,11 @@ elif [ "${1}" = "--updater" ]; then
 	fi
 
 if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
-	sed -i "/status='true'/d" ${locM}
-	sed -i "20 a status='false'" ${locM}
+	sed -i "10,30 s/status='true'/status='false'/g" ${locM}
 	printf "updater: off\n"
 exit
 elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
-	sed -i "/status='false'/d" ${locM}
-	sed -i "20 a status='true'" ${locM}
+	sed -i "10,30 s/status='false'/status='true'/g" ${locM}
 	printf "updater: on\n"
 exit
 fi
