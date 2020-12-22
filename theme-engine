@@ -66,13 +66,14 @@ echo "
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	cd - &> /dev/null
         cp theme-engine $PREFIX/bin &> /dev/null
-if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
+if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 	printf "Successfully Setup Theme-Engine.\n\n"
 	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
 	printf "Get Help: \e[92mtheme-engine${reset} --help\n\n"
 	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
 	exit
 else
+	echo -e "${reset}Required files was deleted !\n"
 	echo -e "${Fred}Setup failed theme-engine trying to Re-Install...${reset}" ;sleep 0.5 ;cd $HOME
 	bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)"
 fi
@@ -260,7 +261,7 @@ NORM
 fi
 }
 
-if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
+if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
  if [ ! -d "${loc7}" ];then cd $HOME ; mkdir .termux ;fi
 
 ## Theme-Engine Main Options
