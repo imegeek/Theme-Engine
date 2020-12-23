@@ -300,7 +300,7 @@ printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}            
 printf "\n\e[0;1;7m ${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1;7m ";WAIT
 printf "\n\e[0;1;7m ${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1;7m ";WAIT
 printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ";WAIT
-printf "\n\e[0;1;7m  Maintain by - abhackerofficial ──────┐              \e[0;1m█";WAIT
+printf "\n\e[0;1;7m  Maintain by - abhackerofficial ──────┐              \e[0;1;7m ";WAIT
 if [[ $Shell == *'zsh'* ]]; then
 printf "\n\e[1;7m  Current shell : zsh                  └──────  -v${version} \n\n"; WAIT
 else
