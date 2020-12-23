@@ -9,6 +9,8 @@ c1="\e[1;38;2;0;200;118m"
 c2=$'\e[0;38;2;220;255;255m'
 slp=$"sleep 0.03"
 
+version=" 4.0"
+
 clear
 echo -e "
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -17,7 +19,6 @@ echo -e "
 █  █▄█ █▀▀ █▄▀ █▀█  █  ██▄ █▀▄   ▄  █
 █                                   █
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█"
-
 
 HIDE
 connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
@@ -32,6 +33,7 @@ rm -rf $PREFIX/share/Theme-Engine
 cd $PREFIX/share ;fi ;}
 
 spin () {
+banner
 local pid=$!
 local delay=0.05
 local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
@@ -141,17 +143,18 @@ alert() {
 NORM
 clear
 echo "
-	┌──────────────────────────────────────┐
-	│  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}│
-	│  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}│
-	│  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}│
-	│—————————————version 4.0——————————————│
-	└──────────────────────────────────────┘
+
+	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+	┃  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}┃
+	┃  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}┃
+	┃  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}┃
+	┃──────────>>[version${version}]<<───────────┃
+	┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
-	printf "Theme-Engine Already Installed...\n\n"
-	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
-	printf "Get Help: \e[92mtheme-engine${reset} --help\n\n"
-	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	printf " Theme-Engine Already Installed...\n\n"
+	printf " You can run this program by typing \e[92mtheme-engine${reset}\n\n"
+	printf " Get Help: \e[92mtheme-engine${reset} --help\n\n"
+	printf " Git Page: https://github.com/abhackerofficial/Theme-Engine\n"
 }
 
 update() {

@@ -50,52 +50,49 @@ distro2
 else echo "Theme-Engine isn't supported you're system."
 fi
 
-setup() {
+banner0() {
 clear
 echo "
-	┌──────────────────────────────────────┐
-	│  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}│
-	│  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}│
-	│  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}│
-	│—————————————version 4.0——————————————│
-	└──────────────────────────────────────┘
+
+	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+	┃  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}┃
+	┃  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}┃
+	┃  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}┃
+	┃──────────>>[version${version}]<<───────────┃
+	┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
-	printf "Setting-up Theme-Engine...\n\n"
-	printf "Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
+}
+
+setup() {
+	banner0
+	printf " Setting-up Theme-Engine...\n\n"
+	printf " Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
 	cd ..
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	cd - &> /dev/null
         cp theme-engine $PREFIX/bin &> /dev/null
 if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
-	printf "Successfully Setup Theme-Engine.\n\n"
-	printf "You can run this program by typing \e[92mtheme-engine${reset}\n\n"
-	printf "Get Help: \e[92mtheme-engine${reset} --help\n\n"
-	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	printf " Successfully Setup Theme-Engine.\n\n"
+	printf " You can run this program by typing \e[92mtheme-engine${reset}\n\n"
+	printf " Get Help: \e[92mtheme-engine${reset} --help\n\n"
+	printf " Git Page: https://github.com/abhackerofficial/Theme-Engine\n"
 	exit
 else
-	echo -e "${reset}Required files was deleted !\n"
-	echo -e "${Fred}Setup failed theme-engine trying to Re-Install...${reset}" ;sleep 0.5 ;cd $HOME
-	bash -c "$(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)"
+	echo -e " ${reset}Required files was deleted !\n"
+	echo -e " ${Fred}Setup failed theme-engine trying to Re-Install...${reset}" ;sleep 0.5 ;cd $HOME
+	bash -c " $(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)"
 fi
 }
 
 remove() {
 if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
-clear
-echo "
-	┌──────────────────────────────────────┐
-	│  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}│
-	│  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}│
-	│  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}│
-	│—————————————version 4.0——————————————│
-	└──────────────────────────────────────┘
-"
-	printf "Uninstalling Theme-Engine...\n\n"
-	printf "Remove files in /data/data/com.termux/files/usr/share directory...\n\n"
+	banner0
+	printf " Uninstalling Theme-Engine...\n\n"
+	printf " Remove files in /data/data/com.termux/files/usr/share directory...\n\n"
 	rm -rf ${loc9}
 	rm $PREFIX/bin/theme-engine
-	printf "Successfully Removed Theme-Engine.\n\n"
-	printf "Get Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	printf " Successfully Removed Theme-Engine.\n\n"
+	printf " Git Page: https://github.com/abhackerofficial/Theme-Engine\n"
 	exit
 fi
 }
