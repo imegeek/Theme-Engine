@@ -59,6 +59,6 @@ This [Theme-Engine](https://github.com/ankushbhagats/theme-engine) is maintained
 
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | `git clone https://github.com/ankushbhagats/Theme-Engine ; cd Theme-Engine ; ./theme.engine`                  |       
+| **git**   | `git clone https://github.com/ankushbhagats/Theme-Engine ; cd Theme-Engine ; ./theme-engine`                  |       
 | **curl**  | `bash -c "$(curl -fsSL https://raw.githubusercontent.com/ankushbhagats/Theme-Engine/master/programs/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://raw.githubusercontent.com/ankushbhagats/Theme-Engine/master/program-files/update.theme)"`   |
