@@ -17,7 +17,7 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Installation-Preview](https://user-images.githubusercontent.com/63346676/100494121-8ef76280-3164-11eb-9110-5be5836c5789.jpg)
 
 > **Theme-Engine Setup Preview...**
-![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/100494655-9836fe00-3169-11eb-97d2-091c143c97c7.jpg)
+![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/103058077-4007e600-45c7-11eb-89bd-f6f99e257134.jpg)
 
 > **Enable Extra Keys to get More Functions Keys in Termux.**
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/100494668-d3393180-3169-11eb-9981-6421fdcb5e4a.jpg)
