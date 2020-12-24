@@ -59,6 +59,6 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
-| **git**   | `git clone https://github.com/abhackerofficial/Theme-Engine ; cd Theme-Engine ; ./theme.engine`                  |       
+| **git**   | `git clone https://github.com/abhackerofficial/Theme-Engine ; cd Theme-Engine ; ./theme-engine`                  |       
 | **curl**  | `bash -c "$(curl -fsSL https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/update.theme)"` |
 | **wget**  | `bash -c "$(wget -O- https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/program-files/update.theme)"`   |
