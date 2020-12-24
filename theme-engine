@@ -289,14 +289,14 @@ if [ ! -f "${loc6}" ];then
    cp extra.keys.theme ${loc6}
 termux-reload-settings
 PUT 16 1
-   echo -e "${Bsky}           Extra Keys Enabled Successfully             ${reset}"
+   echo -e "${Bcyan}           Extra Keys Enabled Successfully             ${reset}"
    echo -ne "\033]12;#b4e1fd\007"
 else
    cd ${loc7}
    rm termux.properties
 termux-reload-settings
 PUT 16 1
-   echo -e "${Bsky}           Extra Keys Reset Successfully               ${reset}"
+   echo -e "${Bcyan}           Extra Keys Reset Successfully               ${reset}"
    echo -ne "\033]12;#b4e1fd\007";fi;}
 
 ## Theme-Engine Main Banner
