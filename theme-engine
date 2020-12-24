@@ -228,9 +228,9 @@ changed=0
 	if [ $changed = 1 ]; then
   PUT 14 1
 	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
-     PUT 15 1
-   line2
- sleep 1.6
+      sleep 1.6
+    PUT 15 1
+  line2
 PUT 14 1
 	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
        PUT 15 1
@@ -241,9 +241,13 @@ PUT 14 1
 PUT 14 1
 
 	printf "\e[0;1m┃\e[0;1;7m   ✔ Theme-Engine is Updated to latest version.      \r\e[0;1m┃${reset}"
-       sleep 1.6
-      printf "\e[0;1m┃\e[0;1;7m   ➜ Get Changelog : theme-engine -L                 \r\e[0;1m┃${reset}"
-     sleep 1.6
+      sleep 1.6
+    PUT 15 1
+  line2
+PUT 14 1
+
+	printf "\e[0;1m┃\e[0;1;7m   ➜ Get Changelog : theme-engine -L                 \r\e[0;1m┃${reset}"
+      sleep 1.6
     PUT 15 1
    line2
  PUT 14 1
