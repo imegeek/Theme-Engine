@@ -3,7 +3,7 @@
 #############################################
 # Project : Theme-Engine                    #
 # Author  : ABHacker Official               #
-# Version : 4.0 (Latest)                    #
+# Version : 4.2 (Latest)                    #
 # Github  : abhackerofficial                #
 #############################################
 
@@ -15,7 +15,7 @@ reset=$'\e[0m'
 Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;46m'
 
 ## Theme-Engine Version
-version=" 4.0"
+version=" 4.2"
 
 ## Auto Updater
 status='true'
