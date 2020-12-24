@@ -261,16 +261,20 @@ if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 
 ## Theme-Engine Main Options
 function main_options () {
-if [ ! -f "${loc8}" ];then
-   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃${reset}"
-   echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃${reset}"
-else
-   echo -e "\e[0;1m┃${Bred} [1] Change Font Style    ${Bblue}  [2] Change Color Scheme  \e[0;1m┃${reset}"
-   echo -e "\e[0;1m┃${Bpurple} [3] Change Zsh-Theme     ${Byellow}  [4] Disable Zsh-Theme    \e[0;1m┃${reset}" ;fi
+   echo -e "\e[0;1m┃${Bred} [1] Apply Color Scheme   ${Byellow} [4] Disable Zsh-Theme     \e[0;1m┃${reset}"
+
 if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${Bsky} [5] Reset Extra Keys ⌥   ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bblue} [2] Apply Font Style     ${Bcyan} [5] Reset Extra Keys ⌥    \e[0;1m┃"
 else
-   echo -e "\e[0;1m┃${Bsky} [5] Enable Extra Keys ⌥  ${Bcyan}  [6] About Theme-Engine   \e[0;1m┃${reset}" ;fi;}
+   echo -e "\e[0;1m┃${Bblue} [2] Apply Font Style     ${Bcyan} [5] Enable Extra Keys ⌥   \e[0;1m┃"
+fi
+
+if [ ! -f "${loc8}" ];then
+   echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Bsky} [6] About Theme-Engine    \e[0;1m┃${reset}"
+else
+   echo -e "\e[0;1m┃${Bpurple} [3] Apply Zsh-Theme      ${Bsky} [6] About Theme-Engine    \e[0;1m┃${reset}"
+fi
+}
 
 extra_keys () {
 if [ ! -f "${loc6}" ];then
@@ -332,12 +336,12 @@ echo -ne "${reset}"
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
 	cd ${loc3}
-	bash fonts.theme
+	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 	echo
 	cd ${loc3}
-	bash colors.theme
+	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 	echo -ne "\033]12;#b4e1fd\007"
@@ -346,8 +350,8 @@ elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 	echo -ne "\033]12;#b4e1fd\007"
-	cd ${loc3}
-	bash disable.zsh.theme
+        cd ${loc3}
+        bash disable.zsh.theme
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
@@ -389,12 +393,12 @@ echo -ne "${reset}"
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
 	cd ${loc3}
-	bash fonts.theme
+	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 	echo
 	cd ${loc3}
-	bash colors.theme
+	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 	echo -ne "\033]12;#b4e1fd\007"
@@ -403,9 +407,9 @@ elif [[ $option = "3" ]] || [[ $option = "03" ]];then
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 	echo -ne "\033]12;#b4e1fd\007"
-	cd ${loc3}
-	bash disable.zsh.theme
-	exit
+        cd ${loc3}
+        bash disable.zsh.theme
+        exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
 	extra_keys
