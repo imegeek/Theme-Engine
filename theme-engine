@@ -230,7 +230,7 @@ changed=0
 	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
      PUT 15 1
    line2
- sleep 0.4
+ sleep 1.6
 PUT 14 1
 	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
        PUT 15 1
