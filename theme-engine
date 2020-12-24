@@ -12,7 +12,7 @@
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'    Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 reset=$'\e[0m'
 # background
-Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;46m'
 
 ## Theme-Engine Version
 version=" 4.0"
@@ -111,7 +111,7 @@ echo "Usage: theme-engine [options...]
  -c  : Start color menu with this command.
  -f  : Start font menu with this command.
  -u  : Check available update with this command.
- -l  : Check changelog with this command.
+ -L  : Check changelog with this command.
 
  --updater -off :  Trun off auto-updater with this command.
  --updater -on  :  Turn on auto-updater with this command.
@@ -133,7 +133,7 @@ elif [ "${1}" = "-f" ]; then
 	bash fonts.theme
 	exit
 
-elif [ "${1}" = "-l" ]; then
+elif [ "${1}" = "-L" ]; then
 	echo -e "${Fgreen}"
 	cat ${loc9}/CHANGELOG.md
 	echo -e "${reset}"
@@ -220,34 +220,37 @@ auto_update() {
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
 cd ${loc9}
 HIDE
-	printf "\e[0;1m┃\e[0;1;7m [+] Checking for Update...                          \e[0;1m┃${reset}\r"
+	printf "\e[0;1m┃\e[0;1;7m    Checking for Update...                          \e[0;1m┃${reset}\r"
       PUT 15 1
    line2
 changed=0
 	git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 	if [ $changed = 1 ]; then
   PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
      PUT 15 1
    line2
  sleep 0.4
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Updating... Theme-Engine                        \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
        PUT 15 1
      line2
     git stash &> /dev/null
   git pull &> /dev/null
  cp ${loc9}/theme-engine $PREFIX/bin
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m [!] Get Changelog : theme-engine -l                 \r\e[0;1m┃${reset}"
-      sleep 1.8
-     PUT 15 1
+
+	printf "\e[0;1m┃\e[0;1;7m   ✔ Theme-Engine is Updated to latest version.      \r\e[0;1m┃${reset}"
+       sleep 1.6
+      printf "\e[0;1m┃\e[0;1;7m   ➜ Get Changelog : theme-engine -L                 \r\e[0;1m┃${reset}"
+     sleep 1.6
+    PUT 15 1
    line2
-  PUT 14 1
- bash theme-engine
+ PUT 14 1
+bash theme-engine
 exit
 else
-	printf "\e[0;1m┃\e[0;1;7m [!] Theme-Engine Already Updated.                   \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;7m   ✔ Theme-Engine Already Updated.                   \r\e[0;1m┃${reset}"
       PUT 15 1
     line2
    PUT 14 1
@@ -261,18 +264,18 @@ if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 
 ## Theme-Engine Main Options
 function main_options () {
-   echo -e "\e[0;1m┃${Bred} [1] Apply Color Scheme   ${Byellow} [4] Disable Zsh-Theme     \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
 
 if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${Bblue} [2] Apply Font Style     ${Bcyan} [5] Reset Extra Keys ⌥    \e[0;1m┃"
+   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃"
 else
-   echo -e "\e[0;1m┃${Bblue} [2] Apply Font Style     ${Bcyan} [5] Enable Extra Keys ⌥   \e[0;1m┃"
+   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃"
 fi
 
 if [ ! -f "${loc8}" ];then
-   echo -e "\e[0;1m┃${Bpurple} [3] Enable Zsh-Theme     ${Bsky} [6] About Theme-Engine    \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bpurple} └[3]┘ Enable Zsh-Theme   ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
 else
-   echo -e "\e[0;1m┃${Bpurple} [3] Apply Zsh-Theme      ${Bsky} [6] About Theme-Engine    \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bpurple} └[3]┘ Apply Zsh-Theme    ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
 fi
 }
 
@@ -325,10 +328,10 @@ if [ -f "${loc8}" ];then
     line3
   main_options
 auto_update
-printf "\e[0;1m┃\e[0;1;7m [Execute an Option]:                                \e[0;1m┃${reset}"
+printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
         PUT 15 1
       line4
-     PUT 14 24
+     PUT 14 25
     printf "\e[0;1;7m"
   read option
 echo -ne "${reset}"
@@ -382,10 +385,10 @@ if [ ! -f "${loc8}" ];then
    line3
   main_options
 auto_update
-printf "\e[0;1m┃\e[0;1;7m [Execute an Option]:                                \e[0;1m┃${reset}"
+printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
          PUT 15 1
        line4
-      PUT 14 24
+      PUT 14 25
     printf "\e[0;1;7m"
   read option
 echo -ne "${reset}"
