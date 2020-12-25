@@ -28,7 +28,7 @@ distroA=$(uname -o | grep -o "Android")
 distroB=$(uname -o | grep -o "Linux")
 
 ## directory
-distro1() {
+directories() {
 loc1="$PREFIX/share/Theme-Engine/colors"
 loc2="$PREFIX/share/Theme-Engine/fonts"
 loc3="$PREFIX/share/Theme-Engine/programs"
@@ -42,11 +42,11 @@ loc10="$PREFIX/share/Theme-Engine/theme-engine"
 locM=$(which theme-engine)
 }
 
-if [[ $distroA == *'Android'* ]]; then
-distro1
+if [[ $distroA == *'Android'* ]];then
+directories
 
-elif [[ $distroB == *'Linux'* ]]; then
-distro2
+elif [[ $distroB == *'Linux'* ]] || [[ $distroB == *'Linux'* ]];then
+directories
 else echo "Theme-Engine isn't supported you're system."
 fi
 
