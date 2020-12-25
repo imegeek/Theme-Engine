@@ -398,31 +398,35 @@ banner() {
 if [[ $day -gt "17" ]];then
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1;100m                                                       ${reset}";WAIT
-printf "\n\e[0;1;100m ${NBred}                        ${NBred}  ${NBblue}                           \e[0;1;100m ${reset}";WAIT
-printf "\n\e[0;1;100m ${NBred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${NBred}▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1;100m ${reset}";WAIT
-printf "\n\e[0;1;100m ${NBred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1;100m ${reset}";WAIT
-printf "\n\e[0;1;100m ${NBred}                        ${NBred}  ${NBblue}                           \e[0;1;100m ${reset}";WAIT
-printf "\n\e[0;1;100m  Maintain by - abhackerofficial ──────┐              \e[0;1;100m ${reset}";WAIT
+printf "\n\e[0;1;7m`line3`${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${NBred}▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m Maintain by - abhackerofficial ──────┐              \e[0;1m┃${reset}";WAIT
 if [[ $Shell == *'zsh'* ]]; then
-printf "\n\e[1;100m  Current shell : zsh                  └──────  -v${version} \n\n${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Current shell : zsh                  └────── -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 else
-printf "\n\e[1;100m  Current shell : bash                 └──────  -v${version} \n\n${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Current shell : bash                 └────── -v${version}  \e[0;1m┃\e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 fi
 
 else
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1;7m                                                       ${reset}";WAIT
-printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ${reset}";WAIT
-printf "\n\e[0;1;7m ${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1;7m ${reset}";WAIT
-printf "\n\e[0;1;7m ${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1;7m ${reset}";WAIT
-printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ${reset}";WAIT
-printf "\n\e[0;1;7m  Maintain by - abhackerofficial ──────┐              \e[0;1;7m ${reset}";WAIT
+printf "\n\e[0;1;7m`line3`${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m ${Bred}                       ${Bred}  ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m ${Bred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m ${Bred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m ${Bred}                       ${Bred}  ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m Maintain by - abhackerofficial ──────┐              \e[0;1m┃${reset}";WAIT
 if [[ $Shell == *'zsh'* ]]; then
-printf "\n\e[1;7m  Current shell : zsh                  └──────  -v${version} \n\n${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Current shell : zsh                  └────── -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 else
-printf "\n\e[1;7m  Current shell : bash                 └──────  -v${version} \n\n${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Current shell : bash                 └────── -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 fi
 fi
 }
