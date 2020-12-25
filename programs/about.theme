@@ -7,7 +7,34 @@ Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0
 # background
 Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
+# night background
+NBgreen=$'\e[0;1;90;7;48;2;0;230;118m'   NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m' NBwhite=$'\e[0;1;100m'
 
+## Specify time
+day=`date +%H`
+night=`date +%H`
+
+if [[ $day -gt "17" ]];then
+echo -e "
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃${NBwhite}                    ┏━┓┏┓ ┏━┓╻ ╻╺┳╸                  \e[0;1m┃
+\e[0;1m┃${NBwhite}                    ┣━┫┣┻┓┃ ┃┃ ┃ ┃                   \e[0;1m┃
+\e[0;1m┃${NBwhite}                    ╹ ╹┗━┛┗━┛┗━┛ ╹                   \e[0;1m┃
+\e[0;1m┃${NBred}         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${NBblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
+\e[0;1m┃${NBred}          ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸${NBblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
+\e[0;1m┃${NBred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${NBblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
+\e[0;1m┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
+\e[0;1m┃${NBwhite}                                                     \e[0;1m┃
+\e[0;1m┃${NBwhite}  Theme-Engine is usually made for modification      \e[0;1m┃
+\e[0;1m┃${NBwhite}  and customization, So you can make trunks even     \e[0;1m┃
+\e[0;1m┃${NBwhite}  more colourful and better your Termux.             \e[0;1m┃
+\e[0;1m┃${NBwhite}                                                     \e[0;1m┃
+\e[0;1m┃${NBwhite}  Author  - ABHacker Official                        \e[0;1m┃
+\e[0;1m┃${NBwhite}  Github  - https://github.com/abhackerofficial      \e[0;1m┃
+\e[0;1m┃${NBwhite}  Youtube - https://youtube.com/abhackerofficial     \e[0;1m┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+\e[0m";echo -ne "\033]12;#b4e1fd\007"
+else
 echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Bwhite}                    ┏━┓┏┓ ┏━┓╻ ╻╺┳╸                  \e[0;1m┃
@@ -27,4 +54,6 @@ echo -e "
 \e[0;1m┃${Bwhite}  Youtube - https://youtube.com/abhackerofficial     \e[0;1m┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 \e[0m";echo -ne "\033]12;#b4e1fd\007"
+fi
 # Thanks for using Theme-Engine.
+

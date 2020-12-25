@@ -8,11 +8,17 @@
 #############################################
 
 ## Colors
+## Day
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'    Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
-reset=$'\e[0m'
 # background
 Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;46m'
+reset=$'\e[0m'
+## Night
+# foreground
+NFgreen=$'\e[0;1;38;2;0;230;118m'   NFblue=$'\e[0;1;38;2;40;90;255m'   NFsky=$'\e[0;1;38;2;0;255;255m'    NFpurple=$'\e[0;1;38;2;101;31;255m' NFyellow=$'\e[0;1;38;2;200;255;0m' NFred=$'\e[0;1;38;2;200;0;0m' NBcyan=$'\e[0;1;38;5;49m'
+# background
+NBgreen=$'\e[0;1;90;7;48;2;0;230;118m'   NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m'
 
 ## Theme-Engine Version
 version=" 4.2"
@@ -22,6 +28,10 @@ status='true'
 
 ## Shell
 Shell=$(ps | grep -o "zsh" | head -n1)
+
+## Specify time
+day=`date +%H`
+night=`date +%H`
 
 ## distro
 distroA=$(uname -o | grep -o "Android")
@@ -217,6 +227,52 @@ if [ -f "${loc5}" ];then
 
 ## Theme-Engine auto-update
 auto_update() {
+if [[ $day -gt "17" ]];then
+if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
+cd ${loc9}
+HIDE
+	printf "\e[0;1m┃\e[0;1;100m    Checking for Update...                          \e[0;1m┃${reset}\r"
+      PUT 15 1
+   line2
+changed=0
+	git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
+	if [ $changed = 1 ]; then
+  PUT 14 1
+	printf "\e[0;1m┃\e[0;1;100m   ➜ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
+      sleep 1.6
+    PUT 15 1
+  line2
+PUT 14 1
+	printf "\e[0;1m┃\e[0;1;100m   ➜ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
+       PUT 15 1
+     line2
+    git stash &> /dev/null
+  git pull &> /dev/null
+ cp ${loc9}/theme-engine $PREFIX/bin
+PUT 14 1
+
+	printf "\e[0;1m┃\e[0;1;100m   ✔ Theme-Engine is Updated to latest version.      \r\e[0;1m┃${reset}"
+      sleep 1.6
+    PUT 15 1
+  line2
+PUT 14 1
+
+	printf "\e[0;1m┃\e[0;1;100m   ➜ Get Changelog : theme-engine -L                 \r\e[0;1m┃${reset}"
+      sleep 1.6
+    PUT 15 1
+   line2
+ PUT 14 1
+bash theme-engine
+exit
+else
+      PUT 15 1
+    line2
+   PUT 14 1
+  fi
+NORM
+fi
+
+else
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
 cd ${loc9}
 HIDE
@@ -260,6 +316,7 @@ else
   fi
 NORM
 fi
+fi
 }
 
 if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
@@ -267,7 +324,23 @@ if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 
 ## Theme-Engine Main Options
 function main_options () {
-   echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
+if [[ $day -gt "17" ]];then
+   echo -e "\e[0;1m┃${NBred} ┌[1]┐ Apply Color Scheme ${NByellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
+
+if [ -f "${loc7}/termux.properties" ];then
+   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃"
+else
+   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃"
+fi
+
+if [ ! -f "${loc8}" ];then
+   echo -e "\e[0;1m┃${NBpurple} └[3]┘ Enable Zsh-Theme   ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
+else
+   echo -e "\e[0;1m┃${NBpurple} └[3]┘ Apply Zsh-Theme    ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
+fi
+
+else
+echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
 
 if [ -f "${loc7}/termux.properties" ];then
    echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃"
@@ -280,9 +353,28 @@ if [ ! -f "${loc8}" ];then
 else
    echo -e "\e[0;1m┃${Bpurple} └[3]┘ Apply Zsh-Theme    ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
 fi
+fi
 }
 
 extra_keys () {
+if [[ $day -gt "17" ]];then
+if [ ! -f "${loc6}" ];then
+   cd ${loc3}
+   cp extra.keys.theme ${loc6}
+termux-reload-settings
+PUT 16 1
+   echo -e "${NBcyan}           Extra Keys Enabled Successfully             ${reset}"
+   echo -ne "\033]12;#b4e1fd\007"
+else
+   cd ${loc7}
+   rm termux.properties
+termux-reload-settings
+PUT 16 1
+   echo -e "${NBcyan}           Extra Keys Reset Successfully               ${reset}"
+   echo -ne "\033]12;#b4e1fd\007"
+fi
+
+else
 if [ ! -f "${loc6}" ];then
    cd ${loc3}
    cp extra.keys.theme ${loc6}
@@ -296,22 +388,42 @@ else
 termux-reload-settings
 PUT 16 1
    echo -e "${Bcyan}           Extra Keys Reset Successfully               ${reset}"
-   echo -ne "\033]12;#b4e1fd\007";fi;}
+   echo -ne "\033]12;#b4e1fd\007"
+fi
+fi
+}
 
 ## Theme-Engine Main Banner
 banner() {
+if [[ $day -gt "17" ]];then
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1;7m                                                       ";WAIT
-printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ";WAIT
-printf "\n\e[0;1;7m ${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1;7m ";WAIT
-printf "\n\e[0;1;7m ${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1;7m ";WAIT
-printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ";WAIT
-printf "\n\e[0;1;7m  Maintain by - abhackerofficial ──────┐              \e[0;1;7m ";WAIT
+printf "\n\e[0;1;100m                                                       ${reset}";WAIT
+printf "\n\e[0;1;100m ${NBred}                        ${NBred}  ${NBblue}                           \e[0;1;100m ${reset}";WAIT
+printf "\n\e[0;1;100m ${NBred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${NBred}▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1;100m ${reset}";WAIT
+printf "\n\e[0;1;100m ${NBred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1;100m ${reset}";WAIT
+printf "\n\e[0;1;100m ${NBred}                        ${NBred}  ${NBblue}                           \e[0;1;100m ${reset}";WAIT
+printf "\n\e[0;1;100m  Maintain by - abhackerofficial ──────┐              \e[0;1;100m ${reset}";WAIT
 if [[ $Shell == *'zsh'* ]]; then
-printf "\n\e[1;7m  Current shell : zsh                  └──────  -v${version} \n\n"; WAIT
+printf "\n\e[1;100m  Current shell : zsh                  └──────  -v${version} \n\n${reset}"; WAIT
 else
-printf "\n\e[1;7m  Current shell : bash                 └──────  -v${version} \n\n"; WAIT
+printf "\n\e[1;100m  Current shell : bash                 └──────  -v${version} \n\n${reset}"; WAIT
+fi
+
+else
+printf "${reset}"
+echo -ne "\033]12;#363636\007";clear
+printf "\n\e[0;1;7m                                                       ${reset}";WAIT
+printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ${reset}";WAIT
+printf "\n\e[0;1;7m ${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1;7m ${reset}";WAIT
+printf "\n\e[0;1;7m ${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1;7m ${reset}";WAIT
+printf "\n\e[0;1;7m ${Bred}                        ${Bred}  ${Bblue}                           \e[0;1;7m ${reset}";WAIT
+printf "\n\e[0;1;7m  Maintain by - abhackerofficial ──────┐              \e[0;1;7m ${reset}";WAIT
+if [[ $Shell == *'zsh'* ]]; then
+printf "\n\e[1;7m  Current shell : zsh                  └──────  -v${version} \n\n${reset}"; WAIT
+else
+printf "\n\e[1;7m  Current shell : bash                 └──────  -v${version} \n\n${reset}"; WAIT
+fi
 fi
 }
 
@@ -331,6 +443,16 @@ if [ -f "${loc8}" ];then
     line3
   main_options
 auto_update
+if [[ $day -gt "17" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
+	PUT 15 1
+      line4
+     PUT 14 25
+    printf "\e[0;1;100m"
+  read option
+echo -ne "${reset}"
+else
 printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
         PUT 15 1
       line4
@@ -338,6 +460,7 @@ printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               
     printf "\e[0;1;7m"
   read option
 echo -ne "${reset}"
+fi
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
@@ -388,6 +511,16 @@ if [ ! -f "${loc8}" ];then
    line3
   main_options
 auto_update
+if [[ $day -gt "17" ]];then
+echo -ne "\033]12;#b4e1fd\007"
+printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
+	PUT 15 1
+      line4
+     PUT 14 25
+    printf "\e[0;1;100m"
+  read option
+echo -ne "${reset}"
+else
 printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
          PUT 15 1
        line4
@@ -395,6 +528,7 @@ printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               
     printf "\e[0;1;7m"
   read option
 echo -ne "${reset}"
+fi
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo

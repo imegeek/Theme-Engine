@@ -2,7 +2,16 @@
 
 PUT(){ echo -en "\033[${1};${2}H";}
 
+## color
+Byellow='\e[0;1;30;48;2;200;255;0m'
+NByellow='\e[0;1;90;7;30;48;2;200;255;0m'
+
+## Specify time
+day=`date +%H`
+night=`date +%H`
+
 disable.zsh() {
+if [[ $day -gt "17" ]];then
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
@@ -10,9 +19,25 @@ if [ -f "$HOME/.termux/shell" ];then cd $HOME/.termux ; rm shell ;fi
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 cd $HOME/.termux; rm config.theme-engine ;fi
 if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
-echo -e "\e[0;1;30;48;2;200;255;0m  [√] Zsh-Theme Disabled Successfully                  \e[0m"
+echo -e "${NByellow}  [√] Zsh-Theme Disabled Successfully                  \e[0m"
 else
-echo -e "\e[0;1;100m  [!] You won't disable (Zsh) before Enable Zsh-Theme  \e[0m" ;fi ;}
+echo -e "\e[0;1;100m  [!] You won't disable (Zsh) before Enable Zsh-Theme  \e[0m"
+fi
+
+else
+if [ -f "$HOME/.termux/config.theme-engine" ];then
+if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
+if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
+if [ -f "$HOME/.termux/shell" ];then cd $HOME/.termux ; rm shell ;fi
+if [ -f "$HOME/.termux/config.theme-engine" ];then
+cd $HOME/.termux; rm config.theme-engine ;fi
+if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
+echo -e "${Byellow}  [√] Zsh-Theme Disabled Successfully                  \e[0m"
+else
+echo -e "\e[0;1;100m  [!] You won't disable (Zsh) before Enable Zsh-Theme  \e[0m"
+fi
+fi
+}
 
 PUT 16 1
 disable.zsh
