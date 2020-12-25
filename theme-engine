@@ -254,7 +254,6 @@ PUT 14 1
 bash theme-engine
 exit
 else
-	printf "\e[0;1m┃\e[0;1;7m   ✔ Theme-Engine Already Updated.                   \r\e[0;1m┃${reset}"
       PUT 15 1
     line2
    PUT 14 1
