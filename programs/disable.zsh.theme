@@ -19,9 +19,9 @@ if [ -f "$HOME/.termux/shell" ];then cd $HOME/.termux ; rm shell ;fi
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 cd $HOME/.termux; rm config.theme-engine ;fi
 if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
-echo -e "${NByellow}  [√] Zsh-Theme Disabled Successfully                  \e[0m"
+echo -e "${NByellow}           Zsh-Theme Disabled Successfully             \e[0m"
 else
-echo -e "\e[0;1;100m  [!] You won't disable (Zsh) before Enable Zsh-Theme  \e[0m"
+echo -e "\e[0;1;100m    You won't disable (Zsh) before Enable Zsh-Theme   \e[0m"
 fi
 
 else
@@ -32,9 +32,9 @@ if [ -f "$HOME/.termux/shell" ];then cd $HOME/.termux ; rm shell ;fi
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 cd $HOME/.termux; rm config.theme-engine ;fi
 if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
-echo -e "${Byellow}  [√] Zsh-Theme Disabled Successfully                  \e[0m"
+echo -e "${Byellow}           Zsh-Theme Disabled Successfully             \e[0m"
 else
-echo -e "\e[0;1;100m  [!] You won't disable (Zsh) before Enable Zsh-Theme  \e[0m"
+echo -e "\e[0;1;100m    You won't disable (Zsh) before Enable Zsh-Theme   \e[0m"
 fi
 fi
 }
