@@ -17,30 +17,23 @@ R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
 ## Reset Colors
 C=$'\e[0;1m'
 
-chcolor() {
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
-if [ -d "$PREFIX/share/Theme-Engine" ];then
-mv colors.properties $PREFIX/share/Theme-Engine/temp
-if [ -d "$HOME/.termux/colors.properties" ];then cd $HOME ; rm $HOME/.termux/colors.properties ;fi
-cd $PREFIX/share/Theme-Engine/temp
-mv colors.properties $HOME/.termux
-termux-reload-settings
-printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo ;fi ; }
 
-termux() {
-if [ ! -d "$PREFIX/share/Theme-Engine" ];then
-if [ -d "$HOME/.termux/colors" ];then
-cd $HOME/.termux/colors ;fi ;fi ; }
+change_loc() {
+if [ ! -f "$HOME/.termux/config.theme-engine" ];then
+cd $PREFIX/share/Theme-Engine/colors
+else
+cd $HOME/.termux/colors
+fi
+}
 
-chcolor1() {
-if [ ! -d "$PREFIX/share/Theme-Engine" ];then
-if [ -d "$HOME/.termux/colors" ];then
-mv colors.properties $HOME/.termux
+change_col() {
 termux-reload-settings
-printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo ;fi ;fi ; }
+printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo
+}
 
 random_colors() {
-if [ ! -d "$PREFIX/share/Theme-Engine" ];then
+if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 random_scheme=$(ls $PREFIX/share/Theme-Engine/colors | shuf -n 1)
 { cp $PREFIX/share/Theme-Engine/colors/$random_scheme $HOME/.termux/colors.properties;}
 { termux-reload-settings; printf "\e[0;1;7m [√] Random-Color-Scheme Applied Successfully       \e[0m";echo; exit;}
@@ -49,17 +42,6 @@ random_scheme=$(ls $HOME/.termux/colors | shuf -n 1)
 { cp $HOME/.termux/colors/$random_scheme $HOME/.termux/colors.properties;}
 { termux-reload-settings; printf "\e[0;1;7m [√] Random-Color-Scheme Applied Successfully       \e[0m";echo; exit;} ;fi ;}
 
-exit_on_signal_SIGINT () {
-   { printf "\n${Bred}                Program interrupted.                \e[0m" 2>&1; echo; }
-    echo -ne "\033]12;#b4e1fd\007"
-    exit 0
-}
-
-exit_on_signal_SIGTERM () {
-   { printf "\n${Bred}                Program terminated.                 \e[0m" 2>&1; echo; }
-   echo -ne "\033]12;#b4e1fd\007"
-   exit 0
-}
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
@@ -132,74 +114,55 @@ printf "${Bgreen}"
 read color
 printf "\e[0m"
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp accent.material.colors colors.properties
-chcolor
-chcolor1
+change_loc
+cp accent.material.colors $HOME/.termux/colors.properties
+change_col
+
 
 elif [[ $color = "2" ]] || [[ $color = "02" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp apathy-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp apathy-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "3" ]] || [[ $color = "03" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp apathy-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp apathy-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "4" ]] || [[ $color = "04" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp argonaut.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp argonaut.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "5" ]] || [[ $color = "05" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp ashes-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp ashes-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "6" ]] || [[ $color = "06" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp ashes-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp ashes-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "7" ]] || [[ $color = "07" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierforest-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierforest-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "8" ]] || [[ $color = "08" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierforest-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierforest-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "9" ]] || [[ $color = "09" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierheath-dark.colors colors.properties
-chcolor1
-chcolor
-termux
+change_loc
+cp atelierheath-dark.colors $HOME/.termux/colors.properties
+change_col
+
 elif [[ $color = "10" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierheath-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierheath-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "11" ]];then
 printf "${Byellow} [*] Enter Color Path :                             \e[0m"
@@ -238,7 +201,6 @@ do
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 done
 done
-mv colors.properties $HOME/.termux
 termux-reload-settings;NORM
 printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
 
@@ -252,7 +214,7 @@ PUT 34 32
 HIDCRSR;printf "${Bsky}https://************\e[0m\n"
 sleep 0.6
 trap '' 2
-( wget -O colors.properties $color_url -q &> /dev/null ) &> /dev/null & spin
+( wget -O $HOME/.termux/colors.properties $color_url -q &> /dev/null ) &> /dev/null & spin
 trap 5
 else
 echo -e "\n\e[0;1;7m             You entered Invalid Url !              "
@@ -261,235 +223,173 @@ exit
 fi
 
 elif [[ $color = "rc" ]] || [[ $color = "RC" ]];then
-#cd $PREFIX/share/Theme-Engine/colors &> /dev/null
+#change_loc
 #term
-#cp "random_colors" colors.properties
-#chcolor1
-#chcolor
+#cp "random_colors" $HOME/.termux/colors.properties
+#
+#change_col
 random_colors
+
 elif [[ $color = "13" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierlakeside-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierlakeside-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "14" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierlakeside-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierlakeside-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "15" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierseaside-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierseaside-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "16" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp atelierseaside-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp atelierseaside-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "17" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp black-on-white.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp black-on-white.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "18" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp codeschool-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp codeschool-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "19" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp codeschool-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp codeschool-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "20" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp colors-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp colors-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "21" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp colors-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp colors-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "22" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp dracula.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp dracula.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "23" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp default-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp default-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "24" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp default-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp default-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "25" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp e-ink.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp e-ink.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "26" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp eighties-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp eighties-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "27" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp eighties-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp eighties-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "28" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp embers-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp embers-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "29" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp embers-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp embers-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "30" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp flat-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp flat-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "31" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp flat-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp flat-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "32" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp gnometerm.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp gnometerm.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "33" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp google-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp google-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "34" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp google-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp google-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "35" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp gotham.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp gotham.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "36" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp greenscreen-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp greenscreen-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "37" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp greenscreen-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp greenscreen-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "38" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp gruvbox-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp gruvbox-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "39" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp gruvbox-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp gruvbox-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "40" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp harmonic16-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp harmonic16-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "41" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp harmonic16-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp harmonic16-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "42" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp isotope-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp isotope-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "43" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
+change_loc
 termux
-cp isotope-light.colors colors.properties
-chcolor1
-chcolor
+cp isotope-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "44" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp white-on-black.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp white-on-black.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "2>" ]];then
 banner2
@@ -500,257 +400,185 @@ read color
 printf "\e[0m"
 
 if [[ $color = "45" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp londontube-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp londontube-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "46" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp londontube-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp londontube-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "47" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp marrakesh-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp marrakesh-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "48" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp marrakesh-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp marrakesh-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "49" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp materia.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp materia.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "50" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp material.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp material.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "51" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp material.dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp material.dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "52" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp material.light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp material.light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "53" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp mocha-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp mocha-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "54" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp mocha-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp mocha-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "55" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp monokai-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp monokai-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "56" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp monokai-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp monokai-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "57" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp neon.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp neon.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "58" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp nord.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp nord.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "59" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp ocean-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp ocean-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "60" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp ocean-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp ocean-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "61" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp one-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp one-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "62" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp one-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp one-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "63" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp paraiso-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp paraiso-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "64" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp paraiso-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp paraiso-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "65" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp rydgel.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp rydgel.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "66" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp shapeshifter-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp shapeshifter-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "67" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp shapeshifter-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp shapeshifter-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "68" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp smyck.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp smyck.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "69" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp solarized-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp solarized-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "70" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp solarized-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp solarized-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "71" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp spacemacs.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp spacemacs.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "72" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp summerfruit-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp summerfruit-dark.colors $HOME/.termux/colors.properties
+change_col
 
 
 elif [[ $color = "73" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp summerfruit-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp summerfruit-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "74" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp tomorrow-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp tomorrow-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "75" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp tomorrow-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp tomorrow-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "76" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp tomorrow-night.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp tomorrow-night.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "77" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp twilight-dark.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp twilight-dark.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "78" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp twilight-light.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp twilight-light.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "79" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp wild-cherry.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp wild-cherry.colors $HOME/.termux/colors.properties
+change_col
 
 elif [[ $color = "80" ]];then
-cd $PREFIX/share/Theme-Engine/colors &> /dev/null
-termux
-cp zenburn.colors colors.properties
-chcolor1
-chcolor
+change_loc
+cp zenburn.colors $HOME/.termux/colors.properties
+change_col
 
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi

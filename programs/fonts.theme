@@ -12,27 +12,21 @@ Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0
 Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
 
-chfont() {
+
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
-if [ -d "$PREFIX/share/Theme-Engine" ];then
-mv font.ttf $PREFIX/share/Theme-Engine/temp
-if [ -d "$HOME/.termux/font.ttf" ];then cd $HOME ; rm $HOME/font.ttf ;fi
-cd $PREFIX/share/Theme-Engine/temp
-mv font.ttf $HOME/.termux
-termux-reload-settings
-printf "\e[0;1;7m [√] Font-Style Applied Successfully                \e[0m" ;echo ;fi ; }
 
-termux() {
-if [ ! -d "$PREFIX/share/Theme-Engine" ];then
-if [ -d "$HOME/.termux/fonts" ];then
-cd $HOME/.termux/fonts ;fi ;fi ; }
+change_loc() {
+if [ ! -f "$HOME/.termux/config.theme-engine" ];then
+cd $PREFIX/share/Theme-Engine/fonts
+else
+cd $HOME/.termux/fonts
+fi
+}
 
-chfont1() {
-if [ ! -d "$PREFIX/share/Theme-Engine" ];then
-if [ -d "$HOME/.termux/fonts" ];then
-mv font.ttf $HOME/.termux
+change_font() {
 termux-reload-settings
-printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo ;fi ;fi ; }
+printf "\e[0;1;7m [√] Font-Style Applied Successfully                \e[0m" ;echo
+}
 
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
@@ -79,212 +73,154 @@ printf "\e[0;1;30;48;2;0;230;118m"
 read font
 printf "\e[0m"
 if [[ $font = "1" ]] || [[ $font = "01" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Anonymice Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Anonymice Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "2" ]] || [[ $font = "02" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Courier-Prime.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Courier-Prime.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "3" ]] || [[ $font = "03" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Cousine for Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Cousine for Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "4" ]] || [[ $font = "04" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp D2-Coding.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp D2-Coding.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "5" ]] || [[ $font = "05" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'DejaVu Sans Mono for Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'DejaVu Sans Mono for Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "6" ]] || [[ $font = "06" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Droid Sans Mono Dotted for Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Droid Sans Mono Dotted for Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "7" ]] || [[ $font = "07" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Droid Sans Mono for Powerline.otf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Droid Sans Mono for Powerline.otf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "8" ]] || [[ $font = "08" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Fantasque.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Fantasque.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "9" ]] || [[ $font = "09" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp FiraCode-Regular.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp FiraCode-Regular.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "10" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'FuraMono-Regular Powerline.otf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'FuraMono-Regular Powerline.otf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "11" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp GNU-FreeFont.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp GNU-FreeFont.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "12" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Go.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Go.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "13" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Hack-Regular.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Hack-Regular.ttf $HOME/.termux/font.ttf
+
 
 elif [[ $font = "14" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Hermit.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Hermit.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "15" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Inconsolata for Powerline.otf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Inconsolata for Powerline.otf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "16" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Inconsolata-dz for Powerline.otf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Inconsolata-dz for Powerline.otf' $HOME/.termux/font.ttf
+change_font
+
 
 elif [[ $font = "17" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Iosevka-regular.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Iosevka-regular.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "18" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Iosevka.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Iosevka.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "19" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp IosevkaNerdFontComplete-Medium.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp IosevkaNerdFontComplete-Medium.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "20" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp JetBrains-Mono.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp JetBrains-Mono.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "21" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Literation Mono Powerline.ttf' font.ttf
-chfont1
-chfont
+change_font
+cp 'Literation Mono Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "22" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Meslo LG M Regular for Powerline.otf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Meslo LG M Regular for Powerline.otf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "23" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Monofur for Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Monofur for Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "24" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Monoid.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Monoid.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "25" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp OpenDyslexic.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp OpenDyslexic.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "26" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Roboto Mono for Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Roboto Mono for Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "27" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp Source-Code-Pro.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp Source-Code-Pro.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "28" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp  Terminus.ttf font.ttf
-chfont1
-chfont
+change_loc
+cp  Terminus.ttf $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "29" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Tinos for Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Tinos for Powerline.ttf' $HOME/.termux/font.ttf
+change_font
 
 elif [[ $font = "30" ]];then
-cd $PREFIX/share/Theme-Engine/fonts &> /dev/null
-termux
-cp 'Ubuntu Mono derivative Powerline.ttf' font.ttf
-chfont1
-chfont
+change_loc
+cp 'Ubuntu Mono derivative Powerline.ttf' $HOME/.termux/font.ttf
+change_font
+
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
