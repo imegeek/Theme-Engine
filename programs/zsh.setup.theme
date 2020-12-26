@@ -203,132 +203,132 @@ cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 zsh.setup() {
 if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 trap '' 2 ;HIDCRSR
-echo -ne "${NBpurple}  [!] Setting-up configurations           [0.0%]       \r"
+echo -ne "${NBpurple}    ✚  Setting-up configurations           [0.0%]     \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up configurations.          [0.3%]       \r"
+echo -ne "${NBpurple}    ✚  Setting-up configurations.          [0.3%]     \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up configurations..         [0.9%]       \r"
+echo -ne "${NBpurple}    ✚  Setting-up configurations..         [0.9%]     \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up configurations...        [1.0%]       \r"
+echo -ne "${NBpurple}    ✚  Setting-up configurations...        [1.0%]     \r"
 sleep 0.2
 setting_up
-echo -ne "${NBpurple}  [!] Changing default Shell to Zsh       [3.0%]       \r"
+echo -ne "${NBpurple}    ✚  Changing default Shell to Zsh       [3.0%]     \r"
 sleep 0.1
-echo -ne "${NBpurple}  [!] Changing default Shell to Zsh.      [9.0%]       \r"
+echo -ne "${NBpurple}    ✚  Changing default Shell to Zsh.      [9.0%]     \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Changing default Shell to Zsh..     [18%]        \r"
+echo -ne "${NBpurple}    ✚  Changing default Shell to Zsh..     [18%]      \r"
 sleep 0.1
-echo -ne "${NBpurple}  [!] Changing default Shell to Zsh...    [26%]        \r"
+echo -ne "${NBpurple}    ✚  Changing default Shell to Zsh...    [26%]      \r"
 sleep 0.1
 change_shell
-echo -ne "${NBpurple}  [!] Setting-up Color-Scheme.            [30%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Color-Scheme.            [30%]      \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up Color-Scheme..           [34%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Color-Scheme..           [34%]      \r"
 sleep 0.1
-echo -ne "${NBpurple}  [!] Setting-up Color-Scheme...          [38%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Color-Scheme...          [38%]      \r"
 sleep 0.1
 set_color
-echo -ne "${NBpurple}  [!] Setting-up Font-Style.              [42%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Font-Style.              [42%]      \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up Font-Style..             [50%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Font-Style..             [50%]      \r"
 sleep 0.1
-echo -ne "${NBpurple}  [!] Setting-up Font-Style...            [56%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Font-Style...            [56%]      \r"
 sleep 0.1
 set_font
-echo -ne "${NBpurple}  [!] Copying Necessary files.            [62%]        \r"
+echo -ne "${NBpurple}    ✚  Copying Necessary files.            [62%]      \r"
 sleep 0.1
 copying_files
-echo -ne "${NBpurple}  [!] Copying Necessary files..           [68%]        \r"
+echo -ne "${NBpurple}    ✚  Copying Necessary files..           [68%]      \r"
 sleep 0.2
 files
-echo -ne "${NBpurple}  [!] Copying Necessary files...          [74%]        \r"
+echo -ne "${NBpurple}    ✚  Copying Necessary files...          [74%]      \r"
 sleep 0.2
 copying_tools
-echo -ne "${NBpurple}  [!] Copying Zsh-Plugins...              [78%]        \r"
+echo -ne "${NBpurple}    ✚  Copying Zsh-Plugins...              [78%]      \r"
 sleep 0.2
 copying_plugins
-echo -ne "${NBpurple}  [!] Setting-up Zsh-Shell                [86%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Zsh-Shell                [86%]      \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up Zsh-Shell.               [92%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Zsh-Shell.               [92%]      \r"
 sleep 0.1
-echo -ne "${NBpurple}  [!] Setting-up Zsh-Shell..              [94%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Zsh-Shell..              [94%]      \r"
 sleep 0.2
-echo -ne "${NBpurple}  [!] Setting-up Zsh-Theme...             [96%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Zsh-Theme...             [96%]      \r"
 sleep 0.2
 set_zsh
-echo -ne "${NBpurple}  [!] Setting-up Zsh-Shell...             [98%]        \r"
+echo -ne "${NBpurple}    ✚  Setting-up Zsh-Shell...             [98%]      \r"
 sleep 0.2
 zshrc
-echo -ne "${NBpurple}  [!] Reloading Configuration Settings... [99%]        \r"
+echo -ne "${NBpurple}    ✚  Reloading Configuration Settings... [99%]      \r"
 sleep 0.8
 reload
-echo -ne "${NBpurple}  [!] Setup completed. Enjoy Oh-my-zsh    [100%]       \e[0m\r"
-trap 5; sleep 0.6; NORM
+echo -ne "${NBpurple}    ✚  Setup completed. Enjoy Oh-my-zsh    [100%]     \e[0m\r"
+trap 5; sleep 0.8; NORM
 bash "${loc12}"
 
 else
 trap '' 2 ;HIDCRSR
-echo -ne "${Bpurple}  [!] Setting-up configurations           [0.0%]       \r"
+echo -ne "${Bpurple}    ✚  Setting-up configurations           [0.0%]     \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up configurations.          [0.3%]       \r"
+echo -ne "${Bpurple}    ✚  Setting-up configurations.          [0.3%]     \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up configurations..         [0.9%]       \r"
+echo -ne "${Bpurple}    ✚  Setting-up configurations..         [0.9%]     \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up configurations...        [1.0%]       \r"
+echo -ne "${Bpurple}    ✚  Setting-up configurations...        [1.0%]     \r"
 sleep 0.2
 setting_up
-echo -ne "${Bpurple}  [!] Changing default Shell to Zsh       [3.0%]       \r"
+echo -ne "${Bpurple}    ✚  Changing default Shell to Zsh       [3.0%]     \r"
 sleep 0.1
-echo -ne "${Bpurple}  [!] Changing default Shell to Zsh.      [9.0%]       \r"
+echo -ne "${Bpurple}    ✚  Changing default Shell to Zsh.      [9.0%]     \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Changing default Shell to Zsh..     [18%]        \r"
+echo -ne "${Bpurple}    ✚  Changing default Shell to Zsh..     [18%]      \r"
 sleep 0.1
-echo -ne "${Bpurple}  [!] Changing default Shell to Zsh...    [26%]        \r"
+echo -ne "${Bpurple}    ✚  Changing default Shell to Zsh...    [26%]      \r"
 sleep 0.1
 change_shell
-echo -ne "${Bpurple}  [!] Setting-up Color-Scheme.            [30%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Color-Scheme.            [30%]      \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up Color-Scheme..           [34%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Color-Scheme..           [34%]      \r"
 sleep 0.1
-echo -ne "${Bpurple}  [!] Setting-up Color-Scheme...          [38%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Color-Scheme...          [38%]      \r"
 sleep 0.1
 set_color
-echo -ne "${Bpurple}  [!] Setting-up Font-Style.              [42%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Font-Style.              [42%]      \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up Font-Style..             [50%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Font-Style..             [50%]      \r"
 sleep 0.1
-echo -ne "${Bpurple}  [!] Setting-up Font-Style...            [56%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Font-Style...            [56%]      \r"
 sleep 0.1
 set_font
-echo -ne "${Bpurple}  [!] Copying Necessary files.            [62%]        \r"
+echo -ne "${Bpurple}    ✚  Copying Necessary files.            [62%]      \r"
 sleep 0.1
 copying_files
-echo -ne "${Bpurple}  [!] Copying Necessary files..           [68%]        \r"
+echo -ne "${Bpurple}    ✚  Copying Necessary files..           [68%]      \r"
 sleep 0.2
 files
-echo -ne "${Bpurple}  [!] Copying Necessary files...          [74%]        \r"
+echo -ne "${Bpurple}    ✚  Copying Necessary files...          [74%]      \r"
 sleep 0.2
 copying_tools
-echo -ne "${Bpurple}  [!] Copying Zsh-Plugins...              [78%]        \r"
+echo -ne "${Bpurple}    ✚  Copying Zsh-Plugins...              [78%]      \r"
 sleep 0.2
 copying_plugins
-echo -ne "${Bpurple}  [!] Setting-up Zsh-Shell                [86%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Zsh-Shell                [86%]      \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up Zsh-Shell.               [92%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Zsh-Shell.               [92%]      \r"
 sleep 0.1
-echo -ne "${Bpurple}  [!] Setting-up Zsh-Shell..              [94%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Zsh-Shell..              [94%]      \r"
 sleep 0.2
-echo -ne "${Bpurple}  [!] Setting-up Zsh-Theme...             [96%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Zsh-Theme...             [96%]      \r"
 sleep 0.2
 set_zsh
-echo -ne "${Bpurple}  [!] Setting-up Zsh-Shell...             [98%]        \r"
+echo -ne "${Bpurple}    ✚  Setting-up Zsh-Shell...             [98%]      \r"
 sleep 0.2
 zshrc
-echo -ne "${Bpurple}  [!] Reloading Configuration Settings... [99%]        \r"
+echo -ne "${Bpurple}    ✚  Reloading Configuration Settings... [99%]      \r"
 sleep 0.8
 reload
-echo -ne "${Bpurple}  [!] Setup completed. Enjoy Oh-my-zsh    [100%]       \e[0m\r"
-trap 5; sleep 0.6; NORM
+echo -ne "${Bpurple}    ✚  Setup completed. Enjoy Oh-my-zsh    [100%]     \e[0m\r"
+trap 5; sleep 0.8; NORM
 bash "${loc12}"
 fi
 }
