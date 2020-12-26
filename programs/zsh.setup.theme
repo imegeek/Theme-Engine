@@ -201,7 +201,7 @@ if [ -f "${loc7}/config.theme-engine" ];then
 cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 
 zsh.setup() {
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 trap '' 2 ;HIDCRSR
 echo -ne "${NBpurple}  [!] Setting-up configurations           [0.0%]       \r"
 sleep 0.2

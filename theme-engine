@@ -227,7 +227,7 @@ if [ -f "${loc5}" ];then
 
 ## Theme-Engine auto-update
 auto_update() {
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
 cd ${loc9}
 HIDE
@@ -324,7 +324,7 @@ if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 
 ## Theme-Engine Main Options
 function main_options () {
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
    echo -e "\e[0;1m┃${NBred} ┌[1]┐ Apply Color Scheme ${NByellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
 
 if [ -f "${loc7}/termux.properties" ];then
@@ -357,7 +357,7 @@ fi
 }
 
 extra_keys () {
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 if [ ! -f "${loc6}" ];then
    cd ${loc3}
    cp extra.keys.theme ${loc6}
@@ -395,7 +395,7 @@ fi
 
 ## Theme-Engine Main Banner
 banner() {
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1;7m`line3`${reset}";WAIT
@@ -447,7 +447,7 @@ if [ -f "${loc8}" ];then
     line3
   main_options
 auto_update
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
 	PUT 15 1
@@ -515,7 +515,7 @@ if [ ! -f "${loc8}" ];then
    line3
   main_options
 auto_update
-if [ $day -gt "17" ];then
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
 echo -ne "\033]12;#b4e1fd\007"
 printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
 	PUT 15 1
