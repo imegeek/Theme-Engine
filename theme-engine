@@ -128,7 +128,7 @@ fi
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
 echo -e "Usage: theme-engine [options...]
 
-available theme:
+available themes:
  --theme -default  : \e[1;90m━━\e[0;1m━━${reset}
  --theme -night    : \e[1;90m━━━━\e[0m${reset}
  --theme -light    : \e[0;1m━━━━\e[0m${reset}
