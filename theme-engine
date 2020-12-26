@@ -117,12 +117,18 @@ fi
 
 #..............................................................
 
-## arguments
+checking() {
+if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
+pwd &> /dev/null
+else setup
+fi
+}
 
-if [[ -d "${loc9}" ]] || [[ -f "$PREFIX/bin/theme-engine" ]];then
-   if [ "${1}" = "--uninstall" ]; then
-   remove
-   fi
+#..............................................................
+                           checking
+#..............................................................
+
+## arguments
 
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
 echo -e "Usage: theme-engine [options...]
@@ -167,6 +173,9 @@ elif [ "${1}" = "-L" ]; then
 elif [ "${1}" = "--install" ]; then
 	setup
 
+elif [ "${1}" = "--uninstall" ]; then
+	remove
+
 elif [ "${1}" = "--theme" ]; then
 if [ ${#2} -lt 1 ]; then
 	echo -e "theme-engine: try 'theme-engine --help' or 'theme-engine -h'\nfor more information"
@@ -208,9 +217,7 @@ elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
 exit
 fi
 fi
-else
-setup
-fi
+
 #..............................................................
 
 ## Required Packeges Checking...
@@ -273,14 +280,6 @@ trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 if [ -f "${loc5}" ];then
   if [ -f "${loc4}" ];then
      rm ${loc9}/fonts/fonts.rar ;fi ;fi
-
-#..............................................................
-
-checking() {
-if [[ ! -d "${loc9}" && ! -f "$PREFIX/bin/theme-engine" ]];then
-setup
-fi
-}
 
 #..............................................................
 
