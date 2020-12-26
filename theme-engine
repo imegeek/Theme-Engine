@@ -554,7 +554,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
 
@@ -619,7 +619,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[0;1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
 }
@@ -686,7 +686,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
 
@@ -750,7 +750,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[0;1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
 }
