@@ -3,25 +3,31 @@
 #############################################
 # Project : Theme-Engine                    #
 # Author  : ABHacker Official               #
-# Version : 4.2 (Latest)                    #
+# Version : 4.6 (Latest)                    #
 # Github  : abhackerofficial                #
 #############################################
 
-## Colors
-## Day
+#..............................................................
+
+                       THEME='default'
+
+#..............................................................
+
+## Colors # Day
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'    Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 # background
 Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;46m'
 reset=$'\e[0m'
-## Night
+
+## Colors # Night
 # foreground
 NFgreen=$'\e[0;1;38;2;0;230;118m'   NFblue=$'\e[0;1;38;2;40;90;255m'   NFsky=$'\e[0;1;38;2;0;255;255m'    NFpurple=$'\e[0;1;38;2;101;31;255m' NFyellow=$'\e[0;1;38;2;200;255;0m' NFred=$'\e[0;1;38;2;200;0;0m' NBcyan=$'\e[0;1;38;5;49m'
 # background
 NBgreen=$'\e[0;1;90;7;48;2;0;230;118m'   NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m'
 
 ## Theme-Engine Version
-version=" 4.2"
+version=" 4.6"
 
 ## Auto Updater
 status='true'
@@ -59,6 +65,8 @@ elif [[ $distroB == *'Linux'* ]] || [[ $distroB == *'Linux'* ]];then
 directories
 else echo "Theme-Engine isn't supported you're system."
 fi
+
+#..............................................................
 
 banner0() {
 clear
@@ -107,6 +115,8 @@ if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 fi
 }
 
+#..............................................................
+
 ## arguments
 
 if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
@@ -116,8 +126,14 @@ if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 fi
 
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
-echo "Usage: theme-engine [options...]
+echo -e "Usage: theme-engine [options...]
 
+available theme:
+ --theme -default  : \e[1;90m━━\e[0;1m━━${reset}
+ --theme -night    : \e[1;90m━━━━\e[0m${reset}
+ --theme -light    : \e[0;1m━━━━\e[0m${reset}
+
+available commands:
  -c  : Start color menu with this command.
  -f  : Start font menu with this command.
  -u  : Check available update with this command.
@@ -152,23 +168,49 @@ elif [ "${1}" = "-L" ]; then
 elif [ "${1}" = "--install" ]; then
 	setup
 
+elif [ "${1}" = "--theme" ]; then
+if [ ${#2} -lt 1 ]; then
+	echo -e "theme-engine: try 'theme-engine --help' or 'theme-engine -h'\nfor more information"
+	exit
+	fi
+
+if [[ "${2}" = "-default" ]] || [[ "${2}" = "-DEFAULT" ]]; then
+	sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locM}
+	sed -i "1,20 s/THEME='light'/THEME='default'/g" ${locM}
+	printf "enabled theme: default\n"
+	exit
+
+elif [[ "${2}" = "-night" ]] || [[ "${2}" = "-NIGHT" ]]; then
+	sed -i "1,20 s/THEME='default'/THEME='night'/g" ${locM}
+        sed -i "1,20 s/THEME='light'/THEME='night'/g" ${locM}
+        printf "enabled theme: night\n"
+	exit
+
+elif [[ "${2}" = "-light" ]] || [[ "${2}" = "-LIGHT" ]]; then
+	sed -i "1,20 s/THEME='night'/THEME='light'/g" ${locM}
+	sed -i "1,20 s/THEME='default'/THEME='light'/g" ${locM}
+        printf "enabled theme: light\n"
+        exit
+fi
+
 elif [ "${1}" = "--updater" ]; then
 	if [ ${#2} -lt 1 ]; then
-	echo "theme-engine: try 'theme-engine --help' or 'theme-engine -h'
-	for more information"
+	echo -e "theme-engine: try 'theme-engine --help' or 'theme-engine -h'\nfor more information"
 	exit
 	fi
 
 if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
-	sed -i "10,30 s/status='true'/status='false'/g" ${locM}
+	sed -i "20,40 s/status='true'/status='false'/g" ${locM}
 	printf "updater: off\n"
 exit
 elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
-	sed -i "10,30 s/status='false'/status='true'/g" ${locM}
+	sed -i "20,40 s/status='false'/status='true'/g" ${locM}
 	printf "updater: on\n"
 exit
 fi
 fi
+
+#..............................................................
 
 ## Required Packeges Checking...
    command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
@@ -194,6 +236,8 @@ fi; }
  fi
 }
 
+#..............................................................
+
 PUT(){ echo -en "\033[${1};${2}H";}
 HIDE(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
@@ -203,6 +247,8 @@ line1() { printf "\e[0;1m┏━━━━━━━━━━━━━━━━━�
 line2() { printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r" ;}
 line3() { echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" ;}
 line4() { echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ;}
+
+#..............................................................
 
 # interrupter
 exit_on_signal_SIGINT () {
@@ -221,13 +267,25 @@ exit_on_signal_SIGTERM () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
+#..............................................................
+
 if [ -f "${loc5}" ];then
   if [ -f "${loc4}" ];then
      rm ${loc9}/fonts/fonts.rar ;fi ;fi
 
+#..............................................................
+
+checking() {
+if [[ ! -d "${loc9}" && ! -f "$PREFIX/bin/theme-engine" ]];then
+setup
+fi
+}
+
+#..............................................................
+
 ## Theme-Engine auto-update
-auto_update() {
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+
+night_updater() {
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
 cd ${loc9}
 HIDE
@@ -267,12 +325,13 @@ exit
 else
       PUT 15 1
     line2
-   PUT 14 1
-  fi
+  PUT 14 1
 NORM
 fi
+fi
+}
 
-else
+day_updater() {
 if [[ $status == 'true' ]] || [[ $status == 'TRUE' ]];then
 cd ${loc9}
 HIDE
@@ -312,19 +371,17 @@ exit
 else
       PUT 15 1
     line2
-   PUT 14 1
-  fi
+  PUT 14 1
 NORM
 fi
 fi
 }
 
-if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
- if [ ! -d "${loc7}" ];then cd $HOME ; mkdir .termux ;fi
+#..............................................................
 
 ## Theme-Engine Main Options
-function main_options () {
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+
+night_options() {
    echo -e "\e[0;1m┃${NBred} ┌[1]┐ Apply Color Scheme ${NByellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
 
 if [ -f "${loc7}/termux.properties" ];then
@@ -338,8 +395,9 @@ if [ ! -f "${loc8}" ];then
 else
    echo -e "\e[0;1m┃${NBpurple} └[3]┘ Apply Zsh-Theme    ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
 fi
+}
 
-else
+day_options() {
 echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
 
 if [ -f "${loc7}/termux.properties" ];then
@@ -353,11 +411,11 @@ if [ ! -f "${loc8}" ];then
 else
    echo -e "\e[0;1m┃${Bpurple} └[3]┘ Apply Zsh-Theme    ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
 fi
-fi
 }
 
-extra_keys () {
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+#..............................................................
+
+night_extra_keys() {
 if [ ! -f "${loc6}" ];then
    cd ${loc3}
    cp extra.keys.theme ${loc6}
@@ -373,8 +431,9 @@ PUT 16 1
    echo -e "${NBcyan}           Extra Keys Reset Successfully               ${reset}"
    echo -ne "\033]12;#b4e1fd\007"
 fi
+}
 
-else
+day_extra_keys() {
 if [ ! -f "${loc6}" ];then
    cd ${loc3}
    cp extra.keys.theme ${loc6}
@@ -390,12 +449,13 @@ PUT 16 1
    echo -e "${Bcyan}           Extra Keys Reset Successfully               ${reset}"
    echo -ne "\033]12;#b4e1fd\007"
 fi
-fi
 }
 
+#..............................................................
+
 ## Theme-Engine Main Banner
-banner() {
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+
+night_banner() {
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1;7m`line3`${reset}";WAIT
@@ -411,8 +471,9 @@ else
 printf "\n\e[0;1m┃\e[1;100m Current shell : bash                 └────── -v${version}  \e[0;1m┃\e[0;1m┃${reset}"; WAIT
 printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 fi
+}
 
-else
+day_banner() {
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1;7m`line3`${reset}";WAIT
@@ -428,26 +489,31 @@ else
 printf "\n\e[0;1m┃\e[1;7m Current shell : bash                 └────── -v${version} \e[0;1m┃${reset}"; WAIT
 printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 fi
-fi
 }
 
+#..............................................................
+#..............................................................
+
+night() {
 if [ -f "${loc5}" ];then
   if [ -f "${loc8}" ];then
-          banner
+          night_banner
         line3
-      main_options
+      night_options
     PUT 15 1
  line4
 bash ${loc3}/unrar.theme
-fi
+   fi
 fi
 
 if [ -f "${loc8}" ];then
-     banner
+     night_banner
     line3
-  main_options
-auto_update
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+  night_options
+night_updater
+
+#..............................................................
+
 echo -ne "\033]12;#b4e1fd\007"
 printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
 	PUT 15 1
@@ -456,15 +522,8 @@ printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                             
     printf "\e[0;1;100m"
   read option
 echo -ne "${reset}"
-else
-printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
-        PUT 15 1
-      line4
-     PUT 14 25
-    printf "\e[0;1;7m"
-  read option
-echo -ne "${reset}"
-fi
+
+#..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
@@ -488,7 +547,7 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	extra_keys
+	night_extra_keys
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
@@ -499,11 +558,13 @@ else PUT 16 1
    fi
 fi
 
+#..............................................................
+
 if [ -f "${loc5}" ];then
  if [ ! -f "${loc8}" ];then
-      banner
+      night_banner
     line3
-   main_options
+   night_options
   PUT 15 1
  line4
 bash ${loc3}/unrar.theme
@@ -511,11 +572,13 @@ bash ${loc3}/unrar.theme
 fi
 
 if [ ! -f "${loc8}" ];then
-    banner
+    night_banner
    line3
-  main_options
-auto_update
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+  night_options
+night_updater
+
+#..............................................................
+
 echo -ne "\033]12;#b4e1fd\007"
 printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
 	PUT 15 1
@@ -524,15 +587,8 @@ printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                             
     printf "\e[0;1;100m"
   read option
 echo -ne "${reset}"
-else
-printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
-         PUT 15 1
-       line4
-      PUT 14 25
-    printf "\e[0;1;7m"
-  read option
-echo -ne "${reset}"
-fi
+
+#..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
 	echo
@@ -556,7 +612,7 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	extra_keys
+	night_extra_keys
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
@@ -566,8 +622,156 @@ else PUT 16 1
        echo -e "\e[0;1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
    fi
 fi
+}
 
-else
-setup
+#..............................................................
+#..............................................................
+
+light() {
+if [ -f "${loc5}" ];then
+  if [ -f "${loc8}" ];then
+          day_banner
+        line3
+      day_options
+    PUT 15 1
+ line4
+bash ${loc3}/unrar.theme
+   fi
 fi
+
+if [ -f "${loc8}" ];then
+     day_banner
+    line3
+  day_options
+day_updater
+
+#..............................................................
+
+printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
+	PUT 15 1
+      line4
+     PUT 14 25
+    printf "\e[0;1;7m"
+  read option
+echo -ne "${reset}"
+
+#..............................................................
+
+if [[ $option = "1" ]] || [[ $option = "01" ]];then
+	echo
+	cd ${loc3}
+	bash colors.theme
+
+elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+	echo
+	cd ${loc3}
+	bash fonts.theme
+
+elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+	echo -ne "\033]12;#b4e1fd\007"
+	cd ${loc3}
+	bash zsh.theme
+
+elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+	echo -ne "\033]12;#b4e1fd\007"
+        cd ${loc3}
+        bash disable.zsh.theme
+	exit
+
+elif [[ $option = "5" ]] || [[ $option = "05" ]];then
+	day_extra_keys
+
+elif [[ $option = "6" ]] || [[ $option = "06" ]];then
+	cd ${loc3}
+	bash about.theme
+
+else PUT 16 1
+       echo -e "\e[1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+   fi
+fi
+
+#..............................................................
+
+if [ -f "${loc5}" ];then
+ if [ ! -f "${loc8}" ];then
+      day_banner
+    line3
+   day_options
+  PUT 15 1
+ line4
+bash ${loc3}/unrar.theme
+   fi
+fi
+
+if [ ! -f "${loc8}" ];then
+    day_banner
+   line3
+  day_options
+day_updater
+
+#..............................................................
+
+printf "\e[0;1m┃\e[0;1;7m  [Execute an Option]>                               \e[0;1m┃${reset}"
+         PUT 15 1
+       line4
+      PUT 14 25
+    printf "\e[0;1;7m"
+  read option
+echo -ne "${reset}"
+
+#..............................................................
+
+if [[ $option = "1" ]] || [[ $option = "01" ]];then
+	echo
+	cd ${loc3}
+	bash colors.theme
+
+elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+	echo
+	cd ${loc3}
+	bash fonts.theme
+
+elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+	echo -ne "\033]12;#b4e1fd\007"
+	cd ${loc3}
+	bash zsh.setup.theme
+
+elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+	echo -ne "\033]12;#b4e1fd\007"
+        cd ${loc3}
+        bash disable.zsh.theme
+        exit
+
+elif [[ $option = "5" ]] || [[ $option = "05" ]];then
+	day_extra_keys
+
+elif [[ $option = "6" ]] || [[ $option = "06" ]];then
+	cd ${loc3}
+	bash about.theme
+
+else PUT 16 1
+       echo -e "\e[0;1;100m               You entered Wrong Input !               ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+   fi
+fi
+}
+
+#..............................................................
+#..............................................................
+
+## Auto Theme
+
+default() {
+if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+night
+else
+light
+fi
+}
+
+#..............................................................
+
+                          "$THEME"
+
+#..............................................................
+
 #       Thanks for using Theme-Engine.
