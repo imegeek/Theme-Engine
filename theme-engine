@@ -119,11 +119,10 @@ fi
 
 ## arguments
 
-if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
+if [[ -d "${loc9}" ]] || [[ -f "$PREFIX/bin/theme-engine" ]];then
    if [ "${1}" = "--uninstall" ]; then
    remove
-  fi
-fi
+   fi
 
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
 echo -e "Usage: theme-engine [options...]
@@ -209,7 +208,9 @@ elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
 exit
 fi
 fi
-
+else
+setup
+fi
 #..............................................................
 
 ## Required Packeges Checking...
@@ -296,12 +297,12 @@ changed=0
 	git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 	if [ $changed = 1 ]; then
   PUT 14 1
-	printf "\e[0;1m┃\e[0;1;100m   ➜ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;100m   ✚ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
       sleep 1.6
     PUT 15 1
   line2
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;100m   ➜ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;100m   ✚ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
        PUT 15 1
      line2
     git stash &> /dev/null
@@ -342,12 +343,12 @@ changed=0
 	git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 	if [ $changed = 1 ]; then
   PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;7m   ✚ Theme-Engine Update Available                   \r\e[0;1m┃${reset}"
       sleep 1.6
     PUT 15 1
   line2
 PUT 14 1
-	printf "\e[0;1m┃\e[0;1;7m   ➜ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
+	printf "\e[0;1m┃\e[0;1;7m   ✚ Theme-Engine Updating...                        \r\e[0;1m┃${reset}"
        PUT 15 1
      line2
     git stash &> /dev/null
