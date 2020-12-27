@@ -55,7 +55,35 @@ loc7="$HOME/.termux"
 loc8="$HOME/.termux/config.theme-engine"
 loc9="$PREFIX/share/Theme-Engine"
 loc10="$PREFIX/share/Theme-Engine/theme-engine"
-locM=$(which theme-engine)
+locA=$(which theme-engine)
+locB="${loc3}/about.theme"
+locC="${loc3}/disable.zsh.theme"
+locD="${loc3}/unrar.theme"
+locE="${loc3}/zsh.setup.theme"
+}
+
+default_themeA() {
+sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+}
+
+default_themeB() {
+sed -i "1,20 s/THEME='light'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+}
+
+night_themeA() {
+sed -i "1,20 s/THEME='default'/THEME='night'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+}
+
+night_themeB() {
+sed -i "1,20 s/THEME='light'/THEME='night'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+}
+
+light_themeA() {
+sed -i "1,20 s/THEME='night'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+}
+
+light_themeB() {
+sed -i "1,20 s/THEME='default'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
 }
 
 if [[ $distroA == *'Android'* ]];then
@@ -183,20 +211,20 @@ if [ ${#2} -lt 1 ]; then
 	fi
 
 if [[ "${2}" = "-default" ]] || [[ "${2}" = "-DEFAULT" ]]; then
-	sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locM}
-	sed -i "1,20 s/THEME='light'/THEME='default'/g" ${locM}
+	default_themeA
+	default_themeB
 	printf "enabled theme: default\n"
 	exit
 
 elif [[ "${2}" = "-night" ]] || [[ "${2}" = "-NIGHT" ]]; then
-	sed -i "1,20 s/THEME='default'/THEME='night'/g" ${locM}
-        sed -i "1,20 s/THEME='light'/THEME='night'/g" ${locM}
+	night_themeA
+	night_themeB
         printf "enabled theme: night\n"
 	exit
 
 elif [[ "${2}" = "-light" ]] || [[ "${2}" = "-LIGHT" ]]; then
-	sed -i "1,20 s/THEME='night'/THEME='light'/g" ${locM}
-	sed -i "1,20 s/THEME='default'/THEME='light'/g" ${locM}
+	light_themeA
+	light_themeB
         printf "enabled theme: light\n"
         exit
 fi
@@ -208,11 +236,11 @@ elif [ "${1}" = "--updater" ]; then
 	fi
 
 if [[ "${2}" = "-off" ]] || [[ "${2}" = "-OFF" ]]; then
-	sed -i "20,40 s/status='true'/status='false'/g" ${locM}
+	sed -i "20,40 s/status='true'/status='false'/g" ${locA}
 	printf "updater: off\n"
 exit
 elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
-	sed -i "20,40 s/status='false'/status='true'/g" ${locM}
+	sed -i "20,40 s/status='false'/status='true'/g" ${locA}
 	printf "updater: on\n"
 exit
 fi

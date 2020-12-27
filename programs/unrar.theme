@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+#..............................................................
+
+                       THEME='default'
+
+#..............................................................
+
 PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
@@ -8,8 +14,8 @@ NORM(){ echo -en "\033[?12l\033[?25h";}
 day=`date +%H`
 night=`date +%H`
 
-if [ $night -gt "17" ] || [ $night -lt "06" ];then
-	if [[ -f "$PREFIX/share/Theme-Engine/fonts/fonts.rar" ]];then
+night() {
+if [[ -f "$PREFIX/share/Theme-Engine/fonts/fonts.rar" ]];then
 PUT 14 1
 trap '' 2 ;HIDCRSR
 printf "\e[0m"
@@ -44,9 +50,10 @@ echo -ne "\e[0m┃\e[0;1;100m   ✚  Extracting necessary files...          [DON
 sleep 0.5
 echo -e "\e[0m"
 trap 5 ;NORM ;fi
+}
 
-else
-	if [[ -f "$PREFIX/share/Theme-Engine/fonts/fonts.rar" ]];then
+light() {
+if [[ -f "$PREFIX/share/Theme-Engine/fonts/fonts.rar" ]];then
 PUT 14 1
 trap '' 2 ;HIDCRSR
 printf "\e[0m"
@@ -80,6 +87,19 @@ echo -ne "\e[0m┃\e[0;1;7m   ✚  Extracting necessary files...          [DONE]
 sleep 0.5
 echo -e "\e[0m"
 trap 5 ;NORM ;fi
-fi
-# Thanks for using Theme-Engine.
+}
 
+default() {
+night
+else
+light
+fi
+}
+
+#..............................................................
+
+                          "$THEME"
+
+#..............................................................
+
+# Thanks for using Theme-Engine.

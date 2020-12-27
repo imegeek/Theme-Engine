@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+#..............................................................
+
+                       THEME='default'
+
+#..............................................................
+
 PUT(){ echo -en "\033[${1};${2}H";}
 
 ## color
@@ -10,8 +16,7 @@ NByellow='\e[0;1;90;7;30;48;2;200;255;0m'
 day=`date +%H`
 night=`date +%H`
 
-disable.zsh() {
-if [ $night -gt "17" ] || [ $night -lt "06" ];then
+night() { PUT 16 1
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
@@ -23,8 +28,9 @@ echo -e "${NByellow}           Zsh-Theme Disabled Successfully             \e[0m
 else
 echo -e "\e[0;1;100m    You won't disable (Zsh) before Enable Zsh-Theme   \e[0m"
 fi
+}
 
-else
+light() { PUT 16 1
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
@@ -36,8 +42,20 @@ echo -e "${Byellow}           Zsh-Theme Disabled Successfully             \e[0m"
 else
 echo -e "\e[0;1;100m    You won't disable (Zsh) before Enable Zsh-Theme   \e[0m"
 fi
+}
+
+default() {
+if [ $night -gt "17" ] || [ $night -lt "06" ];then
+night
+else
+light
 fi
 }
 
-PUT 16 1
-disable.zsh
+#..............................................................
+
+                          "$THEME"
+
+#..............................................................
+
+# Thanks for using Theme-Engine.
