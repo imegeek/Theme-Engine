@@ -468,7 +468,7 @@ if [[ $Shell == *'zsh'* ]]; then
 printf "\n\e[0;1m┃\e[1;100m Current shell : zsh                  └────── -v${version} \e[0;1m┃${reset}"; WAIT
 printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 else
-printf "\n\e[0;1m┃\e[1;100m Current shell : bash                 └────── -v${version}  \e[0;1m┃\e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Current shell : bash                 └────── -v${version} \e[0;1m┃${reset}"; WAIT
 printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
 fi
 }
