@@ -11,7 +11,7 @@ day=`date +%H`
 night=`date +%H`
 
 disable.zsh() {
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+if [ $night -gt "17" ] || [ $night -lt "06" ];then
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
 if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi

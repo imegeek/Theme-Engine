@@ -4,7 +4,11 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
-if [[ $night -gt "17" ]] || [[ $night -lt "06" ]];then
+## Specify time
+day=`date +%H`
+night=`date +%H`
+
+if [ $night -gt "17" ] || [ $night -lt "06" ];then
 	if [[ -f "$PREFIX/share/Theme-Engine/fonts/fonts.rar" ]];then
 PUT 14 1
 trap '' 2 ;HIDCRSR
