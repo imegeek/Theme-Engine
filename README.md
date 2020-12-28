@@ -28,8 +28,6 @@ Theme-Engine is usually made for modification & customization, so you can make t
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103195569-8c755d80-4908-11eb-8e31-d5416541f94b.gif)
 
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869423-66c53080-fce9-11ea-8928-0ea1fd4cbb35.jpg)
-
 > **zsh-syntax-highlighting | zsh-autosuggestions (Plugins)**
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93866675-9a9e5700-fce5-11ea-83b6-cea06074d32d.jpg)
 
