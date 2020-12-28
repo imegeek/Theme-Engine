@@ -16,6 +16,9 @@ Theme-Engine is usually made for modification & customization, so you can make t
 > **Installation Guide & Screenshot of Theme-Engine :**
 ![Theme-Engine-Installation-Preview](https://user-images.githubusercontent.com/63346676/100494121-8ef76280-3164-11eb-9110-5be5836c5789.jpg)
 
+>**Theme-Engine Help Menu**
+![Theme-Engine-Help](https://user-images.githubusercontent.com/63346676/103196786-d8290680-490a-11eb-95ab-3e625622a6ba.jpg)
+
 > **Theme-Engine Setup Preview...**
 ![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/103195527-78c9f700-4908-11eb-9a8c-b88db1e1ae62.gif)
 
