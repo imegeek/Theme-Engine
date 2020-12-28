@@ -17,13 +17,13 @@ Theme-Engine is usually made for modification & customization, so you can make t
 ![Theme-Engine-Installation-Preview](https://user-images.githubusercontent.com/63346676/100494121-8ef76280-3164-11eb-9110-5be5836c5789.jpg)
 
 > **Theme-Engine Setup Preview...**
-![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/103107604-1d78da00-4666-11eb-89c4-f4ce5dabf578.jpg)
+![Theme-Engine-Setup-Preview](https://user-images.githubusercontent.com/63346676/103195527-78c9f700-4908-11eb-9a8c-b88db1e1ae62.gif)
 
 > **Enable Extra Keys to get More Functions Keys in Termux.**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103107605-2073ca80-4666-11eb-8d4d-c81894c98938.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103195551-81223200-4908-11eb-91a7-3058bedcef08.gif)
 
 > **Introducing Auto Updater, It will always keep Theme-Engine updated.**
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103107606-223d8e00-4666-11eb-9f0e-4b1e3e7e8fd0.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103195569-8c755d80-4908-11eb-8e31-d5416541f94b.gif)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93869423-66c53080-fce9-11ea-8928-0ea1fd4cbb35.jpg)
 
@@ -39,9 +39,9 @@ Theme-Engine is usually made for modification & customization, so you can make t
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/97134552-9b5a5b00-1773-11eb-9a7e-298b29548608.jpg)
 
-![About-Theme-Engine](https://user-images.githubusercontent.com/63346676/103107607-24075180-4666-11eb-9a54-1173281fe422.jpg)
+![About-Theme-Engine](https://user-images.githubusercontent.com/63346676/103195590-96975c00-4908-11eb-883a-223b65dccf0f.gif)
 
-![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103107608-25387e80-4666-11eb-8f1d-ea536d477fcf.jpg)
+![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/103195611-a020c400-4908-11eb-8a4d-8acb4ed192d9.gif)
 
 ![Theme-Engine-Preview](https://user-images.githubusercontent.com/63346676/93867238-61b2b200-fce6-11ea-9e84-788839bb1cb7.jpg)
 
