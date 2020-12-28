@@ -16,15 +16,16 @@
 ## Colors # Day
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'    Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
+Sblue=$'\e[1;38;2;100;180;255m'    Sred=$'\e[1;38;2;255;180;180m'
 # background
-Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;46m'
-reset=$'\e[0m'
+Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;0;80;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m' Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;250;0;0m' Bcyan=$'\e[0;1;30;48;5;46m'
+Sreset=$'\e[38;2;240;240;240m'     reset=$'\e[0m'
 
 ## Colors # Night
 # foreground
-NFgreen=$'\e[0;1;38;2;0;230;118m'   NFblue=$'\e[0;1;38;2;40;90;255m'   NFsky=$'\e[0;1;38;2;0;255;255m'    NFpurple=$'\e[0;1;38;2;101;31;255m' NFyellow=$'\e[0;1;38;2;200;255;0m' NFred=$'\e[0;1;38;2;200;0;0m' NBcyan=$'\e[0;1;38;5;49m'
+NFgreen=$'\e[0;1;38;2;0;230;118m'      NFblue=$'\e[0;1;38;2;40;90;255m'   NFsky=$'\e[0;1;38;2;0;255;255m'    NFpurple=$'\e[0;1;38;2;101;31;255m' NFyellow=$'\e[0;1;38;2;200;255;0m' NFred=$'\e[0;1;38;2;200;0;0m' NBcyan=$'\e[0;1;38;5;49m'
 # background
-NBgreen=$'\e[0;1;90;7;48;2;0;230;118m'   NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m'
+NBgreen=$'\e[0;1;90;7;48;2;0;230;118m' NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m'
 
 ## Theme-Engine Version
 version=" 4.6"
@@ -505,10 +506,10 @@ day_banner() {
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1;7m`line3`${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m${Bred}                        ${Bred}  ${Bblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m${Bred}  ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Bred}▃▃${Bblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m${Bred}   █  █▀█ ██▄ █ ▀ █ ██▄ ${Bred}  ${Bblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m${Bred}                        ${Bred}  ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
+printf "\n┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
+printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;7m Maintain by - abhackerofficial ──────┐              \e[0;1m┃${reset}";WAIT
 if [[ $Shell == *'zsh'* ]]; then
 printf "\n\e[0;1m┃\e[1;7m Current shell : zsh                  └────── -v${version} \e[0;1m┃${reset}"; WAIT
