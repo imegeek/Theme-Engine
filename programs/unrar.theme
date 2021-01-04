@@ -90,6 +90,7 @@ trap 5 ;NORM ;fi
 }
 
 default() {
+if [ $night -gt "17" ] || [ $night -lt "06" ];then
 night
 else
 light
