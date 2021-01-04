@@ -33,12 +33,68 @@ version=" 4.6"
 ## Auto Updater
 status='true'
 
-## Shell
-Shell=$(ps | grep -o "zsh" | head -n1)
-
 ## Specify time
 day=`date +%H`
 night=`date +%H`
+
+# identify shell
+shell=$(printf "$SHELL")
+
+# shells list
+sh1="bash"
+sh2="ksh"
+sh3="dash"
+sh4="zsh"
+sh5="tcsh"
+sh6="fish"
+
+night_print_shell() {
+if [[ ${shell} == *'bash'* ]];then
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                 └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'ksh'* ]];then
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh2}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'dash'* ]];then
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh3}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'zsh'* ]];then
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh4}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'tcsh'* ]];then
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh5}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'fish'* ]];then
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh6}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+else
+printf "\n\e[0;1m┃\e[1;100m Logged shell — unknown               └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+fi
+}
+
+day_print_shell() {
+if [[ ${shell} == *'bash'* ]];then
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                 └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'ksh'* ]];then
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh2}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'dash'* ]];then
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh3}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'zsh'* ]];then
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh4}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'tcsh'* ]];then
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh5}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+elif [[ ${shell} == *'fish'* ]];then
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh6}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+
+else
+printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+fi
+}
 
 ## distro
 distroA=$(uname -o | grep -o "Android")
@@ -492,14 +548,9 @@ printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblu
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m Maintain by - abhackerofficial ──────┐              \e[0;1m┃${reset}";WAIT
-if [[ $Shell == *'zsh'* ]]; then
-printf "\n\e[0;1m┃\e[1;100m Current shell : zsh                  └────── -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
+printf "`night_print_shell`"
 printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
-else
-printf "\n\e[0;1m┃\e[1;100m Current shell : bash                 └────── -v${version} \e[0;1m┃${reset}"; WAIT
-printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
-fi
 }
 
 day_banner() {
@@ -510,14 +561,9 @@ printf "\n┃${Bred}                          ${Bblue}                          
 printf "\n┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m Maintain by - abhackerofficial ──────┐              \e[0;1m┃${reset}";WAIT
-if [[ $Shell == *'zsh'* ]]; then
-printf "\n\e[0;1m┃\e[1;7m Current shell : zsh                  └────── -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
+printf "`day_print_shell`"
 printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
-else
-printf "\n\e[0;1m┃\e[1;7m Current shell : bash                 └────── -v${version} \e[0;1m┃${reset}"; WAIT
-printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
-fi
 }
 
 #..............................................................
