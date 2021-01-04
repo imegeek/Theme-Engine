@@ -4,7 +4,7 @@ RB_RED=$(printf '\033[38;5;196m')
 RB_ORANGE=$(printf '\033[38;5;202m')
 RB_YELLOW=$(printf '\033[38;5;226m')
 RB_GREEN=$(printf '\033[38;5;082m')
-RB_BLUE=$(printf '\033[38;5;021m')
+RB_BLUE=$(printf '\033[38;5;045m')
 RB_INDIGO=$(printf '\033[38;5;093m')
 RB_VIOLET=$(printf '\033[38;5;163m')
 
