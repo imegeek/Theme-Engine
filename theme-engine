@@ -37,6 +37,9 @@ status='true'
 day=`date +%H`
 night=`date +%H`
 
+## Arrow
+arrow="└─────►"
+
 # identify shell
 shell=$(printf "$SHELL")
 
@@ -50,49 +53,49 @@ sh6="fish"
 
 night_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                 └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                 ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'ksh'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh2}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh2}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'dash'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh3}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh3}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'zsh'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh4}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh4}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'tcsh'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh5}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh5}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'fish'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh6}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh6}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 else
-printf "\n\e[0;1m┃\e[1;100m Logged shell — unknown               └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — unknown               ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 fi
 }
 
 day_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                 └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                 ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'ksh'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh2}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh2}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'dash'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh3}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh3}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'zsh'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh4}                   └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh4}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'tcsh'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh5}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh5}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'fish'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh6}                  └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh6}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 else
-printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 └─────► -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 fi
 }
 
@@ -476,34 +479,34 @@ fi
 ## Theme-Engine Main Options
 
 night_options() {
-   echo -e "\e[0;1m┃${NBred} ┌[1]┐ Apply Color Scheme ${NByellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${NBred} ┌[1]┐ Apply Color Scheme ${NByellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}";WAIT
 
 if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃"
+   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃";WAIT
 else
-   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃"
+   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃";WAIT
 fi
 
 if [ ! -f "${loc8}" ];then
-   echo -e "\e[0;1m┃${NBpurple} └[3]┘ Enable Zsh-Theme   ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${NBpurple} └[3]┘ Enable Zsh-Theme   ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
 else
-   echo -e "\e[0;1m┃${NBpurple} └[3]┘ Apply Zsh-Theme    ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${NBpurple} └[3]┘ Apply Zsh-Theme    ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
 fi
 }
 
 day_options() {
-echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}"
+echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}";WAIT
 
 if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃"
+   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃";WAIT
 else
-   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃"
+   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃";WAIT
 fi
 
 if [ ! -f "${loc8}" ];then
-   echo -e "\e[0;1m┃${Bpurple} └[3]┘ Enable Zsh-Theme   ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bpurple} └[3]┘ Enable Zsh-Theme   ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
 else
-   echo -e "\e[0;1m┃${Bpurple} └[3]┘ Apply Zsh-Theme    ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}"
+   echo -e "\e[0;1m┃${Bpurple} └[3]┘ Apply Zsh-Theme    ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
 fi
 }
 
