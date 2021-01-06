@@ -368,6 +368,15 @@ if [ -f "${loc5}" ];then
 
 #..............................................................
 
+## update files
+update_files() {
+cp ${loc9}/theme-engine $PREFIX/bin
+cp ${loc1} ${loc7}
+cp ${loc2} ${loc7}
+}
+
+#..............................................................
+
 ## Theme-Engine auto-update
 
 night_updater() {
@@ -391,7 +400,7 @@ PUT 14 1
      line2
     git stash &> /dev/null
   git pull &> /dev/null
- cp ${loc9}/theme-engine $PREFIX/bin
+ update_files
 PUT 14 1
 
 	printf "\e[0;1m┃\e[0;1;100m   ✔ Theme-Engine is Updated to latest version.      \r\e[0;1m┃${reset}"
@@ -437,7 +446,7 @@ PUT 14 1
      line2
     git stash &> /dev/null
   git pull &> /dev/null
- cp ${loc9}/theme-engine $PREFIX/bin
+ update_files
 PUT 14 1
 
 	printf "\e[0;1m┃\e[0;1;7m   ✔ Theme-Engine is Updated to latest version.      \r\e[0;1m┃${reset}"
