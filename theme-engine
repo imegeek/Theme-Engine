@@ -371,8 +371,8 @@ if [ -f "${loc5}" ];then
 ## update files
 update_files() {
 cp ${loc9}/theme-engine $PREFIX/bin
-cp ${loc1} ${loc7}
-cp ${loc2} ${loc7}
+cp -rf ${loc1} ${loc7}
+cp -rf ${loc2} ${loc7}
 }
 
 #..............................................................
