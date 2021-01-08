@@ -304,6 +304,14 @@ elif [[ "${2}" = "-on" ]] || [[ "${2}" = "-ON" ]]; then
 	printf "updater: on\n"
 exit
 fi
+
+elif [[ $1 != $0 ]] | [[ ${#1} -lt 1 ]];then
+pwd &> /dev/null
+
+else
+echo "theme-engine: no command specified! '$1'
+Try 'theme-engine --help' for more information."
+exit
 fi
 
 #..............................................................
