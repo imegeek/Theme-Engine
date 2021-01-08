@@ -43,6 +43,9 @@ arrow="└─────►"
 # identify shell
 shell=$(printf "$SHELL")
 
+# Check version
+android=$(getprop ro.build.version.release)
+
 # shells list
 sh1="bash"
 sh2="ksh"
@@ -342,9 +345,10 @@ fi; }
 
 #..............................................................
 
-PUT(){ echo -en "\033[${1};${2}H";}
-HIDE(){ echo -en "\033[?25l";}
-NORM(){ echo -en "\033[?12l\033[?25h";}
+PUT()  { echo -en "\033[${1};${2}H";}
+HIDE() { echo -en "\033[?25l";}
+NORM() { echo -en "\033[?12l\033[?25h";}
+RCUSR() { echo -ne "\033]12;#b4e1fd\007";}
 WAIT() { sleep 0.03 ;}
 
 line1() { printf "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r" ;}
@@ -357,14 +361,14 @@ line4() { echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━
 # interrupter
 exit_on_signal_SIGINT () {
     echo -e "\n"
-    echo -ne "\033]12;#b4e1fd\007"
+    RCUSR
     NORM
     exit 0
 }
 
 exit_on_signal_SIGTERM () {
    echo -e "\n"
-   echo -ne "\033]12;#b4e1fd\007"
+   RCUSR
    NORM
    exit 0
 }
@@ -521,38 +525,48 @@ fi
 #..............................................................
 
 night_extra_keys() {
+if [[ $android -lt '7' ]]; then
+echo -e "\n${Nred}     Your device isn't compatible with this version    \n"
+RCUSR
+exit 0
+fi
 if [ ! -f "${loc6}" ];then
    cd ${loc3}
    cp extra.keys.theme ${loc6}
 termux-reload-settings
 PUT 16 1
    echo -e "${NBcyan}           Extra Keys Enabled Successfully             ${reset}"
-   echo -ne "\033]12;#b4e1fd\007"
+   RCUSR
 else
    cd ${loc7}
    rm termux.properties
 termux-reload-settings
 PUT 16 1
    echo -e "${NBcyan}           Extra Keys Reset Successfully               ${reset}"
-   echo -ne "\033]12;#b4e1fd\007"
+   RCUSR
 fi
 }
 
 day_extra_keys() {
+if [[ $android -lt '7' ]]; then
+echo -e "\n${Bred}     Your device isn't compatible with this version    \n"
+RCUSR
+exit 0
+fi
 if [ ! -f "${loc6}" ];then
    cd ${loc3}
    cp extra.keys.theme ${loc6}
 termux-reload-settings
 PUT 16 1
    echo -e "${Bcyan}           Extra Keys Enabled Successfully             ${reset}"
-   echo -ne "\033]12;#b4e1fd\007"
+   RCUSR
 else
    cd ${loc7}
    rm termux.properties
 termux-reload-settings
 PUT 16 1
    echo -e "${Bcyan}           Extra Keys Reset Successfully               ${reset}"
-   echo -ne "\033]12;#b4e1fd\007"
+   RCUSR
 fi
 }
 
@@ -609,7 +623,7 @@ night_updater
 
 #..............................................................
 
-echo -ne "\033]12;#b4e1fd\007"
+RCUSR
 printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
 	PUT 15 1
       line4
@@ -631,12 +645,12 @@ elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
 	cd ${loc3}
 	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
 	exit
@@ -649,7 +663,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
 
@@ -674,7 +688,7 @@ night_updater
 
 #..............................................................
 
-echo -ne "\033]12;#b4e1fd\007"
+RCUSR
 printf "\e[0;1m┃\e[0;1;100m  [Execute an Option]>                               \e[0;1m┃${reset}"
 	PUT 15 1
       line4
@@ -696,12 +710,12 @@ elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
 	cd ${loc3}
 	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
         exit
@@ -714,7 +728,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
 }
@@ -763,12 +777,12 @@ elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
 	cd ${loc3}
 	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
 	exit
@@ -781,7 +795,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
 
@@ -827,12 +841,12 @@ elif [[ $option = "2" ]] || [[ $option = "02" ]];then
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
 	cd ${loc3}
 	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	echo -ne "\033]12;#b4e1fd\007"
+	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
         exit
@@ -845,7 +859,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-       echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;echo -ne "\033]12;#b4e1fd\007"
+       echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
 }
