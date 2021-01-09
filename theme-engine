@@ -80,7 +80,7 @@ fi
 
 day_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                 ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'ksh'* ]];then
 printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh2}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
