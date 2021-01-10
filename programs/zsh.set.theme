@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+
+theme=$(grep '^ZSH_THEME=' .zshrc | cut -d '"' -f2)
+apply=$(echo "${theme}.zsh-theme")
+source "$HOME/.oh-my-zsh/themes/${apply[@]}"
+zsh
