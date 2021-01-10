@@ -56,7 +56,7 @@ sh6="fish"
 
 night_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                 ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'ksh'* ]];then
 printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh2}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
@@ -230,20 +230,16 @@ available themes:
  --theme -light    : \e[0;1m━━━━\e[0m${reset}
 
 available commands:
- -c  : Start color menu with this command.
- -f  : Start font menu with this command.
- -u  : Check available update with this command.
+ -c  : Start color-scheme menu with this command.
+ -f  : Start font-style menu with this command.
+ -t  : Start zsh-theme menu with this command.
+ -U  : Check available update with this command.
  -L  : Check changelog with this command.
 
  --updater -off :  Trun off auto-updater with this command.
  --updater -on  :  Turn on auto-updater with this command.
  --uninstall    :  This command to uninstall Theme-Engine."
 exit
-
-elif [ "${1}" = "-u" ]; then
-	cd ${loc3}
-	bash update.theme --check
-	exit
 
 elif [ "${1}" = "-c" ]; then
 	cd ${loc3}
@@ -254,6 +250,16 @@ elif [ "${1}" = "-f" ]; then
 	cd ${loc3}
 	bash fonts.theme
 	exit
+
+elif [ "${1}" = "-t" ]; then
+        cd ${loc3}
+        bash zsh.theme
+        exit
+
+elif [ "${1}" = "-U" ]; then
+        cd ${loc3}
+        bash update.theme --check
+        exit
 
 elif [ "${1}" = "-L" ]; then
 	echo -e "${Fgreen}"
