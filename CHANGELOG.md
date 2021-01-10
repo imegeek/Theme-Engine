@@ -1,5 +1,6 @@
 + WHAT'S NEW
 + Bug fixes and performance improvements.
++ Updated zsh.theme (Apply Zsh-Theme)
 + Added theme option => theme-engine --theme <choose>
 + Updated theme-engine v.4.2 => v.4.6
 + Added Auto Night Mode (Start at 6 P.M)
