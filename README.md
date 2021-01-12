@@ -1,15 +1,11 @@
 <p align="center">
-<a href="https://github.com/abhackerofficial">
-<img src="https://forthebadge.com/images/badges/built-for-android.svg"></a>
+<a href="https://paypal.me/abhackerofficial">
+<img src="https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg"></a>
 
 [![github](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/abhackerofficial)
 [![github](https://forthebadge.com/images/badges/check-it-out.svg)](https://github.com/abhackerofficial)
 [![github](https://img.shields.io/badge/Theme–Engine-v.4.6-gold?style=for-the-badge)](https://github.com/abhackerofficial)
 [![github](https://img.shields.io/github/license/abhackerofficial/Theme-engine?color=aqua&style=for-the-badge)](https://github.com/abhackerofficial)
-
-
-[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://paypal.me/abhackerofficial)
-
 
 ![GitHub stars](https://img.shields.io/github/stars/abhackerofficial/Theme-engine.svg?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/abhackerofficial/Theme-engine.svg?style=social)
