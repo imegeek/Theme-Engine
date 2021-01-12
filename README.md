@@ -7,6 +7,10 @@
 [![github](https://img.shields.io/badge/Theme–Engine-v.4.6-gold?style=for-the-badge)](https://github.com/abhackerofficial)
 [![github](https://img.shields.io/github/license/abhackerofficial/Theme-engine?color=aqua&style=for-the-badge)](https://github.com/abhackerofficial)
 
+
+[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://paypal.me/abhackerofficial)
+
+
 ![GitHub stars](https://img.shields.io/github/stars/abhackerofficial/Theme-engine.svg?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/abhackerofficial/Theme-engine.svg?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/abhackerofficial/Theme-engine.svg?style=social)
