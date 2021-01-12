@@ -262,9 +262,10 @@ elif [ "${1}" = "-U" ]; then
         exit
 
 elif [ "${1}" = "-L" ]; then
-	echo -e "${Fgreen}"
-	cat ${loc9}/CHANGELOG.md
-	echo -e "${reset}"
+	printf "\n${Fgreen}CHANGELOG >${reset}\n\n`cat ${loc9}/CHANGELOG.md`\n\n"
+	if [ -f "${loc9}/log" ];then
+	printf "${Fyellow}UPDATELOG >${reset}\n\n`cat ${loc9}/log`\n\n"
+	fi
 	exit
 
 elif [ "${1}" = "--install" ]; then
@@ -420,7 +421,7 @@ PUT 14 1
        PUT 15 1
      line2
     git stash &> /dev/null
-  git pull &> /dev/null
+  git pull &> log
  update_files
 PUT 14 1
 
@@ -466,7 +467,7 @@ PUT 14 1
        PUT 15 1
      line2
     git stash &> /dev/null
-  git pull &> /dev/null
+  git pull &> log
  update_files
 PUT 14 1
 
