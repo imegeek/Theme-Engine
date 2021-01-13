@@ -24,8 +24,9 @@ fi
 }
 
 change_font() {
-termux-reload-settings
-printf "\e[0;1;7m [√] Font-Style Applied Successfully                \e[0m" ;echo
+termux-reload-settings | printf "\e[0;1;7m  [i] Font-Style Reloading...                       \e[0m\r"
+banner
+printf "\e[0;1;7m  [√] Font-Style Applied Successfully               \e[0m\n"
 }
 
 exit_on_signal_SIGINT () {
@@ -42,6 +43,7 @@ exit_on_signal_SIGTERM () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
+banner() {
 clear;echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}           ┏━╸┏━┓┏┓╻╺┳╸   ┏┳┓┏━╸┏┓╻╻ ╻            \e[0;1m┃
@@ -66,9 +68,10 @@ clear;echo -e "
 ┃ \e[0;1m[14] Hermit-Mono       \e[0;1m[29] Tinos-Mono           ┃
 ┃ \e[0;1m[15] Inconsolata-Mono  \e[0;1m[30] Ubuntu-Bold          ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
-
-printf "\e[0;1;30;48;2;0;230;118m [!] Choose an Font Style :                         "
-PUT 25 29
+}
+banner
+printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an Font Style :                        \e[0m"
+PUT 25 30
 printf "\e[0;1;30;48;2;0;230;118m"
 read font
 printf "\e[0m"
