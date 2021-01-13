@@ -54,30 +54,29 @@ clear;echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-\e[0;1m┃ [01] accent.material [23] default-dark.colors    ┃
-\e[0;1m┃ [02] apathy.dark     [24] default-light.colors   ┃
-\e[0;1m┃ [03] apathy.light    [25] e-ink.colors           ┃
-\e[0;1m┃ [04] argonaut.colors [26] eighties-dark.colors   ┃
-\e[0;1m┃ [05] ashes.dark      [27] eighties-light.colors  ┃
-\e[0;1m┃ [06] ashes.light     [28] embers-dark.colors     ┃
-\e[0;1m┃ [07] forest.dark     [29] embers-light.colors    ┃
-\e[0;1m┃ [08] forest.light    [30] flat-dark.colors       ┃
-\e[0;1m┃ [09] heath.dark      [31] flat-light.color       ┃
-\e[0;1m┃ [10] heath.light     [32] gnometerm.colors       ┃
-\e[0;1m┃ [11] ${Fyellow}import.local    \e[0;1m[33] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.dark.colors     \e[0;1m┃
-\e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[34] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.light.colors    \e[0;1m┃
-\e[0;1m┃ [13] lakeside.dark   [35] gotham.colors          ┃
-\e[0;1m┃ [14] lakeside-light  [36] greenscreen.dark       ┃
-\e[0;1m┃ [15] seaside-dark    [37] greenscreen.light      ┃
-\e[0;1m┃ [16] seaside.light   [38] gruvbox-dark.colors    ┃
-\e[0;1m┃ [17] black-on-white  [39] gruvbox-light.colors   ┃
-\e[0;1m┃ [18] codeschool.dark [40] harmonic16.dark        ┃
-\e[0;1m┃ [19] codeschool.light[41] harmonic16.light       ┃
-\e[0;1m┃ [20] colors.dark     [42] isotope-dark.colors    ┃
-\e[0;1m┃ [21] colors.light    [43] isotope-light.colors   ┃
-\e[0;1m┃ [22] dracula.colors  [44] white-on-black.colors  ┃
+\e[0;1m┃ [01] accent.material [21] colors.light           ┃
+\e[0;1m┃ [02] apathy.dark     [22] dracula.colors         ┃
+\e[0;1m┃ [03] apathy.light    [23] default-dark.colors    ┃
+\e[0;1m┃ [04] argonaut.colors [24] default-light.colors   ┃
+\e[0;1m┃ [05] ashes.dark      [25] eighties-dark.colors   ┃
+\e[0;1m┃ [06] ashes.light     [26] eighties-light.colors  ┃
+\e[0;1m┃ [07] forest.dark     [27] embers-dark.colors     ┃
+\e[0;1m┃ [08] forest.light    [28] embers-light.colors    ┃
+\e[0;1m┃ [09] heath.dark      [29] e-ink.colors           ┃
+\e[0;1m┃ [10] heath.light     [30] flat-dark.colors       ┃
+\e[0;1m┃ [11] ${Fyellow}import.local    \e[0;1m[31] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.dark.colors     \e[0;1m┃
+\e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[32] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.light.colors    \e[0;1m┃
+\e[0;1m┃ [13] lakeside.dark   [33] flat-light.colors      ┃
+\e[0;1m┃ [14] lakeside-light  [34] gnometerm.colors       ┃
+\e[0;1m┃ [15] seaside-dark    [35] gotham.colors          ┃
+\e[0;1m┃ [16] seaside.light   [36] greenscreen.dark       ┃
+\e[0;1m┃ [17] black-on-white  [37] greenscreen.light      ┃
+\e[0;1m┃ [18] codeschool.dark [38] gruvbox-dark.colors    ┃
+\e[0;1m┃ [19] codeschool.light[39] gruvbox-light.colors   ┃
+\e[0;1m┃ [20] colors.dark     [40] white-on-black.colors  ┃
 \e[0;1m┃ [RC] ${Fgreen}random.colors   \e[0;1m[2>] Next Page              ┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
+
 banner2() {
 clear;echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -87,29 +86,31 @@ clear;echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-\e[0;1m┃ [45] londontube.dark [63] paraiso-dark.colors    ┃
-\e[0;1m┃ [46] londontube.light[64] paraiso-light.colors   ┃
-\e[0;1m┃ [47] marrakesh.dark  [65] rydgel.colors          ┃
-\e[0;1m┃ [48] marrakesh.light [66] shapeshifter.dark      ┃
-\e[0;1m┃ [49] materia.colors  [67] shapeshifter.light     ┃
-\e[0;1m┃ [50] material.colors [68] smyck.colors           ┃
-\e[0;1m┃ [51] material.dark   [69] solarized-dark.colors  ┃
-\e[0;1m┃ [52] material.light  [70] solarized-loght.colors ┃
-\e[0;1m┃ [53] mocha.dark      [71] spacemacs.colors       ┃
-\e[0;1m┃ [54] mocha.light     [72] summerfruit.dark       ┃
-\e[0;1m┃ [55] monokai.dark    [73] summerfruit.light      ┃
-\e[0;1m┃ [56] monokai.light   [74] tomorrow-dark.colors   ┃
-\e[0;1m┃ [57] neon.colors     [75] tomorrow-light.colors  ┃
-\e[0;1m┃ [58] nord.colors     [76] tomorrow-night.colors  ┃
-\e[0;1m┃ [59] ocean.dark      [77] twilight-dark.colors   ┃
-\e[0;1m┃ [60] ocean.light     [78] twilight-light.colors  ┃
-\e[0;1m┃ [61] one-dark.colors [79] wild-cherry.colors     ┃
-\e[0;1m┃ [62] one-light.colors[80] zenburn.colors         ┃
+\e[0;1m┃ [41] harmonic16.dark [61] isotope-dark.colors    ┃
+\e[0;1m┃ [42] harmonic16.light[62] isotope-dark.colors    ┃
+\e[0;1m┃ [42] londontube.dark [64] paraiso-dark.colors    ┃
+\e[0;1m┃ [44] londontube.light[64] paraiso-light.colors   ┃
+\e[0;1m┃ [45] marrakesh.dark  [65] rydgel.colors          ┃
+\e[0;1m┃ [46] marrakesh.light [66] shapeshifter.dark      ┃
+\e[0;1m┃ [47] materia.colors  [67] shapeshifter.light     ┃
+\e[0;1m┃ [48] material.colors [68] smyck.colors           ┃
+\e[0;1m┃ [49] material.dark   [69] solarized-dark.colors  ┃
+\e[0;1m┃ [50] material.light  [70] solarized-loght.colors ┃
+\e[0;1m┃ [51] mocha.dark      [71] spacemacs.colors       ┃
+\e[0;1m┃ [52] mocha.light     [72] summerfruit.dark       ┃
+\e[0;1m┃ [53] monokai.dark    [73] summerfruit.light      ┃
+\e[0;1m┃ [54] monokai.light   [74] tomorrow-dark.colors   ┃
+\e[0;1m┃ [55] neon.colors     [75] tomorrow-light.colors  ┃
+\e[0;1m┃ [56] nord.colors     [76] tomorrow-night.colors  ┃
+\e[0;1m┃ [57] ocean.dark      [77] twilight-dark.colors   ┃
+\e[0;1m┃ [58] ocean.light     [78] twilight-light.colors  ┃
+\e[0;1m┃ [59] one-dark.colors [79] wild-cherry.colors     ┃
+\e[0;1m┃ [60] one-light.colors[80] zenburn.colors         ┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner
 printf "${Bgreen}  [i] Choose an Color Scheme :                      \e[0m"
-PUT 33 32
+PUT 31 32
 printf "${Bgreen}"
 read color
 printf "\e[0m"
@@ -292,27 +293,27 @@ change_col
 
 elif [[ $color = "25" ]];then
 change_loc
-cp e-ink.colors $HOME/.termux/colors.properties
+cp eighties-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "26" ]];then
 change_loc
-cp eighties-dark.colors $HOME/.termux/colors.properties
+cp eighties-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "27" ]];then
 change_loc
-cp eighties-light.colors $HOME/.termux/colors.properties
+cp embers-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "28" ]];then
 change_loc
-cp embers-dark.colors $HOME/.termux/colors.properties
+cp embers-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "29" ]];then
 change_loc
-cp embers-light.colors $HOME/.termux/colors.properties
+cp e-ink.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "30" ]];then
@@ -322,22 +323,22 @@ change_col
 
 elif [[ $color = "31" ]];then
 change_loc
-cp flat-light.colors $HOME/.termux/colors.properties
+cp google-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "32" ]];then
 change_loc
-cp gnometerm.colors $HOME/.termux/colors.properties
+cp google-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "33" ]];then
 change_loc
-cp google-dark.colors $HOME/.termux/colors.properties
+cp flat-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "34" ]];then
 change_loc
-cp google-light.colors $HOME/.termux/colors.properties
+cp gnometerm.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "35" ]];then
@@ -367,126 +368,125 @@ change_col
 
 elif [[ $color = "40" ]];then
 change_loc
-cp harmonic16-dark.colors $HOME/.termux/colors.properties
-change_col
-
-elif [[ $color = "41" ]];then
-change_loc
-cp harmonic16-light.colors $HOME/.termux/colors.properties
-change_col
-
-elif [[ $color = "42" ]];then
-change_loc
-cp isotope-dark.colors $HOME/.termux/colors.properties
-change_col
-
-elif [[ $color = "43" ]];then
-change_loc
-termux
-cp isotope-light.colors $HOME/.termux/colors.properties
-change_col
-
-elif [[ $color = "44" ]];then
-change_loc
 cp white-on-black.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "2>" ]];then
 banner2
 printf "${Bgreen}  [!] Choose an Color Scheme :                      \e[0m"
-PUT 28 32
+PUT 30 32
 printf "${Bgreen}"
 read color
 printf "\e[0m"
 
-if [[ $color = "45" ]];then
+if [[ $color = "41" ]];then
 change_loc
-cp londontube-dark.colors $HOME/.termux/colors.properties
+cp harmonic16-dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "46" ]];then
+elif [[ $color = "42" ]];then
+change_loc
+cp harmonic16-light.colors $HOME/.termux/colors.properties
+change_col
+
+elif [[ $color = "43" ]];then
+change_loc
+cp isotope-dark.colors $HOME/.termux/colors.properties
+change_col
+
+elif [[ $color = "44" ]];then
 change_loc
 cp londontube-light.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "47" ]];then
+elif [[ $color = "45" ]];then
 change_loc
 cp marrakesh-dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "48" ]];then
+elif [[ $color = "46" ]];then
 change_loc
 cp marrakesh-light.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "49" ]];then
+elif [[ $color = "47" ]];then
 change_loc
 cp materia.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "50" ]];then
+elif [[ $color = "48" ]];then
 change_loc
 cp material.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "51" ]];then
+elif [[ $color = "49" ]];then
 change_loc
 cp material.dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "52" ]];then
+elif [[ $color = "50" ]];then
 change_loc
 cp material.light.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "53" ]];then
+elif [[ $color = "51" ]];then
 change_loc
 cp mocha-dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "54" ]];then
+elif [[ $color = "52" ]];then
 change_loc
 cp mocha-light.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "55" ]];then
+elif [[ $color = "53" ]];then
 change_loc
 cp monokai-dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "56" ]];then
+elif [[ $color = "54" ]];then
 change_loc
 cp monokai-light.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "57" ]];then
+elif [[ $color = "55" ]];then
 change_loc
 cp neon.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "58" ]];then
+elif [[ $color = "56" ]];then
 change_loc
 cp nord.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "59" ]];then
+elif [[ $color = "57" ]];then
 change_loc
 cp ocean-dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "60" ]];then
+elif [[ $color = "58" ]];then
 change_loc
 cp ocean-light.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "61" ]];then
+elif [[ $color = "59" ]];then
 change_loc
 cp one-dark.colors $HOME/.termux/colors.properties
 change_col
 
-elif [[ $color = "62" ]];then
+elif [[ $color = "60" ]];then
 change_loc
 cp one-light.colors $HOME/.termux/colors.properties
+change_col
+
+elif [[ $color = "61" ]];then
+change_loc
+cp isotope-light.colors $HOME/.termux/colors.properties
+change_col
+
+elif [[ $color = "62" ]];then
+change_loc
+cp londontube-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "63" ]];then
@@ -538,7 +538,6 @@ elif [[ $color = "72" ]];then
 change_loc
 cp summerfruit-dark.colors $HOME/.termux/colors.properties
 change_col
-
 
 elif [[ $color = "73" ]];then
 change_loc
