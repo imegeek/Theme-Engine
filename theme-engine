@@ -28,7 +28,7 @@ NFgreen=$'\e[0;1;38;2;0;230;118m'      NFblue=$'\e[0;1;38;2;40;90;255m'   NFsky=
 NBgreen=$'\e[0;1;90;7;48;2;0;230;118m' NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m'
 
 ## Theme-Engine Version
-version=" 4.6"
+version="5.1"
 
 ## Auto Updater
 status='true'
@@ -56,22 +56,22 @@ sh6="fish"
 
 night_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh1}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'ksh'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh2}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh2}                   ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'dash'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh3}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh3}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'zsh'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh4}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh4}                   ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'tcsh'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh5}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh5}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'fish'* ]];then
-printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh6}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh6}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 else
 printf "\n\e[0;1m┃\e[1;100m Logged shell — unknown               ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
@@ -80,25 +80,25 @@ fi
 
 day_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh1}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'ksh'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh2}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh2}                   ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'dash'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh3}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh3}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'zsh'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh4}                   ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh4}                   ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'tcsh'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh5}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh5}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 elif [[ ${shell} == *'fish'* ]];then
-printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh6}                  ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — ${sh6}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 else
-printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 fi
 }
 
