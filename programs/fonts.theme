@@ -70,9 +70,9 @@ clear;echo -e "
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 }
 banner
-printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an Font Style :                        \e[0m"
+printf "${Bgreen}  [i] Choose an Font Style :                        \e[0m"
 PUT 25 30
-printf "\e[0;1;30;48;2;0;230;118m"
+printf "${Bgreen}"
 read font
 printf "\e[0m"
 if [[ $font = "1" ]] || [[ $font = "01" ]];then
