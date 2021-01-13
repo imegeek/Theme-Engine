@@ -33,7 +33,6 @@ rm -rf $PREFIX/share/Theme-Engine
 cd $PREFIX/share ;fi ;}
 
 spin () {
-banner
 local pid=$!
 local delay=0.05
 local spinner=( '⠋' '⠙' '⠹' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
@@ -41,13 +40,13 @@ while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
 for i in "${spinner[@]}"
 do
         HIDE
-        echo -ne "\e[0;1;48;2;41;121;255m\r [!] Updating Theme-Engine... \e[0;1;90;48;2;0;230;118m [ $i ] \033[3m\033[0m   ";
+        echo -ne "\e[0;1;48;2;41;121;255m\r        Updating...       \e[0;1;90;48;2;0;230;118m   [ $i ]   \033[3m\033[0m   ";
         sleep $delay
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 done
 done
 printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
-printf "\e[0;1;48;2;41;121;255m\e[0;1;90;48;2;0;230;118m [√] Theme-Engine Updated Successful \e[0m\n"
+printf "\e[0;1;48;2;41;121;255m\e[0;1;90;48;2;0;230;118m         Updated Successfully       \e[0m\n"
 echo"";
 NORM
 }
@@ -175,7 +174,7 @@ exit
 else
 HIDE
 sleep 0.8
-echo -e "\e[0;1;7m         Already up to date.        \e[0m"
+echo -e "\e[0;1;7m         Already up to date.         \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 NORM
 exit
