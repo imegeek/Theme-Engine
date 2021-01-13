@@ -28,8 +28,8 @@ fi
 }
 
 change_col() {
-termux-reload-settings
-printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m" ;echo
+termux-reload-settings | printf "\e[0;1;7m  [i] Color-Scheme Reloading...                     \e[0m\r"
+printf "\e[0;1;7m  [√] Color-Scheme Applied Successfully             \e[0m\n"
 }
 
 random_colors() {
@@ -108,8 +108,8 @@ clear;echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner
-printf "${Bgreen} [!] Choose an Color Scheme :                       \e[0m"
-PUT 33 31
+printf "${Bgreen}  [i] Choose an Color Scheme :                      \e[0m"
+PUT 33 32
 printf "${Bgreen}"
 read color
 printf "\e[0m"
@@ -393,8 +393,8 @@ change_col
 
 elif [[ $color = "2>" ]];then
 banner2
-printf "${Bgreen} [!] Choose an Color Scheme :                       \e[0m"
-PUT 28 31
+printf "${Bgreen}  [!] Choose an Color Scheme :                      \e[0m"
+PUT 28 32
 printf "${Bgreen}"
 read color
 printf "\e[0m"
