@@ -4,7 +4,7 @@
 
 [![github](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/abhackerofficial)
 [![github](https://forthebadge.com/images/badges/check-it-out.svg)](https://github.com/abhackerofficial)
-[![github](https://img.shields.io/badge/Theme–Engine-v.4.6-white?style=for-the-badge)](https://github.com/abhackerofficial)
+[![github](https://img.shields.io/badge/Theme–Engine-v.4.6-blue?style=for-the-badge)](https://github.com/abhackerofficial)
 [![github](https://img.shields.io/github/license/abhackerofficial/Theme-engine?color=green&style=for-the-badge)](https://github.com/abhackerofficial)
 
 ![GitHub stars](https://img.shields.io/github/stars/abhackerofficial/Theme-engine.svg?style=social)
