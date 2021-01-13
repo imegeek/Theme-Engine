@@ -1,7 +1,7 @@
 + WHAT'S NEW
 + Bug fixes and performance improvements.
-+ Updated zsh.theme (Apply Color Scheme)
-+ Updated zsh.theme (Apply Font Style)
++ Updated colors.theme (Apply Color Scheme)
++ Updated fonts.theme (Apply Font Style)
 + Updated zsh.theme (Apply Zsh-Theme)
 + Added theme option => theme-engine --theme <choose>
 + Updated theme-engine v.4.2 => v.4.6
