@@ -160,11 +160,11 @@ echo "
 update() {
 cd "$PREFIX/share/Theme-Engine"
 HIDE
-echo -ne "\n\e[0;1;7m Checking for Update...              \r\e[0m"
+echo -ne "\n\e[0;1;7m        Checking for Update...       \r\e[0m"
 changed=0
 git remote update &> /dev/null && git status -uno | grep -q 'Your branch is behind' && changed=1
 if [ $changed = 1 ]; then
-echo -ne "\e[0;1;7m Theme-Engine Update founded !      \r\e[0m"
+echo -ne "\e[0;1;7m    Update Available. Updating...   \r\e[0m"
 sleep 0.8
 remove_previous_file
 trap '' 2
@@ -175,7 +175,7 @@ exit
 else
 HIDE
 sleep 0.8
-echo -e "\e[0;1;7m Theme-Engine Update not found !     \e[0m"
+echo -e "\e[0;1;7m         Already up to date.        \e[0m"
 echo -ne "\033]12;#b4e1fd\007"
 NORM
 exit

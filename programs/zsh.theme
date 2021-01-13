@@ -270,7 +270,7 @@ clear;echo -e "
 
 banner
 printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
-PUT 32 24
+PUT 32 25
 printf "\e[1;30;48;2;0;230;118m"
 read theme
 printf "\e[0m"
@@ -488,7 +488,7 @@ elif [[ $theme = "2>" ]];then
 printf "\e[0m"
 banner2
 printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
-PUT 32 24
+PUT 32 25
 printf "\e[1;30;48;2;0;230;118m"
 read theme
 
@@ -706,7 +706,7 @@ elif [[ $theme = "3>" ]];then
 printf "\e[0m"
 banner3
 printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
-PUT 32 24
+PUT 32 25
 printf "\e[1;30;48;2;0;230;118m"
 read theme
 
@@ -924,7 +924,7 @@ elif [[ $theme = "4>" ]];then
 printf "\e[0m"
 banner4
 printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
-PUT 20 24
+PUT 20 25
 printf "\e[1;30;48;2;0;230;118m"
 read theme
 
