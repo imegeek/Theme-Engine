@@ -47,7 +47,7 @@ done
 done
 printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
 printf "\e[0;1;48;2;41;121;255m\e[0;1;90;48;2;0;230;118m         Updated Successfully       \e[0m\n"
-echo"";
+theme-engine -L
 NORM
 }
 
