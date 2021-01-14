@@ -42,6 +42,17 @@ random_scheme=$(ls $HOME/.termux/colors | shuf -n 1)
 { cp $HOME/.termux/colors/$random_scheme $HOME/.termux/colors.properties;}
 { termux-reload-settings; printf "\e[0;1;7m [√] Random-Color-Scheme Applied Successfully       \e[0m";echo; exit;} ;fi ;}
 
+exit_on_signal_SIGINT () {
+   { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
+    echo -ne "\033]12;#b4e1fd\007"
+    exit 0
+}
+
+exit_on_signal_SIGTERM () {
+    { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
+    echo -ne "\033]12;#b4e1fd\007"
+    exit 0
+}
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
