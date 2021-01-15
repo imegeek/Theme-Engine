@@ -10,21 +10,25 @@ Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0
 Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 # background
 Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
-Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 
 
 if [ -f "$HOME/.termux/config.theme-engine" ];then
 
 Applied() { printf "\e[0m"
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Applying                            \e[0m\r" ;sleep 0.1
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Applying.                           \e[0m\r" ;sleep 0.1
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Applying..                          \e[0m\r" ;sleep 0.1
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Applying...                         \e[0m\r" ;sleep 0.2
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Reloading                           \e[0m\r" ;sleep 0.2
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Reloading.                          \e[0m\r" ;sleep 0.2
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Reloading..                         \e[0m\r" ;sleep 0.2
-echo -ne "\e[0;1;7m  [i] Zsh-Theme Reloading...                        \e[0m\r" ;sleep 0.2
-echo -ne "\e[0;1;7m  [√] Zsh-Theme Applied Successfully.               \e[0m\r\n\n" ;zsh $PREFIX/share/Theme-Engine/programs/zsh.apply.theme; }
+echo -ne "${Bgreen}  [i] Zsh-Theme Applying                            \e[0m\r" ;sleep 0.08
+echo -ne "${Bgreen}  [i] Zsh-Theme Applying.                           \e[0m\r" ;sleep 0.08
+echo -ne "${Bgreen}  [i] Zsh-Theme Applying..                          \e[0m\r" ;sleep 0.08
+echo -ne "${Bgreen}  [i] Zsh-Theme Applying...                         \e[0m\r" ;sleep 0.08
+echo -ne "${Bgreen}  [i] Zsh-Theme Reloading                           \e[0m\r" ;sleep 0.15
+echo -ne "${Bgreen}  [i] Zsh-Theme Reloading.                          \e[0m\r" ;sleep 0.15
+echo -ne "${Bgreen}  [i] Zsh-Theme Reloading..                         \e[0m\r" ;sleep 0.15
+echo -ne "${Bgreen}  [i] Zsh-Theme Reloading...                        \e[0m\r" ;sleep 0.15
+echo -ne "${Bgreen}  [√] Zsh-Theme Applied Successfully.               \e[0m\r\n\n"
+echo -ne "\033]12;#b4e1fd\007"
+zsh $PREFIX/share/Theme-Engine/programs/zsh.apply.theme
+}
+
 exit_on_signal_SIGINT () {
    { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
@@ -149,7 +153,8 @@ echo "source $HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc ; }
 cd $HOME
 
 banner() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}          ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ┏┳┓┏━╸┏┓╻╻ ╻          \e[0;1m┃
 \e[0;1m┃${Fgreen}           ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃ 	   \e[0;1m┃
@@ -182,7 +187,8 @@ clear;echo -e "
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
 
 banner2() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}          ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ┏┳┓┏━╸┏┓╻╻ ╻          \e[0;1m┃
 \e[0;1m┃${Fgreen}           ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃ 	   \e[0;1m┃
@@ -215,7 +221,8 @@ clear;echo -e "
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
 
 banner3() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}          ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ┏┳┓┏━╸┏┓╻╻ ╻          \e[0;1m┃
 \e[0;1m┃${Fgreen}           ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃ 	   \e[0;1m┃
@@ -248,7 +255,8 @@ clear;echo -e "
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
 
 banner4() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}          ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ┏┳┓┏━╸┏┓╻╻ ╻          \e[0;1m┃
 \e[0;1m┃${Fgreen}           ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃ 	   \e[0;1m┃
@@ -269,11 +277,13 @@ clear;echo -e "
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ; }
 
 banner
-printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
+printf "${Bwhite}  [i] Choose an theme :                             \e[0m"
 PUT 32 25
-printf "\e[1;30;48;2;0;230;118m"
+printf "${Bwhite}"
 read theme
 printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
+
 if [[ $theme = "1" ]] || [[ $theme = "01" ]];then
 echo 'ZSH_THEME="zsh-orignal"' > .zshrc
 zshrc
@@ -487,10 +497,12 @@ Applied
 elif [[ $theme = "2>" ]];then
 printf "\e[0m"
 banner2
-printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
+printf "${Bwhite}  [i] Choose an theme :                             \e[0m"
 PUT 32 25
-printf "\e[1;30;48;2;0;230;118m"
+printf "${Bwhite}"
 read theme
+printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
 
 if [[ $theme = "43" ]];then
 echo 'ZSH_THEME="fox"' > .zshrc
@@ -705,10 +717,12 @@ Applied
 elif [[ $theme = "3>" ]];then
 printf "\e[0m"
 banner3
-printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
+printf "${Bwhite}  [i] Choose an theme :                             \e[0m"
 PUT 32 25
-printf "\e[1;30;48;2;0;230;118m"
+printf "${Bwhite}"
 read theme
+printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
 
 if [[ $theme = "85" ]];then
 echo 'ZSH_THEME="mikeh"' > .zshrc
@@ -923,10 +937,12 @@ Applied
 elif [[ $theme = "4>" ]];then
 printf "\e[0m"
 banner4
-printf "\e[0;1;30;48;2;0;230;118m  [i] Choose an theme :                             \e[0m"
+printf "${Bwhite}  [i] Choose an theme :                             \e[0m"
 PUT 20 25
-printf "\e[1;30;48;2;0;230;118m"
+printf "${Bwhite}"
 read theme
+printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
 
 if [[ $theme = "127" ]];then
 echo 'ZSH_THEME="takashiyoshida"' > .zshrc
@@ -1002,8 +1018,8 @@ elif [[ $theme = "141" ]];then
 echo 'ZSH_THEME="zhann"' > .zshrc
 zshrc
 Applied
-else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n" ;fi 
-else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n" ;fi 
-else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n" ;fi 
-else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n" ;fi
-else echo -e "\e[0;1m  [i] You Can't use before Enable Zsh-Theme \e[0m" ;fi
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n";echo -ne "\033]12;#b4e1fd\007";fi
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n";echo -ne "\033]12;#b4e1fd\007";fi
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n";echo -ne "\033]12;#b4e1fd\007";fi
+else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m\n";echo -ne "\033]12;#b4e1fd\007";fi
+else echo -e "\e[0;1m  [i] You Can't use before Enable Zsh-Theme \e[0m";echo -ne "\033]12;#b4e1fd\007";fi

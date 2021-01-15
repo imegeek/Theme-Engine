@@ -10,7 +10,7 @@ Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0
 Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 # background
 Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
-Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 # google
 G=$'\e[0;1;38;2;60;186;84m' Y=$'\e[0;1;38;2;244;194;13m'
 R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
@@ -28,8 +28,9 @@ fi
 }
 
 change_col() {
-termux-reload-settings | printf "\e[0;1;7m  [i] Color-Scheme Reloading...                     \e[0m\r"
-printf "\e[0;1;7m  [√] Color-Scheme Applied Successfully             \e[0m\n"
+termux-reload-settings | printf "${Bgreen}  [i] Color-Scheme Reloading...                     \e[0m\r"
+printf "${Bgreen}  [√] Color-Scheme Applied Successfully             \e[0m\n"
+echo -ne "\033]12;#b4e1fd\007"
 }
 
 random_colors() {
@@ -57,7 +58,8 @@ exit_on_signal_SIGTERM () {
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
 banner() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}          ┏━╸┏━┓╻  ┏━┓┏━┓   ┏┳┓┏━╸┏┓╻╻ ╻          \e[0;1m┃
 \e[0;1m┃${Fgreen}          ┃  ┃ ┃┃  ┃ ┃┣┳┛╺━╸┃┃┃┣╸ ┃┗┫┃ ┃   	   \e[0;1m┃
@@ -89,7 +91,8 @@ clear;echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner2() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}          ┏━╸┏━┓╻  ┏━┓┏━┓   ┏┳┓┏━╸┏┓╻╻ ╻          \e[0;1m┃
 \e[0;1m┃${Fgreen}          ┃  ┃ ┃┃  ┃ ┃┣┳┛╺━╸┃┃┃┣╸ ┃┗┫┃ ┃   	   \e[0;1m┃
@@ -98,7 +101,7 @@ clear;echo -e "
 
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃ [41] harmonic16.dark [61] isotope-dark.colors    ┃
-\e[0;1m┃ [42] harmonic16.light[62] isotope-dark.colors    ┃
+\e[0;1m┃ [42] harmonic16.light[62] isotope-light.colors   ┃
 \e[0;1m┃ [42] londontube.dark [64] paraiso-dark.colors    ┃
 \e[0;1m┃ [44] londontube.light[64] paraiso-light.colors   ┃
 \e[0;1m┃ [45] marrakesh.dark  [65] rydgel.colors          ┃
@@ -120,11 +123,12 @@ clear;echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner
-printf "${Bgreen}  [i] Choose an Color Scheme :                      \e[0m"
+printf "${Bwhite}  [i] Choose an Color Scheme :                      \e[0m"
 PUT 31 32
-printf "${Bgreen}"
+printf "${Bwhite}"
 read color
 printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
 change_loc
 cp accent.material.colors $HOME/.termux/colors.properties
@@ -384,11 +388,12 @@ change_col
 
 elif [[ $color = "2>" ]];then
 banner2
-printf "${Bgreen}  [!] Choose an Color Scheme :                      \e[0m"
+printf "${Bwhite}  [i] Choose an Color Scheme :                      \e[0m"
 PUT 30 32
-printf "${Bgreen}"
+printf "${Bwhite}"
 read color
 printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
 
 if [[ $color = "41" ]];then
 change_loc
@@ -492,12 +497,12 @@ change_col
 
 elif [[ $color = "61" ]];then
 change_loc
-cp isotope-light.colors $HOME/.termux/colors.properties
+cp isotope-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "62" ]];then
 change_loc
-cp londontube-dark.colors $HOME/.termux/colors.properties
+cp londontube-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "63" ]];then
