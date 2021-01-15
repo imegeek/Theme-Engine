@@ -74,7 +74,7 @@ elif [[ ${shell} == *'fish'* ]];then
 printf "\n\e[0;1m┃\e[1;100m Logged shell — ${sh6}                  ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 
 else
-printf "\n\e[0;1m┃\e[1;100m Logged shell — unknown               ${arrow} -v${version} \e[0;1m┃${reset}"; WAIT
+printf "\n\e[0;1m┃\e[1;100m Logged shell — unknown               ${arrow} -v ${version} \e[0;1m┃${reset}"; WAIT
 fi
 }
 
