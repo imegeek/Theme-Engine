@@ -10,7 +10,7 @@ Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0
 Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 # background
 Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
-Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
@@ -24,9 +24,10 @@ fi
 }
 
 change_font() {
-termux-reload-settings | printf "\e[0;1;7m  [i] Font-Style Reloading...                       \e[0m\r"
+termux-reload-settings | printf "${Bgreen}  [i] Font-Style Reloading...                       \e[0m\r"
 banner
-printf "\e[0;1;7m  [√] Font-Style Applied Successfully               \e[0m\n"
+printf "${Bgreen}  [√] Font-Style Applied Successfully               \e[0m\n"
+echo -ne "\033]12;#b4e1fd\007"
 }
 
 exit_on_signal_SIGINT () {
@@ -44,7 +45,8 @@ exit_on_signal_SIGTERM () {
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
 
 banner() {
-clear;echo -e "
+echo -ne "\033]12;#363636\007";clear
+echo -e "
 \e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 \e[0;1m┃${Fgreen}           ┏━╸┏━┓┏┓╻╺┳╸   ┏┳┓┏━╸┏┓╻╻ ╻            \e[0;1m┃
 \e[0;1m┃${Fgreen}           ┣╸ ┃ ┃┃┗┫ ┃ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃   	   \e[0;1m┃
@@ -70,11 +72,13 @@ clear;echo -e "
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 }
 banner
-printf "${Bgreen}  [i] Choose an Font Style :                        \e[0m"
+printf "${Bwhite}  [i] Choose an Font Style :                        \e[0m"
 PUT 25 30
-printf "${Bgreen}"
+printf "${Bwhite}"
 read font
 printf "\e[0m"
+echo -ne "\033]12;#00E676\007"
+
 if [[ $font = "1" ]] || [[ $font = "01" ]];then
 change_loc
 cp 'Anonymice Powerline.ttf' $HOME/.termux/font.ttf
