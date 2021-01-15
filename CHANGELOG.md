@@ -1,5 +1,6 @@
 + WHAT'S NEW
 + Bug fixes and performance improvements.
++ Updated zsh.setup.theme (Zsh Setup)
 + Updated colors.theme (Apply Color Scheme)
 + Updated fonts.theme (Apply Font Style)
 + Updated zsh.theme (Apply Zsh-Theme)
