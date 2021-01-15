@@ -29,7 +29,7 @@ echo -e "
 \e[0;1m┃${NBred}         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${NBblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
 \e[0;1m┃${NBred}          ┃ ┣━┫┣╸ ┃┃┃┣╸ \e[0;100m╺━╸${NBblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
 \e[0;1m┃${NBred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${NBblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
-\e[0;1m┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
+\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\e[0m
 \e[0;1m┃${NBwhite}                                                     \e[0;1m┃
 \e[0;1m┃${NBwhite}  Theme-Engine is usually made for modification      \e[0;1m┃
 \e[0;1m┃${NBwhite}  and customization, So you can make trunks even     \e[0;1m┃
@@ -51,7 +51,7 @@ echo -e "
 \e[0;1m┃${Bred}         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Bblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
 \e[0;1m┃${Bred}          ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸${Bblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
 \e[0;1m┃${Bred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Bblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
-\e[0;1m┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┃
+\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\e[0m
 \e[0;1m┃${Bwhite}                                                     \e[0;1m┃
 \e[0;1m┃${Bwhite}  Theme-Engine is usually made for modification      \e[0;1m┃
 \e[0;1m┃${Bwhite}  and customization, So you can make trunks even     \e[0;1m┃
