@@ -51,13 +51,13 @@ exit_on_signal_SIGINT () {
     exit 0
 }
 
-exit_on_signal_SIGTERM () {
+exit_on_signal_SIGTSTP () {
     { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
     exit 0
 }
 
-trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
+trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
 
 banner() {
 echo -ne "\033]12;#363636\007";clear

@@ -372,14 +372,14 @@ exit_on_signal_SIGINT () {
     exit 0
 }
 
-exit_on_signal_SIGTERM () {
+exit_on_signal_SIGTSTP () {
    echo -e "\n"
    RCUSR
    NORM
    exit 0
 }
 
-trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTERM SIGTERM
+trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
 
 #..............................................................
 
