@@ -210,7 +210,7 @@ cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 night() { PUT 21 1
 trap '' 2
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations           [0.0%]  |   \r"
-sleep 0.12
+sleep 0.22
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations.          [0.3%]  /   \r"
 sleep 0.12
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations..         [0.9%]  -   \r"
@@ -279,7 +279,7 @@ bash "$PREFIX/bin/theme-engine"
 light() { PUT 21 1
 trap '' 2
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations           [0.0%]   |  \r"
-sleep 0.12
+sleep 0.22
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations.          [0.3%]   /  \r"
 sleep 0.12
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations..         [0.9%]   -  \r"
