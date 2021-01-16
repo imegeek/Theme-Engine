@@ -162,20 +162,19 @@ fi
 banner0() {
 clear
 echo "
-
-	┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-	┃  ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸  ${reset}┃
-	┃  ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸   ${reset}┃
-	┃  ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸  ${reset}┃
-	┃──────────>>[version ${version}]<<───────────┃
-	┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃     ${Fred}╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Fblue}┏━╸┏┓╻┏━╸╻┏┓╻┏━╸     ${reset}┃
+┃     ${Fred} ┃ ┣━┫┣╸ ┃┃┃┣╸ ${reset}╺━╸${Fblue}┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸      ${reset}┃
+┃     ${Fred} ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Fblue}┗━╸╹ ╹┗━┛╹╹ ╹┗━╸     ${reset}┃
+┣━━━━━━━━━━━━━━━⌠version ${version}⌡━━━━━━━━━━━━━━━━┫
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 "
 }
 
 setup() {
 	banner0
 	printf " Setting-up Theme-Engine...\n\n"
-	printf " Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
+	printf " Coping files in /data/data/com.termux/files/usr/share\n directory...\n\n"
 	cd ..
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	cd - &> /dev/null
@@ -197,7 +196,7 @@ remove() {
 if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 	banner0
 	printf " Uninstalling Theme-Engine...\n\n"
-	printf " Remove files in /data/data/com.termux/files/usr/share directory...\n\n"
+	printf " Remove files in /data/data/com.termux/files/usr/share\n directory...\n\n"
 	rm -rf ${loc9}
 	rm $PREFIX/bin/theme-engine
 	printf " Successfully Removed Theme-Engine.\n\n"
