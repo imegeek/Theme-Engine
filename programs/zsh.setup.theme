@@ -340,7 +340,7 @@ echo -ne "\e[0;1m┃${Bpurple}  ✚  Setup completed. Enjoy Oh-my-zsh    [100%] 
 sleep 0.12
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setup completed. Enjoy Oh-my-zsh    [100%]   /  \r"
 reload
-echo -ne "\e[0;1m┃${Bpurple}   ✚  Setup completed. Enjoy Oh-my-zsh    [100%]   -  \r"
+echo -ne "\e[0;1m┃${Bpurple}   ✚  Setup completed. Enjoy Oh-my-zsh   [100%]   -  \r"
 trap 5; sleep 0.12; NORM
 bash "$PREFIX/bin/theme-engine"
 }
