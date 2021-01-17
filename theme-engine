@@ -361,6 +361,7 @@ line1() { printf "\e[0;1m┏━━━━━━━━━━━━━━━━━�
 line2() { printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\r" ;}
 line3() { echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" ;}
 line4() { echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ;}
+line5() { echo -e "\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫" ;}
 
 #..............................................................
 
@@ -583,27 +584,27 @@ fi
 night_banner() {
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1;7m`line3`${reset}";WAIT
+printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
-printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
+printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
 }
 
 day_banner() {
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1;7m`line3`${reset}";WAIT
+printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
 printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`day_print_shell`"
-printf "\n\e[0;1;7m`line4`${reset}\n";WAIT
+printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
 }
 
 #..............................................................
@@ -613,7 +614,7 @@ night() {
 if [ -f "${loc5}" ];then
   if [ -f "${loc8}" ];then
           night_banner
-        line3
+line5
       night_options
     PUT 15 1
  line4
@@ -623,7 +624,7 @@ fi
 
 if [ -f "${loc8}" ];then
      night_banner
-    line3
+line5
   night_options
 night_updater
 
@@ -678,7 +679,7 @@ fi
 if [ -f "${loc5}" ];then
  if [ ! -f "${loc8}" ];then
       night_banner
-    line3
+line5
    night_options
   PUT 15 1
  line4
@@ -688,7 +689,7 @@ fi
 
 if [ ! -f "${loc8}" ];then
     night_banner
-   line3
+line5
   night_options
 night_updater
 
@@ -746,7 +747,7 @@ light() {
 if [ -f "${loc5}" ];then
   if [ -f "${loc8}" ];then
           day_banner
-        line3
+        line5
       day_options
     PUT 15 1
  line4
@@ -756,7 +757,7 @@ fi
 
 if [ -f "${loc8}" ];then
      day_banner
-    line3
+    line5
   day_options
 day_updater
 
@@ -810,7 +811,7 @@ fi
 if [ -f "${loc5}" ];then
  if [ ! -f "${loc8}" ];then
       day_banner
-    line3
+    line5
    day_options
   PUT 15 1
  line4
@@ -820,7 +821,7 @@ fi
 
 if [ ! -f "${loc8}" ];then
     day_banner
-   line3
+   line5
   day_options
 day_updater
 
