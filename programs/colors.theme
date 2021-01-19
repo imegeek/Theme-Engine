@@ -183,17 +183,17 @@ cp atelierheath-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "11" ]];then
-printf "${Byellow} [*] Enter Color Path :                             \e[0m"
-PUT 34 25
+printf "${Byellow}  [*] Enter Color Path :                            \e[0m"
+PUT 32 26
 printf "${Byellow}"
 read -s path
 if [ -f "$path" ];then
 cp $path $HOME/.termux/colors.properties &> /dev/null
-PUT 34 25
+PUT 32 26
 HIDCRSR
 printf "/data/data/com.termux/files"
 termux-reload-settings
-printf "\n\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
+printf "\n\e[0;1;7m  [√] Color-Scheme Applied Successfully             \e[0m";echo
 NORM
 else
 echo -e "\n\e[0;1;7m                Invalid file format !               \e[0m"
@@ -212,23 +212,23 @@ while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
 for i in "${spinner[@]}"
 do
 	HIDCRSR
-        PUT 34 1
+        PUT 32 1
         printf "${Bsky}                                                    "
-	echo -ne "\e[1m\r [⬇] Color Scheme Downloading$i";
+	echo -ne "\e[1m\r  [⬇] Color Scheme Downloading$i";
 	sleep $delay
         printf "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 done
 done
 termux-reload-settings;NORM
-printf "\e[0;1;7m [√] Color-Scheme Applied Successfully              \e[0m";echo
+printf "\e[0;1;7m  [√] Color-Scheme Applied Successfully             \e[0m";echo
 
 }
 
-printf "${Bsky} [*] Enter Url of ColorSheme :                      \e[0m"
-PUT 34 32
+printf "${Bsky}  [*] Enter Url of ColorSheme :                     \e[0m"
+PUT 32 33
 read -s color_url
 if [[ $color_url = https* ]];then
-PUT 34 32
+PUT 32 33
 HIDCRSR;printf "${Bsky}https://************\e[0m\n"
 sleep 0.6
 trap '' 2
