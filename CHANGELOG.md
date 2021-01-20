@@ -6,4 +6,4 @@
 + Added Auto Night Mode (Start at 6 P.M)
 + Updated Auto Updater v.2.6 => v.2.8
 + Added Animations => theme-engine
-+ Get Help => theme-engine --help
++ Get Help => theme-engine --help or -h
