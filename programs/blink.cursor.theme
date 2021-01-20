@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+HIDE(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+blink_cursor() {
+while :
+do
+sleep 0.44
+HIDE
+sleep 0.44
+NORM
+done
+}
+
+blink_cursor &

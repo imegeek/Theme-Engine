@@ -1,0 +1,281 @@
+#!/usr/bin/bash
+
+#..............................................................
+
+                       THEME='default'
+
+#..............................................................
+
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDE(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+RCUSR() { echo -ne "\033]12;#b4e1fd\007";}
+WAIT() { sleep 0.03 ;}
+
+loc1="$PREFIX/share/Theme-Engine/.oh-my-zsh/tools"
+loc2="$PREFIX/share/Theme-Engine/programs"
+loc3="$HOME/.termux/termux.properties"
+loc4="$HOME/.termux"
+
+red=$'\e[0;1;48;2;250;0;0m'
+green1=$'\e[0;1;;90;7;30;48;5;46m'
+green2=$'\e[0;1;;90;30;48;5;46m'
+black=$'\e[0;1;100m'
+reverse=$'\e[0;1;7m'
+reset=$'\e[0m'
+
+android=$(getprop ro.build.version.release)
+
+## Specify time
+day=`date +%H`
+night=`date +%H`
+
+if [ ! -f "$HOME/.termux/termux.properties" ];then
+text1="                 Enable Extra Keys                  "
+else
+text1="                Disable Extra Keys                  "
+fi
+
+if [ ! -f "$HOME/.termux/blink.cursor.theme" ];then
+text2="              Enable Cursor Animation               "
+else
+text2="              Disable Cursor Animation              "
+fi
+
+if [ ! -f "$HOME/.termux/termux.boot.theme" ];then
+text3="                Enable Termux Boot                  "
+else
+text3="                Disable Termux Boot                 "
+fi
+
+main_selecter() {
+options=("${text1}" "${text2}" "${text3}")
+}
+
+main_setup() {
+if [ ! -f "$HOME/.termux/termux.properties" ];then
+if [[ "${options[$choice]}" = "${text1}" ]];then
+if [[ $android -lt '7' ]]; then
+echo -e "${red}     Your device isn't compatible with this version    \n"
+RCUSR
+exit 0
+fi
+cd ${loc2}
+   cp extra.keys.theme ${loc3}
+termux-reload-settings
+   RCUSR
+echo -e "${black}           Extra Keys Enable Successfully              ${reset}"
+fi
+else
+if [[ "${options[$choice]}" = "${text1}" ]];then
+if [[ $android -lt '7' ]]; then
+echo -e "${red}     Your device isn't compatible with this version    \n"
+RCUSR
+exit 0
+fi
+cd ${loc4}
+   rm termux.properties
+termux-reload-settings
+echo -e "${black}           Extra Keys Disabled Successfully            ${reset}"
+fi
+fi
+
+if [ ! -f "$HOME/.termux/blink.cursor.theme" ];then
+if [[ "${options[$choice]}" = "${text2}" ]];then
+cd ${loc2}
+   cp blink.cursor.theme ${loc4}
+termux-reload-settings
+   RCUSR
+echo -e "${black}         Cursor Animation Enable Successfully          ${reset}"
+fi
+else
+if [[ "${options[$choice]}" = "${text2}" ]];then
+cd ${loc4}
+   rm blink.cursor.theme
+termux-reload-settings
+echo -e "${black}         Cursor Animation Disabled Successfully        ${reset}"
+fi
+fi
+
+if [ ! -f "$HOME/.termux/termux.boot.theme" ];then
+if [[ "${options[$choice]}" = "${text3}" ]];then
+cd ${loc2}
+   cp ${loc1}/login $PREFIX/bin
+   cp termux.boot.theme ${loc4}
+sed -i "1 a bash /data/data/com.termux/files/home/.termux/termux.boot.theme" $PREFIX/bin/login
+termux-reload-settings
+echo -e "${black}             Termux Boot Enable Successfully           ${reset}"
+fi
+else
+if [[ "${options[$choice]}" = "${text3}" ]];then
+cd ${loc4}
+   rm termux.boot.theme
+cp ${loc1}/login $PREFIX/bin
+#sed -i "2d" $PREFIX/bin/login
+termux-reload-settings
+echo -e "${black}           Termux Boot Disable Successfully            ${reset}"
+fi
+fi
+}
+
+day_select() {
+PUT 15 1
+banner
+PUT 17 1
+select_option_light "${options[@]}"
+choice=$?
+}
+
+night_select() {
+PUT 15 1
+banner
+PUT 17 1
+select_option_night "${options[@]}"
+choice=$?
+}
+
+banner() {
+printf "\e[1m
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃						      ┃
+┃						      ┃
+┃						      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+}
+
+night() {
+function select_option_night {
+    ESC=$( printf "\033")
+    cursor_blink_on()  { printf "$ESC[?25h"; }
+    cursor_blink_off() { printf "$ESC[?25l"; }
+    cursor_to()        { printf "$ESC[$1;${2:-1}H"; }
+    print_option()     { printf "\e[0m┃${green1}$1 "; }
+    print_selected()   { printf "\e[0m┃${reverse}$1 "; }
+    get_cursor_row()   { IFS=';' read -sdR -p $'\E[6n' ROW COL; echo ${ROW#*[}; }
+    key_input()        { read -s -n3 key 2>/dev/null >&2
+    if [[ $key = $ESC[A ]]; then echo up;    fi
+    if [[ $key = $ESC[B ]]; then echo down;  fi
+    if [[ $key = ""     ]]; then echo enter; fi; }
+
+    for opt; do printf "\n"; done
+
+    local lastrow=`get_cursor_row`
+    local startrow=$(($lastrow - $#))
+
+    trap "cursor_blink_on; stty echo; printf '\n'; exit" 2
+    cursor_blink_off
+
+    local selected=0
+    while true; do
+        local idx=0
+        for opt; do
+            cursor_to $(($startrow + $idx))
+            if [ $idx -eq $selected ]; then
+                print_selected "$opt"
+            else
+                print_option "$opt"
+            fi
+            ((idx++))
+        done
+
+        case `key_input` in
+            enter) break;;
+            up)    ((selected--));
+                   if [ $selected -lt 0 ]; then selected=$(($# - 1)); fi;;
+            down)  ((selected++));
+                   if [ $selected -ge $# ]; then selected=0; fi;;
+        esac
+    done
+
+    cursor_to $lastrow
+    printf "\n"
+    cursor_blink_on
+
+    return $selected
+}
+
+main_selecter
+
+night_select
+
+main_setup
+
+}
+
+#..............................................................
+
+light() {
+function select_option_light {
+    ESC=$( printf "\033")
+    cursor_blink_on()  { printf "$ESC[?25h"; }
+    cursor_blink_off() { printf "$ESC[?25l"; }
+    cursor_to()        { printf "$ESC[$1;${2:-1}H"; }
+    print_option()     { printf "\e[0m┃${reverse}$1 "; }
+    print_selected()   { printf "\e[0m┃${green2}$1 "; }
+    get_cursor_row()   { IFS=';' read -sdR -p $'\E[6n' ROW COL; echo ${ROW#*[}; }
+    key_input()        { read -s -n3 key 2>/dev/null >&2
+    if [[ $key = $ESC[A ]]; then echo up;    fi
+    if [[ $key = $ESC[B ]]; then echo down;  fi
+    if [[ $key = ""     ]]; then echo enter; fi; }
+
+    for opt; do printf "\n"; done
+
+    local lastrow=`get_cursor_row`
+    local startrow=$(($lastrow - $#))
+
+    trap "cursor_blink_on; stty echo; printf '\n'; exit" 2
+    cursor_blink_off
+
+    local selected=0
+    while true; do
+        local idx=0
+        for opt; do
+            cursor_to $(($startrow + $idx))
+            if [ $idx -eq $selected ]; then
+                print_selected "$opt"
+            else
+                print_option "$opt"
+            fi
+            ((idx++))
+        done
+
+        case `key_input` in
+            enter) break;;
+            up)    ((selected--));
+                   if [ $selected -lt 0 ]; then selected=$(($# - 1)); fi;;
+            down)  ((selected++));
+                   if [ $selected -ge $# ]; then selected=0; fi;;
+        esac
+    done
+
+    cursor_to $lastrow
+    printf "\n"
+    cursor_blink_on
+
+    return $selected
+}
+
+main_selecter
+
+day_select
+
+main_setup
+
+}
+
+
+default() {
+if [ $night -gt "17" ] || [ $night -lt "06" ];then
+night
+else
+light
+fi
+}
+
+#..............................................................
+
+                          "$THEME"
+
+#..............................................................
+
+# Thanks for using Theme-Engine.

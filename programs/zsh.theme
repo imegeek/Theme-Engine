@@ -148,7 +148,10 @@ echo "alias chfont='$HOME/.termux/fonts.theme'" >> .zshrc
 echo "alias chtheme='$HOME/.termux/zsh.theme'" >> .zshrc
 echo "alias update='$HOME/.termux/zsh.update'" >> .zshrc
 echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc
-echo "source $HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc ; }
+echo "source $HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh" >> .zshrc
+echo "if [[ -f '/data/data/com.termux/files/home/.termux/blink.cursor.theme' ]];then" >> .zshrc
+echo "bash /data/data/com.termux/files/home/.termux/blink.cursor.theme" >> .zshrc
+echo "fi" >> .zshrc ;}
 
 cd $HOME
 
