@@ -1,0 +1,102 @@
+#!/usr/bin/bash
+
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDE(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
+
+c=$(($(tput cols) / 2))
+c=$((c-4))
+c1="\e[1;94m"
+c2=$'\e[0;38;2;220;255;255m'
+slp=$"sleep 0.03"
+end=$((SECONDS+2))
+
+from_middle=-10
+center="tput cup $((row+27)) $((c+from_middle))"
+
+banner() {
+print_center(){
+    local x
+    local y
+    text="$*"
+    x=$(( ($(tput cols) - ${#text}) / 2))
+    echo -ne "\E[6n";read -sdR y; y=$(echo -ne "${y#*[}" | cut -d';' -f1)
+    echo -ne "\033[${y};${x}f$*"
+}
+
+echo -ne "\\033[2J\033[25;1f\e[94m"
+
+print_center "▀▀█▀▀ █▀▀ █▀▀█ █▀▄▀█ █  █ █ █\n"
+print_center "  █   █▀▀ █▄▄▀ █ ▀ █ █  █ ▄▀▄\n"
+print_center "  ▀   ▀▀▀ ▀ ▀▀ ▀   ▀  ▀▀▀ ▀ ▀\n"
+}
+
+progress() {
+while [ $SECONDS -lt $end ]; do
+$slp ;$center
+echo -ne "${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬▬${c3}\e\r"
+$slp ;$center
+echo -ne "${c1}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬${c2}▬${c3}\e\r"
+$slp ;$center
+done
+}
+
+main() {
+if [ ! -f "$TMPDIR/termux.boot.id="* ];then
+HIDE
+banner
+progress
+echo
+$center
+echo -ne "					   \r"
+mktemp $TMPDIR/termux.boot.id=XXXX &> /dev/null
+NORM
+clear
+printf "\e[0m"
+fi
+}
+main

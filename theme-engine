@@ -500,11 +500,7 @@ fi
 night_options() {
    echo -e "\e[0;1m┃${NBred} ┌[1]┐ Apply Color Scheme ${NByellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}";WAIT
 
-if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃";WAIT
-else
-   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃";WAIT
-fi
+   echo -e "\e[0;1m┃${NBblue} │ 2 │ Apply Font Style   ${NBcyan} │ 5 │ Highlight Features  \e[0;1m┃";WAIT
 
 if [ ! -f "${loc8}" ];then
    echo -e "\e[0;1m┃${NBpurple} └[3]┘ Enable Zsh-Theme   ${NBsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
@@ -514,66 +510,14 @@ fi
 }
 
 day_options() {
-echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}";WAIT
+   echo -e "\e[0;1m┃${Bred} ┌[1]┐ Apply Color Scheme ${Byellow} ┌[4]┐ Disable Zsh-Theme   \e[0;1m┃${reset}";WAIT
 
-if [ -f "${loc7}/termux.properties" ];then
-   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Reset Extra Keys ⌥  \e[0;1m┃";WAIT
-else
-   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Enable Extra Keys ⌥ \e[0;1m┃";WAIT
-fi
+   echo -e "\e[0;1m┃${Bblue} │ 2 │ Apply Font Style   ${Bcyan} │ 5 │ Highlight Features  \e[0;1m┃";WAIT
 
 if [ ! -f "${loc8}" ];then
    echo -e "\e[0;1m┃${Bpurple} └[3]┘ Enable Zsh-Theme   ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
 else
    echo -e "\e[0;1m┃${Bpurple} └[3]┘ Apply Zsh-Theme    ${Bsky} └[6]┘ About Theme-Engine  \e[0;1m┃${reset}";WAIT
-fi
-}
-
-#..............................................................
-
-night_extra_keys() {
-if [[ $android -lt '7' ]]; then
-echo -e "\n${Nred}     Your device isn't compatible with this version    \n"
-RCUSR
-exit 0
-fi
-if [ ! -f "${loc6}" ];then
-   cd ${loc3}
-   cp extra.keys.theme ${loc6}
-termux-reload-settings
-PUT 16 1
-   echo -e "${NBcyan}           Extra Keys Enabled Successfully             ${reset}"
-   RCUSR
-else
-   cd ${loc7}
-   rm termux.properties
-termux-reload-settings
-PUT 16 1
-   echo -e "${NBcyan}           Extra Keys Reset Successfully               ${reset}"
-   RCUSR
-fi
-}
-
-day_extra_keys() {
-if [[ $android -lt '7' ]]; then
-echo -e "\n${Bred}     Your device isn't compatible with this version    \n"
-RCUSR
-exit 0
-fi
-if [ ! -f "${loc6}" ];then
-   cd ${loc3}
-   cp extra.keys.theme ${loc6}
-termux-reload-settings
-PUT 16 1
-   echo -e "${Bcyan}           Extra Keys Enabled Successfully             ${reset}"
-   RCUSR
-else
-   cd ${loc7}
-   rm termux.properties
-termux-reload-settings
-PUT 16 1
-   echo -e "${Bcyan}           Extra Keys Reset Successfully               ${reset}"
-   RCUSR
 fi
 }
 
@@ -663,7 +607,9 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	night_extra_keys
+	RCUSR
+	cd ${loc3}
+	bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
@@ -728,7 +674,9 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	night_extra_keys
+	RCUSR
+	cd ${loc3}
+        bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
@@ -795,7 +743,9 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	day_extra_keys
+	RCUSR
+        cd ${loc3}
+        bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
@@ -859,7 +809,9 @@ elif [[ $option = "4" ]] || [[ $option = "04" ]];then
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	day_extra_keys
+	RCUSR
+        cd ${loc3}
+        bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}

@@ -201,7 +201,10 @@ echo "alias chfont='${loc7}/fonts.theme'" >> .zshrc
 echo "alias chtheme='${loc7}/zsh.theme'" >> .zshrc
 echo "alias update='${loc7}/zsh.update'" >> .zshrc
 echo "source ${loc13}" >> .zshrc
-echo "source ${loc14}" >> .zshrc ; }
+echo "source ${loc14}" >> .zshrc
+echo "if [[ -f '/data/data/com.termux/files/home/.termux/blink.cursor.theme' ]];then" >> .zshrc
+echo "bash /data/data/com.termux/files/home/.termux/blink.cursor.theme" >> .zshrc
+echo "fi" >> .zshrc ;}
 
 set_zsh() {
 if [ -f "${loc7}/config.theme-engine" ];then
