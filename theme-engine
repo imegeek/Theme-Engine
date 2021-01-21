@@ -123,30 +123,31 @@ locB="${loc3}/about.theme"
 locC="${loc3}/disable.zsh.theme"
 locD="${loc3}/unrar.theme"
 locE="${loc3}/zsh.setup.theme"
+locF="${loc3}/highlight.features.theme"
 }
 
 default_themeA() {
-sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
 
 default_themeB() {
-sed -i "1,20 s/THEME='light'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+sed -i "1,20 s/THEME='light'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
 
 night_themeA() {
-sed -i "1,20 s/THEME='default'/THEME='night'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+sed -i "1,20 s/THEME='default'/THEME='night'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
 
 night_themeB() {
-sed -i "1,20 s/THEME='light'/THEME='night'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+sed -i "1,20 s/THEME='light'/THEME='night'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
 
 light_themeA() {
-sed -i "1,20 s/THEME='night'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+sed -i "1,20 s/THEME='night'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
 
 light_themeB() {
-sed -i "1,20 s/THEME='default'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE}
+sed -i "1,20 s/THEME='default'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
 
 if [[ $distroA == *'Android'* ]];then
