@@ -263,7 +263,6 @@ main_setup
 
 }
 
-
 default() {
 if [ $night -gt "17" ] || [ $night -lt "06" ];then
 night
