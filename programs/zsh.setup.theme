@@ -210,8 +210,16 @@ set_zsh() {
 if [ -f "${loc7}/config.theme-engine" ];then
 cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 
-night() { PUT 21 1
-trap '' 2
+night() { trap '' 2
+PUT 15 1 ;HIDE
+printf "\n\e[1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n";SLP
+printf "\e[1m┃${NBpurple}             ╺━┓┏━┓╻ ╻   ┏━┓┏━╸╺┳╸╻ ╻┏━┓             \e[0m┃\n";SLP
+printf "\e[1m┃${NBpurple}             ┏━┛┗━┓┣━┫╺━╸┗━┓┣╸  ┃ ┃ ┃┣━┛             \e[0m┃\n";SLP
+printf "\e[1m┃${NBpurple}             ┗━╸┗━┛╹ ╹   ┗━┛┗━╸ ╹ ┗━┛╹               \e[0m┃\n";SLP
+printf "\e[1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n";SLP
+printf "\e[1m┃                                                     ┃\n";SLP
+printf "\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n";SLP
+PUT 21 1
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations           [0.0%]  |   \r"
 sleep 0.22
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations.          [0.3%]  /   \r"
@@ -279,8 +287,16 @@ trap 5; sleep 0.12; NORM
 bash "$PREFIX/bin/theme-engine"
 }
 
-light() { PUT 21 1
-trap '' 2
+light() { trap '' 2
+PUT 15 1 ;HIDE
+printf "\n\e[1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n";SLP
+printf "\e[1m┃${Bpurple}             ╺━┓┏━┓╻ ╻   ┏━┓┏━╸╺┳╸╻ ╻┏━┓             \e[0m┃\n";SLP
+printf "\e[1m┃${Bpurple}             ┏━┛┗━┓┣━┫╺━╸┗━┓┣╸  ┃ ┃ ┃┣━┛             \e[0m┃\n";SLP
+printf "\e[1m┃${Bpurple}             ┗━╸┗━┛╹ ╹   ┗━┛┗━╸ ╹ ┗━┛╹               \e[0m┃\n";SLP
+printf "\e[1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n";SLP
+printf "\e[1m┃                                                     ┃\n";SLP
+printf "\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n";SLP
+PUT 21 1
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations           [0.0%]   |  \r"
 sleep 0.22
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations.          [0.3%]   /  \r"
@@ -350,24 +366,8 @@ bash "$PREFIX/bin/theme-engine"
 
 default() {
 if [ $night -gt "17" ] || [ $night -lt "06" ];then
-PUT 15 1 ;HIDE
-printf "\n\e[1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n";SLP
-printf "\e[1m┃${NBpurple}             ╺━┓┏━┓╻ ╻   ┏━┓┏━╸╺┳╸╻ ╻┏━┓             \e[0m┃\n";SLP
-printf "\e[1m┃${NBpurple}             ┏━┛┗━┓┣━┫╺━╸┗━┓┣╸  ┃ ┃ ┃┣━┛             \e[0m┃\n";SLP
-printf "\e[1m┃${NBpurple}             ┗━╸┗━┛╹ ╹   ┗━┛┗━╸ ╹ ┗━┛╹               \e[0m┃\n";SLP
-printf "\e[1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n";SLP
-printf "\e[1m┃                                                     ┃\n";SLP
-printf "\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n";SLP
 night
 else
-PUT 15 1 ;HIDE
-printf "\n\e[1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n";SLP
-printf "\e[1m┃${Bpurple}             ╺━┓┏━┓╻ ╻   ┏━┓┏━╸╺┳╸╻ ╻┏━┓             \e[0m┃\n";SLP
-printf "\e[1m┃${Bpurple}             ┏━┛┗━┓┣━┫╺━╸┗━┓┣╸  ┃ ┃ ┃┣━┛             \e[0m┃\n";SLP
-printf "\e[1m┃${Bpurple}             ┗━╸┗━┛╹ ╹   ┗━┛┗━╸ ╹ ┗━┛╹               \e[0m┃\n";SLP
-printf "\e[1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n";SLP
-printf "\e[1m┃                                                     ┃\n";SLP
-printf "\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n";SLP
 light
 fi
 }
