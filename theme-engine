@@ -3,7 +3,7 @@
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 #┃ Project : Theme-Engine                                    ┃
 #┃ Author  : ABHacker Official                               ┃
-#┃ Version : 4.6 (Latest)                                    ┃
+#┃ Version : 5.2 (Latest)                                    ┃
 #┃ Github  : abhackerofficial <github.com/abhackerofficial>  ┃
 #┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
@@ -107,7 +107,7 @@ distroA=$(uname -o | grep -o "Android")
 distroB=$(uname -o | grep -o "Linux")
 
 ## directory
-directories() {
+directoriesA() {
 loc1="$PREFIX/share/Theme-Engine/colors"
 loc2="$PREFIX/share/Theme-Engine/fonts"
 loc3="$PREFIX/share/Theme-Engine/programs"
@@ -125,6 +125,17 @@ locD="${loc3}/unrar.theme"
 locE="${loc3}/zsh.setup.theme"
 locF="${loc3}/highlight.features.theme"
 }
+
+if [[ $distroA == *'Android'* ]];then
+directoriesA
+
+elif [[ $distroB == *'Linux'* ]];then
+#directoriesB
+echo "We're working on Linux distros..."
+exit 0
+else echo "Theme-Engine isn't supported you're system."
+exit 0
+fi
 
 default_themeA() {
 sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
@@ -149,14 +160,6 @@ sed -i "1,20 s/THEME='night'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${
 light_themeB() {
 sed -i "1,20 s/THEME='default'/THEME='light'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
-
-if [[ $distroA == *'Android'* ]];then
-directories
-
-elif [[ $distroB == *'Linux'* ]] || [[ $distroB == *'Linux'* ]];then
-directories
-else echo "Theme-Engine isn't supported you're system."
-fi
 
 #..............................................................
 
