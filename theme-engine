@@ -208,6 +208,35 @@ fi
 
 #..............................................................
 
+# Connection
+connect() {
+connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+if [[ "$connection" != 0 ]]
+   then clear
+   echo -e "\e[1;91m[\e[1;92m-\e[1;91m] No Internet\e[1;92m connection!"
+   exit
+ fi
+}
+
+## Required Packeges Checking...
+   command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y
+ connect
+}
+
+   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing."; apt install unrar -y
+ connect
+}
+
+   command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-utils but it's not installed, Now Installing."; apt install ncurses-utils -y
+ connect
+}
+
+   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing."; apt install zsh -y
+ connect
+}
+
+#..............................................................
+
 checking() {
 if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 pwd &> /dev/null
@@ -323,32 +352,6 @@ echo "theme-engine: no command specified! '$1'
 Try 'theme-engine --help' for more information."
 exit
 fi
-
-#..............................................................
-
-## Required Packeges Checking...
-   command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-	if [[ "$connection" != 0 ]]
-   then clear
-   echo -e "${red}[${green}-${red}] No Internet${green} connection!"
-   exit
-fi; }
-
-   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing."; apt install unrar -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-	if [[ "$connection" != 0 ]]
-   then clear
-   echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
-   exit
- fi
-}
-
-   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing."; apt install zsh -y; connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
-	if [[ "$connection" != 0 ]]
-   then clear
-   echo -e "\033[1;91m[\033[1;92m-\033[1;91m] No Internet\033[1;92m connection!"
-   exit
- fi
-}
 
 #..............................................................
 
