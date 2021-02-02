@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+command -v sox > /dev/null 2>&1 | play $PREFIX/share/Theme-Engine/src/assets/audio/error.wav &> /dev/null &
+
+printf  "\e[38;2;180;180;180m
+█▀▀▀▀▀█▀▅
+█     █  ▅
+█  █  █   ▅
+█     ▀▀▀▀█
+█         █
+█  ▅▀▀▀▀▅ █
+█         █
+▀▀▀▀▀▀▀▀▀▀▀
+"
+
+printf "\e[1m
+This connection can’t be reached The connection was reset.
+Try:
+
+Checking the connection
+ERR_CONNECTION_RESET
+\e[0m"

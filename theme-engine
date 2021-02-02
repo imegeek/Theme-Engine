@@ -108,22 +108,26 @@ distroB=$(uname -o | grep -o "Linux")
 
 ## directory
 directoriesA() {
-loc1="$PREFIX/share/Theme-Engine/colors"
-loc2="$PREFIX/share/Theme-Engine/fonts"
-loc3="$PREFIX/share/Theme-Engine/programs"
-loc4="$PREFIX/share/Theme-Engine/fonts/Terminus.ttf"
-loc5="$PREFIX/share/Theme-Engine/fonts/fonts.rar"
-loc6="$HOME/.termux/termux.properties"
-loc7="$HOME/.termux"
-loc8="$HOME/.termux/config.theme-engine"
-loc9="$PREFIX/share/Theme-Engine"
-loc10="$PREFIX/share/Theme-Engine/theme-engine"
+PDIR="${PREFIX}/share/Theme-Engine"
+loc1="${PDIR}/colors"
+loc2="${PDIR}/fonts"
+loc3="${PDIR}/programs"
+loc4="${PDIR}/fonts/Terminus.ttf"
+loc5="${PDIR}/fonts/fonts.rar"
+loc6="${HOME}/.termux/termux.properties"
+loc7="${HOME}/.termux"
+loc8="${HOME}/.termux/config.theme-engine"
+loc9="${PDIR}"
+loc10="${PDIR}/theme-engine"
+loc11="${PDIR}/src/assets/audio"
+loc12="${PDIR}/src/assets/misc"
 locA=$(which theme-engine)
 locB="${loc3}/about.theme"
 locC="${loc3}/disable.zsh.theme"
 locD="${loc3}/unrar.theme"
 locE="${loc3}/zsh.setup.theme"
 locF="${loc3}/highlight.features.theme"
+locG="${loc3}/error.page"
 }
 
 if [[ $distroA == *'Android'* ]];then
@@ -216,25 +220,29 @@ connect() {
 connection="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
 if [[ "$connection" != 0 ]]
    then clear
-   echo -e "\e[1;91m[\e[1;92m-\e[1;91m] No Internet\e[1;92m connection!"
+   bash "${loc3}/error.page"
    exit
  fi
 }
 
 ## Required Packeges Checking...
-   command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing."; apt install wget -y
+   command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing..."; apt install wget -y
  connect
 }
 
-   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing."; apt install unrar -y
+   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing..."; apt install unrar -y
  connect
 }
 
-   command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-utils but it's not installed, Now Installing."; apt install ncurses-utils -y
+   command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-utils but it's not installed, Now Installing..."; apt install ncurses-utils -y
  connect
 }
 
-   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing."; apt install zsh -y
+command -v sox > /dev/null 2>&1 || { echo >&2 "I require sox but it's not installed, Now Installing..."; apt install sox -y
+ connect
+}
+
+   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing..."; apt install zsh -y
  connect
 }
 
@@ -593,36 +601,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
 	cd ${loc3}
 	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
 	cd ${loc3}
 	bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
+	play ${loc11}/error.wav &> /dev/null &
        echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
@@ -660,36 +675,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
 	cd ${loc3}
 	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
 	cd ${loc3}
         bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
+	play ${loc11}/error.wav &> /dev/null &
        echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
@@ -729,36 +751,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
 	cd ${loc3}
 	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
         cd ${loc3}
         bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
+	play ${loc12}/error.wav &> /dev/null &
        echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
@@ -795,36 +824,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
 	cd ${loc3}
 	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	RCUSR
         cd ${loc3}
         bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
+	play ${loc11}/stdout.wav &> /dev/null &
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
+	play ${loc11}/error.wav &> /dev/null &
        echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
