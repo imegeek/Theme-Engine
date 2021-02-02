@@ -12,7 +12,7 @@ NORM(){ echo -en "\033[?12l\033[?25h";}
 RCUSR() { echo -ne "\033]12;#b4e1fd\007";}
 WAIT() { sleep 0.03 ;}
 
-loc1="$PREFIX/share/Theme-Engine/.oh-my-zsh/tools"
+loc1="$PREFIX/share/Theme-Engine/src/assets/misc"
 loc2="$PREFIX/share/Theme-Engine/programs"
 loc3="$HOME/.termux/termux.properties"
 loc4="$HOME/.termux"
