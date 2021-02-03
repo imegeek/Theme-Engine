@@ -202,7 +202,7 @@ change_font
 
 elif [[ $font = "25" ]];then
 change_loc
-cp 'Overpass Regular' $HOME/.termux/font.ttf
+cp 'Overpass Regular.otf' $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "26" ]];then
