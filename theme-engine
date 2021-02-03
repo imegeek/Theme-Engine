@@ -102,6 +102,16 @@ printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 ${arrow} -v
 fi
 }
 
+## sound effect
+play_alert() {
+tput bel
+play ${loc11}/stdout.wav &> /dev/null &
+}
+play_error(){
+tput bel
+play ${loc11}/error.wav &> /dev/null &
+}
+
 ## distro
 distroA=$(uname -o | grep -o "Android")
 distroB=$(uname -o | grep -o "Linux")
@@ -605,43 +615,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
 	cd ${loc3}
 	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
 	cd ${loc3}
 	bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
-	play ${loc11}/error.wav &> /dev/null &
+	play_error
        echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
@@ -679,43 +689,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
 	cd ${loc3}
 	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
 	cd ${loc3}
         bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
-	play ${loc11}/error.wav &> /dev/null &
+	play_error
        echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
@@ -755,43 +765,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
 	cd ${loc3}
 	bash zsh.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
 	exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
         cd ${loc3}
         bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
-	play ${loc11}/error.wav &> /dev/null &
+	play_error
        echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
@@ -828,43 +838,43 @@ echo -ne "${reset}"
 #..............................................................
 
 if [[ $option = "1" ]] || [[ $option = "01" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash colors.theme
 
 elif [[ $option = "2" ]] || [[ $option = "02" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	echo
 	cd ${loc3}
 	bash fonts.theme
 
 elif [[ $option = "3" ]] || [[ $option = "03" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
 	cd ${loc3}
 	bash zsh.setup.theme
 
 elif [[ $option = "4" ]] || [[ $option = "04" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
         cd ${loc3}
         bash disable.zsh.theme
         exit
 
 elif [[ $option = "5" ]] || [[ $option = "05" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	RCUSR
         cd ${loc3}
         bash highlight.features.theme
 
 elif [[ $option = "6" ]] || [[ $option = "06" ]];then
-	play ${loc11}/stdout.wav &> /dev/null &
+	play_alert
 	cd ${loc3}
 	bash about.theme
 
 else PUT 16 1
-	play ${loc11}/error.wav &> /dev/null &
+	play_error
        echo -e "\e[0;1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
