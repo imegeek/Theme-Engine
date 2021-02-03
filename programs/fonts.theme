@@ -63,7 +63,7 @@ echo -e "
 ┃ \e[0;1m[07] Droid Sans Mono   \e[0;1m[22] Meslo LG M Regular   ┃
 ┃ \e[0;1m[08] Fantasque         \e[0;1m[23] Monofur-Font         ┃
 ┃ \e[0;1m[09] FiraCode-Regular  \e[0;1m[24] Monoid-Font          ┃
-┃ \e[0;1m[10] FuraMono-Regular  \e[0;1m[25] OpenDyslexic         ┃
+┃ \e[0;1m[10] FuraMono-Regular  \e[0;1m[25] Overpass Regular     ┃
 ┃ \e[0;1m[11] GNU-FreeFont      \e[0;1m[26] Roboto Mono          ┃
 ┃ \e[0;1m[12] Go-Font           \e[0;1m[27] Source-Code-Pro      ┃
 ┃ \e[0;1m[13] Hack-Regular      \e[0;1m[28] Terminus             ┃
@@ -181,7 +181,7 @@ cp JetBrains-Mono.ttf $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "21" ]];then
-change_font
+change_loc
 cp 'Literation Mono Powerline.ttf' $HOME/.termux/font.ttf
 change_font
 
@@ -202,7 +202,7 @@ change_font
 
 elif [[ $font = "25" ]];then
 change_loc
-cp OpenDyslexic.ttf $HOME/.termux/font.ttf
+cp 'Overpass Regular' $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "26" ]];then
