@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+command -v tput > /dev/null 2>&1 | tput bel
 command -v sox > /dev/null 2>&1 | play $PREFIX/share/Theme-Engine/src/assets/audio/error.wav &> /dev/null &
 
 printf  "\e[38;2;180;180;180m
@@ -20,3 +21,4 @@ Try:
 Checking the connection
 ERR_CONNECTION_RESET
 \e[0m"
+exit 0
