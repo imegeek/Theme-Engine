@@ -1,5 +1,6 @@
 + WHAT'S NEW
 + Bug fixes and performance improvements.
++ Added LS_THEME => .zshrc (4.reset & 3.setup again)
 + Added Audio Animation => theme-engine
 + Added Some New Highlight Features => theme-engine
 + Updated theme-engine v.5.1 => v.5.2
