@@ -98,6 +98,7 @@ reload() {
 termux-reload-settings ;}
 
 zshrc() {
+echo 'LS_THEME="lsd" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
 echo '# If you come from bash you might have to change your $PATH.' >> .zshrc
 echo '# export PATH=$HOME/bin:/usr/local/bin:$PATH' >> .zshrc
 echo"" >> .zshrc
@@ -196,6 +197,7 @@ echo"" >> .zshrc
 echo "# Example aliases" >> .zshrc
 echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
 echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
+echo 'alias ls="${LS_THEME}" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
 echo "alias chcolor='${loc7}/colors.theme'" >> .zshrc
 echo "alias chfont='${loc7}/fonts.theme'" >> .zshrc
 echo "alias chtheme='${loc7}/zsh.theme'" >> .zshrc

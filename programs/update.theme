@@ -9,7 +9,7 @@ c1="\e[1;38;2;0;200;118m"
 c2=$'\e[0;38;2;220;255;255m'
 slp=$"sleep 0.03"
 
-version="5.2"
+version="5.4"
 
 clear
 echo -e "

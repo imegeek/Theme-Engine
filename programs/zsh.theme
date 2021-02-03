@@ -45,6 +45,7 @@ trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
 
 
 zshrc() {
+echo 'LS_THEME="lsd" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
 echo '# If you come from bash you might have to change your $PATH.' >> .zshrc
 echo '# export PATH=$HOME/bin:/usr/local/bin:$PATH' >> .zshrc
 echo"" >> .zshrc
@@ -143,6 +144,7 @@ echo"" >> .zshrc
 echo "# Example aliases" >> .zshrc
 echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
 echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
+echo 'alias ls="${LS_THEME}" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
 echo "alias chcolor='$HOME/.termux/colors.theme'" >> .zshrc
 echo "alias chfont='$HOME/.termux/fonts.theme'" >> .zshrc
 echo "alias chtheme='$HOME/.termux/zsh.theme'" >> .zshrc
