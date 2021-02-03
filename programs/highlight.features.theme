@@ -17,6 +17,8 @@ loc2="$PREFIX/share/Theme-Engine/programs"
 loc3="$HOME/.termux/termux.properties"
 loc4="$HOME/.termux"
 
+audio="$PREFIX/share/Theme-Engine/src/assets/audio/stdout.wav"
+
 red=$'\e[0;1;48;2;250;0;0m'
 green1=$'\e[0;1;;90;7;30;48;5;46m'
 green2=$'\e[0;1;;90;30;48;5;46m'
@@ -31,9 +33,9 @@ day=`date +%H`
 night=`date +%H`
 
 if [ ! -f "$HOME/.termux/termux.properties" ];then
-text1="                 Enable Extra Keys                  "
+text1="            Enable Extra Keys Properties            "
 else
-text1="                Disable Extra Keys                  "
+text1="           Disable Extra Keys Properties            "
 fi
 
 if [ ! -f "$HOME/.termux/blink.cursor.theme" ];then
@@ -48,8 +50,10 @@ else
 text3="                Disable Termux Boot                 "
 fi
 
+text4="               None of These Options                "
+
 main_selecter() {
-options=("${text1}" "${text2}" "${text3}")
+options=("${text1}" "${text2}" "${text3}" "${text4}")
 }
 
 main_setup() {
@@ -116,6 +120,10 @@ termux-reload-settings
 echo -e "${black}           Termux Boot Disable Successfully            ${reset}"
 fi
 fi
+
+if [[ "${options[$choice]}" = "${text4}" ]];then
+echo
+fi
 }
 
 day_select() {
@@ -140,6 +148,7 @@ printf "\e[1m
 ┃						      ┃
 ┃						      ┃
 ┃						      ┃
+┃						      ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 }
 
@@ -148,7 +157,7 @@ function select_option_night {
     ESC=$( printf "\033")
     cursor_blink_on()  { printf "$ESC[?25h"; }
     cursor_blink_off() { printf "$ESC[?25l"; }
-    cursor_to()        { printf "$ESC[$1;${2:-1}H"; }
+    cursor_to()        { play ${audio} &> /dev/null & printf "$ESC[$1;${2:-1}H"; }
     print_option()     { printf "\e[0m┃${green1}$1 "; }
     print_selected()   { printf "\e[0m┃${reverse}$1 "; }
     get_cursor_row()   { IFS=';' read -sdR -p $'\E[6n' ROW COL; echo ${ROW#*[}; }
@@ -209,7 +218,7 @@ function select_option_light {
     ESC=$( printf "\033")
     cursor_blink_on()  { printf "$ESC[?25h"; }
     cursor_blink_off() { printf "$ESC[?25l"; }
-    cursor_to()        { printf "$ESC[$1;${2:-1}H"; }
+    cursor_to()        { play ${audio} &> /dev/null & printf "$ESC[$1;${2:-1}H"; }
     print_option()     { printf "\e[0m┃${reverse}$1 "; }
     print_selected()   { printf "\e[0m┃${green2}$1 "; }
     get_cursor_row()   { IFS=';' read -sdR -p $'\E[6n' ROW COL; echo ${ROW#*[}; }

@@ -791,7 +791,7 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	bash about.theme
 
 else PUT 16 1
-	play ${loc12}/error.wav &> /dev/null &
+	play ${loc11}/error.wav &> /dev/null &
        echo -e "\e[1;100m              ✘ You entered Wrong Input !              ${reset}";echo;RCUSR
    fi
 fi
