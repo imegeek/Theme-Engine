@@ -1,5 +1,6 @@
 + WHAT'S NEW
 + Bug fixes and performance improvements.
++ Added Support for Kali Linux (Beta)
 + Added LS_THEME => .zshrc (4.disable & 3.setup again)
 + Added Sound Effect => theme-engine
 + Added Some New Highlight Features => theme-engine

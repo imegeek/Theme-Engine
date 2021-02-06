@@ -43,6 +43,10 @@ arrow="└─────►"
 # identify shell
 shell=$(printf "$SHELL")
 
+## distro
+distroA=$(uname -o | grep -o "Android")
+distroB=$(uname -o | grep -o "Linux")
+
 # Check version
 android=$(getprop ro.build.version.release)
 
@@ -53,6 +57,8 @@ sh3="dash"
 sh4="zsh"
 sh5="tcsh"
 sh6="fish"
+
+#..............................................................
 
 night_print_shell() {
 if [[ ${shell} == *'bash'* ]];then
@@ -102,51 +108,85 @@ printf "\n\e[0;1m┃\e[1;7m Logged shell — unknown                 ${arrow} -v
 fi
 }
 
+#..............................................................
+
 ## sound effect
 play_alert() {
 tput bel
-play ${loc11}/stdout.wav &> /dev/null &
+play ${LOC11}/stdout.wav &> /dev/null &
 }
 play_error(){
 tput bel
-play ${loc11}/error.wav &> /dev/null &
+play ${LOC11}/error.wav &> /dev/null &
 }
 
-## distro
-distroA=$(uname -o | grep -o "Android")
-distroB=$(uname -o | grep -o "Linux")
+#..............................................................
+
+## file names
+N0="Theme-Engine" N1="theme-engine"
+N2="colors"       N3="fonts" N4="programs"
+N5="Terminus.ttf" N6="fonts.rar"
+N7="termux.properties" N8="config.theme-engine"
+N9="about.theme"  N10="disable.zsh.theme"
+N11="unrar.theme" N12="zsh.setup.theme"
+N13="highlight.features.theme" N14="error.page"
+
+## directory names
+D0="/usr/share" D1="share"
+D2="program"    D3=".termux"
+D4=".kali"      D5="bin"
+D6="src/assets/audio"
+D7="src/assets/misc"
+D8="/home/kali" D9="/bin"
 
 ## directory
-directoriesA() {
-PDIR="${PREFIX}/share/Theme-Engine"
-loc1="${PDIR}/colors"
-loc2="${PDIR}/fonts"
-loc3="${PDIR}/programs"
-loc4="${PDIR}/fonts/Terminus.ttf"
-loc5="${PDIR}/fonts/fonts.rar"
-loc6="${HOME}/.termux/termux.properties"
-loc7="${HOME}/.termux"
-loc8="${HOME}/.termux/config.theme-engine"
-loc9="${PDIR}"
-loc10="${PDIR}/theme-engine"
-loc11="${PDIR}/src/assets/audio"
-loc12="${PDIR}/src/assets/misc"
-locA=$(which theme-engine)
-locB="${loc3}/about.theme"
-locC="${loc3}/disable.zsh.theme"
-locD="${loc3}/unrar.theme"
-locE="${loc3}/zsh.setup.theme"
-locF="${loc3}/highlight.features.theme"
-locG="${loc3}/error.page"
+directoriesA() { PREFIX="/data/data/com.termux/files/usr"
+PDIR="${PREFIX}/${D1}/${N0}" loc1="${PDIR}/${N2}"
+loc2="${PDIR}/${N3}"         loc3="${PDIR}/${N4}"
+loc4="${PDIR}/${N3}/${N5}"   loc5="${PDIR}/${N3}/${N6}"
+loc6="${HOME}/${D3}/${N7}"   loc7="${HOME}/${D3}"
+loc8="${HOME}/${D3}/${N8}"   loc9="${PDIR}"
+loc10="${PDIR}/${N1}"        loc11="${PDIR}/${D6}"
+loc12="${PDIR}/${D7}"        locA="${PREFIX}/${D5}/${N1}"
+locB="${loc3}/${N9}"         locC="${loc3}/${N10}"
+locD="${loc3}/${N11}"        locE="${loc3}/${N12}"
+locF="${loc3}/${N13}"        locG="${loc3}/${N14}"
+}
+
+directoriesB() { PREFIX="/usr"
+UDIR="${D0}/${N0}"           loc1="${UDIR}/${N2}"
+loc2="${UDIR}/${N3}"         loc3="${UDIR}/${N4}"
+loc4="${UDIR}/${N3}/${N5}"   loc5="${UDIR}/${N3}/${N6}"
+loc6="${D8}/${D4}/${N7}"     loc7="${D8}/${D4}"
+loc8="${D8}/${D4}/${N8}"     loc9="${UDIR}"
+loc10="${UDIR}/${N1}"        loc11="${UDIR}/${D6}"
+loc12="${UDIR}/${D7}"        locA="${D9}/${N1}"
+locB="${loc3}/${N9}"         locC="${loc3}/${N10}"
+locD="${loc3}/${N11}"        locE="${loc3}/${N12}"
+locF="${loc3}/${N13}"        locG="${loc3}/${N14}"
+}
+
+## install types
+packageA() {
+apt install ${1}
+}
+packageB() {
+sudo apt-get install ${1}
 }
 
 if [[ $distroA == *'Android'* ]];then
 directoriesA
+package() {
+packageA ${1}
+}
 
 elif [[ $distroB == *'Linux'* ]];then
-#directoriesB
-echo "We're working on Linux distros..."
-exit 0
+directoriesB
+package() {
+packageB ${1}
+}
+#echo "We're working on Linux distros..."
+#exit 0
 else echo "Theme-Engine isn't supported you're system."
 exit 0
 fi
@@ -194,9 +234,16 @@ setup() {
 	printf " Setting-up Theme-Engine...\n\n"
 	printf " Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
 	cd ..
+if [[ $distroB == *'Linux'* ]];then
+	sudo cp -rf Theme-Engine $PREFIX/share &> /dev/null
+        cd - &> /dev/null
+        sudo cp theme-engine $PREFIX/bin &> /dev/null
+else
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	cd - &> /dev/null
         cp theme-engine $PREFIX/bin &> /dev/null
+fi
+
 if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 	printf " Successfully Setup Theme-Engine.\n\n"
 	printf " You can run this program by typing \e[92mtheme-engine${reset}\n\n"
@@ -236,27 +283,34 @@ if [[ "$connection" != 0 ]]
 }
 
 ## Required Packeges Checking...
-   command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing..."; apt install wget -y
+   command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed, Now Installing..."; package "wget -y"
  connect
 }
 
-   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing..."; apt install unrar -y
+   command -v unrar > /dev/null 2>&1 || { echo >&2 "I require unrar but it's not installed, Now Installing..."; package "unrar -y"
  connect
 }
 
-   command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-utils but it's not installed, Now Installing..."; apt install ncurses-utils -y
+if [[ $distroB == *'Linux'* ]];then
+command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-bin but it's not installed, Now Installing..."; package "ncurses-bin -y"
+ connect
+}
+else
+   command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-utils but it's not installed, Now Installing..."; package "ncurses-utils -y"
+ connect
+}
+fi
+
+if [[ $distroB == *'Android'* ]];then
+   command -v lsd > /dev/null 2>&1 || { echo >&2 "I require lsd but it's not installed, Now Installing..."; package "lsd -y"
+ connect
+}
+fi
+   command -v sox > /dev/null 2>&1 || { echo >&2 "I require sox but it's not installed, Now Installing..."; package "sox -y"
  connect
 }
 
-   command -v lsd > /dev/null 2>&1 || { echo >&2 "I require lsd but it's not installed, Now Installing..."; apt install lsd -y
- connect
-}
-
-   command -v sox > /dev/null 2>&1 || { echo >&2 "I require sox but it's not installed, Now Installing..."; apt install sox -y
- connect
-}
-
-   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing..."; apt install zsh -y
+   command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh but it's not installed, Now Installing..."; package "zsh -y"
  connect
 }
 
@@ -555,29 +609,55 @@ fi
 ## Theme-Engine Main Banner
 
 night_banner() {
+if [[ $distroB == *'Linux'* ]];then
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                                    \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
-}
-
-day_banner() {
+else
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
-printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
-printf "\n┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
-printf "\n┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                                    \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █  █ █▀▀ █▀▄▀█ █▀▀   ${NBblue} █▀▀ █▀▀▄ █▀▀▀ ▀ █▀▀▄ █▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀▀█ █▀▀ █ ▀ █ █▀▀ ${Sreset}${NBblue}▀▀ █▀▀ █  █ █ ▀█ █ █  █ █▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  ▀  ▀  ▀ ▀▀▀ ▀   ▀ ▀▀▀   ${NBblue} ▀▀▀ ▀  ▀ ▀▀▀▀ ▀ ▀  ▀ ▀▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
+printf "`night_print_shell`"
+printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
+fi
+}
+
+day_banner() {
+if [[ $distroB == *'Linux'* ]];then
+printf "${reset}"
+echo -ne "\033]12;#363636\007";clear
+printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
+printf "\n\e[0;1m┃${Bred}                           ${Bblue}                          \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃${Bred} ${Sred} ▀█▀ █  █ █▀▀ █▀▄▀█ █▀▀   ${Bblue}${Sblue} █▀▀ █▀▀▄ █▀▀▀ ▀ █▀▀▄ █▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃${Bred} ${Sred}  █  █▀▀█ █▀▀ █ ▀ █ █▀▀ ${Sreset}▀▀${Bblue}${Sblue} █▀▀ █  █ █ ▀█ █ █  █ █▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃${Bred} ${Sred}  ▀  ▀  ▀ ▀▀▀ ▀   ▀ ▀▀▀   ${Bblue}${Sblue} ▀▀▀ ▀  ▀ ▀▀▀▀ ▀ ▀  ▀ ▀▀▀ \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`day_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
+else
+printf "${reset}"
+echo -ne "\033]12;#363636\007";clear
+printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
+printf "\n\e[0;1m┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
+printf "`day_print_shell`"
+printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
+fi
 }
 
 #..............................................................
