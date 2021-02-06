@@ -23,38 +23,64 @@ distroB=$(uname -o | grep -o "Linux")
 day=`date +%H`
 night=`date +%H`
 
+## file names
+N0="Theme-Engine" N1="theme-engine"
+N2="colors"       N3="fonts" N4="programs"
+N5="Terminus.ttf" N6="fonts.rar"
+N7="termux.properties" N8="config.theme-engine"
+N9=".oh-my-zsh"  N10="disable.zsh.theme"
+N11="unrar.theme" N12="zsh.setup.theme"
+N13="highlight.features.theme" N14=".zshrc"
+N15=".zsh-autosuggestions/zsh-autosuggestions.zsh"
+N16=".zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+## directory names
+D0="/usr/share" D1="share"
+D2="program"    D3=".termux"
+D4=".kali"      D5="bin"
+D6="/home/kali" D7="/bin"
+
 ## directory
-distro1() {
-loc1="${loc9}/colors"
-loc2="${loc9}/fonts"
-loc3="${loc9}/programs"
-loc4="${loc9}/fonts/Terminus.ttf"
-loc5="${loc9}/fonts/fonts.rar"
-loc6="$HOME/.termux/termux.properties"
-loc7="$HOME/.termux"
-loc8="$HOME/.termux/config.theme-engine"
-loc9="$PREFIX/share/Theme-Engine"
-loc10="$HOME/.zshrc"
-loc11="$HOME/.oh-my-zsh"
-loc12="${loc9}/theme-engine"
-loc13="$HOME/.zsh-autosuggestions/zsh-autosuggestions.zsh"
-loc14="$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+directoriesA() {
+PREFIX="/data/data/com.termux/files/usr" PDIR="${PREFIX}/${D1}/${N0}"
+loc1="${PDIR}/${N2}"         loc2="${PDIR}/${N3}"
+loc3="${PDIR}/${N4}"         loc4="${PDIR}/${N3}/${N5}"
+loc5="${PDIR}/${N3}/${N6}"   loc6="${HOME}/${D3}/${N7}"
+loc7="${HOME}/${D3}"         loc8="${HOME}/${D3}/${N8}"
+loc9="${PDIR}"               loc10="${PDIR}/${N14}"
+loc11="${PDIR}/${N9}"        loc12="${PDIR}/${N1}"
+loc13="${HOME}/${N15}"       loc14="${HOME}/${N16}"
+loc15="$HOME"                loc16="${D3}"
 }
 
+directoriesB() {
+PREFIX="/usr"                UDIR="${D0}/${N0}"
+loc1="${UDIR}/${N2}"         loc2="${UDIR}/${N3}"
+loc3="${UDIR}/${N4}"         loc4="${UDIR}/${N3}/${N5}"
+loc5="${UDIR}/${N3}/${N6}"   loc6="${D6}/${D4}/${N7}"
+loc7="${D6}/${D4}"           loc8="${D6}/${D4}/${N8}"
+loc9="${UDIR}"               loc10="${UDIR}/${N14}"
+loc11="${UDIR}/${N9}"        loc12="${UDIR}/${N1}"
+loc13="${D6}/${N15}"         loc14="${D6}/${N16}"
+loc15="${D6}"                loc16="${D4}"
+}
+
+
 if [[ $distroA == *'Android'* ]]; then
-distro1
+directoriesA
 
 elif [[ $distroB == *'Linux'* ]]; then
-distro2
+directoriesB
 else echo "Theme-Engine isn't supported you're system."
+exit
 fi
 
 setting_up() {
-if [ ! -d "${loc7}" ];then cd $HOME ; mkdir .termux ;fi
+if [ ! -d "${loc7}" ];then cd $loc15 ; mkdir ${loc16} ;fi
 if [ ! -f "${loc8}" ];then
 cd ${loc7}; touch config.theme-engine ;fi
-if [ -d "${loc7}/colors.properties" ];then cd $HOME ; rm ${loc7}/colors.properties ;fi
-if [ -d "${loc7}/font.ttf" ];then cd $HOME ; rm $HOME/font.ttf ;fi ;}
+if [ -d "${loc7}/colors.properties" ];then cd $loc15 ; rm ${loc7}/colors.properties ;fi
+if [ -d "${loc7}/font.ttf" ];then cd $loc15 ; rm $loc15/font.ttf ;fi ;}
 
 set_color() {
 cd ${loc9}/colors
@@ -70,11 +96,11 @@ cd ${loc9}
 cp -rf colors fonts ${loc7} ; }
 
 files() {
-if [ -f "$HOME/.zshrc" ];then cd $HOME ; rm .zshrc ;fi
-if [ -d "$HOME/.oh-my-zsh" ];then cd $HOME ;rm -rf .oh-my-zsh ;fi
-if [ ! -d "$HOME/.oh-my-zsh" ];then
+if [ -f "$loc15/.zshrc" ];then cd $loc15 ; rm .zshrc ;fi
+if [ -d "$loc15/.oh-my-zsh" ];then cd $loc15 ;rm -rf .oh-my-zsh ;fi
+if [ ! -d "$loc15/.oh-my-zsh" ];then
 cd ${loc9}
-cp -rf .oh-my-zsh $HOME ;fi ;}
+cp -rf .oh-my-zsh $loc15 ;fi ;}
 
 copying_tools() {
 cd ${loc9}/programs
@@ -88,17 +114,19 @@ change_shell() {
 chsh -s zsh ;}
 
 copying_plugins() {
-if [ -d "$HOME/.zsh-syntax-highlighting" ];then cd $HOME ; rm -rf .zsh-syntax-highlighting ;fi
-if [ ! -d "$HOME/.zsh-syntax-highlighting" ];then
+if [ -d "$loc15/.zsh-syntax-highlighting" ];then cd $loc15 ; rm -rf .zsh-syntax-highlighting ;fi
+if [ ! -d "$loc15/.zsh-syntax-highlighting" ];then
 cd ${loc9}
-cp -rf .zsh-autosuggestions $HOME
-cp -rf .zsh-syntax-highlighting $HOME ;fi ;}
+cp -rf .zsh-autosuggestions $loc15
+cp -rf .zsh-syntax-highlighting $loc15 ;fi ;}
 
 reload() {
 termux-reload-settings ;}
 
 zshrc() {
+if [[ $distroA == *'Android'* ]]; then
 echo 'LS_THEME="lsd" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
+fi
 echo '# If you come from bash you might have to change your $PATH.' >> .zshrc
 echo '# export PATH=$HOME/bin:/usr/local/bin:$PATH' >> .zshrc
 echo"" >> .zshrc
@@ -197,20 +225,25 @@ echo"" >> .zshrc
 echo "# Example aliases" >> .zshrc
 echo '# alias zshconfig="mate ~/.zshrc"' >> .zshrc
 echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
+if [[ $distroA == *'Android'* ]]; then
 echo 'alias ls="${LS_THEME}" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
+fi
 echo "alias chcolor='${loc7}/colors.theme'" >> .zshrc
 echo "alias chfont='${loc7}/fonts.theme'" >> .zshrc
 echo "alias chtheme='${loc7}/zsh.theme'" >> .zshrc
 echo "alias update='${loc7}/zsh.update'" >> .zshrc
 echo "source ${loc13}" >> .zshrc
 echo "source ${loc14}" >> .zshrc
+if [[ $distroA == *'Android'* ]]; then
 echo "if [[ -f '/data/data/com.termux/files/home/.termux/blink.cursor.theme' ]];then" >> .zshrc
 echo "bash /data/data/com.termux/files/home/.termux/blink.cursor.theme" >> .zshrc
-echo "fi" >> .zshrc ;}
+echo "fi" >> .zshrc
+fi
+}
 
 set_zsh() {
 if [ -f "${loc7}/config.theme-engine" ];then
-cd $HOME ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
+cd $loc15 ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 
 night() { trap '' 2
 PUT 15 1 ;HIDE
