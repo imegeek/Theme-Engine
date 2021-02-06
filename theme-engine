@@ -614,9 +614,9 @@ printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                                    \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █  █ █▀▀ █▀▄▀█ █▀▀   ${NBblue} █▀▀ █▀▀▄ █▀▀▀ ▀ █▀▀▄ █▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀▀█ █▀▀ █ ▀ █ █▀▀ ${Sreset}${NBblue}▀▀ █▀▀ █  █ █ ▀█ █ █  █ █▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  ▀  ▀  ▀ ▀▀▀ ▀   ▀ ▀▀▀   ${NBblue} ▀▀▀ ▀  ▀ ▀▀▀▀ ▀ ▀  ▀ ▀▀▀ \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
@@ -625,9 +625,9 @@ printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                                    \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █  █ █▀▀ █▀▄▀█ █▀▀   ${NBblue} █▀▀ █▀▀▄ █▀▀▀ ▀ █▀▀▄ █▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀▀█ █▀▀ █ ▀ █ █▀▀ ${Sreset}${NBblue}▀▀ █▀▀ █  █ █ ▀█ █ █  █ █▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  ▀  ▀  ▀ ▀▀▀ ▀   ▀ ▀▀▀   ${NBblue} ▀▀▀ ▀  ▀ ▀▀▀▀ ▀ ▀  ▀ ▀▀▀ \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
