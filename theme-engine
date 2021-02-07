@@ -730,11 +730,12 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
 	bash about.theme
 
-else PUT 16 1
+else PUT 15 1
 	play_error
-	line3
-       echo -e "\e[0;1m┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃${reset}";RCUSR
-	line4
+echo -e "\e[0;1m
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}";RCUSR
    fi
 fi
 
@@ -806,11 +807,12 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
 	bash about.theme
 
-else PUT 16 1
+else PUT 15 1
 	play_error
-	line3
-       echo -e "\e[0;1m┃\e[0;1;100m             ✘ You entered Wrong Input !             \e[0;1m┃${reset}";RCUSR
-	line4
+echo -e "\e[0;1m
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}";RCUSR
    fi
 fi
 }
@@ -884,11 +886,12 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
 	bash about.theme
 
-else PUT 16 1
+else PUT 15 1
 	play_error
-	line3
-       echo -e "\e[0;1m┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃${reset}";RCUSR
-	line4
+echo -e "\e[0;1m
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}";RCUSR
    fi
 fi
 
@@ -959,11 +962,12 @@ elif [[ $option = "6" ]] || [[ $option = "06" ]];then
 	cd ${loc3}
 	bash about.theme
 
-else PUT 16 1
+else PUT 15 1
 	play_error
-	line3
-       echo -e "\e[0;1m┃\e[0;1;100m             ✘ You entered Wrong Input !             \e[0;1m┃${reset}";RCUSR
-	line4
+echo -e "\e[0;1m
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}";RCUSR
    fi
 fi
 }
