@@ -191,6 +191,8 @@ else echo "Theme-Engine isn't supported you're system."
 exit 0
 fi
 
+#..............................................................
+
 default_themeA() {
 sed -i "1,20 s/THEME='night'/THEME='default'/g" ${locA} ${locB} ${locC} ${locD} ${locE} ${locF}
 }
