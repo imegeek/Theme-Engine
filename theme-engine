@@ -133,7 +133,7 @@ N13="highlight.features.theme" N14="error.page"
 
 ## directory names
 D0="/usr/share" D1="share"
-D2="program"    D3=".termux"
+D2="programs"    D3=".termux"
 D4=".kali"      D5="bin"
 D6="src/assets/audio"
 D7="src/assets/misc"
@@ -378,6 +378,18 @@ elif [ "${1}" = "-L" ]; then
 
 elif [ "${1}" = "--install" ]; then
 	setup
+
+elif [ "${1}" = "--configure" ]; then
+if [ ! -f "${loc8}" ];then
+theme-engine --install
+theme-engine &
+sleep 3
+bash "${PDIR}/$D2/zsh.setup.theme"
+exit
+else
+echo "You have already created configuration !"
+exit
+fi
 
 elif [ "${1}" = "--uninstall" ]; then
 	remove
