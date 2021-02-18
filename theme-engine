@@ -124,16 +124,16 @@ play ${LOC11}/error.wav &> /dev/null &
 
 ## file names
 N0="Theme-Engine" N1="theme-engine"
-N2="colors"       N3="fonts" N4="programs"
+N2="colors"       N3="fonts"   N4="programs"
 N5="Terminus.ttf" N6="fonts.rar"
-N7="termux.properties" N8="config.theme-engine"
+N7="termux.properties"         N8="config.theme-engine"
 N9="about.theme"  N10="disable.zsh.theme"
 N11="unrar.theme" N12="zsh.setup.theme"
 N13="highlight.features.theme" N14="error.page"
 
 ## directory names
 D0="/usr/share" D1="share"
-D2="programs"    D3=".termux"
+D2="programs"   D3=".termux"
 D4=".kali"      D5="bin"
 D6="src/assets/audio"
 D7="src/assets/misc"
@@ -234,16 +234,14 @@ echo "
 setup() {
 	banner0
 	printf " Setting-up Theme-Engine...\n\n"
-	printf " Coping files in /data/data/com.termux/files/usr/share directory...\n\n"
+	printf " Coping files in $PREFIX/$D1 directory...\n\n"
 	cd ..
 if [[ $distroB == *'Linux'* ]];then
 	sudo cp -rf Theme-Engine $PREFIX/share &> /dev/null
-        cd - &> /dev/null
-        sudo cp theme-engine $PREFIX/bin &> /dev/null
+	sudo ln -s $PREFIX/share/Theme-Engine/theme-engine $PREFIX/bin/theme-engine
 else
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
-	cd - &> /dev/null
-        cp theme-engine $PREFIX/bin &> /dev/null
+	ln -s $PREFIX/share/Theme-Engine/theme-engine $PREFIX/bin/theme-engine
 fi
 
 if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
@@ -263,7 +261,7 @@ remove() {
 if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 	banner0
 	printf " Uninstalling Theme-Engine...\n\n"
-	printf " Remove files in /data/data/com.termux/files/usr/share directory...\n\n"
+	printf " Remove files in $PREFIX/$D1 directory...\n\n"
 	rm -rf ${loc9}
 	rm $PREFIX/bin/theme-engine
 	printf " Successfully Removed Theme-Engine.\n\n"
@@ -502,7 +500,6 @@ if [ -f "${loc5}" ];then
 
 ## update files
 update_files() {
-cp ${loc9}/theme-engine $PREFIX/bin
 cp -rf ${loc1} ${loc7}
 cp -rf ${loc2} ${loc7}
 }
