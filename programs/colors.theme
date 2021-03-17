@@ -101,6 +101,14 @@ fi
 fi
 }
 
+change_mode() { oncode
+if [[ $? == "105" ]];then
+wget -O $HOME/.termux/colors.properties ${MAINURL}/${1} -q &> /dev/null
+else
+cp ${1} $HOME/.termux/colors.properties
+fi
+}
+
 change_col() {
 echo -ne "\033]12;#b4e1fd\007"
 echo "Now ready to apply color scheme : ${1}"
@@ -211,36 +219,31 @@ echo -ne "\033]12;#00E676\007"
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
 preview $C1
 change_loc
-oncode
-if [[ $? != "105" ]];then
-cp $C1 $HOME/.termux/colors.properties
-else
-wget -O $HOME/.termux/colors.properties ${MAINURL}/$C1 -q &> /dev/null
-fi
+change_mode $C1
 change_col $C1
 
 elif [[ $color = "2" ]] || [[ $color = "02" ]];then
 preview $C2
 change_loc
-cp $C2 $HOME/.termux/colors.properties
+change_mode $C2
 change_col $C2
 
 elif [[ $color = "3" ]] || [[ $color = "03" ]];then
 preview $C3
 change_loc
-cp $C3 $HOME/.termux/colors.properties
+change_mode $C3
 change_col $C3
 
 elif [[ $color = "4" ]] || [[ $color = "04" ]];then
 preview $C4
 change_loc
-cp $C4 $HOME/.termux/colors.properties
+change_mode $C4
 change_col $C4
 
 elif [[ $color = "5" ]] || [[ $color = "05" ]];then
 preview $C5
 change_loc
-cp $C5 $HOME/.termux/colors.properties
+change_mode $C5
 change_col $C5
 
 elif [[ $color = "6" ]] || [[ $color = "06" ]];then
