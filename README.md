@@ -62,5 +62,5 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 | Method    | Command                                                                                           |
 |:----------|:--------------------------------------------------------------------------------------------------|
 | **git**   | `git clone https://github.com/abhackerofficial/Theme-Engine ; cd Theme-Engine ; ./theme-engine`                  |       
-| **curl**  | `bash -c "$(curl -fsSL https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/update.theme)"` |
-| **wget**  | `bash -c "$(wget -O- https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/program-files/update.theme)"`   |
+| **curl**  | `bash <(curl -fsSL "https://git.io/theme-engine")` |
+| **wget**  | `bash -c "$(wget -O- https://git.io/theme-engine)"`   |
