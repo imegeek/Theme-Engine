@@ -1,33 +1,33 @@
-# http://www.xcolors.net/dl/gnometerm
+#http=//www.xcolors.net/dl/gnometerm
 
-# Black
-color00:   #000000
-color08:   #555753
+#Black
+color00=#000000
+color08=#555753
 
-# Red
-color01:   #cc0000
-color09:   #ef2929
+#Red
+color01=#cc0000
+color09=#ef2929
 
-# Green
-color02:   #4e9a06
-color10:  #8ae234
+#Green
+color02=#4e9a06
+color10=#8ae234
 
-# Yellow
-color03:   #c4a000
-color11:  #fce94f
+#Yellow
+color03=#c4a000
+color11=#fce94f
 
-# Blue
-color04:   #3465a4
-color12:  #729fcf
+#Blue
+color04=#3465a4
+color12=#729fcf
 
-# Magenta
-color05:   #75507b
-color13:  #ad7fa8
+#Magenta
+color05=#75507b
+color13=#ad7fa8
 
-# Cyan
-color06:   #06989a
-color14:  #34e2e2
+#Cyan
+color06=#06989a
+color14=#34e2e2
 
-# White
-color07:   #d3d7cf
-color15:  #eeeeec
+#White
+color07=#d3d7cf
+color15=#eeeeec

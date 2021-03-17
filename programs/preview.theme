@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
+source "$PREFIX/share/Theme-Engine/colors/${2}"
+export color16="$color00"
+fi
+
+if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
+if [[ ${1} == "--print" || ${1} == "-p" ]];then
+hexToDec () {
+  echo "$((16#${1}))"
+}
+
+hexRGBtoDecRGB () {
+  R="$(hexToDec "${1:1:2}")"
+  G="$(hexToDec "${1:3:2}")"
+  B="$(hexToDec "${1:5:2}")"
+
+  echo "${R}" "${G}" "${B}"
+}
+
+
+# |
+# | If terminal supports truecolor then we can show theme colors without applying the theme
+# | ===========================================
+if [[ "${COLORTERM:-}" == "truecolor" ]] || [[ "${COLORTERM:-}" == "24bit" ]]; then
+  # gogh_colors have been moved here to avoid multiple definitions
+  function gogh_colors () {
+    # Build up the color string to avoid visual rendering
+    local colorstr
+    # Note: {01..16} does not work on OSX
+    for c in $(seq -s " " -w 16); do
+      local color="color$c"
+      set -- $(hexRGBtoDecRGB "${!color}")
+      colorstr+="\033[38;2;${1};${2};${3}m█████$(tput sgr0)"
+      [[ ${GOGH_DRY_RUN:-0} -eq 1 ]] && export "DEMO_color$c=\033[38;2;${1};${2};${3}m"
+      [[ "$c" == "08" ]] && colorstr+="\n" # new line
+    done
+    printf '\n%b\n\n' "${colorstr}"
+    unset colorstr
+  }
+else
+  function gogh_colors () {
+    # Build up the color string to avoid visual rendering
+    local colorstr
+    for c in {0..15}; do
+      colorstr+="$(tput setaf $c)█████$(tput sgr0)"
+      [[ $c == 7 ]] && colorstr+="\n" # new line
+    done
+    printf '\n%b\n\n' "${colorstr}"
+    unset colorstr
+  }
+fi
+
+
+# |
+# | Print theme colors
+# | ===========================================
+gogh_colors
+if [[ ${GOGH_DRY_RUN:-0} -eq 1 ]]; then
+  color
+  # End here if dry run was initiated
+  exit 0
+fi
+else
+echo -e "arguments \e[1;91merror \e[92m^~~~~\e[0m"
+exit 0
+fi
+fi

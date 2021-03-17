@@ -19,6 +19,68 @@ C=$'\e[0;1m'
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
+C1="accent.material.colors"    C2="apathy-dark.colors"
+C3="apathy-light.colors"       C4="argonaut.colors"
+C5="ashes-dark.colors"         C6="ashes-light.colors"
+C7="atelierforest-dark.colors" C8="atelierforest-light.colors"
+C9="atelierheath-dark.colors"  C10="atelierheath-light.colors"
+
+C13="atelierlakeside-dark.colors" C14="atelierlakeside-light.colors"
+C15="atelierseaside-dark.colors"  C16="atelierseaside-light.colors"
+C17="black-on-white.colors"       C18="codeschool-dark.colors"
+C19="codeschool-light.colors"     C20="colors-dark.colors"
+
+C21="colors-light.colors"      C22="dracula.colors"
+C23="default-dark.colors"      C24="default-light.colors"
+C25="eighties-dark.colors"     C26="eighties-light.colors"
+C27="embers-dark.colors"       C28="embers-light.colors"
+C29="e-ink.colors"             C30="flat-dark.colors"
+
+C31="google-dark.colors"       C32="google-light.colors"
+C33="flat-light.colors"        C34="gnometerm.colors"
+C35="gotham.colors"            C36="greenscreen-dark.colors"
+C37="greenscreen-light.colors" C38="gruvbox-dark.colors"
+C39="gruvbox-light.colors"     C40="white-on-black.colors"
+
+C41="harmonic16-dark.colors"   C42="harmonic16-light.colors"
+C43="isotope-dark.colors"      C44="londontube-light.colors"
+C45="marrakesh-dark.colors"    C46="marrakesh-light.colors"
+C47="materia.colors"           C48="material.colors"
+C49="material.dark.colors"     C50="material.light.colors"
+
+C51="mocha-dark.colors"        C52="mocha-light.colors"
+C53="monokai-dark.colors"      C54="monokai-light.colors"
+C55="neon.colors"              C56="nord.colors"
+C57="ocean-dark.colors"        C58="ocean-light.colors"
+C59="one-dark.colors"          C60="one-light.colors"
+
+C61="isotope-dark.colors"       C62="londontube-light.colors"
+C63="paraiso-dark.colors"       C64="paraiso-light.colors"
+C65="rydgel.colors"             C66="shapeshifter-dark.colors"
+C67="shapeshifter-light.colors" C68="smyck.colors"
+C69="solarized-dark.colors"     C70="solarized-light.colors"
+
+C71="spacemacs.colors"         C72="summerfruit-dark.colors"
+C73="summerfruit-light.colors" C74="tomorrow-dark.colors"
+C75="tomorrow-light.colors"    C76="tomorrow-night.colors"
+C77="twilight-dark.colors"     C78="twilight-light.colors"
+C79="wild-cherry.colors"       C80="zenburn.colors"
+
+preview() {
+echo -ne "\033]12;#b4e1fd\007"
+echo -e "Color scheme : ${1}"
+echo -e "Arriving preview of theme : ${1}"
+bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
+printf "Would you like to apply this color scheme (Y/N) : "
+read i
+if [[ $i == "y" || $i == "Y" ]];then
+pwd &> /dev/null
+else
+echo -ne "\033]12;#b4e1fd\007"
+exit 0
+fi
+}
+
 change_loc() {
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 cd $PREFIX/share/Theme-Engine/colors
@@ -28,9 +90,12 @@ fi
 }
 
 change_col() {
-termux-reload-settings | printf "${Bgreen}  [i] Color-Scheme Reloading...                     \e[0m\r"
-printf "${Bgreen}  [√] Color-Scheme Applied Successfully             \e[0m\n"
 echo -ne "\033]12;#b4e1fd\007"
+echo "Now ready to apply color scheme : ${1}"
+HIDCRSR
+termux-reload-settings | printf "Color scheme Reloading...!\r\e[0m"
+printf "Color scheme applied Successfully...\e[0m\n"
+NORM
 }
 
 random_colors() {
@@ -132,47 +197,55 @@ read color
 printf "\e[0m"
 echo -ne "\033]12;#00E676\007"
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
+preview $C1
 change_loc
-cp accent.material.colors $HOME/.termux/colors.properties
-change_col
-
+cp $C1 $HOME/.termux/colors.properties
+change_col $C1
 
 elif [[ $color = "2" ]] || [[ $color = "02" ]];then
+preview $C2
 change_loc
-cp apathy-dark.colors $HOME/.termux/colors.properties
-change_col
+cp $C2 $HOME/.termux/colors.properties
+change_col $C2
 
 elif [[ $color = "3" ]] || [[ $color = "03" ]];then
+preview $C3
 change_loc
-cp apathy-light.colors $HOME/.termux/colors.properties
-change_col
+cp $C3 $HOME/.termux/colors.properties
+change_col $C3
 
 elif [[ $color = "4" ]] || [[ $color = "04" ]];then
+preview $C4
 change_loc
 cp argonaut.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "5" ]] || [[ $color = "05" ]];then
+preview $C5
 change_loc
 cp ashes-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "6" ]] || [[ $color = "06" ]];then
+preview $C6
 change_loc
 cp ashes-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "7" ]] || [[ $color = "07" ]];then
+preview $C7
 change_loc
 cp atelierforest-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "8" ]] || [[ $color = "08" ]];then
+preview $C8
 change_loc
 cp atelierforest-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "9" ]] || [[ $color = "09" ]];then
+preview $C9
 change_loc
 cp atelierheath-dark.colors $HOME/.termux/colors.properties
 change_col
@@ -249,141 +322,169 @@ elif [[ $color = "rc" ]] || [[ $color = "RC" ]];then
 random_colors
 
 elif [[ $color = "13" ]];then
+preview $C13
 change_loc
 cp atelierlakeside-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "14" ]];then
+preview $C14
 change_loc
 cp atelierlakeside-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "15" ]];then
+preview $C15
 change_loc
 cp atelierseaside-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "16" ]];then
+preview $C16
 change_loc
 cp atelierseaside-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "17" ]];then
+preview $C17
 change_loc
 cp black-on-white.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "18" ]];then
+preview $C18
 change_loc
 cp codeschool-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "19" ]];then
+preview $C19
 change_loc
 cp codeschool-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "20" ]];then
+preview $C20
 change_loc
 cp colors-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "21" ]];then
+preview $C21
 change_loc
 cp colors-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "22" ]];then
+preview $C22
 change_loc
 cp dracula.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "23" ]];then
+preview $C23
 change_loc
 cp default-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "24" ]];then
+preview $C24
 change_loc
-cp default-dark.colors $HOME/.termux/colors.properties
+cp default-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "25" ]];then
+preview $C25
 change_loc
 cp eighties-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "26" ]];then
+preview $C26
 change_loc
 cp eighties-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "27" ]];then
+preview $C27
 change_loc
 cp embers-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "28" ]];then
+preview $C28
 change_loc
 cp embers-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "29" ]];then
+preview $C29
 change_loc
 cp e-ink.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "30" ]];then
+preview $C30
 change_loc
 cp flat-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "31" ]];then
+preview $C31
 change_loc
 cp google-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "32" ]];then
+preview $C32
 change_loc
 cp google-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "33" ]];then
+preview $C33
 change_loc
 cp flat-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "34" ]];then
+preview $C34
 change_loc
 cp gnometerm.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "35" ]];then
+preview $C35
 change_loc
 cp gotham.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "36" ]];then
+preview $C36
 change_loc
 cp greenscreen-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "37" ]];then
+preview $C37
 change_loc
 cp greenscreen-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "38" ]];then
+preview $C38
 change_loc
 cp gruvbox-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "39" ]];then
+preview $C39
 change_loc
 cp gruvbox-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "40" ]];then
+preview $C40
 change_loc
 cp white-on-black.colors $HOME/.termux/colors.properties
 change_col
@@ -398,204 +499,244 @@ printf "\e[0m"
 echo -ne "\033]12;#00E676\007"
 
 if [[ $color = "41" ]];then
+preview $C41
 change_loc
 cp harmonic16-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "42" ]];then
+preview $C42
 change_loc
 cp harmonic16-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "43" ]];then
+preview $C
 change_loc
 cp isotope-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "44" ]];then
+preview $C44
 change_loc
 cp londontube-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "45" ]];then
+preview $C45
 change_loc
 cp marrakesh-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "46" ]];then
+preview $C46
 change_loc
 cp marrakesh-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "47" ]];then
+preview $C47
 change_loc
 cp materia.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "48" ]];then
+preview $C48
 change_loc
 cp material.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "49" ]];then
+preview $C49
 change_loc
 cp material.dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "50" ]];then
+preview $C50
 change_loc
 cp material.light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "51" ]];then
+preview $C51
 change_loc
 cp mocha-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "52" ]];then
+preview $C52
 change_loc
 cp mocha-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "53" ]];then
+preview $C53
 change_loc
 cp monokai-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "54" ]];then
+preview $C54
 change_loc
 cp monokai-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "55" ]];then
+preview $C55
 change_loc
 cp neon.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "56" ]];then
+preview $C56
 change_loc
 cp nord.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "57" ]];then
+preview $C57
 change_loc
 cp ocean-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "58" ]];then
+preview $C58
 change_loc
 cp ocean-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "59" ]];then
+preview $C59
 change_loc
 cp one-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "60" ]];then
+preview $C60
 change_loc
 cp one-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "61" ]];then
+preview $C61
 change_loc
 cp isotope-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "62" ]];then
+preview $C62
 change_loc
 cp londontube-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "63" ]];then
+preview $C63
 change_loc
 cp paraiso-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "64" ]];then
+preview $C64
 change_loc
 cp paraiso-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "65" ]];then
+preview $C65
 change_loc
 cp rydgel.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "66" ]];then
+preview $C66
 change_loc
 cp shapeshifter-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "67" ]];then
+preview $C67
 change_loc
 cp shapeshifter-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "68" ]];then
+preview $C68
 change_loc
 cp smyck.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "69" ]];then
+preview $C69
 change_loc
 cp solarized-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "70" ]];then
+preview $C70
 change_loc
 cp solarized-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "71" ]];then
+preview $C71
 change_loc
 cp spacemacs.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "72" ]];then
+preview $C72
 change_loc
 cp summerfruit-dark.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "73" ]];then
+preview $C73
 change_loc
 cp summerfruit-light.colors $HOME/.termux/colors.properties
 change_col
 
 elif [[ $color = "74" ]];then
+preview $C74
 change_loc
 cp tomorrow-dark.colors $HOME/.termux/colors.properties
-change_col
+change_col $C74
 
 elif [[ $color = "75" ]];then
+preview $C75
 change_loc
-cp tomorrow-light.colors $HOME/.termux/colors.properties
-change_col
+cp $C75 $HOME/.termux/colors.properties
+change_col $C75
 
 elif [[ $color = "76" ]];then
+preview $C76
 change_loc
-cp tomorrow-night.colors $HOME/.termux/colors.properties
-change_col
+cp $C76 $HOME/.termux/colors.properties
+change_col $C76
 
 elif [[ $color = "77" ]];then
+preview $C77
 change_loc
-cp twilight-dark.colors $HOME/.termux/colors.properties
-change_col
+cp $C77 $HOME/.termux/colors.properties
+change_col $C77
 
 elif [[ $color = "78" ]];then
+preview $C78
 change_loc
-cp twilight-light.colors $HOME/.termux/colors.properties
-change_col
+cp $C78 $HOME/.termux/colors.properties
+change_col $C78
 
 elif [[ $color = "79" ]];then
+preview $C79
 change_loc
-cp wild-cherry.colors $HOME/.termux/colors.properties
-change_col
+cp $C79 $HOME/.termux/colors.properties
+change_col $C79
 
 elif [[ $color = "80" ]];then
+preview $C80
 change_loc
-cp zenburn.colors $HOME/.termux/colors.properties
-change_col
+cp $C80 $HOME/.termux/colors.properties
+change_col $C80
 
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
