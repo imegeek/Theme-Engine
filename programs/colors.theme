@@ -4,6 +4,19 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
+
+cache() {
+ls colors.theme &> /dev/null
+return 0
+}
+
+cache
+
+if [[ $? != "0" ]];then
+curl  https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/${1}
+exit 0
+fi
+
 ## colors
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
