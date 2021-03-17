@@ -7,12 +7,12 @@ NORM(){ echo -en "\033[?12l\033[?25h";}
 
 cache() {
 ls colors.theme &> /dev/null
-return 0
+return 2
 }
 
 cache
 
-if [[ $? != "0" ]];then
+if [[ $? != "2" ]];then
 curl  https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/${1}
 exit 0
 fi
