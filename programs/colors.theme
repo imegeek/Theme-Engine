@@ -75,11 +75,11 @@ C75="tomorrow-light.colors"     C76="tomorrow-night.colors"
 C77="twilight-dark.colors"      C78="twilight-light.colors"
 C79="wild-cherry.colors"        C80="zenburn.colors"
 
-preview() { oncode
+preview() { oncode &> /dev/null
 echo -ne "\033]12;#b4e1fd\007"
 echo -e "Color scheme : ${1}"
 echo -e "Arriving preview of theme : ${1}"
-oncode
+oncode &> /dev/null
 if [[ $? == "105" ]];then
 wget -O ${TMPDIR}/${1} ${MAINURL}/${1} -q &> /dev/null
 bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
@@ -96,7 +96,7 @@ exit 0
 fi
 }
 
-change_loc() { oncode
+change_loc() { oncode &> /dev/null
 if [[ $? != "105" ]];then
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 cd $PREFIX/share/Theme-Engine/colors
@@ -106,7 +106,7 @@ fi
 fi
 }
 
-change_mode() { oncode
+change_mode() { oncode &> /dev/null
 if [[ $? == "105" ]];then
 cp ${TMPDIR}/${1} $HOME/.termux/colors.properties
 #wget -O $HOME/.termux/colors.properties ${MAINURL}/${1} -q &> /dev/null
@@ -255,13 +255,13 @@ change_col $C5
 elif [[ $color = "6" ]] || [[ $color = "06" ]];then
 preview $C6
 change_loc
-cp $C6 $HOME/.termux/colors.properties
+change_mode $C6
 change_col $C6
 
 elif [[ $color = "7" ]] || [[ $color = "07" ]];then
 preview $C7
 change_loc
-cp $C7 $HOME/.termux/colors.properties
+change_mode $C7
 change_col $C7
 
 elif [[ $color = "8" ]] || [[ $color = "08" ]];then
@@ -273,12 +273,13 @@ change_col $C8
 elif [[ $color = "9" ]] || [[ $color = "09" ]];then
 preview $C9
 change_loc
-cp $C9 $HOME/.termux/colors.properties
+change_mode $C9
 change_col $C9
 
 elif [[ $color = "10" ]];then
+preview $C10
 change_loc
-cp $C10 $HOME/.termux/colors.properties
+change_mode $C10
 change_col $C10
 
 elif [[ $color = "11" ]];then
