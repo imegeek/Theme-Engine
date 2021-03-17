@@ -4,17 +4,11 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
-
-cache() {
-ls colors.theme &> /dev/null
-return 2
+source colors.oncode &> /dev/null
+if [[ $? != "0" ]];then
+oncode() {
+return 105
 }
-
-cache
-
-if [[ $? != "2" ]];then
-curl  https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/${1}
-exit 0
 fi
 
 ## colors
@@ -29,6 +23,8 @@ G=$'\e[0;1;38;2;60;186;84m' Y=$'\e[0;1;38;2;244;194;13m'
 R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
 ## Reset Colors
 C=$'\e[0;1m'
+
+MAINURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/"
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
@@ -95,10 +91,13 @@ fi
 }
 
 change_loc() {
+oncode
+if [[ $? != "105" ]];then
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 cd $PREFIX/share/Theme-Engine/colors
 else
 cd $HOME/.termux/colors
+fi
 fi
 }
 
@@ -212,7 +211,12 @@ echo -ne "\033]12;#00E676\007"
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
 preview $C1
 change_loc
+oncode
+if [[ $? != "105" ]];then
 cp $C1 $HOME/.termux/colors.properties
+else
+wget -O $HOME/.termux/colors.properties ${MAINURL}/$C1 -q &> /dev/null
+fi
 change_col $C1
 
 elif [[ $color = "2" ]] || [[ $color = "02" ]];then

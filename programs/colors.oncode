@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+cache() {
+ls colors.theme &> /dev/null
+}
+
+cache
