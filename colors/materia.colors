@@ -2,17 +2,17 @@ foreground=#c9ccd3
 background=#263238
 cursor=#c9ccd3
 
-color0=#2c393f
-color1=#8bd649
-color2=#82aaff
-color3=#89ddff
-color4=#ea9560
-color5=#ec5f67
-color6=#ec5f67
-color7=#cdd3de
+color00=#2c393f
+color01=#8bd649
+color02=#82aaff
+color03=#89ddff
+color04=#ea9560
+color05=#ec5f67
+color06=#ec5f67
+color07=#cdd3de
 
-color8=#707880
-color9=#8bd649
+color08=#707880
+color09=#8bd649
 color10=#82aaff
 color11=#89ddff
 color12=#ea9560

@@ -1,33 +1,33 @@
-# Black
-color0:   #303430
-color8:   #cdb5cd
+#Black
+color00=#303430
+color08=#cdb5cd
 
-# Red
-color1:   #bf7979
-color9:   #f4a45f
+#Red
+color01=#bf7979
+color09=#f4a45f
 
-# Green
-color2:   #97b26b
-color10:  #c5f779
+#Green
+color02=#97b26b
+color10=#c5f779
 
-# Yellow
-color3:   #cdcdc1
-color11:  #ffffed
+#Yellow
+color03=#cdcdc1
+color11=#ffffed
 
-# Blue
-color4:   #86a2be
-color12:  #98afd9
+#Blue
+color04=#86a2be
+color12=#98afd9
 
-# Magenta
-color5:   #d9b798
-color13:  #d7d998
+#Magenta
+color05=#d9b798
+color13=#d7d998
 
-# Cyan
-color6:   #a1b5cd
-color14:  #a1b5cd
+#Cyan
+color06=#a1b5cd
+color14=#a1b5cd
 
-# White
-color7:   #ffffff
-color15:  #dedede
+#White
+color07=#ffffff
+color15=#dedede
 
-# vim: et sw=2 syn=xdefaults
+#vim=etsw=2syn=xdefaults

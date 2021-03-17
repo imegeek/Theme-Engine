@@ -1,16 +1,16 @@
 background: #FFFFFF
 foreground: #616161
 
-color0:#000000
-color1:#BDBDBD
-color2:#BDBDBD
-color3:#BDBDBD
-color4:#BDBDBD
-color5:#000000
-color6:#616161
-color7:#000000
-color8:#000000
-color9:#BDBDBD
+color00:#000000
+color01:#BDBDBD
+color02:#BDBDBD
+color03:#BDBDBD
+color04:#BDBDBD
+color05:#000000
+color06:#616161
+color07:#000000
+color08:#000000
+color09:#BDBDBD
 color10:#616161
 color11:#BDBDBD
 color12:#000000
