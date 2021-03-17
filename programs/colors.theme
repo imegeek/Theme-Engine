@@ -75,11 +75,17 @@ C75="tomorrow-light.colors"     C76="tomorrow-night.colors"
 C77="twilight-dark.colors"      C78="twilight-light.colors"
 C79="wild-cherry.colors"        C80="zenburn.colors"
 
-preview() {
+preview() { oncode
 echo -ne "\033]12;#b4e1fd\007"
 echo -e "Color scheme : ${1}"
 echo -e "Arriving preview of theme : ${1}"
+oncode
+if [[ $? == "105" ]];then
+wget -O ${TMPDIR}/${1} ${MAINURL}/${1} -q &> /dev/null
 bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
+else
+bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
+fi
 printf "Would you like to apply this color scheme (Y/N) : "
 read i
 if [[ $i == "y" || $i == "Y" ]];then
@@ -90,8 +96,7 @@ exit 0
 fi
 }
 
-change_loc() {
-oncode
+change_loc() { oncode
 if [[ $? != "105" ]];then
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 cd $PREFIX/share/Theme-Engine/colors
@@ -103,7 +108,8 @@ fi
 
 change_mode() { oncode
 if [[ $? == "105" ]];then
-wget -O $HOME/.termux/colors.properties ${MAINURL}/${1} -q &> /dev/null
+cp ${TMPDIR}/${1} $HOME/.termux/colors.properties
+#wget -O $HOME/.termux/colors.properties ${MAINURL}/${1} -q &> /dev/null
 else
 cp ${1} $HOME/.termux/colors.properties
 fi
