@@ -5,17 +5,17 @@ foreground=#383a42
 background=#fafafa
 cursor=#383a42
 
-color0=#fafafa
-color1=#ca1243
-color2=#50a14f
-color3=#c18401
-color4=#4078f2
-color5=#a626a4
-color6=#0184bc
-color7=#383a42
+color00=#fafafa
+color01=#ca1243
+color02=#50a14f
+color03=#c18401
+color04=#4078f2
+color05=#a626a4
+color06=#0184bc
+color07=#383a42
 
-color8=#a0a1a7
-color9=#ca1243
+color08=#a0a1a7
+color09=#ca1243
 color10=#50a14f
 color11=#c18401
 color12=#4078f2

@@ -1,15 +1,15 @@
 # aci.colors
 # Color theme from Color scheme from https://github.com/Mayccoll/Gogh
-color0=#363636
-color1=#ff0883
-color2=#83ff08
-color3=#ff8308
-color4=#0883ff
-color5=#8308ff
-color6=#08ff83
-color7=#b6b6b6
-color8=#424242
-color9=#ff1e8e
+color00=#363636
+color01=#ff0883
+color02=#83ff08
+color03=#ff8308
+color04=#0883ff
+color05=#8308ff
+color06=#08ff83
+color07=#b6b6b6
+color08=#424242
+color09=#ff1e8e
 color10=#8eff1e
 color11=#ff8e1e
 color12=#1e8eff

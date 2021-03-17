@@ -6,17 +6,17 @@ foreground=#d8d8d8
 background=#181818
 cursor=#d8d8d8
 
-color0=#181818
-color1=#ab4642
-color2=#a1b56c
-color3=#f7ca88
-color4=#7cafc2
-color5=#ba8baf
-color6=#86c1b9
-color7=#d8d8d8
+color00=#181818
+color01=#ab4642
+color02=#a1b56c
+color03=#f7ca88
+color04=#7cafc2
+color05=#ba8baf
+color06=#86c1b9
+color07=#d8d8d8
 
-color8=#585858
-color9=#ab4642
+color08=#585858
+color09=#ab4642
 color10=#a1b56c
 color11=#f7ca88
 color12=#7cafc2
