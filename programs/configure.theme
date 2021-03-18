@@ -1,0 +1,86 @@
+#!/usr/bin/bash
+
+#..............................................................
+
+                       THEME='default'
+
+#..............................................................
+
+## Colors
+# foreground
+Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
+Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
+# background
+Bgreen=$'\e[0;1;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
+# night background
+NBgreen=$'\e[0;1;90;7;48;2;0;230;118m'   NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m' NBwhite=$'\e[0;1;100m'
+
+SL() {
+sleep 0.01
+}
+
+## Specify time
+day=`date +%H`
+night=`date +%H`
+
+night() {
+clear
+echo -e "
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃${NBwhite}              ┏━╸┏━┓┏┓╻┏━╸╻┏━╸╻ ╻┏━┓┏━╸              \e[0;1m┃
+\e[0;1m┃${NBwhite}              ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓┃ ┃┣┳┛┣╸               \e[0;1m┃
+\e[0;1m┃${NBwhite}              ┗━╸┗━┛╹ ╹╹  ╹┗━┛┗━┛╹┗╸┗━╸              \e[0;1m┃
+\e[0;1m┃${NBred}         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${NBblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
+\e[0;1m┃${NBred}          ┃ ┣━┫┣╸ ┃┃┃┣╸ \e[0;100m╺━╸${NBblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
+\e[0;1m┃${NBred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${NBblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+\e[0m"
+printf "\e[1;92mReading configuration data ...\r";SL
+sleep 1
+printf "Selected addon will be applying ..."
+printf "\nconfiguration color : accent.material.colors ...";SL
+printf "\nconfiguration font :  Anonymice Powerline.ttf ...";SL
+printf "\nconfiguration default ‘ls’to ‘lsd’ ...";SL
+printf "\nconfiguration default shell to zsh shell ...\n\e[0m";SL
+echo -ne "\033]12;#b4e1fd\007"
+}
+
+light() {
+clear
+echo -e "
+\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+\e[0;1m┃${Bwhite}              ┏━╸┏━┓┏┓╻┏━╸╻┏━╸╻ ╻┏━┓┏━╸              \e[0;1m┃
+\e[0;1m┃${Bwhite}              ┃  ┃ ┃┃┗┫┣╸ ┃┃╺┓┃ ┃┣┳┛┣╸               \e[0;1m┃
+\e[0;1m┃${Bwhite}              ┗━╸┗━┛╹ ╹╹  ╹┗━┛┗━┛╹┗╸┗━╸              \e[0;1m┃
+\e[0;1m┃${Bred}         ╺┳╸╻ ╻┏━╸┏┳┓┏━╸   ${Bblue} ┏━╸┏┓╻┏━╸╻┏┓╻┏━╸         \e[0;1m┃
+\e[0;1m┃${Bred}          ┃ ┣━┫┣╸ ┃┃┃┣╸ ╺━╸${Bblue} ┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸          \e[0;1m┃
+\e[0;1m┃${Bred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Bblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
+\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+\e[0m"
+printf "\e[1;92mReading configuration data ...\r";SL
+sleep 1
+printf "Selected addon will be applying ..."
+printf "\nconfiguration color : accent.material.colors ...";SL
+printf "\nconfiguration font :  Anonymice Powerline.ttf ...";SL
+printf "\nconfiguration default ‘ls’to ‘lsd’ ...";SL
+printf "\nconfiguration default shell to zsh shell ...\n\e[0m";SL
+echo -ne "\033]12;#b4e1fd\007"
+}
+
+default() {
+if [ $night -gt "17" ] || [ $night -lt "06" ];then
+night
+else
+light
+fi
+}
+
+#..............................................................
+
+                          "$THEME"
+
+#..............................................................
+
+# Thanks for using Theme-Engine.
+

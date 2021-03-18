@@ -382,8 +382,10 @@ elif [ "${1}" = "--install" ]; then
 elif [ "${1}" = "--configure" ]; then
 if [ ! -f "${loc8}" ];then
 theme-engine --install
-theme-engine &
-sleep 3
+sleep 0.5
+clear
+bash ${loc3}/configure.theme
+sleep 0.5
 bash "${PDIR}/$D2/zsh.setup.theme"
 exit
 else
