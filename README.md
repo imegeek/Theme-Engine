@@ -61,11 +61,11 @@ This [Theme-Engine](https://github.com/ankushbhagats/theme-engine) is maintained
 
 Gui Based Program.
 
-[`bash <(curl -fsSL "https://git.io/tcolors")`]
+[`bash <(curl -fsSL "https://git.io/tcolors")`](https://github.com/ankushbhagats/Theme-Engine)
 
 Cli Based Program.
 
-[`bash <(curl -fsSL "https://git.io/tcolors") -c <1-80>`]
+[`bash <(curl -fsSL "https://git.io/tcolors") -c <1-80>`](https://github.com/ankushbhagats/Theme-Engine)
 
 
 > **Installation Methods :**
