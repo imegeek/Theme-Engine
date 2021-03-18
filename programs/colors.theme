@@ -99,6 +99,12 @@ exit 0
 
 value_not_found() {
 echo "Choosen ‘${1}’ is not available in value...!"
+echo "Command usage :
+bash <(curl -fsSL "'"https://git.io/tcolors"'") -c <1-80>
+
+example :
+bash <(curl -fsSL "'"https://git.io/tcolors"'") -c 22
+"
 exit 1
 }
 
