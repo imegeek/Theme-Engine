@@ -78,7 +78,7 @@ C75="tomorrow-light.colors"     C76="tomorrow-night.colors"
 C77="twilight-dark.colors"      C78="twilight-light.colors"
 C79="wild-cherry.colors"        C80="zenburn.colors"
 
-                    integer="C${2#*0}"
+                    integer="C${2#0}"
 
 AURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/${!integer}"
 MAINURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors"
@@ -206,18 +206,18 @@ trap exit_on_signal_SIGTSTP SIGTSTP
 if [[ $1 == "-c" || $1 == "--color" ]];then
 if [[ $2 =~ ^-?[0-9]*[.,]?[0-9]*[eE]?-?[0-9]+$ ]];then
 if [[ $2 -gt 80 ]];then
-   value_not_found ${2#*0}
+   value_not_found ${2#0}
    else
-if [[ ${2#*0} == 11 ]];then
-   value_not_found ${2#*0}
-elif  [[ ${2#*0} == 12 ]];then
-   value_not_found ${2#*0}
+if [[ ${2#0} == 11 ]];then
+   value_not_found ${2#0}
+elif  [[ ${2#0} == 12 ]];then
+   value_not_found ${2#0}
 fi
    argument_mode
    exit 0
 fi
    else
-   value_not_found ${2#*0}
+   value_not_found ${2#0}
 fi
 fi
 
@@ -293,7 +293,7 @@ printf "${Bwhite}"
 read color
 printf "\e[0m"
 echo -ne "\033]12;#00E676\007"
-                       intecol="C${color#*0}"
+                       intecol="C${color#0}"
 
 if [[ $color = "1" ]] || [[ $color = "01" ]];then
 set_maintainer ${!intecol}
