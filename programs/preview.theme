@@ -3,14 +3,12 @@
 if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
 source "$PREFIX/share/Theme-Engine/colors/${2}"
 export color16="$color00"
-fi
 
-if [[ -f "${TMPDIR}/${2}" ]];then
+elif [[ -f "${TMPDIR}/${2}" ]];then
 source "$TMPDIR/${2}"
 export color16="$color00"
 fi
 
-if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]] | [[ -f "${TMPDIR}/${2}" ]];then
 if [[ ${1} == "--print" || ${1} == "-p" ]];then
 hexToDec () {
   echo "$((16#${1}))"
@@ -70,5 +68,4 @@ fi
 else
 echo -e "arguments \e[1;91merror \e[92m^~~~~\e[0m"
 exit 0
-fi
 fi

@@ -24,7 +24,8 @@ R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
 ## Reset Colors
 C=$'\e[0;1m'
 
-MAINURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/"
+MAINURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors"
+PREVIEW="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/preview.theme"
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
@@ -75,6 +76,33 @@ C75="tomorrow-light.colors"     C76="tomorrow-night.colors"
 C77="twilight-dark.colors"      C78="twilight-light.colors"
 C79="wild-cherry.colors"        C80="zenburn.colors"
 
+
+file_not_found() {
+echo -e "\nconfigure Theme-Engine to access that feature...!
+configure using:
+
+1st step :
+bash <(curl -fsSL "'"https://git.io/theme-engine"'")
+
+2nd step :
+theme-engine --configure\n"
+
+exit 0
+}
+
+if [[ $? != "105" ]];then
+if [[ ! -d "$HOME/.termux/colors" ]];then
+file_not_found
+
+elif [[ ! -d "$PREFIX/share/Theme-Engine" ]];then
+file_not_found
+
+elif [[ ! -f "$PREFIX/bin/theme-engine" ]];then
+file_not_found
+
+fi
+fi
+
 set_maintainer() { oncode &> /dev/null
 if [[ $? != "105" ]];then
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
@@ -88,8 +116,8 @@ echo -e "Color scheme : ${1}"
 echo -e "Arriving set_maintainer of theme : ${1}"
 oncode &> /dev/null
 if [[ $? == "105" ]];then
-wget -O ${TMPDIR}/${1} ${MAINURL}/${1} -q &> /dev/null
-wget -O ${TMPDIR}/preview.theme https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/preview.theme -q &> /dev/null
+curl -so ${TMPDIR}/${1} ${MAINURL}/${1}
+curl -so ${TMPDIR}/preview.theme ${PREVIEW}
 bash ${TMPDIR}/preview.theme -p ${1}
 else
 bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
@@ -107,7 +135,7 @@ fi
 change_mode() { oncode &> /dev/null
 if [[ $? == "105" ]];then
 cp ${TMPDIR}/${1} $HOME/.termux/colors.properties
-#wget -O $HOME/.termux/colors.properties ${MAINURL}/${1} -q &> /dev/null
+#curl -so $HOME/.termux/colors.properties ${MAINURL}/${1}
 else
 cp ${1} $HOME/.termux/colors.properties
 fi
