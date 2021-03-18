@@ -24,6 +24,11 @@ R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
 ## Reset Colors
 C=$'\e[0;1m'
 
+if ! hash tput &> /dev/null
+then
+apt install ncurses-utils -y
+fi
+
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
 C1="accent.material.colors"     C2="apathy-dark.colors"
@@ -208,7 +213,6 @@ fi
    value_not_found ${2}
 fi
 fi
-sleep 1
 
 banner() {
 echo -ne "\033]12;#363636\007";clear
