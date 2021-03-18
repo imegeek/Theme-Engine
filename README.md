@@ -57,6 +57,14 @@ This [Theme-Engine](https://github.com/ankushbhagats/theme-engine) is maintained
 | <p align="center"> [Ankush Bhagat](https://github.com/ankushbhagats)                                                   |</p>
 
 
+**Online method to chage color scheme**
+
+Gui Based Program.
+`bash <(curl -fsSL "https://git.io/tcolors")`
+Cli Based Program.
+`bash <(curl -fsSL "https://git.io/tcolors")` -c <1 to 80>
+
+
 > **Installation Methods :**
 
 | Method    | Command                                                                                           |
