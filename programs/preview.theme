@@ -2,11 +2,19 @@
 
 if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
 source "$PREFIX/share/Theme-Engine/colors/${2}"
+if [[ ${#color00} == "0" ]];then
+export color16="$color0"
+else
 export color16="$color00"
+fi
 
 elif [[ -f "${TMPDIR}/${2}" ]];then
 source "$TMPDIR/${2}"
+if [[ ${#color00} == "0" ]];then
+export color16="$color0"
+else
 export color16="$color00"
+fi
 fi
 
 if [[ ${1} == "--print" || ${1} == "-p" ]];then
