@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
-source "$PREFIX/share/Theme-Engine/colors/${2}"
-if [[ ${#color00} == "0" ]];then
-export color16="$color0"
+if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}.bin" ]];then
+source "$PREFIX/share/Theme-Engine/colors/${2}.bin"
 else
-export color16="$color00"
+source "$PREFIX/share/Theme-Engine/colors/${2}"
 fi
+export color16="$color00"
 
 elif [[ -f "${TMPDIR}/${2}" ]];then
-source "$TMPDIR/${2}"
-if [[ ${#color00} == "0" ]];then
-export color16="$color0"
+if [[ -f "$TMPDIR/${2}.bin" ]];then
+source "$TMPDIR/${2}.bin"
 else
-export color16="$color00"
+source "$TMPDIR/${2}"
 fi
+export color16="$color00"
 fi
 
 if [[ ${1} == "--print" || ${1} == "-p" ]];then
@@ -35,8 +35,8 @@ hexRGBtoDecRGB () {
 # | If terminal supports truecolor then we can show theme colors without applying the theme
 # | ===========================================
 if [[ "${COLORTERM:-}" == "truecolor" ]] || [[ "${COLORTERM:-}" == "24bit" ]]; then
-  # gogh_colors have been moved here to avoid multiple definitions
-  function gogh_colors () {
+  # set_colors have been moved here to avoid multiple definitions
+  function set_colors () {
     # Build up the color string to avoid visual rendering
     local colorstr
     # Note: {01..16} does not work on OSX
@@ -44,14 +44,14 @@ if [[ "${COLORTERM:-}" == "truecolor" ]] || [[ "${COLORTERM:-}" == "24bit" ]]; t
       local color="color$c"
       set -- $(hexRGBtoDecRGB "${!color}")
       colorstr+="\033[38;2;${1};${2};${3}m█████$(tput sgr0)"
-      [[ ${GOGH_DRY_RUN:-0} -eq 1 ]] && export "DEMO_color$c=\033[38;2;${1};${2};${3}m"
+      [[ ${set_DRY_RUN:-0} -eq 1 ]] && export "DEMO_color$c=\033[38;2;${1};${2};${3}m"
       [[ "$c" == "08" ]] && colorstr+="\n" # new line
     done
     printf '\n%b\n\n' "${colorstr}"
     unset colorstr
   }
 else
-  function gogh_colors () {
+  function set_colors () {
     # Build up the color string to avoid visual rendering
     local colorstr
     for c in {0..15}; do
@@ -67,8 +67,8 @@ fi
 # |
 # | Print theme colors
 # | ===========================================
-gogh_colors
-if [[ ${GOGH_DRY_RUN:-0} -eq 1 ]]; then
+set_colors
+if [[ ${set_DRY_RUN:-0} -eq 1 ]]; then
   color
   # End here if dry run was initiated
   exit 0
