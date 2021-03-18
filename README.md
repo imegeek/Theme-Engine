@@ -64,6 +64,7 @@ Gui Based Program.
 `bash <(curl -fsSL "https://git.io/tcolors")`
 
 Cli Based Program.
+
 `bash <(curl -fsSL "https://git.io/tcolors")` -c <1 to 80>
 
 
