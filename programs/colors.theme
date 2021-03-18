@@ -165,7 +165,7 @@ NORM
 }
 
 argument_mode() {
-printf "\n\nThe Colors                       #v$V\n\n"
+printf "\nThe Colors                       #v$V\n\n"
 for c in {0..15}; do
 echo -n "$(tput setaf $c)█████$(tput sgr0)"
 [[ $c == 7 ]] && echo # new line
