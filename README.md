@@ -60,7 +60,9 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 **Online method to chage color scheme**
 
 Gui Based Program.
+
 `bash <(curl -fsSL "https://git.io/tcolors")`
+
 Cli Based Program.
 `bash <(curl -fsSL "https://git.io/tcolors")` -c <1 to 80>
 
