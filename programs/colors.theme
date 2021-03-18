@@ -92,6 +92,11 @@ theme-engine --configure\n"
 exit 0
 }
 
+value_not_found() {
+echo "Choosen ‘${1}’ is not available in value...!"
+exit 1
+}
+
 oncode &> /dev/null
 if [[ $? != "105" ]];then
 if [[ -f "$HOME/.termux/config.theme-engine" ]];then rm $HOME/.termux/config.theme-engine ;fi
@@ -186,11 +191,24 @@ exit_on_signal_SIGTSTP () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
 
-
 if [[ $1 == "-c" || $1 == "--color" ]];then
-argument_mode
-exit 0
+if [[ $2 =~ ^-?[0-9]*[.,]?[0-9]*[eE]?-?[0-9]+$ ]];then
+if [[ $2 -gt 80 ]];then
+   value_not_found ${2}
+   else
+if [[ $2 == 11 ]];then
+   value_not_found ${2}
+elif  [[ $2 == 12 ]];then
+   value_not_found ${2}
 fi
+   argument_mode
+   exit 0
+fi
+   else
+   value_not_found ${2}
+fi
+fi
+sleep 1
 
 banner() {
 echo -ne "\033]12;#363636\007";clear
