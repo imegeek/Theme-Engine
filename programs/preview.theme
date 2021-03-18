@@ -5,7 +5,12 @@ source "$PREFIX/share/Theme-Engine/colors/${2}"
 export color16="$color00"
 fi
 
-if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
+if [[ -f "${TMPDIR}/${2}" ]];then
+source "$TMPDIR/${2}"
+export color16="$color00"
+fi
+
+if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]] | [[ -f "${TMPDIR}/${2}" ]];then
 if [[ ${1} == "--print" || ${1} == "-p" ]];then
 hexToDec () {
   echo "$((16#${1}))"

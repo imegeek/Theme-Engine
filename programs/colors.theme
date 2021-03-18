@@ -89,7 +89,8 @@ echo -e "Arriving set_maintainer of theme : ${1}"
 oncode &> /dev/null
 if [[ $? == "105" ]];then
 wget -O ${TMPDIR}/${1} ${MAINURL}/${1} -q &> /dev/null
-bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
+wget -O ${TMPDIR}/preview.theme https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/preview.theme -q &> /dev/null
+bash ${TMPDIR}/preview.theme -p ${1}
 else
 bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
 fi
