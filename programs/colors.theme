@@ -92,6 +92,7 @@ exit 0
 
 oncode &> /dev/null
 if [[ $? != "105" ]];then
+if [[ -f "$HOME/.termux/config.theme-engine" ]];then rm $HOME/.termux/config.theme-engine ;fi
 if [[ ! -d "$HOME/.termux/colors" ]];then
 file_not_found
 
