@@ -115,7 +115,7 @@ fi
 fi
 echo -ne "\033]12;#b4e1fd\007"
 echo -e "Color scheme : ${1}"
-echo -e "Arriving set_maintainer of theme : ${1}"
+echo -e "Arriving preview of color : ${1}"
 oncode &> /dev/null
 if [[ $? == "105" ]];then
 curl -so ${TMPDIR}/${1} ${MAINURL}/${1}
