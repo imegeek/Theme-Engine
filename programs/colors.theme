@@ -24,9 +24,6 @@ R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
 ## Reset Colors
 C=$'\e[0;1m'
 
-MAINURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors"
-PREVIEW="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/preview.theme"
-
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
 C1="accent.material.colors"     C2="apathy-dark.colors"
@@ -76,6 +73,11 @@ C75="tomorrow-light.colors"     C76="tomorrow-night.colors"
 C77="twilight-dark.colors"      C78="twilight-light.colors"
 C79="wild-cherry.colors"        C80="zenburn.colors"
 
+                    integer="C${2}"
+
+AURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/${!integer}"
+MAINURL="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors"
+PREVIEW="https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/preview.theme"
 
 file_not_found() {
 echo -e "\nconfigure Theme-Engine to access that feature...!
@@ -152,6 +154,12 @@ printf "Color scheme applied Successfully...\e[0m\n"
 NORM
 }
 
+argument_mode() {
+set_maintainer ${!integer}
+change_mode ${!integer}
+change_col ${!integer}
+}
+
 random_colors() {
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 random_scheme=$(ls $PREFIX/share/Theme-Engine/colors | shuf -n 1)
@@ -177,6 +185,12 @@ exit_on_signal_SIGTSTP () {
 }
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
+
+
+if [[ $1 == "-c" || $1 == "--color" ]];then
+argument_mode
+exit 0
+fi
 
 banner() {
 echo -ne "\033]12;#363636\007";clear
@@ -250,10 +264,12 @@ printf "${Bwhite}"
 read color
 printf "\e[0m"
 echo -ne "\033]12;#00E676\007"
-if [[ $color = "1" ]] || [[ $color = "01" ]];then
-set_maintainer $C1
-change_mode $C1
-change_col $C1
+                       intecol="C${color}"
+
+if [[ $color = "1" ]] || [[ $color = "01" ]] | [[ ${1} == "1" ]];then
+set_maintainer ${!intecol}
+change_mode ${!intecol}
+change_col ${!intecol}
 
 elif [[ $color = "2" ]] || [[ $color = "02" ]];then
 set_maintainer $C2
