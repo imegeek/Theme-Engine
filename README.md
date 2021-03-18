@@ -61,11 +61,11 @@ This [Theme-Engine](https://github.com/abhackerofficial/theme-engine) is maintai
 
 Gui Based Program.
 
-[`bash <(curl -fsSL "https://git.io/tcolors")`]
+[`bash <(curl -fsSL "https://git.io/tcolors")`](https://github.com/abhackerofficial/Theme-Engine)
 
 Cli Based Program.
 
-[`bash <(curl -fsSL "https://git.io/tcolors") -c <1-80>`]
+[`bash <(curl -fsSL "https://git.io/tcolors") -c <1-80>`](https://github.com/abhackerofficial/Theme-Engine)
 
 
 > **Installation Methods :**
