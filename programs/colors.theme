@@ -90,6 +90,7 @@ theme-engine --configure\n"
 exit 0
 }
 
+oncode &> /dev/null
 if [[ $? != "105" ]];then
 if [[ ! -d "$HOME/.termux/colors" ]];then
 file_not_found
