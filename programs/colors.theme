@@ -130,6 +130,8 @@ cd $PREFIX/share/Theme-Engine/colors
 else
 cd $HOME/.termux/colors
 fi
+else
+cd $TMPDIR
 fi
 echo -ne "\033]12;#b4e1fd\007"
 echo -e "Color scheme : ${1}"
@@ -138,7 +140,7 @@ oncode &> /dev/null
 if [[ $? == "105" ]];then
 curl -so ${TMPDIR}/${1} ${MAINURL}/${1}
 curl -so ${TMPDIR}/preview.theme ${PREVIEW}
-bash ${TMPDIR}/preview.theme -p ${1}
+bash ${TMPDIR}/preview.theme -p ${TMPDIR}/${1}
 else
 bash $PREFIX/share/Theme-Engine/programs/preview.theme -p ${1}
 fi
