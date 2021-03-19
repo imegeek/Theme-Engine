@@ -4,7 +4,7 @@ PUT(){ echo -en "\033[${1};${2}H";}
 HIDCRSR(){ echo -en "\033[?25l";}
 NORM(){ echo -en "\033[?12l\033[?25h";}
 
-source colors.oncode &> /dev/null
+source return.error &> /dev/null
 if [[ $? != "0" ]];then
 oncode() {
 return 105
