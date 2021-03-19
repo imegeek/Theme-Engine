@@ -1,20 +1,13 @@
 #!/usr/bin/env bash
 
-if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}" ]];then
-if [[ -f "$PREFIX/share/Theme-Engine/colors/${2}.bin" ]];then
-source "$PREFIX/share/Theme-Engine/colors/${2}.bin"
-else
-source "$PREFIX/share/Theme-Engine/colors/${2}"
-fi
+wc $2 &> /dev/null
+if [ $? == "0" ]
+then
+source "${2}"
 export color16="$color00"
-
-elif [[ -f "${TMPDIR}/${2}" ]];then
-if [[ -f "$TMPDIR/${2}.bin" ]];then
-source "$TMPDIR/${2}.bin"
 else
-source "$TMPDIR/${2}"
-fi
-export color16="$color00"
+echo "‘$2’ file not found, exiting...!"
+exit 1
 fi
 
 if [[ ${1} == "--print" || ${1} == "-p" ]];then
