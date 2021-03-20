@@ -31,13 +31,15 @@ fi
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
+if [[ $1 == "-p" || $1 == "--print" ]];then
 oncode &> /dev/null
-if [[ $? != "105" ]];then
-source colors.list ${1} ${2}
-exit 0
-else
+ if [[ $? != "105" ]];then
+ source colors.list ${1} ${2}
+ exit 0
+ else
 bash <(curl -fSsL "https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/colors.list") ${1} ${2}
-exit 0
+ exit 0
+ fi
 fi
 
 C1="accent.material.colors"     C2="apathy-dark.colors"
