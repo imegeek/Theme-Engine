@@ -1,0 +1,165 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+source return.error &> /dev/null
+if [[ $? != "0" ]];then
+oncode() {
+return 105
+}
+fi
+
+declare -a COLORS=(
+'accent.material.colors'
+ 'apathy-dark.colors'
+ 'argonaut.colors'
+ 'ashes-dark.colors'
+ 'atelierforest-dark.colors'
+ 'atelierheath-dark.colors'
+ 'atelierlakeside-dark.colors'
+ 'atelierseaside-dark.colors'
+ 'black-on-white.colors'
+ 'codeschool-dark.colors'
+ 'colors-dark.colors'
+ 'default-dark.colors'
+ 'dracula.colors'
+ 'e-ink.colors'
+ 'eighties-dark.colors'
+ 'embers-dark.colors'
+ 'flat-dark.colors'
+ 'gnometerm.colors'
+ 'google-dark.colors'
+ 'gotham.colors'
+ 'greenscreen-dark.colors'
+ 'gruvbox-dark.colors'
+ 'harmonic16-dark.colors'
+ 'isotope-dark.colors'
+ 'londontube-dark.colors'
+ 'marrakesh-dark.colors'
+ 'materia.colors'
+ 'material.colors'
+ 'material.dark.colors'
+ 'mocha-dark.colors'
+ 'monokai-dark.colors'
+ 'neon.colors'
+ 'nord.colors'
+ 'ocean-dark.colors'
+ 'one-dark.colors'
+ 'paraiso-dark.colors'
+ 'rydgel.colors'
+ 'shapeshifter-dark.colors'
+ 'smyck.colors'
+ 'solarized-dark.colors'
+ 'spacemacs.colors'
+ 'summerfruit-dark.colors'
+ 'tomorrow-dark.colors'
+ 'tomorrow-night.colors'
+ 'twilight-dark.colors'
+ 'white-on-black.colors'
+ 'wild-cherry.colors'
+ 'zenburn.colors'
+)
+
+### Get length of an array
+ARRAYLENGTH=${#COLORS[@]}
+NUM=1
+
+capitalize() {
+  local ARGUMENT=$1
+  local RES=""
+  local STR=""
+  local NO_SPACE=""
+
+  for CHAR in $ARGUMENT; do
+  STR=$(echo "${CHAR:0:1}" | tr "[:lower:]" "[:upper:]")"${CHAR:1} "
+  RES="${RES}${STR}"
+  NO_SPACE="$(echo -e "${RES}" | sed -e 's/[[:space:]]*$//')"
+  done
+  echo "${NO_SPACE}"
+}
+
+# |
+# | ::::::: Print COLORS
+# |
+
+if [[ $1 == "-p" || $2 == "--print" ]];then
+if [[ $2 =~ ^-?[0-9]*[.,]?[0-9]*[eE]?-?[0-9]+$ || $2 == "@" ]];then
+BEFORE_EXECUTE() { oncode &> /dev/null
+if [[ $? == "105" ]];then
+source <(curl -sLo- "https://git.io/progress.sh")
+else
+source $PREFIX/share/Theme-Engine/src/assets/misc/progress.sh
+fi
+}
+
+TYPE_OF_EXECUTE() { oncode &> /dev/null
+if [[ $? == "105" ]];then
+  curl -so ${TMPDIR}/preview.theme https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/preview.theme
+  curl -so ${TMPDIR}/${FILENAME} https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/colors/${FILENAME}
+  bash ${TMPDIR}/preview.theme -p ${TMPDIR}/${FILENAME}
+else
+  bash $PREFIX/share/Theme-Engine/programs/preview.theme -p $PREFIX/share/Theme-Engine/colors/${FILENAME}
+fi
+}
+
+BEFORE_EXECUTE
+
+exit_on_signal_SIGINT () {
+    command -v bar::stop > /dev/null && bar::stop || :
+    exit 0
+}
+
+exit_on_signal_SIGTSTP () {
+    command -v bar::stop > /dev/null && bar::stop || :
+    exit 0
+}
+
+trap exit_on_signal_SIGINT SIGINT
+trap exit_on_signal_SIGTSTP SIGTSTP
+
+command -v bar::start > /dev/null && bar::start
+
+if [[ $2 == "@" ]];then
+  for i in "${COLORS[@]}"
+  do
+  KEY=$(printf "%02d" $NUM)
+# for usage of LOOP value
+  LOOP=$((${LOOP:-0}+1))
+  FILENAME=${i::$((${#i}))}
+  PRINTA=${i::$((${#i}-7))}
+  PRINTB=${PRINTA//./ }
+  PRINTC=${PRINTB//-/ }
+
+  echo -e "\nTheme: ${KEY} $(capitalize "${PRINTC}")"
+
+  ((NUM++))
+
+  command -v bar::status_changed > /dev/null && bar::status_changed $LOOP ${ARRAYLENGTH}
+  TYPE_OF_EXECUTE
+  done
+exit 0
+
+elif [[ ! ${2#0} -gt 48 ]];then
+  TH="${COLORS[${2#0} -1]}"
+# for usage of LOOP value
+  LOOP=$((${LOOP:-0}+1))
+  FILENAME=${TH::$((${#TH}))}
+  PRINTA=${TH::$((${#TH}-7))}
+  PRINTB=${PRINTA//./ }
+  PRINTC=${PRINTB//-/ }
+
+  echo -e "\nTheme: ${2} $(capitalize "${PRINTC}")"
+
+  command -v bar::status_changed > /dev/null && bar::status_changed $LOOP $((${2}+10))
+  TYPE_OF_EXECUTE
+  command -v bar::status_changed > /dev/null && bar::status_changed $LOOP $((${2}/${2}))
+  exit 0
+else
+  echo -e "Choosen ‘${2#0}’ is not available in value...?
+Colors 1-48 Available for preview...!
+"
+  exit 1
+fi
+else
+  echo -e "Choosen ‘${2#0}’ is not available in value...?
+Colors 1-48 Available for preview...!"
+fi
+fi

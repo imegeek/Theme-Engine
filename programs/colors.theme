@@ -31,6 +31,13 @@ fi
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
+oncode &> /dev/null
+if [[ $? != "105" ]];then
+source colors.list ${1} ${2}
+else
+bash <(curl -fSsL "https://raw.githubusercontent.com/abhackerofficial/Theme-Engine/master/programs/colors.list") ${1} ${2}
+fi
+
 C1="accent.material.colors"     C2="apathy-dark.colors"
 C3="apathy-light.colors"        C4="argonaut.colors"
 C5="ashes-dark.colors"          C6="ashes-light.colors"
