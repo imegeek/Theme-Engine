@@ -228,6 +228,7 @@ echo '# alias ohmyzsh="mate ~/.oh-my-zsh"' >> .zshrc
 if [[ $distroA == *'Android'* ]]; then
 echo 'alias ls="${LS_THEME}" # (New Gen LS = lsd) & (Old Gen LS = ls)' >> .zshrc
 fi
+echo "alias gtc='git clone'" >> .zshrc
 echo "alias chcolor='${loc7}/colors.theme'" >> .zshrc
 echo "alias chfont='${loc7}/fonts.theme'" >> .zshrc
 echo "alias chtheme='${loc7}/zsh.theme'" >> .zshrc
