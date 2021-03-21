@@ -128,7 +128,7 @@ if [[ $2 == "@" ]];then
   PRINTB=${PRINTA//./ }
   PRINTC=${PRINTB//-/ }
 
-  echo -e "\nTheme: ${KEY} $(capitalize "${PRINTC}")"
+  echo -e "\nColor scheme : ${KEY} $(capitalize "${PRINTC}")"
 
   ((NUM++))
 
@@ -146,7 +146,7 @@ elif [[ ! ${2#0} -gt 48 ]];then
   PRINTB=${PRINTA//./ }
   PRINTC=${PRINTB//-/ }
 
-  echo -e "\nTheme: ${2} $(capitalize "${PRINTC}")"
+  echo -e "\nColor scheme : ${2} $(capitalize "${PRINTC}")"
 
   command -v bar::status_changed > /dev/null && bar::status_changed $LOOP $((${2}+10))
   TYPE_OF_EXECUTE
