@@ -1,0 +1,22 @@
+# google.pixel.colors
+# Color scheme from https://github.com/abhackerofficial/colors
+color00=#363636
+color01=#ff2544
+#color02=#2aff71
+color02=#00e676
+color03=#ffa128
+color04=#2979ff
+color05=#ce2ace
+color06=#40c4ff
+color07=#b6b6b6
+color08=#424242
+color09=#ff3a44
+color10=#00f386
+color11=#ffae28
+color12=#448aff
+color13=#ce2cfa
+color14=#5cc4ff
+color15=#c2c2c2
+background=#0a0a0a
+foreground=#b4e1fd
+cursor=#b4e1fd
