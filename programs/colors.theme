@@ -11,6 +11,14 @@ return 105
 }
 fi
 
+distro=$(uname -o | grep -o "Android")
+
+if [[ $distro == *'Android'* ]];then
+:
+else echo "Theme-Engine isn't supported you're system."
+exit 0
+fi
+
 ## colors
 # foreground
 Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0;1;38;2;0;255;255m'
@@ -61,7 +69,7 @@ C29="fizzbuzz.colors"           C30="flat-dark.colors"
 
 C31="google-dark.colors"        C32="google-light.colors"
 C33="google-pixel.colors"       C34="flat-light.colors"
-C35="gotham.colors"             C36="greenscreen-dark.colors"
+C35="gomate.colors"             C36="greenscreen-dark.colors"
 C37="greenscreen-light.colors"  C38="gruvbox-dark.colors"
 C39="gruvbox-light.colors"      C40="white-on-black.colors"
 
@@ -264,7 +272,7 @@ echo -e "
 \e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[32] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.light.colors    \e[0;1m┃
 \e[0;1m┃ [13] lakeside.dark   \e[0;1m[33] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.pixel.colors    ┃
 \e[0;1m┃ [14] lakeside-light  [34] flat-light.colors      ┃
-\e[0;1m┃ [15] seaside-dark    [35] gotham.colors          ┃
+\e[0;1m┃ [15] seaside-dark    [35] gomate.colors          ┃
 \e[0;1m┃ [16] seaside.light   [36] greenscreen.dark       ┃
 \e[0;1m┃ [17] black-on-white  [37] greenscreen.light      ┃
 \e[0;1m┃ [18] codeschool.dark [38] gruvbox-dark.colors    ┃
