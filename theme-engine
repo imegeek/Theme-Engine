@@ -44,8 +44,7 @@ arrow="└─────►"
 shell=$(printf "$SHELL")
 
 ## distro
-distroA=$(uname -o | grep -o "Android")
-distroB=$(uname -o | grep -o "Linux")
+distro=$(uname -o | grep -o "Android")
 
 # Check version
 android=$(getprop ro.build.version.release)
@@ -134,10 +133,10 @@ N13="highlight.features.theme" N14="error.page"
 ## directory names
 D0="/usr/share" D1="share"
 D2="programs"   D3=".termux"
-D4=".kali"      D5="bin"
+D5="bin"
 D6="src/assets/audio"
 D7="src/assets/misc"
-D8="/home/kali" D9="/bin"
+D9="/bin"
 
 ## directory
 directoriesA() { PREFIX="/data/data/com.termux/files/usr"
@@ -170,23 +169,12 @@ locF="${loc3}/${N13}"        locG="${loc3}/${N14}"
 packageA() {
 apt install ${1}
 }
-packageB() {
-sudo apt-get install ${1}
-}
 
-if [[ $distroA == *'Android'* ]];then
+if [[ $distro == *'Android'* ]];then
 directoriesA
 package() {
 packageA ${1}
 }
-
-elif [[ $distroB == *'Linux'* ]];then
-directoriesB
-package() {
-packageB ${1}
-}
-#echo "We're working on Linux distros..."
-#exit 0
 else echo "Theme-Engine isn't supported you're system."
 exit 0
 fi
@@ -236,14 +224,8 @@ setup() {
 	printf " Setting-up Theme-Engine...\n\n"
 	printf " Coping files in $PREFIX/$D1 directory...\n\n"
 	cd ..
-if [[ $distroB == *'Linux'* ]];then
-	sudo cp -rf Theme-Engine $PREFIX/share &> /dev/null
-	sudo ln -s $PREFIX/share/Theme-Engine/theme-engine $PREFIX/bin/theme-engine
-else
 	cp -rf Theme-Engine $PREFIX/share &> /dev/null
 	ln -s $PREFIX/share/Theme-Engine/theme-engine $PREFIX/bin/theme-engine
-fi
-
 if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 	printf " Successfully Setup Theme-Engine.\n\n"
 	printf " You can run this program by typing \e[92mtheme-engine${reset}\n\n"
@@ -291,21 +273,13 @@ if [[ "$connection" != 0 ]]
  connect
 }
 
-if [[ $distroB == *'Linux'* ]];then
-command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-bin but it's not installed, Now Installing..."; package "ncurses-bin -y"
- connect
-}
-else
    command -v tput > /dev/null 2>&1 || { echo >&2 "I require ncurses-utils but it's not installed, Now Installing..."; package "ncurses-utils -y"
  connect
 }
-fi
 
-if [[ $distroB == *'Android'* ]];then
    command -v lsd > /dev/null 2>&1 || { echo >&2 "I require lsd but it's not installed, Now Installing..."; package "lsd -y"
  connect
 }
-fi
    command -v sox > /dev/null 2>&1 || { echo >&2 "I require sox but it's not installed, Now Installing..."; package "sox -y"
  connect
 }
@@ -460,17 +434,10 @@ line3() { echo -e "\e[0;1m┏━━━━━━━━━━━━━━━━━
 line4() { echo -e "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" ;}
 line5() { echo -e "\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫" ;}
 ERROR() {
-if [[ $distroA == *'Android'* ]];then
 echo -e "\e[0;1m
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃\e[1;100m             ✘ You entered Wrong Input !             \e[0;1m┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}";RCUSR
-else
-echo -e "\e[0;1m
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃\e[1;100m              You entered Wrong Input !              \e[0;1m┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}";RCUSR
-fi
 }
 
 #..............................................................
@@ -635,18 +602,6 @@ fi
 ## Theme-Engine Main Banner
 
 night_banner() {
-if [[ $distroB == *'Linux'* ]];then
-printf "${reset}"
-echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                                    \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █  █ █▀▀ █▀▄▀█ █▀▀   ${NBblue} █▀▀ █▀▀▄ █▀▀▀ ▀ █▀▀▄ █▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀▀█ █▀▀ █ ▀ █ █▀▀ ${Sreset}${NBblue}▀▀ █▀▀ █  █ █ ▀█ █ █  █ █▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  ▀  ▀  ▀ ▀▀▀ ▀   ▀ ▀▀▀   ${NBblue} ▀▀▀ ▀  ▀ ▀▀▀▀ ▀ ▀  ▀ ▀▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
-printf "`night_print_shell`"
-printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
-else
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
@@ -657,22 +612,9 @@ printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblu
 printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
-fi
 }
 
 day_banner() {
-if [[ $distroB == *'Linux'* ]];then
-printf "${reset}"
-echo -ne "\033]12;#363636\007";clear
-printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
-printf "\n\e[0;1m┃${Bred}                           ${Bblue}                          \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃${Bred} ${Sred} ▀█▀ █  █ █▀▀ █▀▄▀█ █▀▀   ${Bblue}${Sblue} █▀▀ █▀▀▄ █▀▀▀ ▀ █▀▀▄ █▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃${Bred} ${Sred}  █  █▀▀█ █▀▀ █ ▀ █ █▀▀ ${Sreset}▀▀${Bblue}${Sblue} █▀▀ █  █ █ ▀█ █ █  █ █▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃${Bred} ${Sred}  ▀  ▀  ▀ ▀▀▀ ▀   ▀ ▀▀▀   ${Bblue}${Sblue} ▀▀▀ ▀  ▀ ▀▀▀▀ ▀ ▀  ▀ ▀▀▀ \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
-printf "`day_print_shell`"
-printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
-else
 printf "${reset}"
 echo -ne "\033]12;#363636\007";clear
 printf "\n\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}";WAIT
@@ -683,7 +625,6 @@ printf "\n\e[0;1m┃${Bred}                          ${Bblue}                   
 printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
 printf "`day_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
-fi
 }
 
 #..............................................................
