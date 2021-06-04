@@ -25,7 +25,7 @@ Fgreen=$'\e[0;1;38;2;0;230;118m'   Fblue=$'\e[0;1;38;2;40;90;255m'   Fsky=$'\e[0
 Fpurple=$'\e[0;1;38;2;101;31;255m' Fyellow=$'\e[0;1;38;2;200;255;0m' Fred=$'\e[0;1;38;2;200;0;0m' Bcyan=$'\e[0;1;38;5;49m'
 # background
 Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\e[0;1;30;48;2;0;255;255m'
-Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
+Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m' BU=$"\e[38;2;129;175;239m"
 # google
 G=$'\e[0;1;38;2;60;186;84m' Y=$'\e[0;1;38;2;244;194;13m'
 R=$'\e[0;1;38;2;219;50;54m' B=$'\e[0;1;38;2;72;133;237m'
@@ -68,8 +68,8 @@ C27="embers-dark.colors"        C28="embers-light.colors"
 C29="fizzbuzz.colors"           C30="flat-dark.colors"
 
 C31="google-dark.colors"        C32="google-light.colors"
-C33="google-pixel.colors"       C34="flat-light.colors"
-C35="gomate.colors"             C36="greenscreen-dark.colors"
+C33="google-pixel.colors"       C34="google-blue.colors"
+C35="flat-light.colors"         C36="greenscreen-dark.colors"
 C37="greenscreen-light.colors"  C38="gruvbox-dark.colors"
 C39="gruvbox-light.colors"      C40="white-on-black.colors"
 
@@ -271,8 +271,8 @@ echo -e "
 \e[0;1m┃ [11] ${Fyellow}import.local    \e[0;1m[31] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.dark.colors     \e[0;1m┃
 \e[0;1m┃ [12] ${Fsky}import.online   \e[0;1m[32] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.light.colors    \e[0;1m┃
 \e[0;1m┃ [13] lakeside.dark   \e[0;1m[33] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.pixel.colors    ┃
-\e[0;1m┃ [14] lakeside-light  [34] flat-light.colors      ┃
-\e[0;1m┃ [15] seaside-dark    [35] gomate.colors          ┃
+\e[0;1m┃ [14] lakeside-light  \e[0;1m[34] ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.${BU}blue${C}.colors     ┃
+\e[0;1m┃ [15] seaside-dark    [35] flat-light.colors      ┃
 \e[0;1m┃ [16] seaside.light   [36] greenscreen.dark       ┃
 \e[0;1m┃ [17] black-on-white  [37] greenscreen.light      ┃
 \e[0;1m┃ [18] codeschool.dark [38] gruvbox-dark.colors    ┃
