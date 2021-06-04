@@ -37,8 +37,7 @@ N16=".zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 ## directory names
 D0="/usr/share" D1="share"
 D2="program"    D3=".termux"
-D4=".kali"      D5="bin"
-D6="/home/kali" D7="/bin"
+D5="bin"        D7="/bin"
 
 ## directory
 directoriesA() {
@@ -53,24 +52,8 @@ loc13="${HOME}/${N15}"       loc14="${HOME}/${N16}"
 loc15="$HOME"                loc16="${D3}"
 }
 
-directoriesB() {
-PREFIX="/usr"                UDIR="${D0}/${N0}"
-loc1="${UDIR}/${N2}"         loc2="${UDIR}/${N3}"
-loc3="${UDIR}/${N4}"         loc4="${UDIR}/${N3}/${N5}"
-loc5="${UDIR}/${N3}/${N6}"   loc6="${D6}/${D4}/${N7}"
-loc7="${D6}/${D4}"           loc8="${D6}/${D4}/${N8}"
-loc9="${UDIR}"               loc10="${UDIR}/${N14}"
-loc11="${UDIR}/${N9}"        loc12="${UDIR}/${N1}"
-loc13="${D6}/${N15}"         loc14="${D6}/${N16}"
-loc15="${D6}"                loc16="${D4}"
-}
-
-
 if [[ $distroA == *'Android'* ]]; then
 directoriesA
-
-elif [[ $distroB == *'Linux'* ]]; then
-directoriesB
 else echo "Theme-Engine isn't supported you're system."
 exit
 fi
@@ -88,7 +71,7 @@ cp accent.material.colors colors.properties
 mv colors.properties ${loc7} ; }
 set_font() {
 cd ${loc9}/fonts
-cp  'Anonymice Powerline.ttf' font.ttf
+cp  'Anonymice Nerd.ttf' font.ttf
 mv font.ttf ${loc7} ; }
 
 copying_files() {

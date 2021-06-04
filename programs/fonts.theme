@@ -54,7 +54,7 @@ echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ \e[0;1m[01] Anonymous-Pro     \e[0;1m[16] Inconsolata-dz       ┃
+┃ \e[0;1m[01] Anonymice Nerd    \e[0;1m[16] Inconsolata-dz       ┃
 ┃ \e[0;1m[02] Courier-Prime     \e[0;1m[17] Iosevka-Regular      ┃
 ┃ \e[0;1m[03] Cousine           \e[0;1m[18] Iosevka              ┃
 ┃ \e[0;1m[04] D2-Coding         \e[0;1m[19] Iosevka-NerdComplete ┃
@@ -81,7 +81,7 @@ echo -ne "\033]12;#00E676\007"
 
 if [[ $font = "1" ]] || [[ $font = "01" ]];then
 change_loc
-cp 'Anonymice Powerline.ttf' $HOME/.termux/font.ttf
+cp 'Anonymice Nerd.ttf' $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "2" ]] || [[ $font = "02" ]];then
@@ -101,7 +101,7 @@ change_font
 
 elif [[ $font = "5" ]] || [[ $font = "05" ]];then
 change_loc
-cp 'DejaVu Sans Mono for Powerline.ttf' $HOME/.termux/font.ttf
+cp 'DejaVu Sans Mono Nerd Font Complete Mono.ttf' $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "6" ]] || [[ $font = "06" ]];then
@@ -227,7 +227,7 @@ change_font
 
 elif [[ $font = "30" ]];then
 change_loc
-cp 'Ubuntu Mono derivative Powerline.ttf' $HOME/.termux/font.ttf
+cp 'Ubuntu Mono Nerd Font Complete Mono.ttf' $HOME/.termux/font.ttf
 change_font
 
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi

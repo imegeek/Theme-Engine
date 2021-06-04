@@ -62,7 +62,7 @@ printf "\e[1;92mReading configuration data ...\r";SL
 sleep 1
 printf "Selected addon will be applying ..."
 printf "\nconfiguration color : accent.material.colors ...";SL
-printf "\nconfiguration font :  Anonymice Powerline.ttf ...";SL
+printf "\nconfiguration font :  Anonymice Nerd.ttf ...";SL
 printf "\nconfiguration default ‘ls’to ‘lsd’ ...";SL
 printf "\nconfiguration default shell to zsh shell ...\n\e[0m";SL
 echo -ne "\033]12;#b4e1fd\007"
