@@ -169,7 +169,7 @@ if [[ $i == "y" || $i == "Y" ]];then
 pwd &> /dev/null
 else
 echo -ne "\033]12;#b4e1fd\007"
-exit 0
+exit 1
 fi
 }
 

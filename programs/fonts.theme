@@ -13,9 +13,47 @@ Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 
 
+F1="Anonymice Nerd" F2="Courier-Prime.ttf"
+F3="Cousine for Powerline.ttf" F4="D2-Coding.ttf"
+F5="DejaVu Sans Mono Nerd Font Complete Mono.ttf"
+F6=" "
+F7=" "
+F8=" "
+F9=" "
+F10=" "
+F11=" "
+F12=" "
+F13=" "
+F14=" "
+F15=" "
+F16=" "
+F17=" "
+F18=" "
+F19=" "
+F20=" "
+F21=" "
+F22=" "
+F23=" "
+F24=" "
+F25=" "
+F26=" "
+F27=" "
+F28=" "
+F29=" "
+F30=" "
+
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
 change_loc() {
+echo -ne "\033]12;#b4e1fd\007"
+printf "Arriving preview of current font :\n\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n1234567890 {} [] $ # ~-+=>\n"
+printf "\nWould you like to apply this color scheme (Y/N) : "
+read i
+if [[ $i == "y" || $i == "Y" ]];then
+    :
+else
+    exit 1
+fi
 if [ ! -f "$HOME/.termux/config.theme-engine" ];then
 cd $PREFIX/share/Theme-Engine/fonts
 else
@@ -24,9 +62,8 @@ fi
 }
 
 change_font() {
-termux-reload-settings | printf "${Bgreen}  [i] Font-Style Reloading...                       \e[0m\r"
-banner
-printf "${Bgreen}  [√] Font-Style Applied Successfully               \e[0m\n"
+termux-reload-settings | printf "Font-Style Reloading...\e[0m\r"
+printf "Font-style applied successfully\e[0m\n"
 echo -ne "\033]12;#b4e1fd\007"
 }
 
@@ -142,7 +179,7 @@ change_font
 elif [[ $font = "13" ]];then
 change_loc
 cp Hack-Regular.ttf $HOME/.termux/font.ttf
-
+change_font
 
 elif [[ $font = "14" ]];then
 change_loc
