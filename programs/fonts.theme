@@ -47,7 +47,7 @@ if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 change_loc() {
 echo -ne "\033]12;#b4e1fd\007"
 printf "Arriving preview of current font :\n\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n1234567890 {} [] $ # ~-+=>\n"
-printf "\nWould you like to apply this color scheme (Y/N) : "
+printf "\nWould you like to apply this font style (Y/N) : "
 read i
 if [[ $i == "y" || $i == "Y" ]];then
     :
