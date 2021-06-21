@@ -94,8 +94,8 @@ C69="solarized-dark.colors"     C70="solarized-light.colors"
 C71="spacemacs.colors"          C72="summerfruit-dark.colors"
 C73="summerfruit-light.colors"  C74="tomorrow-dark.colors"
 C75="tomorrow-light.colors"     C76="tomorrow-night.colors"
-C77="twilight-dark.colors"      C78="twilight-light.colors"
-C79="wild-cherry.colors"        C80="zenburn.colors"
+C77="tron-legacy.colors"        C78="twilight-dark.colors"
+C79="twilight-light.colors"     C80="wild-cherry.colors"
 
                     integer="C${2#0}"
 
@@ -278,7 +278,7 @@ echo -e "
 \e[0;1m┃ [18] codeschool.dark [38] gruvbox-dark.colors    ┃
 \e[0;1m┃ [19] codeschool.light[39] gruvbox-light.colors   ┃
 \e[0;1m┃ [20] colors.dark     [40] white-on-black.colors  ┃
-\e[0;1m┃ [RC] ${Fgreen}random.colors   \e[0;1m[2+] Next Page              ┃
+\e[0;1m┃ [RC] ${Fgreen}random.colors   \e[0;1m[>>] Next Page              ┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner2() {
@@ -307,9 +307,9 @@ echo -e "
 \e[0;1m┃ [54] monokai.light   [74] tomorrow-dark.colors   ┃
 \e[0;1m┃ [55] neon.colors     [75] tomorrow-light.colors  ┃
 \e[0;1m┃ [56] nord.colors     [76] tomorrow-night.colors  ┃
-\e[0;1m┃ [57] ocean.dark      [77] twilight-dark.colors   ┃
-\e[0;1m┃ [58] ocean.light     [78] twilight-light.colors  ┃
-\e[0;1m┃ [59] one-dark.colors [79] wild-cherry.colors     ┃
+\e[0;1m┃ [57] ocean.dark      [77] tron-legacy.colors     ┃
+\e[0;1m┃ [58] ocean.light     [78] twilight-dark.colors   ┃
+\e[0;1m┃ [59] one-dark.colors [79] twilight-light.colors  ┃
 \e[0;1m┃ [60] one-light.colors[80] zenburn.colors         ┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
@@ -578,7 +578,7 @@ set_maintainer $C40
 change_mode $C40
 change_col $C40
 
-elif [[ $color = "2+" ]];then
+elif [[ $color = ">>" ]];then
 banner2
 printf "${Bwhite}  [i] Choose an Color Scheme :                      \e[0m"
 PUT 30 32
