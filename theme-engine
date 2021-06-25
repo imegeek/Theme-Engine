@@ -152,19 +152,6 @@ locD="${loc3}/${N11}"        locE="${loc3}/${N12}"
 locF="${loc3}/${N13}"        locG="${loc3}/${N14}"
 }
 
-directoriesB() { PREFIX="/usr"
-UDIR="${D0}/${N0}"           loc1="${UDIR}/${N2}"
-loc2="${UDIR}/${N3}"         loc3="${UDIR}/${N4}"
-loc4="${UDIR}/${N3}/${N5}"   loc5="${UDIR}/${N3}/${N6}"
-loc6="${D8}/${D4}/${N7}"     loc7="${D8}/${D4}"
-loc8="${D8}/${D4}/${N8}"     loc9="${UDIR}"
-loc10="${UDIR}/${N1}"        loc11="${UDIR}/${D6}"
-loc12="${UDIR}/${D7}"        locA="${D9}/${N1}"
-locB="${loc3}/${N9}"         locC="${loc3}/${N10}"
-locD="${loc3}/${N11}"        locE="${loc3}/${N12}"
-locF="${loc3}/${N13}"        locG="${loc3}/${N14}"
-}
-
 ## install types
 packageA() {
 apt install ${1}
