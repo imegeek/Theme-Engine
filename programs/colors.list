@@ -27,7 +27,6 @@ declare -a COLORS=(
  'flat-dark.colors'
  'gnometerm.colors'
  'google-dark.colors'
- 'gotham.colors'
  'greenscreen-dark.colors'
  'gruvbox-dark.colors'
  'harmonic16-dark.colors'
@@ -42,7 +41,7 @@ declare -a COLORS=(
  'neon.colors'
  'nord.colors'
  'ocean-dark.colors'
- 'one-dark.colors'
+ 'onedark.colors'
  'paraiso-dark.colors'
  'rydgel.colors'
  'shapeshifter-dark.colors'
@@ -54,7 +53,6 @@ declare -a COLORS=(
  'tomorrow-night.colors'
  'twilight-dark.colors'
  'white-on-black.colors'
- 'wild-cherry.colors'
  'zenburn.colors'
 )
 
@@ -154,12 +152,12 @@ elif [[ ! ${2#0} -gt 48 ]];then
   exit 0
 else
   echo -e "Choosen ‘${2#0}’ is not available in value...?
-Colors 1-48 Available for preview...!
+Colors 1-46 Available for preview...!
 "
   exit 1
 fi
 else
   echo -e "Choosen ‘${2#0}’ is not available in value...?
-Colors 1-48 Available for preview...!"
+Colors 1-46 Available for preview...!"
 fi
 fi

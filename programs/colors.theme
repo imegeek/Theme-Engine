@@ -64,7 +64,7 @@ C19="codeschool-light.colors"     C20="colors-dark.colors"
 C21="colors-light.colors"       C22="dracula.colors"
 C23="default-dark.colors"       C24="default-light.colors"
 C25="eighties-dark.colors"      C26="eighties-light.colors"
-C27="onedark.colors"           C28="one-light.colors"
+C27="onedark.colors"            C28="one-light.colors"
 C29="fizzbuzz.colors"           C30="flat-dark.colors"
 
 C31="google-dark.colors"        C32="google-light.colors"
@@ -129,7 +129,6 @@ exit 1
 
 oncode &> /dev/null
 if [[ $? != "105" ]];then
-if [[ -f "$HOME/.termux/config.theme-engine" ]];then rm $HOME/.termux/config.theme-engine ;fi
 if [[ ! -d "$HOME/.termux/colors" ]];then
 file_not_found
 
@@ -276,14 +275,14 @@ echo -e "
 \e[0;1m┃ (11) ${Fyellow}import.local    \e[0;1m(31) ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.dark.colors     \e[0;1m┃
 \e[0;1m┃ (12) ${Fsky}import.online   \e[0;1m(32) ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.light.colors    \e[0;1m┃
 \e[0;1m┃ (13) lakeside.dark   \e[0;1m(33) ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.pixel.colors    ┃
-\e[0;1m┃ (14) lakeside-light  \e[0;1m(34) ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.${BU}blue${C}.colors     ┃
+\e[0;1m┃ (14) lakeside-light  \e[0;1m(34) ${B}g${R}o${Y}o${B}g${G}l${R}e${Y}${C}.blue${C}.colors     ┃
 \e[0;1m┃ (15) seaside-dark    (35) flat-light.colors      ┃
 \e[0;1m┃ (16) seaside.light   (36) greenscreen.dark       ┃
 \e[0;1m┃ (17) black-on-white  (37) greenscreen.light      ┃
 \e[0;1m┃ (18) codeschool.dark (38) gruvbox-dark.colors    ┃
 \e[0;1m┃ (19) codeschool.light(39) gruvbox-light.colors   ┃
 \e[0;1m┃ (20) colors.dark     (40) white-on-black.colors  ┃
-\e[0;1m┃ (RC) ${Fgreen}random.colors   \e[0;1m(>>) Next Page              ┃
+\e[0;1m┃ (RC) \e[38;2;3;169;211mr\e[39m\e[38;2;2;206;175ma\e[39m\e[38;2;15;234;133mn\e[39m\e[38;2;40;251;92md\e[39m\e[38;2;75;254;54mo\e[39m\e[38;2;116;243;24mm\e[39m\e[38;2;158;219;6m.\e[39m\e[38;2;196;186;1mc\e[39m\e[38;2;227;145;10mo\e[39m\e[38;2;248;103;32ml\e[39m\e[38;2;254;64;64mo\e[39m\e[38;2;247;31;104mr\e[39m\e[38;2;227;10;146ms\e[39m\e[38;2;196;1;186m\e[39m   \e[0;1m(>>) Next Page              ┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";}
 
 banner2() {
