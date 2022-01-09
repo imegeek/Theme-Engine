@@ -13,34 +13,48 @@ Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 
 
-F1="Anonymice Nerd" F2="Courier-Prime.ttf"
-F3="Cousine for Powerline.ttf" F4="D2-Coding.ttf"
+source fonts.active
+
+ActiveFont()
+{
+    if [[ ${#FONT} -gt 0 ]]
+then
+    printf "\e[92m Active font\e[0m: $FONT"
+fi
+}
+
+F1="Anonymice Nerd.ttf"
+F2="Courier-Prime.ttf"
+F3="Cousine for Powerline.ttf"
+F4="D2-Coding.ttf"
 F5="DejaVu Sans Mono Nerd Font Complete Mono.ttf"
-F6=" "
-F7=" "
-F8=" "
-F9=" "
-F10=" "
-F11=" "
-F12=" "
-F13=" "
-F14=" "
-F15=" "
-F16=" "
-F17=" "
-F18=" "
-F19=" "
-F20=" "
-F21=" "
-F22=" "
-F23=" "
-F24=" "
-F25=" "
-F26=" "
-F27=" "
-F28=" "
-F29=" "
-F30=" "
+F6="Droid Sans Mono Dotted for Powerline.ttf"
+F7="Droid Sans Mono for Powerline.otf"
+F8="Fantasque.ttf"
+F9="FiraCode-Regular.ttf"
+F10="FuraMono-Regular Powerline.otf"
+F11="GNU-FreeFont.ttf"
+F12="Go.ttf"
+F13="Hack-Regular.ttf"
+F14="Hermit.ttf"
+F15="Inconsolata for Powerline.otf"
+F16="Inconsolata-dz for Powerline.otf"
+F17="Iosevka-regular.ttf"
+F18="Iosevka.ttf"
+F19="IosevkaNerdFontComplete-Medium.ttf"
+F20="JetBrains-Mono.ttf"
+F21="Literation Mono Powerline.ttf"
+F22="MesloLGS NF Regular.ttf"
+F23="Monofur for Powerline.ttf"
+F24="Monoid.ttf"
+F25="Overpass Regular.otf"
+F26="Roboto Mono for Powerline.ttf"
+F27="Source-Code-Pro.ttf"
+F28="Terminus.ttf"
+F29="Tinos for Powerline.ttf"
+F30="Ubuntu Mono Nerd Font Complete Mono.ttf"
+
+                integer="F${2#0}"
 
 if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 
@@ -89,7 +103,7 @@ echo -e "
 \e[0;1m┃${Fgreen}           ┣╸ ┃ ┃┃┗┫ ┃ ╺━╸┃┃┃┣╸ ┃┗┫┃ ┃   	   \e[0;1m┃
 \e[0;1m┃${Fgreen}           ╹  ┗━┛╹ ╹ ╹    ╹ ╹┗━╸╹ ╹┗━┛            \e[0;1m┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
+$(ActiveFont)
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ \e[0;1m[01] Anonymice Nerd    \e[0;1m[16] Inconsolata-dz       ┃
 ┃ \e[0;1m[02] Courier-Prime     \e[0;1m[17] Iosevka-Regular      ┃
@@ -97,7 +111,7 @@ echo -e "
 ┃ \e[0;1m[04] D2-Coding         \e[0;1m[19] Iosevka-NerdComplete ┃
 ┃ \e[0;1m[05] DejaVu Sans Mono  \e[0;1m[20] JetBrains-Mono       ┃
 ┃ \e[0;1m[06] Droid Sans Dotted \e[0;1m[21] Literation Mono      ┃
-┃ \e[0;1m[07] Droid Sans Mono   \e[0;1m[22] Meslo LG M Regular   ┃
+┃ \e[0;1m[07] Droid Sans Mono   \e[0;1m[22] MesloLGS NF Regular  ┃
 ┃ \e[0;1m[08] Fantasque         \e[0;1m[23] Monofur-Font         ┃
 ┃ \e[0;1m[09] FiraCode-Regular  \e[0;1m[24] Monoid-Font          ┃
 ┃ \e[0;1m[10] FuraMono-Regular  \e[0;1m[25] Overpass Regular     ┃
@@ -118,153 +132,153 @@ echo -ne "\033]12;#00E676\007"
 
 if [[ $font = "1" ]] || [[ $font = "01" ]];then
 change_loc
-cp 'Anonymice Nerd.ttf' $HOME/.termux/font.ttf
+cp "$F1" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "2" ]] || [[ $font = "02" ]];then
 change_loc
-cp Courier-Prime.ttf $HOME/.termux/font.ttf
+cp "$F2" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "3" ]] || [[ $font = "03" ]];then
 change_loc
-cp 'Cousine for Powerline.ttf' $HOME/.termux/font.ttf
+cp "$F3" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "4" ]] || [[ $font = "04" ]];then
 change_loc
-cp D2-Coding.ttf $HOME/.termux/font.ttf
+cp "$F4" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "5" ]] || [[ $font = "05" ]];then
 change_loc
-cp 'DejaVu Sans Mono Nerd Font Complete Mono.ttf' $HOME/.termux/font.ttf
+cp "$F5" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "6" ]] || [[ $font = "06" ]];then
 change_loc
-cp 'Droid Sans Mono Dotted for Powerline.ttf' $HOME/.termux/font.ttf
+cp "$F6" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "7" ]] || [[ $font = "07" ]];then
 change_loc
-cp 'Droid Sans Mono for Powerline.otf' $HOME/.termux/font.ttf
+cp "$F7" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "8" ]] || [[ $font = "08" ]];then
 change_loc
-cp Fantasque.ttf $HOME/.termux/font.ttf
+cp "$F8" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "9" ]] || [[ $font = "09" ]];then
 change_loc
-cp FiraCode-Regular.ttf $HOME/.termux/font.ttf
+cp "$F9" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "10" ]];then
 change_loc
-cp 'FuraMono-Regular Powerline.otf' $HOME/.termux/font.ttf
+cp "$F10" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "11" ]];then
 change_loc
-cp GNU-FreeFont.ttf $HOME/.termux/font.ttf
+cp "$F11" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "12" ]];then
 change_loc
-cp Go.ttf $HOME/.termux/font.ttf
+cp "$F12" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "13" ]];then
 change_loc
-cp Hack-Regular.ttf $HOME/.termux/font.ttf
+cp "$F13" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "14" ]];then
 change_loc
-cp Hermit.ttf $HOME/.termux/font.ttf
+cp "$F14" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "15" ]];then
 change_loc
-cp 'Inconsolata for Powerline.otf' $HOME/.termux/font.ttf
+cp "$F15" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "16" ]];then
 change_loc
-cp 'Inconsolata-dz for Powerline.otf' $HOME/.termux/font.ttf
+cp "$F16" $HOME/.termux/font.ttf
 change_font
 
 
 elif [[ $font = "17" ]];then
 change_loc
-cp Iosevka-regular.ttf $HOME/.termux/font.ttf
+cp "$F17" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "18" ]];then
 change_loc
-cp Iosevka.ttf $HOME/.termux/font.ttf
+cp "$F18" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "19" ]];then
 change_loc
-cp IosevkaNerdFontComplete-Medium.ttf $HOME/.termux/font.ttf
+cp "$F19" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "20" ]];then
 change_loc
-cp JetBrains-Mono.ttf $HOME/.termux/font.ttf
+cp "$F20" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "21" ]];then
 change_loc
-cp 'Literation Mono Powerline.ttf' $HOME/.termux/font.ttf
+cp "$F21" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "22" ]];then
 change_loc
-cp 'Meslo LG M Regular for Powerline.otf' $HOME/.termux/font.ttf
+cp "$F22" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "23" ]];then
 change_loc
-cp 'Monofur for Powerline.ttf' $HOME/.termux/font.ttf
+cp "$F23" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "24" ]];then
 change_loc
-cp Monoid.ttf $HOME/.termux/font.ttf
+cp "$F24" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "25" ]];then
 change_loc
-cp 'Overpass Regular.otf' $HOME/.termux/font.ttf
+cp "$F25" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "26" ]];then
 change_loc
-cp 'Roboto Mono for Powerline.ttf' $HOME/.termux/font.ttf
+cp "$F26" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "27" ]];then
 change_loc
-cp Source-Code-Pro.ttf $HOME/.termux/font.ttf
+cp "$F27" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "28" ]];then
 change_loc
-cp  Terminus.ttf $HOME/.termux/font.ttf
+cp "$F28" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "29" ]];then
 change_loc
-cp 'Tinos for Powerline.ttf' $HOME/.termux/font.ttf
+cp "$F29" $HOME/.termux/font.ttf
 change_font
 
 elif [[ $font = "30" ]];then
 change_loc
-cp 'Ubuntu Mono Nerd Font Complete Mono.ttf' $HOME/.termux/font.ttf
+cp "$F30" $HOME/.termux/font.ttf
 change_font
 
 else echo -e "\e[0;1;100m             You entered Wrong Input !              \e[0m";echo;echo -ne "\033]12;#b4e1fd\007" ;fi
