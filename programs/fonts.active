@@ -1,0 +1,65 @@
+#!/usr/bin/bash
+
+if [ ! -f "$HOME/.termux/config.theme-engine" ];then
+cd $PREFIX/share/Theme-Engine/fonts/checksum
+if [[ ! -f "font" ]]
+then
+  ln -s ~/.termux/font.ttf $PREFIX/share/Theme-Engine/fonts/checksum/font
+fi
+else
+cd $HOME/.termux/fonts/checksum
+if [[ ! -f "font" ]]
+then
+  ln -s ~/.termux/font.ttf ~/.termux/fonts/checksum/font
+fi
+fi
+
+LOOP=0
+
+declare -a file=(
+'checksum.Anonymice Nerd'
+'checksum.Courier-Prime'
+'checksum.Cousine for Powerline'
+'checksum.D2-Coding'
+'checksum.DejaVu Sans Mono Nerd Font Complete Mono'
+'checksum.Droid Sans Mono Dotted for Powerline'
+'checksum.Droid Sans Mono for Powerline'
+'checksum.Fantasque'
+'checksum.FiraCode-Regular'
+'checksum.FuraMono-Regular Powerline'
+'checksum.GNU-FreeFont'
+'checksum.Go'
+'checksum.Hack-Regular'
+'checksum.Hermit'
+'checksum.Inconsolata for Powerline'
+'checksum.Inconsolata-dz for Powerline'
+'checksum.Iosevka-regular'
+'checksum.Iosevka'
+'checksum.IosevkaNerdFontComplete-Medium'
+'checksum.JetBrains-Mono'
+'checksum.Literation Mono Powerline'
+'checksum.MesloLGS NF Regular'
+'checksum.Monofur for Powerline'
+'checksum.Monoid'
+'checksum.Overpass Regular'
+'checksum.Roboto Mono for Powerline'
+'checksum.Source-Code-Pro'
+'checksum.Terminus'
+'checksum.Tinos for Powerline'
+'checksum.Ubuntu Mono Nerd Font Complete Mono'
+)
+
+for i in "${file[@]}"
+  do
+  KEY=$(printf "%02d" $NUM)
+  LOOP=$((${LOOP:-0}+1))
+  SHOW=${i::$((${#i}))}
+  FILE=$(printf "${SHOW}\n")
+  sha256sum -c "${FILE}" &> /dev/null
+  if [[ $? == "0" ]]
+  then
+    FONT=$(echo "${FILE#checksum.}")
+  fi
+  #sleep 0.1
+  ((NUM++))
+  done
