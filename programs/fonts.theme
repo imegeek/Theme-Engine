@@ -13,16 +13,6 @@ Bgreen=$'\e[0;1;30;48;2;0;230;118m'   Bblue=$'\e[0;1;48;2;40;90;255m'   Bsky=$'\
 Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\e[0;1;48;2;200;0;0m' Bcyan=$'\e[0;1;30;48;5;49m' Bwhite=$'\e[0;1;7m'
 
 
-source fonts.active
-
-ActiveFont()
-{
-    if [[ ${#FONT} -gt 0 ]]
-then
-    printf "\e[92m Active font\e[0m: $FONT"
-fi
-}
-
 F1="Anonymice Nerd.ttf"
 F2="Courier-Prime.ttf"
 F3="Cousine for Powerline.ttf"
@@ -61,6 +51,7 @@ if [ ! -d "$HOME/.termux" ];then cd $HOME ; mkdir .termux ;fi
 change_loc() {
 echo -ne "\033]12;#b4e1fd\007"
 printf "Arriving preview of current font :\n\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n1234567890 {} [] $ # ~-+=>\n"
+sleep 0.1
 printf "\nWould you like to apply this font style (Y/N) : "
 read i
 if [[ $i == "y" || $i == "Y" ]];then
@@ -95,37 +86,46 @@ exit_on_signal_SIGTSTP () {
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
 
-if [[ $1 == "-f" ]]
-then
-    if [[ $2 -gt "0" ]]
-    then
-    if [[ $2 -lt "31" ]]
-    then
+value_not_found()
+{
+printf "Choosen ‘$1’ is not available in value...!
+Command usage :
+bash <(curl -fsSL "https://git.io/tfonts") -f <1-30>
+
+example :
+bash <(curl -fsSL "https://git.io/tfonts") -f 5\n"
+exit 1
+
+}
+
+if [[ $1 == "-f" || $1 == "--font" ]];then
+if [[ $2 =~ ^-?[0-9]*[.,]?[0-9]*[eE]?-?[0-9]+$ ]];then
+if [[ $2 -gt 30 ]];then
+   value_not_found ${2#0}
+else
+    sleep 0.1
         printf "\nThe Fonts\t\t         #v2.1.0\n\n"
         printf "Font style : ${!integer}\n"
 change_loc
 cp "${!integer}" $HOME/.termux/font.ttf
 change_font
 exit 0
-else
-    printf "Choosen ‘$2’ is not available in value...!
-Command usage :
-bash <(curl -fsSL "https://git.io/tfonts") -f <1-30>
-
-example :
-bash <(curl -fsSL "https://git.io/tfonts") -f 5\n"
-exit 1
-    fi
-else
-    printf "Choosen ‘$2’ is not available in value...!
-Command usage :
-bash <(curl -fsSL "https://git.io/tfonts") -f <1-30>
-
-example :
-bash <(curl -fsSL "https://git.io/tfonts") -f 5\n"
-exit 1
-    fi
 fi
+else
+    value_not_found ${2#0}
+fi
+fi
+
+source fonts.active
+
+ActiveFont()
+{
+    if [[ ${#FONT} -gt 0 ]]
+then
+    printf "\e[92m Active font\e[0m: $FONT"
+fi
+}
+
 
 
 banner() {
