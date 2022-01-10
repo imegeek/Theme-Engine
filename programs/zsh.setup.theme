@@ -62,8 +62,8 @@ setting_up() {
 if [ ! -d "${loc7}" ];then cd $loc15 ; mkdir ${loc16} ;fi
 if [ ! -f "${loc8}" ];then
 cd ${loc7}; touch config.theme-engine ;fi
-if [ -d "${loc7}/colors.properties" ];then cd $loc15 ; rm ${loc7}/colors.properties ;fi
-if [ -d "${loc7}/font.ttf" ];then cd $loc15 ; rm $loc15/font.ttf ;fi ;}
+if [ -f "${loc7}/colors.properties" ];then cd $loc15 ; rm ${loc7}/colors.properties ;fi
+if [ -f "${loc7}/font.ttf" ];then cd $loc15 ; rm ${loc7}/font.ttf ;fi ;}
 
 set_color() {
 cd ${loc9}/colors
@@ -230,7 +230,7 @@ if [ -f "${loc7}/config.theme-engine" ];then
 cd $loc15 ;echo 'ZSH_THEME="agnoster"' > .zshrc ;fi ;}
 
 night() { trap '' 2
-PUT 15 1 ;HIDE
+PUT 16 1 ;HIDE
 printf "\n\e[1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n";SLP
 printf "\e[1m┃${NBpurple}             ╺━┓┏━┓╻ ╻   ┏━┓┏━╸╺┳╸╻ ╻┏━┓             \e[0m┃\n";SLP
 printf "\e[1m┃${NBpurple}             ┏━┛┗━┓┣━┫╺━╸┗━┓┣╸  ┃ ┃ ┃┣━┛             \e[0m┃\n";SLP
@@ -238,7 +238,7 @@ printf "\e[1m┃${NBpurple}             ┗━╸┗━┛╹ ╹   ┗━┛┗
 printf "\e[1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n";SLP
 printf "\e[1m┃                                                     ┃\n";SLP
 printf "\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n";SLP
-PUT 21 1
+PUT 22 1
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations           [0.0%]  |   \r"
 sleep 0.22
 echo -ne "\e[0;1m┃${NBpurple}  ✚  Setting-up configurations.          [0.3%]  /   \r"
@@ -307,7 +307,7 @@ bash "$PREFIX/bin/theme-engine"
 }
 
 light() { trap '' 2
-PUT 15 1 ;HIDE
+PUT 16 1 ;HIDE
 printf "\n\e[1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n";SLP
 printf "\e[1m┃${Bpurple}             ╺━┓┏━┓╻ ╻   ┏━┓┏━╸╺┳╸╻ ╻┏━┓             \e[0m┃\n";SLP
 printf "\e[1m┃${Bpurple}             ┏━┛┗━┓┣━┫╺━╸┗━┓┣╸  ┃ ┃ ┃┣━┛             \e[0m┃\n";SLP
@@ -315,7 +315,7 @@ printf "\e[1m┃${Bpurple}             ┗━╸┗━┛╹ ╹   ┗━┛┗�
 printf "\e[1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n";SLP
 printf "\e[1m┃                                                     ┃\n";SLP
 printf "\e[1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n";SLP
-PUT 21 1
+PUT 22 1
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations           [0.0%]   |  \r"
 sleep 0.22
 echo -ne "\e[0;1m┃${Bpurple}  ✚  Setting-up configurations.          [0.3%]   /  \r"
