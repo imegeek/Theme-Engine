@@ -312,17 +312,17 @@ exit
 
 elif [ "${1}" = "-c" ]; then
 	cd ${loc3}
-	bash colors.theme
+	bash colors.theme $@
 	exit
 
 elif [ "${1}" = "-f" ]; then
 	cd ${loc3}
-	bash fonts.theme
+	bash fonts.theme $@
 	exit
 
 elif [ "${1}" = "-t" ]; then
         cd ${loc3}
-        bash zsh.theme
+        bash zsh.theme $@
         exit
 
 elif [ "${1}" = "-U" ]; then

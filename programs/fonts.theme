@@ -77,23 +77,56 @@ fi
 
 change_font() {
 termux-reload-settings | printf "Font-Style Reloading...\e[0m\r"
-printf "Font-style applied successfully\e[0m\n"
+printf "Font style applied Successfully...\e[0m\n"
 echo -ne "\033]12;#b4e1fd\007"
 }
 
 exit_on_signal_SIGINT () {
-   { printf "\n\e[0;1;48;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
+   { printf "\n\e[0;1;38;2;200;0;0m                Program interrupted.                \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
     exit 0
 }
 
 exit_on_signal_SIGTSTP () {
-    { printf "\n\e[0;1;48;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
+    { printf "\n\e[0;1;38;2;200;0;0m                Program terminated.                 \e[0m" 2>&1; echo; }
     echo -ne "\033]12;#b4e1fd\007"
     exit 0
 }
 
 trap exit_on_signal_SIGINT SIGINT ; trap exit_on_signal_SIGTSTP SIGTSTP
+
+if [[ $1 == "-f" ]]
+then
+    if [[ $2 -gt "0" ]]
+    then
+    if [[ $2 -lt "31" ]]
+    then
+        printf "\nThe Fonts\t\t         #v2.1.0\n\n"
+        printf "Font style : ${!integer}\n"
+change_loc
+cp "${!integer}" $HOME/.termux/font.ttf
+change_font
+exit 0
+else
+    printf "Choosen ‘$2’ is not available in value...!
+Command usage :
+bash <(curl -fsSL "https://git.io/tfonts") -f <1-30>
+
+example :
+bash <(curl -fsSL "https://git.io/tfonts") -f 5\n"
+exit 1
+    fi
+else
+    printf "Choosen ‘$2’ is not available in value...!
+Command usage :
+bash <(curl -fsSL "https://git.io/tfonts") -f <1-30>
+
+example :
+bash <(curl -fsSL "https://git.io/tfonts") -f 5\n"
+exit 1
+    fi
+fi
+
 
 banner() {
 echo -ne "\033]12;#363636\007";clear
