@@ -16,6 +16,10 @@ Bpurple=$'\e[0;1;48;2;101;31;255m' Byellow=$'\e[0;1;30;48;2;200;255;0m' Bred=$'\
 # night background
 NBgreen=$'\e[0;1;90;7;48;2;0;230;118m'   NBblue=$'\e[0;1;90;7;48;2;0;150;255m'   NBsky=$'\e[0;1;90;7;30;48;2;0;255;255m' NBpurple=$'\e[0;1;90;7;48;2;200;50;255m' NByellow=$'\e[0;1;90;7;30;48;2;200;255;0m' NBred=$'\e[0;1;90;7;48;2;255;0;0m' NBcyan=$'\e[0;1;;90;7;30;48;5;46m' NBwhite=$'\e[0;1;100m'
 
+
+PUT(){ echo -en "\033[${1};${2}H";}
+HIDE(){ echo -en "\033[?25l";}
+NORM(){ echo -en "\033[?12l\033[?25h";}
 SL() {
 sleep 0.01
 }
@@ -36,13 +40,7 @@ echo -e "
 \e[0;1m┃${NBred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${NBblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 \e[0m"
-printf "\e[1;92mReading configuration data ...\r";SL
-sleep 1
-printf "Selected addon will be applying ..."
-printf "\nconfiguration color : accent.material.colors ...";SL
-printf "\nconfiguration font :  Anonymice Powerline.ttf ...";SL
-printf "\nconfiguration default ‘ls’to ‘lsd’ ...";SL
-printf "\nconfiguration default shell to zsh shell ...\n\e[0m";SL
+
 echo -ne "\033]12;#b4e1fd\007"
 }
 
@@ -58,13 +56,36 @@ echo -e "
 \e[0;1m┃${Bred}          ╹ ╹ ╹┗━╸╹ ╹┗━╸   ${Bblue} ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸         \e[0;1m┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 \e[0m"
-printf "\e[1;92mReading configuration data ...\r";SL
-sleep 1
-printf "Selected addon will be applying ..."
-printf "\nconfiguration color : accent.material.colors ...";SL
-printf "\nconfiguration font :  Anonymice Nerd.ttf ...";SL
-printf "\nconfiguration default ‘ls’to ‘lsd’ ...";SL
-printf "\nconfiguration default shell to zsh shell ...\n\e[0m";SL
+
+HIDE
+PUT 10 1
+printf "\e[0;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+PUT 11 1
+printf "\e[0;1m┃                                                     ┃"
+PUT 12 1
+printf "\e[0;1m┃                                                     ┃"
+PUT 13 1
+printf "\e[0;1m┃                                                     ┃"
+PUT 14 1
+printf "\e[0;1m┃                                                     ┃"
+PUT 15 1
+printf "\e[0;1m┃                                                     ┃"
+PUT 16 1
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+PUT 11 1
+printf "┃ Selected addon will be applying ..."
+sleep 0.5
+PUT 12 1
+printf "┃ configuration color : accent.material.colors ...";SL
+PUT 13 1
+printf "┃ configuration font :  Anonymice Nerd.ttf ...";SL
+PUT 14 1
+printf "┃ configuration default ‘ls’to ‘lsd’ ...";SL
+PUT 15 1
+printf "┃ configuration default shell to zsh shell ...\e[0m";SL
+PUT 16 1
+printf "\e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n\n";SL
+NORM
 echo -ne "\033]12;#b4e1fd\007"
 }
 

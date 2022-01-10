@@ -105,25 +105,25 @@ echo -e "
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 $(ActiveFont)
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ \e[0;1m[01] Anonymice Nerd    \e[0;1m[16] Inconsolata-dz       ┃
-┃ \e[0;1m[02] Courier-Prime     \e[0;1m[17] Iosevka-Regular      ┃
-┃ \e[0;1m[03] Cousine           \e[0;1m[18] Iosevka              ┃
-┃ \e[0;1m[04] D2-Coding         \e[0;1m[19] Iosevka-NerdComplete ┃
-┃ \e[0;1m[05] DejaVu Sans Mono  \e[0;1m[20] JetBrains-Mono       ┃
-┃ \e[0;1m[06] Droid Sans Dotted \e[0;1m[21] Literation Mono      ┃
-┃ \e[0;1m[07] Droid Sans Mono   \e[0;1m[22] MesloLGS NF Regular  ┃
-┃ \e[0;1m[08] Fantasque         \e[0;1m[23] Monofur-Font         ┃
-┃ \e[0;1m[09] FiraCode-Regular  \e[0;1m[24] Monoid-Font          ┃
-┃ \e[0;1m[10] FuraMono-Regular  \e[0;1m[25] Overpass Regular     ┃
-┃ \e[0;1m[11] GNU-FreeFont      \e[0;1m[26] Roboto Mono          ┃
-┃ \e[0;1m[12] Go-Font           \e[0;1m[27] Source-Code-Pro      ┃
-┃ \e[0;1m[13] Hack-Regular      \e[0;1m[28] Terminus             ┃
-┃ \e[0;1m[14] Hermit-Mono       \e[0;1m[29] Tinos-Mono           ┃
-┃ \e[0;1m[15] Inconsolata-Mono  \e[0;1m[30] Ubuntu-Bold          ┃
+┃ \e[0;1m(01) Anonymice Nerd    \e[0;1m(16) Inconsolata-dz       ┃
+┃ \e[0;1m(02) Courier-Prime     \e[0;1m(17) Iosevka-Regular      ┃
+┃ \e[0;1m(03) Cousine           \e[0;1m(18) Iosevka              ┃
+┃ \e[0;1m(04) D2-Coding         \e[0;1m(19) Iosevka-NerdComplete ┃
+┃ \e[0;1m(05) DejaVu Sans Mono  \e[0;1m(20) JetBrains-Mono       ┃
+┃ \e[0;1m(06) Droid Sans Dotted \e[0;1m(21) Literation Mono      ┃
+┃ \e[0;1m(07) Droid Sans Mono   \e[0;1m(22) MesloLGS NF Regular  ┃
+┃ \e[0;1m(08) Fantasque         \e[0;1m(23) Monofur-Font         ┃
+┃ \e[0;1m(09) FiraCode-Regular  \e[0;1m(24) Monoid-Font          ┃
+┃ \e[0;1m(10) FuraMono-Regular  \e[0;1m(25) Overpass Regular     ┃
+┃ \e[0;1m(11) GNU-FreeFont      \e[0;1m(26) Roboto Mono          ┃
+┃ \e[0;1m(12) Go-Font           \e[0;1m(27) Source-Code-Pro      ┃
+┃ \e[0;1m(13) Hack-Regular      \e[0;1m(28) Terminus             ┃
+┃ \e[0;1m(14) Hermit-Mono       \e[0;1m(29) Tinos-Mono           ┃
+┃ \e[0;1m(15) Inconsolata-Mono  \e[0;1m(30) Ubuntu-Bold          ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 }
 banner
-printf "${Bwhite}  [i] Choose an Font Style :                        \e[0m"
+printf "${Bwhite}  (i) Choose an Font Style :                        \e[0m"
 PUT 25 30
 printf "${Bwhite}"
 read font
