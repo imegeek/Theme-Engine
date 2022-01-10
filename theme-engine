@@ -293,37 +293,57 @@ fi
 if [[ "${1}" = "-h" ]] || [[ "${1}" = "--help" ]]; then
 echo -e "Usage: theme-engine [options...]
 
-available themes:
- --theme -default  : \e[1;90m━━\e[0;1m━━${reset}
- --theme -night    : \e[1;90m━━━━\e[0m${reset}
- --theme -light    : \e[0;1m━━━━\e[0m${reset}
+ available themes:
+  --theme -default  : \e[1;90m━━\e[0;1m━━${reset}
+  --theme -night    : \e[1;90m━━━━\e[0m${reset}
+  --theme -light    : \e[0;1m━━━━\e[0m${reset}
 
-available commands:
- -c  : Start color-scheme menu with this command.
- -f  : Start font-style menu with this command.
- -t  : Start zsh-theme menu with this command.
- -U  : Check available update with this command.
- -L  : Check changelog with this command.
+ available commands:
+  -c  : Start color-scheme menu with this command.
+  -f  : Start font-style menu with this command.
+  -t  : Start zsh-theme menu with this command.
+  -U  : Check available update with this command.
+  -L  : Check changelog with this command.
 
  --updater -off :  Trun off auto-updater with this command.
  --updater -on  :  Turn on auto-updater with this command.
- --uninstall    :  This command to uninstall Theme-Engine."
+ --uninstall    :  This command to uninstall Theme-Engine.
+ 
+ minimal commands:
+  -c [<num>] : Start minimal color-scheme pop-up menu with this command.
+  -f [<num>] : Start minimal font-style pop-up menu with this command.
+  -t [<num>] : ..,,.. ..,,.. zsh-theme .,,. .,,. .,,. (comming soon)."
 exit
 
 elif [ "${1}" = "-c" ]; then
 	cd ${loc3}
-	bash colors.theme $@
+  if [[ "${#2}" -gt 0 ]]
+  then
+	bash colors.theme -c ${2}
+else
+  bash colors.theme
+  fi
 	exit
 
 elif [ "${1}" = "-f" ]; then
 	cd ${loc3}
-	bash fonts.theme $@
+	if [[ "${#2}" -gt 0 ]]
+  then
+	bash fonts.theme -f ${2}
+else
+  bash fonts.theme
+  fi
 	exit
 
 elif [ "${1}" = "-t" ]; then
-        cd ${loc3}
-        bash zsh.theme $@
-        exit
+  cd ${loc3}
+  if [[ "${#2}" -gt 0 ]]
+  then
+	bash colors.theme -c ${2}
+else
+  bash colors.theme
+  fi
+  exit
 
 elif [ "${1}" = "-U" ]; then
         cd ${loc3}
