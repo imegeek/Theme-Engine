@@ -339,9 +339,9 @@ elif [ "${1}" = "-t" ]; then
   cd ${loc3}
   if [[ "${#2}" -gt 0 ]]
   then
-	bash colors.theme -c ${2}
+	bash zsh.theme -t ${2}
 else
-  bash colors.theme
+  bash zsh.theme
   fi
   exit
 
