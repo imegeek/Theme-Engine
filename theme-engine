@@ -2,9 +2,9 @@
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 #┃ Project : Theme-Engine                                    ┃
-#┃ Author  : Ankush Bhagat                               ┃
+#┃ Author  : Ankush Bhagat                                         ┃
 #┃ Version : 5.6 (Latest)                                    ┃
-#┃ Github  : ankushbhagats <github.com/ankushbhagats>  ┃
+#┃ Github  : ankushbhagats <github.com/ankushbhagats>                    ┃
 #┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 #..............................................................
@@ -616,7 +616,7 @@ printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                        
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── ankushbhagats ─────┐              \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── ankushbhagats ──────────────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
 }
@@ -629,7 +629,7 @@ printf "\n\e[0;1m┃${Bred}                          ${Bblue}                   
 printf "\n\e[0;1m┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── ankushbhagats ─────┐              \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── ankushbhagats ──────────────┐              \e[0;1m┃${reset}";WAIT
 printf "`day_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
 }
