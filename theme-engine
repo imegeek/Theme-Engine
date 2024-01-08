@@ -2,9 +2,9 @@
 
 #┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 #┃ Project : Theme-Engine                                    ┃
-#┃ Author  : ABHacker Official                               ┃
+#┃ Author  : IM GEEK                                         ┃
 #┃ Version : 5.6 (Latest)                                    ┃
-#┃ Github  : abhackerofficial <github.com/abhackerofficial>  ┃
+#┃ Github  : imegeek <github.com/imegeek>                    ┃
 #┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 #..............................................................
@@ -217,12 +217,12 @@ if [[ -d "${loc9}" && -f "$PREFIX/bin/theme-engine" ]];then
 	printf " Successfully Setup Theme-Engine.\n\n"
 	printf " You can run this program by typing \e[92mtheme-engine${reset}\n\n"
 	printf " Get Help: \e[92mtheme-engine${reset} --help\n\n"
-	printf " Git Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	printf " Git Page: https://github.com/imegeek/Theme-Engine\n"
 	exit
 else
 	echo -e " ${reset}Required files was deleted !\n"
 	echo -e " ${Fred}Setup failed theme-engine trying to Re-Install...${reset}" ;sleep 0.5 ;cd $HOME
-	bash -c " $(curl -fsSL https://github.com/abhackerofficial/Theme-Engine/raw/master/programs/update.theme)"
+	bash -c " $(curl -fsSL https://github.com/imegeek/Theme-Engine/raw/master/programs/update.theme)"
 fi
 }
 
@@ -234,7 +234,7 @@ if [[ -d "${loc9}" ]] | [[ -f "$PREFIX/bin/theme-engine" ]];then
 	rm -rf ${loc9}
 	rm $PREFIX/bin/theme-engine
 	printf " Successfully Removed Theme-Engine.\n\n"
-	printf " Git Page: https://github.com/abhackerofficial/Theme-Engine\n"
+	printf " Git Page: https://github.com/imegeek/Theme-Engine\n"
 	exit
 fi
 }
@@ -616,7 +616,7 @@ printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                                        
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ \e[0;100m▃▃${NBblue}  █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}  █  █▀█ ██▄ █ ▀ █ ██▄ ${NBred}  ${NBblue}  ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃\e[0;1;100m ${NBred}                       ${NBred}  ${NBblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;100m Maintain by ── imegeek ──────────────┐              \e[0;1m┃${reset}";WAIT
 printf "`night_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
 }
@@ -629,7 +629,7 @@ printf "\n\e[0;1m┃${Bred}                          ${Bblue}                   
 printf "\n\e[0;1m┃${Bred} ${Sred} ▀█▀ █ █ █▀▀ █▀▄▀█ █▀▀ ${Sreset}▃▃${Bblue} ${Sblue} █▀▀ █▄ █ █▀▀ █ █▄ █ █▀▀  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃${Bred} ${Sred}  █  █▀█ ██▄ █ ▀ █ ██▄   ${Bblue} ${Sblue} ██▄ █ ▀█ █▄█ █ █ ▀█ ██▄  \e[0;1m┃${reset}";WAIT
 printf "\n\e[0;1m┃${Bred}                          ${Bblue}                           \e[0;1m┃${reset}";WAIT
-printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── abhackerofficial ─────┐              \e[0;1m┃${reset}";WAIT
+printf "\n\e[0;1m┃\e[0;1;7m Maintain by ── imegeek ──────────────┐              \e[0;1m┃${reset}";WAIT
 printf "`day_print_shell`"
 printf "\n\e[0;1m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${reset}\n";WAIT
 }

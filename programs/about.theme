@@ -35,9 +35,9 @@ echo -e "
 \e[0;1m┃${NBwhite}  and customization, So you can make trunks even     \e[0;1m┃
 \e[0;1m┃${NBwhite}  more colourful and better your Termux.             \e[0;1m┃
 \e[0;1m┃${NBwhite}                                                     \e[0;1m┃
-\e[0;1m┃${NBwhite}  Author  - ABHacker Official                        \e[0;1m┃
-\e[0;1m┃${NBwhite}  Github  - https://github.com/abhackerofficial      \e[0;1m┃
-\e[0;1m┃${NBwhite}  Youtube - https://youtube.com/abhackerofficial     \e[0;1m┃
+\e[0;1m┃${NBwhite}  Author  - IM GEEK                                  \e[0;1m┃
+\e[0;1m┃${NBwhite}  Github  - https://github.com/imegeek               \e[0;1m┃
+\e[0;1m┃${NBwhite}  Youtube - https://youtube.com/@imegeek             \e[0;1m┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 \e[0m";echo -ne "\033]12;#b4e1fd\007"
 }
@@ -57,9 +57,9 @@ echo -e "
 \e[0;1m┃${Bwhite}  and customization, So you can make trunks even     \e[0;1m┃
 \e[0;1m┃${Bwhite}  more colourful and better your Termux.             \e[0;1m┃
 \e[0;1m┃${Bwhite}                                                     \e[0;1m┃
-\e[0;1m┃${Bwhite}  Author  - ABHacker Official                        \e[0;1m┃
-\e[0;1m┃${Bwhite}  Github  - https://github.com/abhackerofficial      \e[0;1m┃
-\e[0;1m┃${Bwhite}  Youtube - https://youtube.com/abhackerofficial     \e[0;1m┃
+\e[0;1m┃${Bwhite}  Author  - IM GEEK                                  \e[0;1m┃
+\e[0;1m┃${Bwhite}  Github  - https://github.com/imegeek               \e[0;1m┃
+\e[0;1m┃${Bwhite}  Youtube - https://youtube.com/@imegeek             \e[0;1m┃
 \e[0;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 \e[0m";echo -ne "\033]12;#b4e1fd\007"
 }
